@@ -1,0 +1,52 @@
+//
+//  Tables
+//
+
+//  stylelint-disable selector-max-compound-selectors
+//  stylelint-disable selector-no-qualifying-type
+thead > tr > th svg.ascending {
+	transform: rotate(180deg);
+}
+//  stylelint-enable selector-max-compound-selectors
+//  stylelint-enable selector-no-qualifying-type
+
+//  Modern-design
+//
+//  Rounded corners
+
+.table-modern {
+	//  stylelint-disable scss/at-extend-no-missing-placeholder
+	//  stylelint-disable  at-rule-disallowed-list
+	@extend .table-borderless;
+	@extend .table-striped;
+	//  stylelint-enable scss/at-extend-no-missing-placeholder
+
+	%table-modern-row {
+		@include padding($table-modern-cell-padding-y $table-modern-cell-padding-x);
+
+		vertical-align: $table-modern-cell-vertical-align;
+
+		&:first-child {
+			@include border-start-radius($table-modern-border-radius);
+		}
+
+		&:last-child {
+			@include border-end-radius($table-modern-border-radius);
+		}
+	}
+
+	//  stylelint-disable selector-max-compound-selectors
+	> thead > tr > * {
+		--#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
+
+		@extend %table-modern-row;
+
+		color: var(--#{$variable-prefix}table-striped-color);
+	}
+
+	> tbody > tr > * {
+		@extend %table-modern-row;
+	}
+	//  stylelint-enable  at-rule-disallowed-list
+	//  stylelint-enable selector-max-compound-selectors
+}

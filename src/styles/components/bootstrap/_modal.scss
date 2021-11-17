@@ -1,0 +1,15 @@
+//
+//	Modal
+//
+
+.modal {
+	&-backdrop {
+		@include backdrop-filter-blur($modal-backdrop--blur);
+
+		background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+
+		&.show {
+			opacity: 1;
+		}
+	}
+}

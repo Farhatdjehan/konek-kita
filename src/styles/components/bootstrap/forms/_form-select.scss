@@ -1,0 +1,11 @@
+//
+// Form Select
+//
+
+.form-select-sm {
+	@include border-radius($form-select-border-radius-sm);
+}
+
+.form-select-lg {
+	@include border-radius($form-select-border-radius-lg);
+}

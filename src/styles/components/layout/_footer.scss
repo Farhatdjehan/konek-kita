@@ -1,0 +1,32 @@
+//
+//  Footer
+//
+
+.footer {
+	@include padding(map-get($footer, padding-y) map-get($footer, padding-x));
+	@include backdrop-filter-blur(map-get($footer, blur));
+
+	position: sticky;
+	z-index: round($zindex-sticky - 2);
+	bottom: 0;
+	display: flex;
+	height: map-get($footer, height);
+	align-items: center;
+	border-top: map-get($footer, border-size) solid map-get($footer, border-color);
+	background-color: rgba(map-get($footer, background-color), map-get($footer, opacity));
+	color: if(
+		map-get($footer, color),
+		map-get($footer, color),
+		color-contrast(map-get($footer, background-color), map-get($footer, dark-color))
+	);
+}
+
+.modern-design .footer {
+	@include footer-modern() {
+		@include margin(
+			0 $modern-design-gutter-size $modern-design-size $modern-design-gutter-size
+		);
+		@include border-radius($modern-design-radius);
+		@include box-shadow($modern-design-shadow);
+	}
+}

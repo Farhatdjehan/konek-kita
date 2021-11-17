@@ -1,0 +1,14 @@
+//
+//	Popover
+//
+
+.popover {
+	&:not([data-popper-placement^='-']) > .popover-arrow {
+		margin: 0;
+	}
+}
+
+.popover-string {
+	cursor: help;
+	text-decoration: underline dotted;
+}

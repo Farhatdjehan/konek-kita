@@ -1,0 +1,8 @@
+//
+// Root
+//
+
+:root {
+	--#{$variable-prefix}body-bg: #{$body-bg};
+	--#{$variable-prefix}body-color: #{$body-color};
+}

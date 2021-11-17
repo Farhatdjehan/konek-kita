@@ -1,0 +1,15 @@
+//
+// Form Control
+//
+
+.form-control {
+	&:focus {
+		//@include box-shadow($box-shadow);
+	}
+}
+
+.form-control-plaintext {
+	&:focus {
+		outline: none;
+	}
+}
