@@ -20,6 +20,7 @@
 		"camelcase": [1, {"properties": "always"}],
 		"no-unused-vars" : "off",
 		"no-shadow" : "off",
+		"eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
 		"no-use-before-define": "off",
 		"no-case-declarations": "off",
 		"no-underscore-dangle": "off",
