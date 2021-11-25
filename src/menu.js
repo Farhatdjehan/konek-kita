@@ -30,19 +30,21 @@ export const homeMenu = {
 	},
 };
 
+export const editPage = {
+	editProfil: {
+		id: 'editProfil',
+		text: 'Edit Profile',
+		path: '/edit-profile',
+		icon: 'QrCode2',
+	},
+};
+
 export const dashboardMenu = {
 	dashboardBooking: {
-		id: 'dashboard-booking',
+		id: 'overview',
 		text: 'Overview',
 		path: '/',
 		icon: 'Info',
-		subMenu: null,
-	},
-	editProfilePage: {
-		id: 'editProfilePage',
-		text: 'Edit Profile',
-		path: '/edit-profile/',
-		icon: 'Person',
 	},
 	employee: {
 		id: 'employee',
@@ -50,15 +52,28 @@ export const dashboardMenu = {
 		path: '/appointment/employee/1',
 		icon: 'QrCode2',
 	},
-	productsGrid: {
-		id: 'productsGrid',
+	profilID: {
+		id: 'profil',
+		text: 'Profil',
+		path: '/appointment/employee',
+		icon: 'QrCode2',
+		hide: true,
+	},
+	galleryUmkm: {
+		id: 'galleryUmkm',
 		text: 'Gallery UMKM Program',
-		path: '/sales/grid',
+		path: '/gallery-umkm',
 		icon: 'CalendarViewMonth',
 	},
-	editInModal: {
-		id: 'editInModal',
-		text: 'Premium Content ',
+	galleryUmkmID: {
+		id: 'detailGalleryUmkm',
+		text: 'Detail Gallery UMKM',
+		path: '/gallery-umkm/detail',
+		hide: true,
+	},
+	contentGallery: {
+		id: 'contentGallery',
+		text: 'Premium Content',
 		path: '/edit-pages/in-modal',
 		icon: 'PictureInPicture',
 	},
@@ -68,11 +83,23 @@ export const dashboardMenu = {
 		path: '/gallery-content',
 		icon: 'ImportContacts',
 	},
+	galleryPremiumID: {
+		id: 'galleryContentID',
+		text: 'Detail Gallery Content',
+		path: '/gallery-content/detail',
+		hide: true,
+	},
 	galleryBootcamp: {
 		id: 'galleryBootcamp',
 		text: 'Gallery Bootcamp',
 		path: '/gallery-bootcamp',
 		icon: 'SettingsApplications',
+	},
+	galleryBootcampID: {
+		id: 'galleryBootcampID',
+		text: 'Gallery Bootcamp Detail',
+		path: '/gallery-bootcamp/detail',
+		hide: true,
 	},
 	openWorkList: {
 		id: 'openWorkList',
@@ -80,10 +107,10 @@ export const dashboardMenu = {
 		path: '/open-work',
 		icon: 'AutoStories',
 	},
-	openCollabsList: {
+	collabsList: {
 		id: 'openCollabsList',
-		text: 'Collab List',
-		path: '/open-collabs',
+		text: 'Collaboration List',
+		path: '/collabs-list',
 		icon: 'AutoStories',
 	},
 	reqWorkList: {
@@ -99,203 +126,36 @@ export const dashboardMenu = {
 		icon: 'ListAlt',
 	},
 	openCollaboration: {
-		id: 'editInModal',
+		id: 'openCollaboration',
 		text: 'Open Collaboration',
 		path: '/open-collaboration',
 		icon: 'GroupAdd',
 	},
-	dashboard: {
-		id: 'dashboard',
-		text: 'Dashboard',
-		path: '/dashboard-booking',
-		icon: 'Dashboard',
-		subMenu: null,
-	},
-	// crmDashboard: {
-	// 	id: 'crmDashboard',
-	// 	text: 'CRM Dashboard',
-	// 	path: '/crm/dashboard',
-	// 	icon: 'RecentActors',
-	// },
-	// summary: {
-	// 	id: 'summary',
-	// 	text: 'Summary',
-	// 	path: '/summary',
-	// 	icon: 'sticky_note_2',
-	// 	subMenu: null,
-	// },
 };
 
-export const menuSidebar = {
-	pages: {
-		id: 'pages',
-		text: 'Pages',
-		icon: 'Extension',
-	},
-	singlePages: {
-		id: 'singlePages',
-		text: 'Single Pages',
-		path: '/single-pages',
-		icon: 'Article',
-		subMenu: {
-			boxedSingle: {
-				id: 'boxedSingle',
-				text: 'Boxed',
-				path: '/single-pages/boxed',
-				icon: 'ViewArray',
-			},
-			fluidSingle: {
-				id: 'fluidSingle',
-				text: 'Fluid',
-				path: '/single-pages/fluid',
-				icon: 'ViewDay',
-			},
-		},
-	},
-	listPages: {
-		id: 'listPages',
-		text: 'List Pages',
-		path: '/list-pages',
-		icon: 'Dvr',
-		subMenu: {
-			listBoxed: {
-				id: 'listBoxed',
-				text: 'Boxed List',
-				path: '/list-pages/boxed-list',
-				icon: 'ViewArray',
-			},
-			listFluid: {
-				id: 'listFluid',
-				text: 'Fluid List',
-				path: '/list-pages/fluid-list',
-				icon: 'ViewDay',
-			},
-		},
-	},
-	gridPages: {
-		id: 'gridPages',
-		text: 'Grid Pages',
-		path: '/grid-pages',
-		icon: 'Window',
-		subMenu: {
-			gridBoxed: {
-				id: 'gridBoxed',
-				text: 'Boxed Grid',
-				path: '/grid-pages/boxed',
-				icon: 'ViewArray',
-			},
-			gridFluid: {
-				id: 'gridFluid',
-				text: 'Fluid Grid',
-				path: '/grid-pages/fluid',
-				icon: 'ViewDay',
-			},
-		},
-	},
-	editPages: {
-		id: 'editPages',
-		text: 'Edit Pages',
-		path: '/edit-pages',
-		icon: 'drive_file_rename_outline ',
-		subMenu: {
-			editBoxed: {
-				id: 'editBoxed',
-				text: 'Boxed Edit',
-				path: '/edit-pages/boxed',
-				icon: 'ViewArray',
-			},
-
-			editWizard: {
-				id: 'editWizard',
-				text: 'Wizard Edit',
-				path: '/edit-pages/wizard',
-				icon: 'LinearScale',
-			},
-			editInCanvas: {
-				id: 'editInCanvas',
-				text: 'In Canvas Edit',
-				path: '/edit-pages/in-canvas',
-				icon: 'VerticalSplit',
-			},
-		},
-	},
-
-	auth: {
-		id: 'auth',
-		text: 'Auth Pages',
-		icon: 'Extension',
-	},
+export const auth = {
 	login: {
 		id: 'login',
 		text: 'Login',
-		path: '/auth-pages/login',
+		path: '/login',
 		icon: 'Login',
 	},
 	signUp: {
 		id: 'signUp',
 		text: 'Sign Up',
-		path: '/auth-pages/sign-up',
+		path: '/sign-up',
 		icon: 'PersonAdd',
 	},
 
 	page404: {
 		id: 'Page404',
 		text: '404 Page',
-		path: '/auth-pages/404',
+		path: '/404',
 		icon: 'ReportGmailerrorred',
 	},
+};
 
-	app: {
-		id: 'app',
-		text: 'Apps',
-		icon: 'Extension',
-	},
-	projectManagement: {
-		id: 'projectManagement',
-		text: 'Project Management',
-		path: '/project-management',
-		icon: 'AutoStories',
-		subMenu: {
-			list: {
-				id: 'list',
-				text: 'Projects',
-				path: '/project-management/list',
-				icon: 'AutoStories',
-			},
-			itemID: {
-				id: 'projectID',
-				text: 'projectID',
-				path: '/project-management/project',
-				hide: true,
-			},
-			item: {
-				id: 'item',
-				text: 'Project',
-				path: '/project-management/project/1',
-				icon: 'Book',
-			},
-		},
-	},
-	knowledge: {
-		id: 'knowledge',
-		text: 'Knowledge',
-		path: '/knowledge',
-		icon: 'AutoStories',
-		subMenu: {
-			itemID: {
-				id: 'itemID',
-				text: 'itemID',
-				path: '/knowledge/item',
-				hide: true,
-			},
-			item: {
-				id: 'item',
-				text: 'Item',
-				path: '/knowledge/item/1',
-				icon: 'Book',
-			},
-		},
-	},
+export const menuSidebar = {
 	sales: {
 		id: 'sales',
 		text: 'Sales',
@@ -309,12 +169,12 @@ export const menuSidebar = {
 				path: '/sales/sales-list',
 				icon: 'FactCheck',
 			},
-			productsGrid: {
-				id: 'productsGrid',
-				text: 'Products Grid',
-				path: '/sales/grid',
-				icon: 'CalendarViewMonth',
-			},
+			// productsGrid: {
+			// 	id: 'productsGrid',
+			// 	text: 'Products Grid',
+			// 	path: '/sales/grid',
+			// 	icon: 'CalendarViewMonth',
+			// },
 			productID: {
 				id: 'productID',
 				text: 'productID',
@@ -418,26 +278,6 @@ export const menuSidebar = {
 			// 	path: '/crm/invoice/1',
 			// 	icon: 'Receipt',
 			// },
-		},
-	},
-	chat: {
-		id: 'chat',
-		text: 'Chat',
-		path: '/chat',
-		icon: 'Forum',
-		subMenu: {
-			withListChat: {
-				id: 'withListChat',
-				text: 'With List',
-				path: '/chat/with-list',
-				icon: 'Quickreply',
-			},
-			onlyListChat: {
-				id: 'onlyListChat',
-				text: 'Only List',
-				path: '/chat/only-list',
-				icon: 'Dns',
-			},
 		},
 	},
 };

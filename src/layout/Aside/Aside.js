@@ -1,17 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import Brand from '../Brand/Brand';
-import Navigation, { NavigationLine } from '../Navigation/Navigation';
+import Navigation from '../Navigation/Navigation';
 import User from '../User/User';
-import { componentsMenu, dashboardMenu, menuSidebar, layoutMenu } from '../../menu';
+import { dashboardMenu } from '../../menu';
 import ThemeContext from '../../contexts/themeContext';
 import Card, { CardBody } from '../../components/bootstrap/Card';
 
 import Hand from '../../assets/img/hand.png';
 import HandWebp from '../../assets/img/hand.webp';
-import Icon from '../../components/icon/Icon';
 import Button from '../../components/bootstrap/Button';
 import Tooltips from '../../components/bootstrap/Tooltips';
 import useDeviceScreen from '../../hooks/useDeviceScreen';
@@ -75,8 +73,6 @@ const Aside = () => {
 
 	const [doc, setDoc] = useState(false);
 
-	const { t } = useTranslation(['translation', 'menu']);
-
 	return (
 		<>
 			<motion.aside
@@ -122,13 +118,13 @@ const Aside = () => {
 									width={130}
 									height={130}
 								/>
-								<p className='h4 text-dark'>{t('Everything is ready!')}</p>
+								<p className='h4 text-dark'>Everything is ready!</p>
 								<Button
 									color='info'
 									isLight
 									className='w-100'
 									onClick={() => setDoc(false)}>
-									{t('Demo Pages')}
+									Demo Pages
 								</Button>
 							</CardBody>
 						</Card>

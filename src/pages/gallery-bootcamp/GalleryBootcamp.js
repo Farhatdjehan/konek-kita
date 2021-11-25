@@ -4,21 +4,19 @@ import { useFormik } from 'formik';
 import { useHistory } from 'react-router-dom';
 import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
-import Input from '../../components/bootstrap/forms/Input';
-import Button from '../../components/bootstrap/Button';
 import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 
 import useMinimizeAside from '../../hooks/useMinimizeAside';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { dashboardMenu } from '../../menu';
 
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${menuSidebar.knowledge.subMenu.itemID.path}/${id}`),
+		() => history.push(`${dashboardMenu.galleryBootcampID.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -116,11 +114,11 @@ const GalleryBootcamp = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.galleryPremium.text}>
+		<PageWrapper title={dashboardMenu.galleryBootcampID.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-8 text-left my-5'>
-						<span className='display-5 fw-bold'>Gallery Content</span>
+						<span className='display-5 fw-bold'>Gallery Bootcamp</span>
 					</div>
 					<div className='col-4 mx-auto text-center my-5'>
 						<form

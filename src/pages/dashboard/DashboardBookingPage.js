@@ -247,7 +247,7 @@ const DashboardBookingPage = () => {
 						<Icon icon='Check Circle ' color='success' className='mx-1' size='lg' /> 12
 						approved appointments and{' '}
 						<Icon icon='pending_actions ' color='danger' className='mx-1' size='lg' /> 3
-						pending appointments for today.
+						pending appointments for today ya!.
 					</span>
 				</SubHeaderLeft>
 				<SubHeaderRight>

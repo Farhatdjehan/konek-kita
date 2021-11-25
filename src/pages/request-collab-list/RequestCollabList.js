@@ -16,7 +16,7 @@ import { dashboardMenu, menuSidebar } from '../../menu';
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.galleryPremiumID.path}/${id}`),
+		() => history.push(`${menuSidebar.knowledge.subMenu.itemID.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -55,7 +55,7 @@ const Item = ({ id, image, title, description, tags, color }) => {
 	);
 };
 
-const GalleryContent = () => {
+const RequestCollabList = () => {
 	useMinimizeAside();
 
 	const [filterableData, setFilterableData] = useState(data);
@@ -118,7 +118,7 @@ const GalleryContent = () => {
 			<Page>
 				<div className='row'>
 					<div className='col-8 text-left my-5'>
-						<span className='display-5 fw-bold'>Gallery Content</span>
+						<span className='display-5 fw-bold'>Request Collaboration</span>
 					</div>
 					<div className='col-4 mx-auto text-center my-5'>
 						<form
@@ -200,4 +200,4 @@ const GalleryContent = () => {
 	);
 };
 
-export default GalleryContent;
+export default RequestCollabList;

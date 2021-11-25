@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import { menuSidebar, layoutMenu, dashboardMenu } from '../../menu';
+import { menuSidebar, dashboardMenu, auth } from '../../menu';
 
 const FooterRoutes = () => {
 	const location = useLocation();
@@ -9,9 +9,9 @@ const FooterRoutes = () => {
 	//	Add paths to the array that you don't want to be "Footer".
 	const withoutFooterPages = [
 		// layoutMenu.blank.path,
-		menuSidebar.login.path,
-		menuSidebar.signUp.path,
-		menuSidebar.page404.path,
+		auth.login.path,
+		auth.signUp.path,
+		auth.page404.path,
 		dashboardMenu.galleryPremium.path,
 	];
 	return (

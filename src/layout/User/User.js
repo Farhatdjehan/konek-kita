@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import USERS from '../../common/data/userDummyData';
-import { menuSidebar } from '../../menu';
+import { dashboardMenu } from '../../menu';
 
 export const UserAvatar = ({ srcSet, src }) => {
 	return (
@@ -26,9 +26,7 @@ const User = () => {
 		<div
 			role='presentation'
 			className='user'
-			onClick={() =>
-				history.push(`${menuSidebar.appointment.SubMenu.employeeID.path}/${USERS.JOHN.id}`)
-			}>
+			onClick={() => history.push(`${dashboardMenu.employee.path}`)}>
 			<UserAvatar srcSet={USERS.JOHN.srcSet} src={USERS.JOHN.src} />
 			<div className='user-info'>
 				<div className='user-name'>{`${USERS.JOHN.name} ${USERS.JOHN.surname}`}</div>

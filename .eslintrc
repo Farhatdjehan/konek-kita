@@ -5,6 +5,7 @@
 		"plugin:import/errors",
 		"plugin:import/warnings",
 		"plugin:prettier/recommended",
+		"eslint:recommended",
 		"prettier"
 	],
 	"plugins": ["import", "prettier", "eslint-comments", "react", "jsx-a11y", "react-hooks"],
@@ -12,7 +13,13 @@
 		"browser": true
 	},
 	"rules": {
-		"prettier/prettier": ["error"],
+		"prettier/prettier": ["error", 
+			{
+			"endOfLine": "auto"
+		  }],
+		"camelcase": [1, {"properties": "always"}],
+		"no-unused-vars" : "off",
+		"no-shadow" : "off",
 		"no-use-before-define": "off",
 		"no-case-declarations": "off",
 		"no-underscore-dangle": "off",

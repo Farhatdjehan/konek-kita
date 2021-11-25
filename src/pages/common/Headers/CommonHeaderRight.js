@@ -1,6 +1,5 @@
-import React, { useContext, useLayoutEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import Button from '../../../components/bootstrap/Button';
 import { HeaderRight } from '../../../layout/Header/Header';
 import OffCanvas, {
@@ -9,15 +8,9 @@ import OffCanvas, {
 	OffCanvasTitle,
 } from '../../../components/bootstrap/OffCanvas';
 import Alert from '../../../components/bootstrap/Alert';
-import Dropdown, {
-	DropdownItem,
-	DropdownMenu,
-	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
+import Dropdown, { DropdownMenu, DropdownToggle } from '../../../components/bootstrap/Dropdown';
 import Icon from '../../../components/icon/Icon';
 import ThemeContext from '../../../contexts/themeContext';
-import LANG, { getLangWithKey } from '../../../lang';
-import showNotification from '../../../components/extras/showNotification';
 
 // eslint-disable-next-line react/prop-types
 const CommonHeaderRight = ({ beforeChildren, afterChildren }) => {
@@ -30,23 +23,6 @@ const CommonHeaderRight = ({ beforeChildren, afterChildren }) => {
 	};
 
 	const [offcanvasStatus, setOffcanvasStatus] = useState(false);
-
-	const { i18n } = useTranslation();
-
-	const changeLanguage = (lng) => {
-		i18n.changeLanguage(lng);
-		showNotification(
-			<span className='d-flex align-items-center'>
-				<Icon icon={getLangWithKey(lng)?.icon} size='lg' className='me-1' />
-				<span>{`Language changed to ${getLangWithKey(lng)?.text}`}</span>
-			</span>,
-			'You updated the language of the site. (Only "Aside" was prepared as an example.)',
-		);
-	};
-
-	useLayoutEffect(() => {
-		document.documentElement.setAttribute('lang', i18n.language);
-	});
 
 	return (
 		<HeaderRight>
@@ -62,7 +38,7 @@ const CommonHeaderRight = ({ beforeChildren, afterChildren }) => {
 					/>
 				</div>
 
-				<div className='col-auto'>
+				{/* <div className='col-auto'>
 					<Dropdown>
 						<DropdownToggle hasIcon={false}>
 							<Button
@@ -84,7 +60,7 @@ const CommonHeaderRight = ({ beforeChildren, afterChildren }) => {
 							))}
 						</DropdownMenu>
 					</Dropdown>
-				</div>
+				</div> */}
 
 				<div className='col-auto'>
 					<Dropdown>
