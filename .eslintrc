@@ -17,7 +17,7 @@
 			{
 			"endOfLine": "auto"
 		  }],
-		"camelcase": [1, {"properties": "always"}],
+		"camelcase": [1, {"properties": "never"}],
 		"no-unused-vars" : "off",
 		"no-shadow" : "off",
 		"eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
