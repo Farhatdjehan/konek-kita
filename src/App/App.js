@@ -11,7 +11,6 @@ import Wrapper from '../layout/Wrapper/Wrapper';
 import Portal from '../layout/Portal/Portal';
 import { auth } from '../menu';
 
-
 function App() {
 	const { fullScreenStatus, setFullScreenStatus, ...themeContext } = useContext(ThemeContext);
 
