@@ -9,8 +9,8 @@ import ThemeContext from '../contexts/themeContext';
 import Aside from '../layout/Aside/Aside';
 import Wrapper from '../layout/Wrapper/Wrapper';
 import Portal from '../layout/Portal/Portal';
-import { auth, menuSidebar } from '../menu';
-import { Toast, ToastContainer } from '../components/bootstrap/Toasts';
+import { auth } from '../menu';
+
 
 function App() {
 	const { fullScreenStatus, setFullScreenStatus, ...themeContext } = useContext(ThemeContext);
@@ -41,7 +41,7 @@ function App() {
 
 	return (
 		<ThemeProvider theme={themeContext?.appData}>
-			<ToastProvider components={{ ToastContainer, Toast }}>
+			<ToastProvider>
 				<div
 					ref={ref}
 					className='app'
