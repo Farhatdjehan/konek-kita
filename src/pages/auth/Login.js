@@ -76,7 +76,7 @@ const Login = ({ isSignUp }) => {
 													setUsernameInput(false);
 													setIsNewUser(!isNewUser);
 												}}>
-												Sign Up
+												Sign UPPPPP
 											</Button>
 										</div>
 									</div>
