@@ -1,10 +1,10 @@
 import React, { forwardRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import pascalcase from 'pascalcase';
 import * as SvgIcon from './svg-icons';
 import * as Bootstrap from './bootstrap';
 import * as Material from './material-icons';
-import pascalcase from 'pascalcase';
 
 const RefWrapper = forwardRef(({ children }, ref) => {
 	if (ref) {
@@ -18,7 +18,10 @@ const RefWrapper = forwardRef(({ children }, ref) => {
 });
 
 const Icon = forwardRef(({ icon, className, color, size, forceFamily, ...props }, ref) => {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin
 	const _icon = pascalcase(icon);
 
 	// eslint-disable-next-line import/namespace
@@ -40,7 +43,11 @@ const Icon = forwardRef(({ icon, className, color, size, forceFamily, ...props }
 
 	if (
 		isForceCustom ||
+<<<<<<< HEAD
 		(!isForceBootstrap  && !isForceMaterial && typeof SvgIconWrapper === 'function')
+=======
+		(!isForceBootstrap && !isForceMaterial && typeof SvgIconWrapper === 'function')
+>>>>>>> origin
 	) {
 		return (
 			<RefWrapper ref={ref}>
