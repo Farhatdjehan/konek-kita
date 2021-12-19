@@ -18,10 +18,6 @@ const RefWrapper = forwardRef(({ children }, ref) => {
 });
 
 const Icon = forwardRef(({ icon, className, color, size, forceFamily, ...props }, ref) => {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
 	const _icon = pascalcase(icon);
 
 	// eslint-disable-next-line import/namespace
@@ -43,11 +39,7 @@ const Icon = forwardRef(({ icon, className, color, size, forceFamily, ...props }
 
 	if (
 		isForceCustom ||
-<<<<<<< HEAD
-		(!isForceBootstrap  && !isForceMaterial && typeof SvgIconWrapper === 'function')
-=======
 		(!isForceBootstrap && !isForceMaterial && typeof SvgIconWrapper === 'function')
->>>>>>> origin
 	) {
 		return (
 			<RefWrapper ref={ref}>
