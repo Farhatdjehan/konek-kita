@@ -10,13 +10,13 @@ import Badge from '../../components/bootstrap/Badge';
 
 import useMinimizeAside from '../../hooks/useMinimizeAside';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
-import { dashboardMenu } from '../../menu';
+import { dashboardMenu, menuSidebar } from '../../menu';
 
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.galleryBootcampID.path}/${id}`),
+		() => history.push(`${menuSidebar.knowledge.subMenu.itemID.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -114,7 +114,7 @@ const GalleryBootcamp = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.galleryBootcampID.text}>
+		<PageWrapper title={dashboardMenu.galleryPremium.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-8 text-left my-5'>

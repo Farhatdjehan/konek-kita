@@ -4,11 +4,11 @@ import Page from '../../../layout/Page/Page';
 import Humans from '../../../assets/img/scene4.png';
 import HumansWebp from '../../../assets/img/scene4.webp';
 import Button from '../../../components/bootstrap/Button';
-import { auth } from '../../../menu';
+import { menuSidebar } from '../../../menu';
 
 const Page404 = () => {
 	return (
-		<PageWrapper title={auth.page404.text}>
+		<PageWrapper title={menuSidebar.page404.text}>
 			<Page>
 				<div className='row d-flex align-items-center h-100'>
 					<div className='col-12 d-flex flex-column justify-content-center align-items-center'>

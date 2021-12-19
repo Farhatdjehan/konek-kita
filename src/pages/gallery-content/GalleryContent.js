@@ -16,7 +16,7 @@ import { dashboardMenu, menuSidebar } from '../../menu';
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.galleryPremiumID.path}/${id}`),
+		() => history.push(`${menuSidebar.knowledge.subMenu.itemID.path}/${id}`),
 		[history, id],
 	);
 	return (

@@ -6,6 +6,7 @@ import { useWindowSize } from 'react-use';
 import { NavHashLink } from 'react-router-hash-link';
 import { Manager, Popper, Reference } from 'react-popper';
 import useEventOutside from '@omtanke/react-use-event-outside';
+import { useTranslation } from 'react-i18next';
 import Icon from '../../components/icon/Icon';
 import ThemeContext from '../../contexts/themeContext';
 import Collapse from '../../components/bootstrap/Collapse';
@@ -89,6 +90,8 @@ export const Item = ({
 	// For top menu
 	const match = to !== '/' && location.pathname === to;
 
+	const { t } = useTranslation('menu');
+
 	const _LinkClass = classnames('navigation-link', 'navigation-link-pill', {
 		collapsed: !!children && !isHorizontal,
 		active: isHorizontal ? match : here,
@@ -98,7 +101,7 @@ export const Item = ({
 		<>
 			<span className='navigation-link-info'>
 				{icon && <Icon className='navigation-icon' icon={icon} />}
-				<span className='navigation-text'>{title}</span>
+				<span className='navigation-text'>{t(title)}</span>
 			</span>
 			{(!!children || !!notification) && (
 				<span className='navigation-link-extra'>
@@ -320,6 +323,8 @@ NavigationTitle.defaultProps = {
 const Navigation = forwardRef(({ menu, horizontal, id, className, ...props }, ref) => {
 	const [activeItem, setActiveItem] = useState(null);
 
+	const { t } = useTranslation('menu');
+
 	function fillMenu(data, parentId, rootId, isHorizontal, isMore) {
 		return Object.keys(data).map((item) =>
 			data[item].path ? (
@@ -342,7 +347,7 @@ const Navigation = forwardRef(({ menu, horizontal, id, className, ...props }, re
 			) : (
 				!isMore &&
 				!isHorizontal && (
-					<NavigationTitle key={data[item].id}>{data[item].text}</NavigationTitle>
+					<NavigationTitle key={data[item].id}>{t(data[item].text)}</NavigationTitle>
 				)
 			),
 		);
@@ -354,7 +359,12 @@ const Navigation = forwardRef(({ menu, horizontal, id, className, ...props }, re
 			<List id={id} horizontal={horizontal}>
 				{fillMenu(menu, id, id, horizontal)}
 				{horizontal && (
-					<Item rootId={`other-${id}`} title='More' icon='MoreHoriz' isHorizontal isMore>
+					<Item
+						rootId={`other-${id}`}
+						title={t('More')}
+						icon='MoreHoriz'
+						isHorizontal
+						isMore>
 						{fillMenu(menu, `other-${id}`, `other-${id}`, false, true)}
 					</Item>
 				)}

@@ -9,7 +9,7 @@ import ThemeContext from '../contexts/themeContext';
 import Aside from '../layout/Aside/Aside';
 import Wrapper from '../layout/Wrapper/Wrapper';
 import Portal from '../layout/Portal/Portal';
-import { auth, menuSidebar } from '../menu';
+import { menuSidebar } from '../menu';
 import { Toast, ToastContainer } from '../components/bootstrap/Toasts';
 
 function App() {
@@ -33,9 +33,8 @@ function App() {
 
 	//	Add paths to the array that you don't want to be "Aside".
 	const withOutAsidePages = [
-		auth.login.path,
-		auth.signUp.path,
-		auth.page404.path,
+		menuSidebar.login.path,
+		menuSidebar.signUp.path,
 		// layoutMenu.blank.path
 	];
 

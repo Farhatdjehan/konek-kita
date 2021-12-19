@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Brand from '../Brand/Brand';
 import Navigation from '../Navigation/Navigation';
 import User from '../User/User';
@@ -73,6 +74,8 @@ const Aside = () => {
 
 	const [doc, setDoc] = useState(false);
 
+	const { t } = useTranslation(['translation', 'menu']);
+
 	return (
 		<>
 			<motion.aside
@@ -118,13 +121,13 @@ const Aside = () => {
 									width={130}
 									height={130}
 								/>
-								<p className='h4 text-dark'>Everything is ready!</p>
+								<p className='h4 text-dark'>{t('Everything is ready!')}</p>
 								<Button
 									color='info'
 									isLight
 									className='w-100'
 									onClick={() => setDoc(false)}>
-									Demo Pages
+									{t('Demo Pages')}
 								</Button>
 							</CardBody>
 						</Card>

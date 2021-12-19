@@ -4,7 +4,7 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Chart from '../../components/extras/Chart';
 import Badge from '../../components/bootstrap/Badge';
 import Button from '../../components/bootstrap/Button';
-import { menuSidebar } from '../../menu';
+import { dashboardMenu, menuSidebar } from '../../menu';
 
 const CommonTableRow = ({
 	// eslint-disable-next-line react/prop-types
@@ -130,7 +130,7 @@ const CommonTableRow = ({
 					isLight
 					icon='Edit'
 					tag='a'
-					to={`${menuSidebar.sales.subMenu.productID.path}/${id}`}
+					to={`${dashboardMenu.detailProduct.path}/${id}`}
 				/>
 			</td>
 		</tr>

@@ -1,19 +1,17 @@
 import React, { lazy } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { dashboardMenu, auth, editPage } from '../../menu';
-import Login from '../../pages/auth/Login';
+import { dashboardMenu, editPage, menuSidebar } from '../../menu';
+import Login from '../../pages/presentation/auth/Login';
 
 const LANDING = {
-	DASHBOARD_BOOKING: lazy(() => import('../../pages/dashboard/DashboardBookingPage')),
+	DASHBOARD_BOOKING: lazy(() => import('../../pages/dashboard/DashboardPage')),
 	EDITPROFIL: lazy(() => import('../../pages/edit-profil/EditProfil')),
 	PROFIL: lazy(() => import('../../pages/profil/ProfilPage')),
-	PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/EditInModalPage')),
+	PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/PremiumContent')),
 	GALLERY_PREMIUM: lazy(() => import('../../pages/gallery-content/GalleryContent')),
-	GALLERY_PREMIUM_ID: lazy(() => import('../../pages/gallery-content/DetailGalleryContent')),
 	GALLERY_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/GalleryBootcamp')),
-	GALLERY_BOOTCAMP_ID: lazy(() => import('../../pages/gallery-bootcamp/DetailGalleryBootcamp')),
 	GALLERY_UMKM: lazy(() => import('../../pages/gallery-umkm/GalleryUmkm')),
-	GALLERY_UMKM_DETAIL: lazy(() => import('../../pages/gallery-umkm/GalleryUmkmDetail')),
+	DETAIL_PRODUCT: lazy(() => import('../../pages/gallery-umkm/DetailProduct')),
 	OPEN_WORK_LIST: lazy(() => import('../../pages/open-work-list/OpenWorkList')),
 	OPEN_COLLABS: lazy(() => import('../../pages/open-collaboration/OpenCollaboration')),
 	COLLABS_LIST: lazy(() => import('../../pages/collabs-list/CollabsList')),
@@ -30,7 +28,7 @@ const ContentRoutes = () => {
 	return (
 		<Switch location={location}>
 			{/* Landing */}
-			<Route exact path={`${dashboardMenu.profilID.path}/:id`} component={LANDING.PROFIL} />
+			<Route exact path={dashboardMenu.profilId.path} component={LANDING.PROFIL} />
 			<Route
 				exact
 				path={dashboardMenu.openCollaboration.path}
@@ -51,12 +49,12 @@ const ContentRoutes = () => {
 			<Route exact path={editPage.editProfil.path} component={LANDING.EDITPROFIL} />
 
 			<Route exact path={dashboardMenu.galleryUmkm.path} component={LANDING.GALLERY_UMKM} />
+
 			<Route
 				exact
-				path={`${dashboardMenu.galleryUmkmID.path}/:id`}
-				component={LANDING.GALLERY_UMKM_DETAIL}
+				path={`${dashboardMenu.detailProduct.path}/:id`}
+				component={LANDING.DETAIL_PRODUCT}
 			/>
-
 			<Route
 				exact
 				path={dashboardMenu.openWorkList.path}
@@ -64,7 +62,7 @@ const ContentRoutes = () => {
 			/>
 			<Route
 				exact
-				path={dashboardMenu.contentGallery.path}
+				path={dashboardMenu.premiumContent.path}
 				component={LANDING.PREMIUM_CONTENT}
 			/>
 			<Route
@@ -74,24 +72,13 @@ const ContentRoutes = () => {
 			/>
 			<Route
 				exact
-				path={`${dashboardMenu.galleryPremium.path}/:id`}
-				component={LANDING.GALLERY_PREMIUM_ID}
-			/>
-			<Route
-				exact
 				path={dashboardMenu.galleryBootcamp.path}
 				component={LANDING.GALLERY_BOOTCAMP}
 			/>
-			<Route
-				exact
-				path={`${dashboardMenu.galleryBootcampID.path}/:id`}
-				component={LANDING.GALLERY_BOOTCAMP_ID}
-			/>
-
 			{/* Auth */}
-			<Route exact path={auth.page404.path} component={AUTH.PAGE_404} />
-			<Route exact path={auth.login.path} component={Login} />
-			<Route exact path={auth.signUp.path}>
+			<Route exact path={menuSidebar.page404.path} component={AUTH.PAGE_404} />
+			<Route exact path={menuSidebar.login.path} component={Login} />
+			<Route exact path={menuSidebar.signUp.path}>
 				<Login isSignUp />
 			</Route>
 			<Route component={AUTH.PAGE_404} />

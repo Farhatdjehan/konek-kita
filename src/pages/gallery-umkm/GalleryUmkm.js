@@ -59,6 +59,7 @@ const GalleryUmkm = () => {
 	const [data, setData] = useState(tableData);
 	const [editItem, setEditItem] = useState(null);
 	const [editPanel, setEditPanel] = useState(false);
+
 	function handleRemove(id) {
 		const newData = data.filter((item) => item.id !== id);
 		setData(newData);

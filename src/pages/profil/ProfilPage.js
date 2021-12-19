@@ -45,7 +45,7 @@ const ProfilPage = () => {
 	const [editPanel, setEditPanel] = useState(false);
 	const [editItem, setEditItem] = useState(null);
 	const { id } = useParams();
-	const data = getUserDataWithId(id);
+	const data = getUserDataWithId(1);
 	function handleRemove(id) {
 		const newData = dataProduct.filter((item) => item.id !== id);
 		setDataProduct(newData);

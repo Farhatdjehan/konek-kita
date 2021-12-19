@@ -19,7 +19,7 @@ import Badge from '../../components/bootstrap/Badge';
 import { priceFormat } from '../../helpers/helpers';
 import showNotification from '../../components/extras/showNotification';
 import Icon from '../../components/icon/Icon';
-import { dashboardMenu } from '../../menu';
+import { dashboardMenu, menuSidebar } from '../../menu';
 
 const CommonGridProductItem = ({
 	// eslint-disable-next-line react/prop-types
@@ -150,7 +150,7 @@ const CommonGridProductItem = ({
 					className='w-100 shadow-3d-dark mb-4 shadow-3d-up-hover'
 					size='lg'
 					tag='a'
-					to={`${dashboardMenu.galleryUmkmID.path}/${id}`}>
+					to={`${dashboardMenu.detailProduct.path}/${id}`}>
 					View Product
 				</Button>
 			</CardFooter>

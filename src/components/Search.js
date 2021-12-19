@@ -30,14 +30,14 @@ const Search = () => {
 		};
 	}, [formik.values.searchInput]);
 
-	const searchPages = {
-		...componentsMenu.components.subMenu,
-		...componentsMenu.content.subMenu,
-		...componentsMenu.forms.subMenu,
-		...componentsMenu.utilities.subMenu,
-		...componentsMenu.icons.subMenu,
-		...componentsMenu.charts.subMenu,
-	};
+	// const searchPages = {
+	// 	...componentsMenu.components.subMenu,
+	// 	...componentsMenu.content.subMenu,
+	// 	...componentsMenu.forms.subMenu,
+	// 	...componentsMenu.utilities.subMenu,
+	// 	...componentsMenu.icons.subMenu,
+	// 	...componentsMenu.charts.subMenu,
+	// };
 	const filterResult = Object.keys(searchPages)
 		.filter(
 			(key) =>

@@ -12,7 +12,7 @@ import ProfilePageHeader from '../../pages/common/Headers/ProfilePageHeader';
 import ProductsHeader from '../../pages/common/Headers/ProductsHeader';
 import ProductListHeader from '../../pages/common/Headers/ProductListHeader';
 import DashboardBookingHeader from '../../pages/common/Headers/DashboardBookingHeader';
-import { auth, componentsMenu, menuSidebar } from '../../menu';
+import { componentsMenu, menuSidebar } from '../../menu';
 
 const HeaderRoutes = () => {
 	const location = useLocation();
@@ -22,9 +22,9 @@ const HeaderRoutes = () => {
 		// layoutMenu.pageLayout.subMenu.onlySubheader.path,
 		// layoutMenu.pageLayout.subMenu.onlyContent.path,
 		// layoutMenu.blank.path,
-		auth.login.path,
-		auth.signUp.path,
-		auth.page404.path,
+		menuSidebar.login.path,
+		menuSidebar.signUp.path,
+		menuSidebar.page404.path,
 	];
 
 	return (
