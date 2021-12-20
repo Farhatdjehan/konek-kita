@@ -77,14 +77,13 @@ const CommonTableRow = ({
 			</th>
 			<th scope='row'>{id}</th>
 			<td>
-				<Link to={`${menuSidebar.sales.subMenu.productID.path}/${id}`}>
+				<Link to={`${dashboardMenu.detailProduct.path}/${id}`}>
 					<img src={image} alt={name} width={54} height={54} />
 				</Link>
 			</td>
 			<td>
 				<div>
-					<Link
-						to={`${menuSidebar.sales.subMenu.productID.path}/${id}`}
+					<Link to={`${dashboardMenu.detailProduct.path}/${id}`}>
 						className='fw-bold link-dark'>
 						{name}
 					</Link>
