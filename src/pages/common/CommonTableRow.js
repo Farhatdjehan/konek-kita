@@ -84,7 +84,6 @@ const CommonTableRow = ({
 			<td>
 				<div>
 					<Link to={`${dashboardMenu.detailProduct.path}/${id}`}>
-						className='fw-bold link-dark'>
 						{name}
 					</Link>
 					<div className='text-muted'>
