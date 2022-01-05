@@ -60,7 +60,7 @@ const EditInModalPage = () => {
 	});
 	return (
 		<PageWrapper title={dashboardMenu.premiumContent.text}>
-			<SubHeader>
+			{/* <SubHeader>
 				<SubHeaderLeft>
 					<Icon icon='Info' className='me-2' size='2x' />
 					<span className='text-muted'>
@@ -89,14 +89,14 @@ const EditInModalPage = () => {
 						</Button>
 					</Popovers>
 				</SubHeaderRight>
-			</SubHeader>
+			</SubHeader> */}
 			<Page container='fluid'>
 				<div className='row'>
 					<div className='col-12'>
 						<Card>
 							<CardHeader borderSize={1}>
-								<CardLabel icon='Alarm' iconColor='info'>
-									<CardTitle>Upcoming Appointments</CardTitle>
+								<CardLabel icon='Lock' iconColor='info'>
+									<CardTitle>Premium Content</CardTitle>
 								</CardLabel>
 								<CardActions>
 									<Button

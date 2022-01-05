@@ -11,12 +11,13 @@ import Dodecagon from '../../assets/img/abstract/dodecagon.png';
 import BeveledCube from '../../assets/img/abstract/beveled-cube.png';
 import Cylinder from '../../assets/img/abstract/cylinder.png';
 
-const data = [
+const dataUmkm = [
 	{
 		id: 1,
 		image: BeveledCone,
-		name: 'Paket Gold',
-		category: 'Post, Video, Story (1 Minggu)',
+		name: 'Membangun Negeri dengan Langkah Sukses',
+		category:
+			'Kali ini, Kementrian Pariwisata ingin melaksanakan acara terakbar di tahun 2022 ini!',
 		series: [
 			{
 				data: [25, 66, 41, 89, 63],
@@ -31,7 +32,7 @@ const data = [
 	{
 		id: 2,
 		image: CloudBall,
-		name: 'Paket Silver',
+		name: 'Bantu Promosikan Jeruk Bali di Dunia!',
 		category: 'Post, Video (1 Minggu)',
 		series: [
 			{
@@ -47,7 +48,7 @@ const data = [
 	{
 		id: 3,
 		image: Quadrilateral,
-		name: 'Paket Bronze',
+		name: 'Yuk! Donasikan Harta Kamu di sini',
 		category: 'Post (1 Minggu)',
 		series: [
 			{
@@ -60,54 +61,54 @@ const data = [
 		store: 'Company D',
 		file: 'XD',
 	},
-	// {
-	// 	id: 4,
-	// 	image: HardSharpDonut,
-	// 	name: 'Bendy Rectangle',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [54, 34, 42, 23, 12],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_DANGER_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company C',
-	// 	file: 'Sketch',
-	// },
-	// {
-	// 	id: 5,
-	// 	image: BendyRectangle,
-	// 	name: 'Bendy Rectangle',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [23, 21, 12, 34, 14],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_DANGER_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company A',
-	// 	file: 'Figma',
-	// },
-	// {
-	// 	id: 6,
-	// 	image: Infinity,
-	// 	name: 'Bendy Rectangle',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [23, 13, 34, 41, 38],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company C',
-	// 	file: 'Figma',
-	// },
+	{
+		id: 4,
+		image: HardSharpDonut,
+		name: 'Bantu Saudara Kita yang Berada di Jombang',
+		category: '3D Shapes',
+		series: [
+			{
+				data: [54, 34, 42, 23, 12],
+			},
+		],
+		color: process.env.REACT_APP_DANGER_COLOR,
+		stock: 219,
+		price: 16,
+		store: 'Company C',
+		file: 'Sketch',
+	},
+	{
+		id: 5,
+		image: BendyRectangle,
+		name: 'Kita Nabung Yuk!',
+		category: '3D Shapes',
+		series: [
+			{
+				data: [23, 21, 12, 34, 14],
+			},
+		],
+		color: process.env.REACT_APP_DANGER_COLOR,
+		stock: 219,
+		price: 16,
+		store: 'Company A',
+		file: 'Figma',
+	},
+	{
+		id: 6,
+		image: Infinity,
+		name: 'Kita Bisa Jadi Juara!',
+		category: '3D Shapes',
+		series: [
+			{
+				data: [23, 13, 34, 41, 38],
+			},
+		],
+		color: process.env.REACT_APP_SUCCESS_COLOR,
+		stock: 219,
+		price: 16,
+		store: 'Company C',
+		file: 'Figma',
+	},
 	// {
 	// 	id: 7,
 	// 	image: Octahedron,
@@ -205,4 +206,4 @@ const data = [
 	// 	file: 'Figma',
 	// },
 ];
-export default data;
+export default dataUmkm;

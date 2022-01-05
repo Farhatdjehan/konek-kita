@@ -9,7 +9,7 @@ import SubHeader, {
 } from '../../layout/SubHeader/SubHeader';
 import Button from '../../components/bootstrap/Button';
 import CommonGridProductItem from '../common/CommonGridProductItem';
-import tableData from '../../common/data/dummyProductData';
+import tableData from '../../common/data/dummyUmkmData';
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
@@ -108,7 +108,7 @@ const GalleryUmkm = () => {
 		<PageWrapper title={dashboardMenu.galleryUmkm.text}>
 			<Page>
 				<div className='d-flex justify-content-between'>
-					<div className='display-4 fw-bold py-3'>Gallery Program UMKM</div>
+					<div className='display-4 fw-bold pt-3 pb-5'>Gallery Program UMKM</div>
 					<div className='d-flex align-items-center'>
 						<Button
 							color='dark'
@@ -150,7 +150,7 @@ const GalleryUmkm = () => {
 			<OffCanvas
 				setOpen={setEditPanel}
 				isOpen={editPanel}
-				isRightPanel
+				isModalStyle
 				tag='form'
 				noValidate
 				onSubmit={formik.handleSubmit}>

@@ -37,9 +37,9 @@ export const randomColor = () => {
 };
 
 export const priceFormat = (price) => {
-	return price.toLocaleString('en-US', {
+	return price.toLocaleString('id-ID', {
 		style: 'currency',
-		currency: 'USD',
+		currency: 'IDR',
 	});
 };
 

@@ -20,6 +20,7 @@ import { priceFormat } from '../../helpers/helpers';
 import showNotification from '../../components/extras/showNotification';
 import Icon from '../../components/icon/Icon';
 import { dashboardMenu, menuSidebar } from '../../menu';
+import { useLocation } from 'react-router-dom';
 
 const CommonGridProductItem = ({
 	// eslint-disable-next-line react/prop-types
@@ -41,6 +42,9 @@ const CommonGridProductItem = ({
 	// eslint-disable-next-line react/prop-types
 	deleteAction,
 }) => {
+	const address = useLocation();
+	const addressURL = address.pathname.split('/');
+	console.log(addressURL);
 	const dummyOptions = {
 		colors: [color],
 		chart: {
@@ -78,49 +82,55 @@ const CommonGridProductItem = ({
 			<CardHeader>
 				<CardLabel>
 					<CardTitle>
-						{name}{' '}
-						{price && (
-							<Badge color='success' isLight className='ms-2'>
-								{priceFormat(price)}
-							</Badge>
-						)}
+						<div className='truncate-line-1 h4 fw-bold mb-3'>{name}</div>
+						{addressURL[1] === 'gallery-umkm'
+							? null
+							: price && (
+									<Badge color='success' isLight className='ms-2'>
+										{priceFormat(price)}
+									</Badge>
+							  )}
 					</CardTitle>
-					<CardSubTitle>{category}</CardSubTitle>
+					{addressURL[1] === 'gallery-umkm' ? null : (
+						<CardSubTitle className='truncate-line-1'>{category}</CardSubTitle>
+					)}
 				</CardLabel>
 				<CardActions>
-					<Dropdown>
-						<DropdownToggle hasIcon={false}>
-							<Button icon='MoreHoriz' color='light' shadow='default' />
-						</DropdownToggle>
-						<DropdownMenu isAlignmentEnd>
-							<DropdownItem>
-								<Button icon='Edit' onClick={() => editAction()}>
-									Edit
-								</Button>
-							</DropdownItem>
-							<DropdownItem>
-								<Button
-									icon='FileCopy'
-									onClick={() => {
-										showNotification(
-											<span className='d-flex align-items-center'>
-												<Icon icon='Info' size='lg' className='me-1' />
-												<span>{name} duplicated.</span>
-											</span>,
-											`A copy of the ${name} product was created.`,
-										);
-									}}>
-									Duplicate
-								</Button>
-							</DropdownItem>
-							<DropdownItem isDivider />
-							<DropdownItem>
-								<Button icon='Delete' onClick={() => deleteAction()}>
-									Delete
-								</Button>
-							</DropdownItem>
-						</DropdownMenu>
-					</Dropdown>
+					{addressURL[1] === 'gallery-umkm' ? null : (
+						<Dropdown>
+							<DropdownToggle hasIcon={false}>
+								<Button icon='MoreHoriz' color='light' shadow='default' />
+							</DropdownToggle>
+							<DropdownMenu isAlignmentEnd>
+								<DropdownItem>
+									<Button icon='Edit' onClick={() => editAction()}>
+										Edit
+									</Button>
+								</DropdownItem>
+								{/* <DropdownItem>
+									<Button
+										icon='FileCopy'
+										onClick={() => {
+											showNotification(
+												<span className='d-flex align-items-center'>
+													<Icon icon='Info' size='lg' className='me-1' />
+													<span>{name} duplicated.</span>
+												</span>,
+												`A copy of the ${name} product was created.`,
+											);
+										}}>
+										Duplicate
+									</Button>
+								</DropdownItem> */}
+								<DropdownItem isDivider />
+								<DropdownItem>
+									<Button icon='Delete' onClick={() => deleteAction()}>
+										Delete
+									</Button>
+								</DropdownItem>
+							</DropdownMenu>
+						</Dropdown>
+					)}
 				</CardActions>
 			</CardHeader>
 			<CardBody>
@@ -129,9 +139,9 @@ const CommonGridProductItem = ({
 					alt=''
 					width={128}
 					height={128}
-					className='mx-auto d-block img-fluid mb-3'
+					className='mx-auto d-block img-fluid my-4'
 				/>
-				<div className='row align-items-center'>
+				{/* <div className='row align-items-center'>
 					<div className='col'>Monthly sales</div>
 					<div className='col-auto'>
 						<Chart
@@ -142,7 +152,7 @@ const CommonGridProductItem = ({
 							width={dummyOptions.chart.width}
 						/>
 					</div>
-				</div>
+				</div> */}
 			</CardBody>
 			<CardFooter className='shadow-3d-container'>
 				<Button
@@ -151,7 +161,7 @@ const CommonGridProductItem = ({
 					size='lg'
 					tag='a'
 					to={`${dashboardMenu.detailProduct.path}/${id}`}>
-					View Product
+					Lihat Selengkapnya
 				</Button>
 			</CardFooter>
 		</Card>

@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import moment from 'moment';
+import { useFormik } from 'formik';
 import classNames from 'classnames';
 import { getUserDataWithId } from '../../common/data/userDummyData';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Page from '../../layout/Page/Page';
+import OffCanvas, {
+	OffCanvasBody,
+	OffCanvasHeader,
+	OffCanvasTitle,
+} from '../../components/bootstrap/OffCanvas';
 import Modal, { ModalBody, ModalHeader, ModalTitle } from '../../components/bootstrap/Modal';
+import PlaceholderImage from '../../components/extras/PlaceholderImage';
+import Input from '../../components/bootstrap/forms/Input';
+import Badge from '../../components/bootstrap/Badge';
 import Pic from '../../assets/img/wanna/richie/richie.png';
 import Pic2 from '../../assets/img/wanna/richie/richie2.png';
 import Pic3 from '../../assets/img/wanna/richie/richie3.png';
@@ -32,11 +41,45 @@ import Dropdown, {
 import dummyEventsData from '../../common/data/dummyEventsData';
 import { priceFormat } from '../../helpers/helpers';
 import EVENT_STATUS from '../../common/data/enumEventStatus';
+import FormGroup from '../../components/bootstrap/forms/FormGroup';
 import Alert from '../../components/bootstrap/Alert';
 import COLORS from '../../common/data/enumColors';
 import tableData from '../../common/data/dummyProductData';
 import CommonGridProductItem from '../common/CommonGridProductItem';
 import { dashboardMenu } from '../../menu';
+import dataRanking from '../../common/data/dummyRankingData';
+
+const validate = (values) => {
+	const errors = {};
+
+	if (!values.name) {
+		errors.name = 'Required';
+	} else if (values.name.length < 3) {
+		errors.name = 'Must be 3 characters or more';
+	} else if (values.name.length > 20) {
+		errors.name = 'Must be 20 characters or less';
+	}
+
+	if (!values.price) {
+		errors.price = 'Required';
+	} else if (values.price < 0) {
+		errors.price = 'Price should not be 0';
+	}
+
+	if (!values.stock) {
+		errors.stock = 'Required';
+	}
+
+	if (!values.category) {
+		errors.category = 'Required';
+	} else if (values.category.length < 3) {
+		errors.category = 'Must be 3 characters or more';
+	} else if (values.category.length > 20) {
+		errors.category = 'Must be 20 characters or less';
+	}
+
+	return errors;
+};
 
 const ProfilPage = () => {
 	const [dataProduct, setDataProduct] = useState(tableData);
@@ -46,11 +89,13 @@ const ProfilPage = () => {
 	const [editItem, setEditItem] = useState(null);
 	const { id } = useParams();
 	const data = getUserDataWithId(1);
+	const history = useHistory();
 	function handleRemove(id) {
 		const newData = dataProduct.filter((item) => item.id !== id);
 		setDataProduct(newData);
 	}
-	function handleEdit(id) {
+	function handleEdit() {
+		// history.push(`${dashboardMenu.detailProduct.path}/${id}`);
 		const newData = dataProduct.filter((item) => item.id === id);
 		setEditItem(newData[0]);
 	}
@@ -152,6 +197,39 @@ const ProfilPage = () => {
 			))}
 		</div>
 	);
+	const formik = useFormik({
+		initialValues: {
+			name: '',
+			price: '',
+			stock: '',
+			category: '',
+		},
+		validate,
+		// eslint-disable-next-line no-unused-vars
+		onSubmit: (values) => {
+			setEditPanel(false);
+		},
+	});
+
+	useEffect(() => {
+		if (editItem) {
+			formik.setValues({
+				name: editItem.name,
+				price: editItem.price,
+				stock: editItem.stock,
+				category: editItem.category,
+			});
+		}
+		return () => {
+			formik.setValues({
+				name: '',
+				price: '',
+				stock: '',
+				category: '',
+			});
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [editItem]);
 	return (
 		<PageWrapper title={`${data.name} ${data.surname}`}>
 			{/* <SubHeader>
@@ -641,88 +719,25 @@ const ProfilPage = () => {
 									<table className='table table-modern mb-0'>
 										<thead>
 											<tr>
-												<th>Date / Time</th>
-												<th>Customer</th>
-												<th>Service</th>
-												<th>Duration</th>
-												<th>Payment</th>
+												<th>Ranking</th>
+												<th>Nama</th>
+												<th>Bidang</th>
 												<th>Status</th>
 											</tr>
 										</thead>
 										<tbody>
-											{userTasks.map((item) => (
+											{dataRanking?.map((item, index) => (
 												<tr key={item.id}>
-													<td>
-														<div className='d-flex align-items-center'>
-															<span
-																className={classNames(
-																	'badge',
-																	'border border-2 border-light',
-																	'rounded-circle',
-																	'bg-success',
-																	'p-2 me-2',
-																	`bg-${item.status.color}`,
-																)}>
-																<span className='visually-hidden'>
-																	{item.status.name}
-																</span>
-															</span>
-															<span className='text-nowrap'>
-																{moment(
-																	`${item.date} ${item.time}`,
-																).format('MMM Do YYYY, h:mm a')}
-															</span>
-														</div>
-													</td>
+													<th>
+														<span>{index + 1}</span>
+													</th>
 													<td>
 														<div>
-															<div>{item.customer.name}</div>
-															<div className='small text-muted'>
-																{item.customer.email}
-															</div>
+															<div>{item.name}</div>
 														</div>
 													</td>
-													<td>{item.service.name}</td>
-													<td>{item.duration}</td>
-													<td>
-														{item.payment && priceFormat(item.payment)}
-													</td>
-													<td>
-														<Dropdown>
-															<DropdownToggle hasIcon={false}>
-																<Button
-																	isLink
-																	color={item.status.color}
-																	icon='Circle'
-																	className='text-nowrap'>
-																	{item.status.name}
-																</Button>
-															</DropdownToggle>
-															<DropdownMenu>
-																{Object.keys(EVENT_STATUS).map(
-																	(key) => (
-																		<DropdownItem key={key}>
-																			<div>
-																				<Icon
-																					icon='Circle'
-																					color={
-																						EVENT_STATUS[
-																							key
-																						].color
-																					}
-																				/>
-																				{
-																					EVENT_STATUS[
-																						key
-																					].name
-																				}
-																			</div>
-																		</DropdownItem>
-																	),
-																)}
-															</DropdownMenu>
-														</Dropdown>
-													</td>
+													<td>{item.bidang}</td>
+													<td>{item.status}</td>
 												</tr>
 											))}
 										</tbody>
@@ -737,6 +752,154 @@ const ProfilPage = () => {
 						</Card>
 					</div>
 				</div>
+				<OffCanvas
+					setOpen={setEditPanel}
+					isOpen={editPanel}
+					tag='form'
+					isModalStyle
+					noValidate
+					onSubmit={formik.handleSubmit}>
+					<OffCanvasHeader setOpen={setEditPanel}>
+						<OffCanvasTitle id='edit-panel'>
+							{editItem?.name || 'New Product'}{' '}
+							{editItem?.name ? (
+								<Badge color='primary' isLight>
+									Edit
+								</Badge>
+							) : (
+								<Badge color='success' isLight>
+									New
+								</Badge>
+							)}
+						</OffCanvasTitle>
+					</OffCanvasHeader>
+					<OffCanvasBody>
+						<Card>
+							<CardHeader>
+								<CardLabel icon='Photo' iconColor='info'>
+									<CardTitle>Product Image</CardTitle>
+								</CardLabel>
+							</CardHeader>
+							<CardBody>
+								<div className='row'>
+									<div className='col-12'>
+										{editItem?.image ? (
+											<img
+												src={editItem.image}
+												alt=''
+												width={128}
+												height={128}
+												className='mx-auto d-block img-fluid mb-3'
+											/>
+										) : (
+											<PlaceholderImage
+												width={128}
+												height={128}
+												className='mx-auto d-block img-fluid mb-3 rounded'
+											/>
+										)}
+									</div>
+									<div className='col-12'>
+										<div className='row g-4'>
+											<div className='col-12'>
+												<Input type='file' autoComplete='photo' />
+											</div>
+											<div className='col-12'>
+												<Button
+													color='dark'
+													isLight
+													icon='Delete'
+													className='w-100'
+													onClick={() => {
+														setEditItem({ ...editItem, image: null });
+													}}>
+													Delete Image
+												</Button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</CardBody>
+						</Card>
+
+						<Card>
+							<CardHeader>
+								<CardLabel icon='Description' iconColor='success'>
+									<CardTitle>Product Details</CardTitle>
+								</CardLabel>
+							</CardHeader>
+							<CardBody>
+								<div className='row g-4'>
+									<div className='col-12'>
+										<FormGroup id='name' label='Name' isFloating>
+											<Input
+												placeholder='Name'
+												onChange={formik.handleChange}
+												onBlur={formik.handleBlur}
+												value={formik.values.name}
+												isValid={formik.isValid}
+												isTouched={formik.touched.name}
+												invalidFeedback={formik.errors.name}
+												validFeedback='Looks good!'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-12'>
+										<FormGroup id='price' label='Price' isFloating>
+											<Input
+												placeholder='Price'
+												onChange={formik.handleChange}
+												onBlur={formik.handleBlur}
+												value={formik.values.price}
+												isValid={formik.isValid}
+												isTouched={formik.touched.price}
+												invalidFeedback={formik.errors.price}
+												validFeedback='Looks good!'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-12'>
+										<FormGroup id='stock' label='Stock' isFloating>
+											<Input
+												placeholder='Stock'
+												onChange={formik.handleChange}
+												onBlur={formik.handleBlur}
+												value={formik.values.stock}
+												isValid={formik.isValid}
+												isTouched={formik.touched.stock}
+												invalidFeedback={formik.errors.stock}
+												validFeedback='Looks good!'
+											/>
+										</FormGroup>
+									</div>
+									<div className='col-12'>
+										<FormGroup id='category' label='Category' isFloating>
+											<Input
+												placeholder='Category'
+												onChange={formik.handleChange}
+												onBlur={formik.handleBlur}
+												value={formik.values.category}
+												isValid={formik.isValid}
+												isTouched={formik.touched.category}
+												invalidFeedback={formik.errors.category}
+												validFeedback='Looks good!'
+											/>
+										</FormGroup>
+									</div>
+								</div>
+							</CardBody>
+						</Card>
+					</OffCanvasBody>
+					<div className='p-3'>
+						<Button
+							color='info'
+							icon='Save'
+							type='submit'
+							isDisable={!formik.isValid && !!formik.submitCount}>
+							Save
+						</Button>
+					</div>
+				</OffCanvas>
 			</Page>
 		</PageWrapper>
 	);

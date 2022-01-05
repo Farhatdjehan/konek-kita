@@ -1,61 +1,61 @@
 const surfing = {
-	name: 'Surfing',
-	icon: 'Surfing',
+	name: 'Campaign',
+	icon: 'Campaign',
 	color: 'info',
 };
 const kiteSurfing = {
-	name: 'Kite Surfing',
-	icon: 'Kitesurfing',
+	name: 'Promosi',
+	icon: 'ChatBubble',
 	color: 'danger',
 };
 const tennis = {
-	name: 'Tennis',
-	icon: 'SportsTennis',
+	name: 'Charity',
+	icon: 'TableChart',
 	color: 'success',
 };
 const kayaking = {
-	name: 'Kayaking',
-	icon: 'Kayaking',
+	name: 'Live Music',
+	icon: 'QueueMusic',
 	color: 'info',
 };
 const handball = {
-	name: 'Handball',
-	icon: 'SportsHandball',
+	name: 'Sosialisasi',
+	icon: 'PeopleOutline',
 	color: 'warning',
 };
 const iceSkating = {
-	name: 'Ice Skating',
-	icon: 'IceSkating',
+	name: 'Webinar',
+	icon: 'VideoCall',
 	color: 'info',
 };
 const snowboarding = {
-	name: 'Snowboarding',
-	icon: 'Snowboarding',
+	name: 'Campaign 2',
+	icon: 'Campaign',
 	color: 'warning',
 };
 const volleyball = {
-	name: 'Volleyball',
-	icon: 'SportsVolleyball',
+	name: 'Education',
+	icon: 'Book',
 	color: 'warning',
 };
 const cricket = {
-	name: 'Cricket',
-	icon: 'SportsCricket',
+	name: 'Talk Show',
+	icon: 'Chat',
 	color: 'success',
 };
 const yoga = {
-	name: 'Yoga',
-	icon: 'SelfImprovement',
+	name: 'Video Short',
+	icon: 'Videocam',
 	color: 'success',
 };
 const hiking = {
-	name: 'Hiking',
-	icon: 'Hiking',
+	name: 'Seminar',
+	icon: 'MarkChatUnread',
 	color: 'danger',
 };
 const football = {
-	name: 'Football',
-	icon: 'SportsFootball',
+	name: 'Social',
+	icon: 'SocialDistance',
 	color: 'success',
 };
 

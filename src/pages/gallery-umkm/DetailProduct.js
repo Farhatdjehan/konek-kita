@@ -107,7 +107,7 @@ const DetailProduct = () => {
 	// eslint-disable-next-line no-unused-vars
 	const TABS = {
 		SUMMARY: 'Summary',
-		COMMENTS: 'Comments',
+		// COMMENTS: 'Comments',
 		EDIT: 'Edit',
 	};
 	const [activeTab, setActiveTab] = useState(TABS.SUMMARY);
@@ -154,7 +154,7 @@ const DetailProduct = () => {
 
 	return (
 		<PageWrapper title={dashboardMenu.detailProduct.text}>
-			<SubHeader>
+			{/* <SubHeader>
 				<SubHeaderLeft>
 					<Button color='info' isLink icon='ArrowBack' onClick={() => history.goBack()}>
 						Back to List
@@ -175,7 +175,7 @@ const DetailProduct = () => {
 					<span className='text-muted fst-italic me-2'>Last update:</span>
 					<span className='fw-bold'>13 hours ago</span>
 				</SubHeaderRight>
-			</SubHeader>
+			</SubHeader> */}
 			<Page>
 				<div className='display-4 fw-bold py-3'>{data.name}</div>
 				<div className='row h-100'>
@@ -196,7 +196,7 @@ const DetailProduct = () => {
 											{TABS.SUMMARY}
 										</Button>
 									</div>
-									<div className='col-12'>
+									{/* <div className='col-12'>
 										<Button
 											icon='Chat'
 											color='info'
@@ -205,7 +205,7 @@ const DetailProduct = () => {
 											onClick={() => setActiveTab(TABS.COMMENTS)}>
 											{TABS.COMMENTS}
 										</Button>
-									</div>
+									</div> */}
 									<div className='col-12'>
 										<Button
 											icon='Edit'
@@ -279,30 +279,7 @@ const DetailProduct = () => {
 													</CardBody>
 												</Card>
 											</div>
-											<div className='col-lg-6'>
-												<Card
-													stretch
-													shadow='sm'
-													className='bg-l25-warning bg-l10-warning-hover transition-base rounded-2'>
-													<CardHeader className='bg-transparent'>
-														<CardLabel>
-															<CardTitle tag='h4' className='h5'>
-																Sales
-															</CardTitle>
-														</CardLabel>
-													</CardHeader>
-													<CardBody className='py-0'>
-														<Chart
-															className='mx-n4'
-															series={data.series}
-															options={chartOptions}
-															type={chartOptions.chart.type}
-															height={chartOptions.chart.height}
-															width={chartOptions.chart.width}
-														/>
-													</CardBody>
-												</Card>
-											</div>
+
 											<div className='col-lg-6'>
 												<Card
 													stretch
@@ -331,34 +308,7 @@ const DetailProduct = () => {
 													</CardBody>
 												</Card>
 											</div>
-											<div className='col-lg-6'>
-												<Card
-													stretch
-													shadow='sm'
-													className='bg-l25-info rounded-2'>
-													<CardHeader className='bg-transparent'>
-														<CardLabel>
-															<CardTitle>Compatible</CardTitle>
-														</CardLabel>
-													</CardHeader>
-													<CardBody>
-														<div className='d-flex align-items-center pb-3'>
-															<div className='flex-shrink-0'>
-																<Icon
-																	icon='Extension'
-																	size='4x'
-																	color='info'
-																/>
-															</div>
-															<div className='flex-grow-1 ms-3'>
-																<div className='fw-bold fs-3 mb-0'>
-																	{data.file}
-																</div>
-															</div>
-														</div>
-													</CardBody>
-												</Card>
-											</div>
+
 											<div className='col-12 shadow-3d-container'>
 												<Accordion id='faq' shadow='sm'>
 													<AccordionItem
@@ -433,94 +383,7 @@ const DetailProduct = () => {
 									</CardBody>
 								</>
 							)}
-							{activeTab === TABS.COMMENTS && (
-								<>
-									<CardHeader>
-										<CardLabel icon='Chat' iconColor='info'>
-											<CardTitle>Comments</CardTitle>
-											<CardSubTitle>Product Reviews</CardSubTitle>
-										</CardLabel>
-									</CardHeader>
-									<CardBody isScrollable>
-										<div className='row g-4'>
-											<div className='col-12 d-flex align-items-center'>
-												<div className='flex-shrink-0'>
-													<Avatar
-														src={USERS.GRACE.src}
-														srcSet={USERS.GRACE.srcSet}
-														color={USERS.GRACE.color}
-														size={64}
-													/>
-												</div>
-												<div className='flex-grow-1 ms-3 d-flex justify-content-between align-items-center'>
-													<figure className='mb-0'>
-														<blockquote className='blockquote'>
-															<p>
-																We made a very logical decision to
-																use it in our project. Design
-																quality is very nice.
-															</p>
-														</blockquote>
-														<figcaption className='blockquote-footer mb-0'>
-															{USERS.GRACE.name} in{' '}
-															<cite title='Company'>Company</cite>
-														</figcaption>
-													</figure>
-												</div>
-											</div>
-											<div className='col-12 d-flex align-items-center'>
-												<div className='flex-shrink-0'>
-													<Avatar
-														src={USERS.SAM.src}
-														srcSet={USERS.SAM.srcSet}
-														color={USERS.SAM.color}
-														size={64}
-													/>
-												</div>
-												<div className='flex-grow-1 ms-3 d-flex justify-content-between align-items-center'>
-													<figure className='mb-0'>
-														<blockquote className='blockquote'>
-															<p>
-																We have used another product of the
-																same author before. It was very easy
-																to integrate it into our project.
-															</p>
-														</blockquote>
-														<figcaption className='blockquote-footer mb-0'>
-															{USERS.SAM.name} in{' '}
-															<cite title='Company'>Company</cite>
-														</figcaption>
-													</figure>
-												</div>
-											</div>
-											<div className='col-12 d-flex align-items-center'>
-												<div className='flex-shrink-0'>
-													<Avatar
-														src={USERS.CHLOE.src}
-														srcSet={USERS.CHLOE.srcSet}
-														color={USERS.CHLOE.color}
-														size={64}
-													/>
-												</div>
-												<div className='flex-grow-1 ms-3 d-flex justify-content-between align-items-center'>
-													<figure className='mb-0'>
-														<blockquote className='blockquote'>
-															<p>
-																Just the design I was looking
-																for.🎉🎉
-															</p>
-														</blockquote>
-														<figcaption className='blockquote-footer mb-0'>
-															{USERS.CHLOE.name} in{' '}
-															<cite title='Company'>Company</cite>
-														</figcaption>
-													</figure>
-												</div>
-											</div>
-										</div>
-									</CardBody>
-								</>
-							)}
+
 							{activeTab === TABS.EDIT && (
 								<>
 									<CardHeader>

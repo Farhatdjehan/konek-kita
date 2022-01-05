@@ -103,7 +103,7 @@ const CommonRightPanel = ({ setOpen, isOpen }) => {
 		<OffCanvas setOpen={setOpen} isOpen={isOpen} isRightPanel>
 			<OffCanvasBody className='p-4'>
 				<div className='row mb-5'>
-					<div className='col'>
+					{/* <div className='col'>
 						<div className='d-flex align-items-center'>
 							<AvatarGroup className='me-3'>
 								{Object.keys(USERS).map((u) => (
@@ -120,7 +120,7 @@ const CommonRightPanel = ({ setOpen, isOpen }) => {
 								<strong>Gym</strong> Team
 							</div>
 						</div>
-					</div>
+					</div> */}
 					<div className='col-auto'>
 						<Dropdown>
 							<DropdownToggle hasIcon={false}>
@@ -226,7 +226,7 @@ const CommonRightPanel = ({ setOpen, isOpen }) => {
 							</CardBody>
 						</Card>
 					))}
-				<Card className='bg-l25-warning mb-0' isCompact>
+				{/* <Card className='bg-l25-warning mb-0' isCompact>
 					<CardHeader className='bg-transparent'>
 						<CardLabel>
 							<CardTitle tag='h4' className='h5'>
@@ -259,7 +259,7 @@ const CommonRightPanel = ({ setOpen, isOpen }) => {
 							</div>
 						</div>
 					</CardBody>
-				</Card>
+				</Card> */}
 			</OffCanvasBody>
 		</OffCanvas>
 	);
