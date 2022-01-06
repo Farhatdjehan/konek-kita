@@ -7,46 +7,46 @@ import Img6 from '../../../assets/img/scene6.png';
 import COLORS from '../../../common/data/enumColors';
 
 const TAGS = {
-	NPM: {
-		text: 'NPM',
+	CAMPAIGN: {
+		text: 'CAMPAIGN',
 		color: COLORS.SUCCESS.name,
 	},
-	YARN: {
-		text: 'Yarn',
+	SOCIAL: {
+		text: 'Social',
 		color: COLORS.DANGER.name,
 	},
-	BOOTSTRAP: {
-		text: 'Bootstrap',
+	CHARITY: {
+		text: 'Charity',
 		color: COLORS.PRIMARY.name,
 	},
-	DEPENDENCIES: {
-		text: 'Dependencies',
+	REFFERAL: {
+		text: 'Refferal',
 		color: COLORS.INFO.name,
 	},
 };
 
 export const CATEGORIES = {
-	DOCUMENTATION: {
-		value: 'documentation',
-		text: 'Documentation',
+	INSTAGRAM: {
+		value: 'instagram',
+		text: 'Instagram',
 	},
-	SETTINGS: {
-		value: 'settings',
-		text: 'Settings',
+	TWITTER: {
+		value: 'twitter',
+		text: 'Twitter',
 	},
-	COLORS: {
-		value: 'colors',
-		text: 'Colors',
+	TIKTOK: {
+		value: 'tiktok',
+		text: 'Tiktok',
 	},
 };
 
 const data = [
 	{
 		id: 1,
-		title: 'Utility API',
-		description: 'The utility API is a Sass-based tool to generate utility classes.',
+		title: 'Indonesia Maju Bersama UMKM',
+		description: 'UMKM Maju, Indonesia Jaya',
 		image: Img1,
-		tags: [TAGS.NPM, TAGS.YARN, TAGS.BOOTSTRAP],
+		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL, TAGS.CHARITY],
 		color: COLORS.WARNING.name,
 		categories: [CATEGORIES.DOCUMENTATION, CATEGORIES.SETTINGS],
 		content:
@@ -54,10 +54,10 @@ const data = [
 	},
 	{
 		id: 2,
-		title: 'Background',
-		description: 'Convey meaning through background-color and add decoration with gradients.',
+		title: 'Sukseskan Usaha Kecil Para Pedagang!',
+		description: 'Dukung usaha mereka untuk mensejahterakan rakyat',
 		image: Img2,
-		tags: [TAGS.NPM, TAGS.YARN, TAGS.DEPENDENCIES],
+		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL, TAGS.REFFERAL],
 		color: COLORS.PRIMARY.name,
 		categories: [CATEGORIES.DOCUMENTATION],
 		content:
@@ -65,11 +65,11 @@ const data = [
 	},
 	{
 		id: 3,
-		title: 'Borders',
+		title: 'Kita Bersama UMKM #1',
 		description:
-			'Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.',
+			'UMKM maju dan UMKM bisa',
 		image: Img3,
-		tags: [TAGS.NPM, TAGS.YARN],
+		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL],
 		color: COLORS.DANGER.name,
 		categories: [CATEGORIES.DOCUMENTATION, CATEGORIES.SETTINGS],
 		content:
@@ -77,11 +77,11 @@ const data = [
 	},
 	{
 		id: 4,
-		title: 'Colors',
+		title: 'Kita Bersama UMKM #2',
 		description:
-			'Convey meaning through color with a handful of color utility classes. Includes support for styling links with hover states, too.',
+			'UMKM maju dan UMKM bisa',
 		image: Img4,
-		tags: [TAGS.NPM, TAGS.YARN, TAGS.DEPENDENCIES],
+		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL, TAGS.REFFERAL],
 		color: COLORS.SUCCESS.name,
 		categories: [CATEGORIES.DOCUMENTATION, CATEGORIES.SETTINGS],
 		content:
@@ -89,11 +89,11 @@ const data = [
 	},
 	{
 		id: 5,
-		title: 'Display property',
+		title: '#KitaBisa Tolong Pedagang Asongan',
 		description:
-			'Quickly and responsively toggle the display value of components and more with our display utilities.',
+			'#KitaBisa Tolong Pedagang Asongan',
 		image: Img5,
-		tags: [TAGS.NPM, TAGS.YARN],
+		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL],
 		color: COLORS.INFO.name,
 		categories: [CATEGORIES.SETTINGS],
 		content:
@@ -101,34 +101,10 @@ const data = [
 	},
 	{
 		id: 6,
-		title: 'Flex',
-		description:
-			'Quickly manage the layout, alignment, and sizing of grid columns, navigation, components, and more with a full suite of responsive flexbox utilities. For more complex implementations, custom CSS may be necessary.',
-		image: Img6,
-		tags: [TAGS.NPM, TAGS.YARN],
-		color: COLORS.WARNING.name,
-		categories: [CATEGORIES.SETTINGS],
-		content:
-			'Maecenas id mollis turpis, non tincidunt tellus. Maecenas facilisis leo at mi accumsan tempor. Integer auctor tellus ut mi euismod, id tempus ex tempus. Curabitur feugiat arcu sem, et ultricies ligula feugiat at. Nullam nec condimentum elit, quis varius nisl. Sed venenatis at justo quis ornare. Ut sed suscipit ipsum. Aenean tempus neque eu ligula cursus convallis. Morbi ornare justo a ipsum blandit, quis varius massa euismod. Nam in orci enim. Vestibulum facilisis egestas lacus commodo vestibulum. Maecenas laoreet tincidunt dui, vel aliquam neque vestibulum vel. Pellentesque condimentum ullamcorper eros. Pellentesque bibendum convallis sem sit amet porta.',
-	},
-	{
-		id: 7,
-		title: 'Float',
-		description:
-			'Toggle floats on any element, across any breakpoint, using our responsive float utilities.',
-		image: Img4,
-		tags: [TAGS.NPM, TAGS.YARN],
-		color: COLORS.DARK.name,
-		categories: [CATEGORIES.SETTINGS],
-		content:
-			'Donec in augue nisl. Maecenas quis lacus ut erat venenatis vehicula nec id tortor. Cras magna diam, porttitor eu tortor et, egestas consectetur elit. Donec non elementum ex, sit amet efficitur elit. Nullam dictum ante vitae ante ullamcorper, eu vehicula quam pellentesque. Suspendisse consequat lectus eget convallis ornare. Phasellus faucibus arcu libero, sed interdum metus consequat sit amet. Nam quis elementum urna, egestas malesuada dolor. Morbi suscipit nulla non ante finibus luctus. Mauris ullamcorper, sem sed faucibus dictum, nisl tortor aliquam eros, et aliquet libero libero in nulla. Aliquam feugiat nisi nisi, quis luctus mi fringilla vel. Suspendisse vitae condimentum felis. Morbi eleifend nibh sem, id rutrum tortor gravida quis.',
-	},
-	{
-		id: 8,
-		title: 'Interactions',
-		description: 'Utility classes that change how users interact with contents of a website.',
+		title: 'Maju Terus Indonesia',
+		description: 'Indonesia Maju, Indonesia Jaya',
 		image: Img2,
-		tags: [TAGS.NPM, TAGS.YARN],
+		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL],
 		color: COLORS.INFO.name,
 		categories: [CATEGORIES.COLORS],
 		content:

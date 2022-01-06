@@ -30,7 +30,6 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Select from '../../components/bootstrap/forms/Select';
 import USERS, { getUserDataWithUsername } from '../../common/data/userDummyData';
 import Avatar, { AvatarGroup } from '../../components/Avatar';
-import useMinimizeAside from '../../hooks/useMinimizeAside';
 import Popovers from '../../components/bootstrap/Popovers';
 import {
 	CalendarTodayButton,
@@ -120,8 +119,6 @@ const MyWeekEvent = (data) => {
 };
 
 const DashboardPage = () => {
-	useMinimizeAside();
-
 	const [toggleRightPanel, setToggleRightPanel] = useState(true);
 
 	// BEGIN :: Calendar

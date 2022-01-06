@@ -7,8 +7,6 @@ import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
-
-import useMinimizeAside from '../../hooks/useMinimizeAside';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
 import { dashboardMenu, menuSidebar } from '../../menu';
 
@@ -16,7 +14,10 @@ import { dashboardMenu, menuSidebar } from '../../menu';
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${menuSidebar.knowledge.subMenu.itemID.path}/${id}`),
+		() =>
+			history.push(
+				`${dashboardMenu.collaboration.subMenu.detailProgramOpenCollab.path}/${id}`,
+			),
 		[history, id],
 	);
 	return (
@@ -56,8 +57,6 @@ const Item = ({ id, image, title, description, tags, color }) => {
 };
 
 const OpenCollaboration = () => {
-	useMinimizeAside();
-
 	const [filterableData, setFilterableData] = useState(data);
 
 	const searchAndFilterData = (searchValue, category) => {
@@ -114,7 +113,7 @@ const OpenCollaboration = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.galleryPremium.text}>
+		<PageWrapper title={dashboardMenu.collaboration.subMenu.openCollaboration.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-8 text-left my-5'>

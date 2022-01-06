@@ -17,6 +17,17 @@ const LANDING = {
 	COLLABS_LIST: lazy(() => import('../../pages/collabs-list/CollabsList')),
 	REQUEST_WORK: lazy(() => import('../../pages/request-work/RequestWork')),
 	REQUEST_COLLABS: lazy(() => import('../../pages/request-collab-list/RequestCollabList')),
+	DETAIL_PAGE: lazy(() => import('../../pages/request-work/DetailPage')),
+	DETAIL_PAGE_CONTENT: lazy(() => import('../../pages/gallery-content/DetailPageContent')),
+	DETAIL_PAGE_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/DetailPageBootcamp')),
+	DETAIL_PAGE_OPEN_WORK: lazy(() => import('../../pages/open-work-list/DetailPageOpenWorker')),
+	DETAIL_PAGE_COLLAB: lazy(() => import('../../pages/collabs-list/DetailPageCollabs')),
+	DETAIL_PAGE_REQ_COLLAB: lazy(() =>
+		import('../../pages/request-collab-list/DetailPageReqCollab'),
+	),
+	DETAIL_PAGE_OPEN_COLLAB: lazy(() =>
+		import('../../pages/open-collaboration/DetailPageOpenCollab'),
+	),
 };
 
 const AUTH = {
@@ -31,16 +42,59 @@ const ContentRoutes = () => {
 			<Route exact path={dashboardMenu.profilId.path} component={LANDING.PROFIL} />
 			<Route
 				exact
-				path={dashboardMenu.openCollaboration.path}
-				component={LANDING.OPEN_COLLABS}
+				path={dashboardMenu.worklist.subMenu.reqWorkList.path}
+				component={LANDING.REQUEST_WORK}
 			/>
-			<Route exact path={dashboardMenu.reqWorkList.path} component={LANDING.REQUEST_WORK} />
 			<Route
 				exact
-				path={dashboardMenu.reqCollabsList.path}
+				path={dashboardMenu.collaboration.subMenu.reqCollabsList.path}
 				component={LANDING.REQUEST_COLLABS}
 			/>
-			<Route exact path={dashboardMenu.collabsList.path} component={LANDING.COLLABS_LIST} />
+			<Route
+				exact
+				path={dashboardMenu.collaboration.subMenu.openCollaboration.path}
+				component={LANDING.OPEN_COLLABS}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.collaboration.subMenu.collabsList.path}
+				component={LANDING.COLLABS_LIST}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.worklist.subMenu.detailProgram.path}/:id`}
+				component={LANDING.DETAIL_PAGE}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.gallery.subMenu.detailProgramContent.path}/:id`}
+				component={LANDING.DETAIL_PAGE_CONTENT}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.gallery.subMenu.detailProgramBootcamp.path}/:id`}
+				component={LANDING.DETAIL_PAGE_BOOTCAMP}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.worklist.subMenu.detailProgramOpenWorker.path}/:id`}
+				component={LANDING.DETAIL_PAGE_OPEN_WORK}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.collaboration.subMenu.detailProgramCollab.path}/:id`}
+				component={LANDING.DETAIL_PAGE_COLLAB}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.collaboration.subMenu.detailProgramReqCollab.path}/:id`}
+				component={LANDING.DETAIL_PAGE_REQ_COLLAB}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.collaboration.subMenu.detailProgramOpenCollab.path}/:id`}
+				component={LANDING.DETAIL_PAGE_OPEN_COLLAB}
+			/>
 			<Route
 				exact
 				path={dashboardMenu.dashboardBooking.path}
@@ -48,7 +102,11 @@ const ContentRoutes = () => {
 			/>
 			<Route exact path={editPage.editProfil.path} component={LANDING.EDITPROFIL} />
 
-			<Route exact path={dashboardMenu.galleryUmkm.path} component={LANDING.GALLERY_UMKM} />
+			<Route
+				exact
+				path={dashboardMenu.gallery.subMenu.galleryUmkm.path}
+				component={LANDING.GALLERY_UMKM}
+			/>
 
 			<Route
 				exact
@@ -57,7 +115,7 @@ const ContentRoutes = () => {
 			/>
 			<Route
 				exact
-				path={dashboardMenu.openWorkList.path}
+				path={dashboardMenu.worklist.subMenu.openWorkList.path}
 				component={LANDING.OPEN_WORK_LIST}
 			/>
 			<Route
@@ -67,12 +125,12 @@ const ContentRoutes = () => {
 			/>
 			<Route
 				exact
-				path={dashboardMenu.galleryPremium.path}
+				path={dashboardMenu.gallery.subMenu.galleryPremium.path}
 				component={LANDING.GALLERY_PREMIUM}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.galleryBootcamp.path}
+				path={dashboardMenu.gallery.subMenu.galleryBootcamp.path}
 				component={LANDING.GALLERY_BOOTCAMP}
 			/>
 			{/* Auth */}

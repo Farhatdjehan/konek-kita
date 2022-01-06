@@ -4,19 +4,20 @@ import { useFormik } from 'formik';
 import { useHistory } from 'react-router-dom';
 import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
+import Input from '../../components/bootstrap/forms/Input';
+import Button from '../../components/bootstrap/Button';
 import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
-
-import useMinimizeAside from '../../hooks/useMinimizeAside';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { dashboardMenu, demoPages } from '../../menu';
+import Icon from '../../components/icon/Icon';
 
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${menuSidebar.knowledge.subMenu.itemID.path}/${id}`),
+		() => history.push(`${dashboardMenu.worklist.subMenu.detailProgram.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -37,9 +38,9 @@ const Item = ({ id, image, title, description, tags, color }) => {
 						className='object-fit-contain p-3'
 					/>
 				</div>
-				<CardTitle>{title}</CardTitle>
+				<CardTitle className='mb-2'>{title}</CardTitle>
 				<p className='text-muted truncate-line-2'>{description}</p>
-				<div className='row g-2'>
+				{/* <div className='row g-2'>
 					{!!tags &&
 						// eslint-disable-next-line react/prop-types
 						tags.map((tag) => (
@@ -49,15 +50,21 @@ const Item = ({ id, image, title, description, tags, color }) => {
 								</Badge>
 							</div>
 						))}
+				</div> */}
+				<div className='mt-4 d-flex justify-content-between'>
+					<Button icon='Close' color='danger'>
+						Decline
+					</Button>
+					<Button icon='Check' color='success'>
+						Accept
+					</Button>
 				</div>
 			</CardBody>
 		</Card>
 	);
 };
 
-const RequestWork = () => {
-	useMinimizeAside();
-
+const KnowledgeGridPage = () => {
 	const [filterableData, setFilterableData] = useState(data);
 
 	const searchAndFilterData = (searchValue, category) => {
@@ -114,17 +121,17 @@ const RequestWork = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.galleryPremium.text}>
+		<PageWrapper title={dashboardMenu.worklist.subMenu.reqWorkList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-8 text-left my-5'>
-						<span className='display-5 fw-bold'>Request Work List</span>
+					<div className='col-12 text-left my-3'>
+						<span className='display-5 fw-bold'>Request Work</span>
 					</div>
-					<div className='col-4 mx-auto text-center my-5'>
+					<div className='col-xxl-6 mx-auto text-center my-5'>
 						<form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
 							onSubmit={formik.handleSubmit}>
-							<div className='col-md-12'>
+							<div className='col-md-5'>
 								<Select
 									id='category'
 									size='lg'
@@ -148,7 +155,7 @@ const RequestWork = () => {
 									value={formik.values.category}
 								/>
 							</div>
-							{/* <div className='col-md-5'>
+							<div className='col-md-5'>
 								<Input
 									id='search'
 									size='lg'
@@ -183,7 +190,7 @@ const RequestWork = () => {
 									type='reset'
 									isDisable={!(formik.values.search || formik.values.category)}
 								/>
-							</div> */}
+							</div>
 						</form>
 					</div>
 				</div>
@@ -200,4 +207,4 @@ const RequestWork = () => {
 	);
 };
 
-export default RequestWork;
+export default KnowledgeGridPage;

@@ -26,7 +26,7 @@ const User = () => {
 		<div
 			role='presentation'
 			className='user'
-			onClick={() => history.push(`${dashboardMenu.employee.path}`)}>
+			onClick={() => history.push(`${dashboardMenu.profilId.path}`)}>
 			<UserAvatar srcSet={USERS.JOHN.srcSet} src={USERS.JOHN.src} />
 			<div className='user-info'>
 				<div className='user-name'>{`${USERS.JOHN.name} ${USERS.JOHN.surname}`}</div>

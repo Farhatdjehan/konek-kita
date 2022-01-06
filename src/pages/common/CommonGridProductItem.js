@@ -81,8 +81,13 @@ const CommonGridProductItem = ({
 		<Card>
 			<CardHeader>
 				<CardLabel>
-					<CardTitle>
-						<div className='truncate-line-1 h4 fw-bold mb-3'>{name}</div>
+					<CardTitle className="d-flex">
+						{addressURL[1] === 'profil-user' ? (
+							<div>{name}</div>
+						) : (
+							<div className='truncate-line-1 h4 fw-bold mb-3'>{name}</div>
+						)}
+
 						{addressURL[1] === 'gallery-umkm'
 							? null
 							: price && (

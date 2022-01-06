@@ -7,16 +7,15 @@ import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
-
-import useMinimizeAside from '../../hooks/useMinimizeAside';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
 import { dashboardMenu, menuSidebar } from '../../menu';
+import Button from '../../components/bootstrap/Button';
 
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${menuSidebar.knowledge.subMenu.itemID.path}/${id}`),
+		() => history.push(`${dashboardMenu.worklist.subMenu.detailProgramOpenWorker.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -39,7 +38,7 @@ const Item = ({ id, image, title, description, tags, color }) => {
 				</div>
 				<CardTitle>{title}</CardTitle>
 				<p className='text-muted truncate-line-2'>{description}</p>
-				<div className='row g-2'>
+				{/* <div className='row g-2'>
 					{!!tags &&
 						// eslint-disable-next-line react/prop-types
 						tags.map((tag) => (
@@ -49,6 +48,14 @@ const Item = ({ id, image, title, description, tags, color }) => {
 								</Badge>
 							</div>
 						))}
+				</div> */}
+				<div className='mt-4 d-flex justify-content-between'>
+					<Button icon='Close' color='danger'>
+						Ignore
+					</Button>
+					<Button icon='Check' color='success'>
+						Join
+					</Button>
 				</div>
 			</CardBody>
 		</Card>
@@ -56,8 +63,6 @@ const Item = ({ id, image, title, description, tags, color }) => {
 };
 
 const OpenWorkList = () => {
-	useMinimizeAside();
-
 	const [filterableData, setFilterableData] = useState(data);
 
 	const searchAndFilterData = (searchValue, category) => {
@@ -114,7 +119,7 @@ const OpenWorkList = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.galleryPremium.text}>
+		<PageWrapper title={dashboardMenu.worklist.subMenu.openWorkList.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-8 text-left my-5'>

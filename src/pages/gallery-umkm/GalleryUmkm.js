@@ -105,7 +105,7 @@ const GalleryUmkm = () => {
 	}, [editItem]);
 
 	return (
-		<PageWrapper title={dashboardMenu.galleryUmkm.text}>
+		<PageWrapper title={dashboardMenu.gallery.subMenu.galleryUmkm.text}>
 			<Page>
 				<div className='d-flex justify-content-between'>
 					<div className='display-4 fw-bold pt-3 pb-5'>Gallery Program UMKM</div>

@@ -12,7 +12,7 @@ const FooterRoutes = () => {
 		menuSidebar.login.path,
 		menuSidebar.signUp.path,
 		menuSidebar.page404.path,
-		dashboardMenu.galleryPremium.path,
+		dashboardMenu.gallery.subMenu.galleryPremium.path,
 	];
 	return (
 		<Switch location={location}>
