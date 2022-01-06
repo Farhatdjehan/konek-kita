@@ -48,7 +48,7 @@ const data = [
 		image: Img1,
 		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL, TAGS.CHARITY],
 		color: COLORS.WARNING.name,
-		categories: [CATEGORIES.DOCUMENTATION, CATEGORIES.SETTINGS],
+		categories: [CATEGORIES.INSTAGRAM, CATEGORIES.TWITTER],
 		content:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis faucibus interdum. Donec dapibus fringilla elementum. Pellentesque et quam quis mauris suscipit laoreet. Integer a eleifend magna. Quisque iaculis massa sit amet molestie eleifend. Nunc id finibus massa, vel eleifend turpis. Maecenas interdum neque non neque porta venenatis. Duis nec viverra nisi. Aenean enim nulla, egestas at congue et, vehicula eget sem. Donec molestie bibendum fermentum. Sed tempor, augue sit amet scelerisque vehicula, lacus nunc eleifend tellus, at lobortis felis erat eu dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas libero mi, lacinia a purus sagittis, aliquam fringilla magna. Mauris commodo mollis iaculis. Cras metus mauris, tincidunt ac dapibus in, facilisis vel ipsum.',
 	},
@@ -59,7 +59,7 @@ const data = [
 		image: Img2,
 		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL, TAGS.REFFERAL],
 		color: COLORS.PRIMARY.name,
-		categories: [CATEGORIES.DOCUMENTATION],
+		categories: [CATEGORIES.INSTAGRAM],
 		content:
 			'Aliquam sodales tempor ullamcorper. Quisque non nibh consequat, dapibus magna et, commodo erat. Proin fringilla nibh mollis, vestibulum dui a, laoreet purus. Aliquam vehicula libero est, ut ornare quam eleifend at. Cras accumsan interdum nulla ut accumsan. Duis ornare, est vel rutrum bibendum, magna odio vehicula sem, non hendrerit dui eros ac erat. Sed et justo ac elit pellentesque ornare sit amet quis magna. Curabitur sagittis, leo pulvinar imperdiet consectetur, libero nisi rhoncus magna, non facilisis tortor mi et felis. Ut aliquet diam at eros faucibus, quis gravida nisl volutpat. Quisque eu nibh orci. Praesent posuere orci ligula, a lacinia mauris venenatis non.',
 	},
@@ -71,7 +71,7 @@ const data = [
 		image: Img3,
 		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL],
 		color: COLORS.DANGER.name,
-		categories: [CATEGORIES.DOCUMENTATION, CATEGORIES.SETTINGS],
+		categories: [CATEGORIES.INSTAGRAM, CATEGORIES.TWITTER],
 		content:
 			'Pellentesque vehicula dolor a nisi tincidunt, vitae ornare enim tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc viverra neque vel diam hendrerit volutpat. Pellentesque placerat justo a sollicitudin molestie. Etiam bibendum lacus nec tortor viverra, a consectetur neque elementum. Donec at sodales purus. Fusce in urna ac elit pulvinar efficitur in non eros. Praesent eleifend, dolor nec sollicitudin eleifend, est massa egestas metus, vitae aliquet magna erat sed turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris rutrum a augue et suscipit. In id augue ullamcorper libero tincidunt luctus.',
 	},
@@ -83,7 +83,7 @@ const data = [
 		image: Img4,
 		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL, TAGS.REFFERAL],
 		color: COLORS.SUCCESS.name,
-		categories: [CATEGORIES.DOCUMENTATION, CATEGORIES.SETTINGS],
+		categories: [CATEGORIES.INSTAGRAM, CATEGORIES.TWITTER],
 		content:
 			'Nam vitae blandit elit. Pellentesque efficitur venenatis finibus. Integer at ante rutrum, bibendum ipsum id, viverra mauris. Maecenas rhoncus ligula at lectus ullamcorper, sit amet suscipit massa tristique. Ut mattis feugiat ex, at finibus est ullamcorper in. Maecenas volutpat, odio id aliquam pulvinar, lectus velit malesuada sem, quis rutrum magna lectus quis lacus. Morbi egestas mollis nisl, quis ultrices enim iaculis vitae. Sed maximus blandit mollis. Vestibulum suscipit nibh sit amet vehicula rhoncus. Etiam gravida eu leo ac placerat. Integer vitae nunc ipsum. Phasellus maximus ullamcorper eros, nec blandit ex dignissim non. Donec vulputate molestie risus, vel hendrerit est aliquam vel.',
 	},
@@ -95,7 +95,7 @@ const data = [
 		image: Img5,
 		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL],
 		color: COLORS.INFO.name,
-		categories: [CATEGORIES.SETTINGS],
+		categories: [CATEGORIES.TWITTER],
 		content:
 			'Duis posuere risus in enim sagittis, et condimentum ligula eleifend. Phasellus elementum lectus nulla. Curabitur quis vulputate ex. Nunc quis mi nibh. Vivamus sed dictum sem. Suspendisse laoreet nisl sed diam scelerisque, at gravida dui fringilla. Maecenas vel pulvinar mi. Suspendisse suscipit rhoncus dignissim. Phasellus iaculis mattis lacus, id fermentum tortor consectetur nec. Morbi bibendum neque velit, in tincidunt magna molestie vitae. Sed ultrices orci non metus pellentesque consequat. Fusce ut eleifend neque. Nunc bibendum dapibus tortor. Mauris tincidunt auctor eros sed vehicula. Maecenas a lacinia nibh. Nulla in egestas enim.',
 	},
@@ -106,7 +106,7 @@ const data = [
 		image: Img2,
 		tags: [TAGS.CAMPAIGN, TAGS.SOCIAL],
 		color: COLORS.INFO.name,
-		categories: [CATEGORIES.COLORS],
+		categories: [CATEGORIES.TIKTOK],
 		content:
 			'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi rhoncus, turpis mollis tincidunt feugiat, augue enim dapibus ipsum, et placerat neque nibh sit amet justo. Praesent venenatis ex eu massa aliquam congue eu sed diam. Vestibulum suscipit lacus et justo ornare, at rutrum erat malesuada. Fusce ut rutrum dui. Donec posuere fringilla urna, ut efficitur mi feugiat et. In ut elit at turpis dapibus pretium quis vel turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam rhoncus vel erat a finibus. Nulla facilisi. Suspendisse ornare rhoncus sollicitudin. Curabitur mollis, erat id tincidunt efficitur, arcu sem elementum enim, ac lacinia tortor purus vel ante. Nullam non feugiat magna.',
 	},

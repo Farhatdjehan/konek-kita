@@ -9,9 +9,13 @@ import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
 import { dashboardMenu, menuSidebar } from '../../menu';
+import User from '../../layout/User/User';
+import Avatar from '../../components/Avatar';
 
+import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
+import UserImage3 from '../../assets/img/wanna/wanna3.png';
 // eslint-disable-next-line react/prop-types
-const Item = ({ id, image, title, description, tags, color }) => {
+const Item = ({ id, image, title, description, tags, user, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
 		() => history.push(`${dashboardMenu.collaboration.subMenu.detailProgramCollab.path}/${id}`),
@@ -37,7 +41,15 @@ const Item = ({ id, image, title, description, tags, color }) => {
 				</div>
 				<CardTitle>{title}</CardTitle>
 				<p className='text-muted truncate-line-2'>{description}</p>
-				<div className='row g-2'>
+				<Avatar
+					srcSet={UserImageWebp3}
+					src={UserImage3}
+					size={32}
+					border={2}
+					className='me-3'
+				/>
+				<span>{user}</span>
+				{/* <div className='row g-2'>
 					{!!tags &&
 						// eslint-disable-next-line react/prop-types
 						tags.map((tag) => (
@@ -47,7 +59,7 @@ const Item = ({ id, image, title, description, tags, color }) => {
 								</Badge>
 							</div>
 						))}
-				</div>
+				</div> */}
 			</CardBody>
 		</Card>
 	);
