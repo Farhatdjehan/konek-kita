@@ -13,6 +13,9 @@ const LANDING = {
 	GALLERY_UMKM: lazy(() => import('../../pages/gallery-umkm/GalleryUmkm')),
 	DETAIL_PRODUCT: lazy(() => import('../../pages/gallery-umkm/DetailProduct')),
 	OPEN_WORK_LIST: lazy(() => import('../../pages/open-work-list/OpenWorkList')),
+	SEND_BADGE: lazy(() => import('../../pages/send-badge/SendBadgePage')),
+	SEND_BADGE_DETAIL: lazy(() => import('../../pages/send-badge/HistorySendBadge')),
+	CAMPAIGN_DETAIL: lazy(() => import('../../pages/send-badge/DetailCampaign')),
 	OPEN_COLLABS: lazy(() => import('../../pages/open-collaboration/OpenCollaboration')),
 	COLLABS_LIST: lazy(() => import('../../pages/collabs-list/CollabsList')),
 	REQUEST_WORK: lazy(() => import('../../pages/request-work/RequestWork')),
@@ -117,6 +120,21 @@ const ContentRoutes = () => {
 				exact
 				path={dashboardMenu.worklist.subMenu.openWorkList.path}
 				component={LANDING.OPEN_WORK_LIST}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.sendBadge.subMenu.sendBadgeLove.path}
+				component={LANDING.SEND_BADGE}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.sendBadge.subMenu.sendBadgeDetail.path}
+				component={LANDING.SEND_BADGE_DETAIL}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.sendBadge.subMenu.detailCampaign.path}/:id`}
+				component={LANDING.CAMPAIGN_DETAIL}
 			/>
 			<Route
 				exact

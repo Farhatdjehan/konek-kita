@@ -20,6 +20,33 @@ export const dashboardMenu = {
 		path: '/edit-pages/in-modal',
 		icon: 'PictureInPicture',
 	},
+	sendBadge: {
+		id: 'sendBadge',
+		text: 'Send Badge ',
+		path: '/send-badge/',
+		icon: 'Send',
+		subMenu: {
+			sendBadgeLove: {
+				id: 'sendBadgeLove',
+				text: 'Send Badge Love',
+				path: '/send-badge/',
+				icon: 'Send',
+			},
+			sendBadgeDetail: {
+				id: 'sendBadgeDetail',
+				text: 'History Send Badge',
+				path: '/send-badge/history',
+				icon: 'History',
+			},
+			detailCampaign: {
+				id: 'detailCampaign',
+				text: 'Detail Campaign',
+				path: '/detail-campaign',
+				icon: 'History',
+				hide: true,
+			},
+		},
+	},
 	gallery: {
 		id: 'gallery',
 		text: 'Gallery',
