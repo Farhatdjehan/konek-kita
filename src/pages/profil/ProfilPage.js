@@ -11,7 +11,12 @@ import OffCanvas, {
 	OffCanvasHeader,
 	OffCanvasTitle,
 } from '../../components/bootstrap/OffCanvas';
-import Modal, { ModalBody, ModalHeader, ModalTitle } from '../../components/bootstrap/Modal';
+import Modal, {
+	ModalBody,
+	ModalFooter,
+	ModalHeader,
+	ModalTitle,
+} from '../../components/bootstrap/Modal';
 import PlaceholderImage from '../../components/extras/PlaceholderImage';
 import Input from '../../components/bootstrap/forms/Input';
 import Badge from '../../components/bootstrap/Badge';
@@ -85,6 +90,22 @@ const ProfilPage = () => {
 	const [dataProduct, setDataProduct] = useState(tableData);
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [gallerySeeAll, setGallerySeeAll] = useState(false);
+	// BEGIN :: List Tab
+	const LIST_TAB = {
+		PAKET1: 'Paket 1',
+		PAKET2: 'Paket 2',
+		PAKET3: 'Paket 3',
+	};
+	const [dataModal, setDataModal] = useState();
+	const [activeListTab, setActiveListTab] = useState(LIST_TAB.PAKET1);
+	const handleActiveListTab = (tabName) => {
+		setActiveListTab(tabName);
+	};
+	const getStatusActiveListTabColor = (tabName) => {
+		if (activeListTab === tabName) return 'success';
+		return 'light';
+	};
+	// END :: List Tab
 	const [editPanel, setEditPanel] = useState(false);
 	const [editItem, setEditItem] = useState(null);
 	const { id } = useParams();
@@ -94,10 +115,14 @@ const ProfilPage = () => {
 		const newData = dataProduct.filter((item) => item.id !== id);
 		setDataProduct(newData);
 	}
-	function handleEdit() {
+	function handleEdit(value) {
 		// history.push(`${dashboardMenu.detailProduct.path}/${id}`);
 		const newData = dataProduct.filter((item) => item.id === id);
 		setEditItem(newData[0]);
+		setDataModal(value);
+	}
+	function handleDetailPage() {
+		history.push(`${dashboardMenu.gallery.subMenu.detailPortofolio.path}`);
 	}
 	const [dayHours] = useState({
 		series: [
@@ -176,8 +201,7 @@ const ProfilPage = () => {
 			{images.map((item, index) => (
 				<div key={item.id} className='col-xxl-2 col-lg-3 col-md-6'>
 					<button
-						type='button'
-						onClick={() => setSelectedImage(item.img)}
+						onClick={handleDetailPage}
 						className={classNames(
 							'ratio ratio-1x1',
 							'rounded-2',
@@ -201,14 +225,9 @@ const ProfilPage = () => {
 		initialValues: {
 			name: '',
 			price: '',
-			stock: '',
-			category: '',
+			desc: '',
 		},
-		validate,
-		// eslint-disable-next-line no-unused-vars
-		onSubmit: (values) => {
-			setEditPanel(false);
-		},
+		// onSubmit: onFormSubmit,
 	});
 
 	useEffect(() => {
@@ -253,25 +272,14 @@ const ProfilPage = () => {
 				</SubHeaderRight>
 			</SubHeader> */}
 			<Page>
-				<div className='row justify-content-between'>
+				{/* <div className='row justify-content-between'>
+					<div className='col-auto'></div>
 					<div className='col-auto'>
 						<div className='pt-3 pb-5 d-flex align-items-center'>
-							<span className='display-4 fw-bold me-3'>{`${data.name} ${data.surname}`}</span>
-							<span className='border border-success border-2 text-success fw-bold px-3 py-2 rounded'>
-								{data.position}
-							</span>
+							
 						</div>
 					</div>
-					<div className='col-auto'>
-						<div className='pt-3 pb-5 d-flex align-items-center'>
-							<Link to='/edit-profile'>
-								<Button icon='Edit' color='info'>
-									Edit
-								</Button>
-							</Link>
-						</div>
-					</div>
-				</div>
+				</div> */}
 				<div className='row'>
 					<div className='col-lg-4'>
 						<Card className='shadow-3d-info'>
@@ -285,9 +293,30 @@ const ProfilPage = () => {
 											isOnline={data.isOnline}
 										/>
 									</div>
-									<div className='col-12'>
+									<div className='col-12 mt-2'>
 										<div className='row g-2'>
 											<div className='col-12'>
+												<div className='pt-3 pb-0 d-flex align-items-center justify-content-center'>
+													<span className='h4 fw-bold me-3'>
+														{`${data.name} ${data.surname}`}{' '}
+													</span>
+													<Icon icon='Verified' />
+												</div>
+												<div className='pt-1 pb-4 d-flex align-items-center justify-content-center'>
+													<span className='border border-success border-2 text-success fw-bold px-3 py-2 me-2 rounded'>
+														{data.position}
+													</span>
+													<span className='border border-success border-2 text-success fw-bold px-3 py-2 me-2 rounded'>
+														Aktris
+													</span>
+													<Link to='/edit-profile'>
+														<Button icon='Edit' color='info'>
+															Edit
+														</Button>
+													</Link>
+												</div>
+											</div>
+											<div className='col-12 mb-4'>
 												<div className='d-flex align-items-center'>
 													<div className='flex-shrink-0'>
 														<Icon icon='Mail' size='3x' color='info' />
@@ -296,24 +325,65 @@ const ProfilPage = () => {
 														<div className='fw-bold fs-5 mb-0'>
 															{`${data.username}@site.com`}
 														</div>
-														<div className='text-muted'>
+														{/* <div className='text-muted'>
 															Email Address
-														</div>
+														</div> */}
 													</div>
 												</div>
 											</div>
-											<div className='col-12'>
+											<div className='col-6'>
 												<div className='d-flex align-items-center'>
 													<div className='flex-shrink-0'>
-														<Icon icon='Tag' size='3x' color='info' />
+														<Icon
+															icon='Instagram'
+															size='2x'
+															color='info'
+														/>
 													</div>
 													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-5 mb-0'>
-															{`@${data.username}`}
-														</div>
-														<div className='text-muted'>
-															Social name
-														</div>
+														<div className='fw-bold fs-5 mb-0'>20k</div>
+														<div className='text-muted'>Followers</div>
+													</div>
+												</div>
+											</div>
+											<div className='col-6'>
+												<div className='d-flex align-items-center'>
+													<div className='flex-shrink-0'>
+														<Icon
+															icon='Twitter'
+															size='2x'
+															color='info'
+														/>
+													</div>
+													<div className='flex-grow-1 ms-3'>
+														<div className='fw-bold fs-5 mb-0'>20k</div>
+														<div className='text-muted'>Followers</div>
+													</div>
+												</div>
+											</div>
+											<div className='col-6'>
+												<div className='d-flex align-items-center'>
+													<div className='flex-shrink-0'>
+														<Icon
+															icon='Youtube'
+															size='2x'
+															color='info'
+														/>
+													</div>
+													<div className='flex-grow-1 ms-3'>
+														<div className='fw-bold fs-5 mb-0'>20k</div>
+														<div className='text-muted'>Followers</div>
+													</div>
+												</div>
+											</div>
+											<div className='col-6'>
+												<div className='d-flex align-items-center'>
+													<div className='flex-shrink-0'>
+														<Icon icon='Tag' size='2x' color='info' />
+													</div>
+													<div className='flex-grow-1 ms-3'>
+														<div className='fw-bold fs-5 mb-0'>20k</div>
+														<div className='text-muted'>Followers</div>
 													</div>
 												</div>
 											</div>
@@ -472,90 +542,120 @@ const ProfilPage = () => {
 									</CardTitle>
 								</CardLabel>
 								<CardActions>
-									<Dropdown>
-										<DropdownToggle>
-											<Button color='info' icon='Compare' isLight>
-												Compared to{' '}
-												<strong>{moment().format('YYYY') - 1}</strong>.
-											</Button>
-										</DropdownToggle>
-										<DropdownMenu isAlignmentEnd size='sm'>
-											<DropdownItem>
-												<span>{moment().format('YYYY') - 2}</span>
-											</DropdownItem>
-											<DropdownItem>
-												<span>{moment().format('YYYY') - 3}</span>
-											</DropdownItem>
-										</DropdownMenu>
-									</Dropdown>
+									<Link to='/edit-profile'>
+										<Button icon='Info' color='info'>
+											Lihat Selengkapnya
+										</Button>
+									</Link>
 								</CardActions>
 							</CardHeader>
 							<CardBody>
 								<div className='row g-4'>
-									<div className='col-md-6'>
+									<div className='col-md-4'>
 										<Card
-											className='bg-l25-primary bg-l10-primary-hover transition-base rounded-2 mb-4'
+											className='bg-l25-success bg-l10-success-hover transition-base rounded-2 mb-4'
 											shadow='sm'>
 											<CardHeader className='bg-transparent'>
 												<CardLabel>
 													<CardTitle tag='h4' className='h5'>
+														<Icon
+															className='me-2'
+															icon='EmojiEmotions'
+															size='3x'
+															color='success'
+														/>
 														Work
 													</CardTitle>
 												</CardLabel>
 											</CardHeader>
 											<CardBody>
 												<div className='d-flex align-items-center pb-3'>
-													<div className='flex-shrink-0'>
-														<Icon
-															icon='EmojiEmotions'
-															size='4x'
-															color='primary'
-														/>
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-3 mb-0'>
-															100%
-															<span className='text-info fs-5 fw-bold ms-3'>
-																0
-																<Icon icon='TrendingFlat' />
+													<div className='flex-grow-1'>
+														<div className='fw-bold display-4 mb-3 position-relative'>
+															14
+															<span className='text-success fs-5 ms-2 fw-bold position-absolute'>
+																<Icon icon='TrendingUp' />
 															</span>
 														</div>
 														<div className='text-muted'>
-															Compared to ($5000 last year)
+															<span className='text-success fs-5 fw-bold'>
+																+12
+															</span>{' '}
+															dari minggu kemarin
 														</div>
 													</div>
 												</div>
 											</CardBody>
 										</Card>
+									</div>
+									<div className='col-md-4'>
 										<Card
-											className='bg-l25-success bg-l10-success-hover transition-base rounded-2 mb-0'
+											className='bg-l25-danger bg-l10-danger-hover transition-base rounded-2 mb-4'
 											shadow='sm'>
 											<CardHeader className='bg-transparent'>
 												<CardLabel>
 													<CardTitle tag='h4' className='h5'>
+														<Icon
+															className='me-2'
+															icon='HeartFill'
+															size='3x'
+															color='danger'
+														/>
+														Love
+													</CardTitle>
+												</CardLabel>
+											</CardHeader>
+											<CardBody>
+												<div className='d-flex align-items-center pb-3'>
+													<div className='flex-grow-1'>
+														<div className='fw-bold display-4 mb-3 position-relative'>
+															12
+															<span className='text-danger fs-5 ms-2 fw-bold position-absolute'>
+																<Icon icon='TrendingFlat' />
+															</span>
+														</div>
+														<div className='text-muted'>
+															<span className='text-danger fs-5 fw-bold'>
+																+0
+															</span>{' '}
+															dari minggu kemarin
+														</div>
+													</div>
+												</div>
+											</CardBody>
+										</Card>
+									</div>
+									<div className='col-md-4'>
+										<Card
+											className='bg-l25-primary bg-l10-primary-hover transition-base rounded-2 mb-4'
+											shadow='sm'>
+											<CardHeader className='bg-transparent'>
+												<CardLabel>
+													<CardTitle tag='h4' className='h5'>
+														<Icon
+															className='me-2'
+															icon='CardMembership'
+															size='3x'
+															color='primary'
+														/>
 														Certificate
 													</CardTitle>
 												</CardLabel>
 											</CardHeader>
 											<CardBody>
 												<div className='d-flex align-items-center pb-3'>
-													<div className='flex-shrink-0'>
-														<Icon
-															icon='CardMembership'
-															size='4x'
-															color='success'
-														/>
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-3 mb-0'>
-															1
-															<span className='text-success fs-5 fw-bold ms-3'>
-																-50%
-																<Icon icon='TrendingDown' />
+													<div className='flex-grow-1'>
+														<div className='fw-bold display-4 mb-3 position-relative'>
+															12
+															<span className='text-info fs-5 ms-2 fw-bold position-absolute'>
+																<Icon icon='TrendingFlat' />
 															</span>
 														</div>
 														<div className='text-muted'>
-															Compared to (2 last week)
+															<span className='text-info fs-5 fw-bold'>
+																+12
+															</span>{' '}
+															dari minggu kemarin
 														</div>
 													</div>
 												</div>
@@ -570,44 +670,37 @@ const ProfilPage = () => {
 											<CardHeader className='bg-transparent'>
 												<CardLabel>
 													<CardTitle tag='h4' className='h5'>
-														Love
+														<Icon
+															className='me-2'
+															icon='Timer'
+															size='3x'
+															color='danger'
+														/>
+														Engadgement Rate
 													</CardTitle>
 												</CardLabel>
 											</CardHeader>
-											<CardBody className='pt-0'>
-												{/* <Chart
-													className='d-flex justify-content-center'
-													series={dayHours.series}
-													options={dayHours.options}
-													type={dayHours.options.chart.type}
-													height={dayHours.options.chart.height}
-													width={dayHours.options.chart.width}
-												/> */}
+											<CardBody>
 												<div className='d-flex align-items-center pb-3'>
-													<div className='flex-shrink-0'>
-														<Icon
-															icon='AddTask'
-															size='4x'
-															color='danger'
-														/>
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-3 mb-0'>
-															~22H
-															<span className='text-danger fs-5 fw-bold ms-3'>
-																+12.5%
-																<Icon icon='TrendingUp' />
+													<div className='flex-grow-1'>
+														<div className='fw-bold display-4 mb-3 position-relative'>
+															12
+															<span className='text-danger fs-5 ms-2 fw-bold position-absolute'>
+																<Icon icon='TrendingDown' />
 															</span>
 														</div>
 														<div className='text-muted'>
-															Compared to (~19H 30M last week)
+															<span className='text-danger fs-5 fw-bold'>
+																-12
+															</span>{' '}
+															dari minggu kemarin
 														</div>
 													</div>
 												</div>
 											</CardBody>
 										</Card>
 									</div>
-									<div className='col-md-12'>
+									<div className='col-md-6'>
 										<Card
 											className='bg-l25-danger bg-l10-danger-hover transition-base rounded-2 mb-0'
 											stretch
@@ -615,29 +708,28 @@ const ProfilPage = () => {
 											<CardHeader className='bg-transparent'>
 												<CardLabel>
 													<CardTitle tag='h4' className='h5'>
-														Engadgement Rate
+														<Icon
+															className='me-2'
+															icon='Chat'
+															size='3x'
+															color='danger'
+														/>
+														Fitur Chat
 													</CardTitle>
 												</CardLabel>
 											</CardHeader>
 											<CardBody className='pt-0'>
 												<div className='d-flex align-items-center pb-3'>
-													<div className='flex-shrink-0'>
-														<Icon
-															icon='Timer'
-															size='4x'
-															color='danger'
-														/>
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-3 mb-0'>
-															~22H
-															<span className='text-danger fs-5 fw-bold ms-3'>
-																+12.5%
-																<Icon icon='TrendingUp' />
-															</span>
+													<div className='flex-shrink-0'></div>
+													<div className='flex-grow-1'>
+														<div className='fs-5 mb-3'>
+															Saat ini kamu bisa menghubungi pekarya
+															secara langsung! Yuk mulai chat-nya.
 														</div>
-														<div className='text-muted'>
-															Compared to (~19H 30M last week)
+														<div className='text-end'>
+															<Button icon='Edit' color='info'>
+																Mulai Chat
+															</Button>
 														</div>
 													</div>
 												</div>
@@ -650,20 +742,22 @@ const ProfilPage = () => {
 						<Card>
 							<CardHeader>
 								<CardLabel icon='PhotoSizeSelectActual' iconColor='info'>
-									<CardTitle>Photos and Videos</CardTitle>
+									<CardTitle>Portofolio</CardTitle>
 								</CardLabel>
 								<CardActions>
 									<Button
 										color='info'
 										isLight
-										onClick={() => setGallerySeeAll(true)}>
+										// onClick={() => setGallerySeeAll(true)}
+									>
 										See All
 									</Button>
 								</CardActions>
 							</CardHeader>
 							<CardBody>{_gallery}</CardBody>
 						</Card>
-						<Modal setIsOpen={setSelectedImage} isOpen={!!selectedImage} isCentered>
+
+						{/* <Modal setIsOpen={setSelectedImage} isOpen={!!selectedImage} isCentered>
 							<ModalHeader setIsOpen={setSelectedImage}>
 								<ModalTitle id='preview'>Preview</ModalTitle>
 							</ModalHeader>
@@ -680,7 +774,174 @@ const ProfilPage = () => {
 								<ModalTitle id='gallery-full'>Gallery</ModalTitle>
 							</ModalHeader>
 							<ModalBody>{_gallery}</ModalBody>
-						</Modal>
+						</Modal> */}
+					</div>
+					<div className='col-md-12'>
+						<Card>
+							<CardHeader>
+								<CardLabel icon='Lock' iconColor='success'>
+									<CardTitle tag='h4' className='h5'>
+										Konten Premium
+									</CardTitle>
+								</CardLabel>
+								<CardActions className='d-flex'>
+									<Button
+										onClick={() => {
+											setEditPanel(true);
+											handleEdit('paket');
+										}}
+										icon='Edit'
+										className='py-1 px-4'
+										color='info'>
+										Edit
+									</Button>
+									<div className='bg-light p-2 rounded-3'>
+										{Object.keys(LIST_TAB).map((key) => (
+											<Button
+												key={key}
+												color={getStatusActiveListTabColor(LIST_TAB[key])}
+												onClick={() => handleActiveListTab(LIST_TAB[key])}>
+												{LIST_TAB[key]}
+											</Button>
+										))}
+									</div>
+								</CardActions>
+							</CardHeader>
+							<CardBody className='table-responsive'>
+								{activeListTab === LIST_TAB.PAKET1 && (
+									<div className='row g-4'>
+										<div className='col-md-5 d-flex justify-content-between flex-column'>
+											<div className='fw-bold fs-2 mb-3'>
+												Berlangganan untuk
+												<br />
+												membuka banyak fitur
+											</div>
+											<div className='fs-5 mb-5 line-'>
+												3 bulan berlangganan kamu bisa :
+												<ul>
+													<li>mengikuti live session</li>
+													<li>melihat konten premium</li>
+													<li>chat, dll (TBD)</li>
+												</ul>
+											</div>
+											<Button
+												icon='Subscriptions'
+												className='py-3 px-3 me-3'
+												color='info'>
+												Rp 2.000.000 | Berlangganan Sekarang
+											</Button>
+										</div>
+										<div className='col-md-7'>
+											<Card>
+												<iframe
+													style={{ padding: '20px' }}
+													height={260}
+													webkitallowFullscreen
+													mozallowFullscreen
+													allowFullScreen
+													src='https://www.youtube.com/embed/watch?v=tZqIQmdSa1E'
+													onLoad={() => {
+														console.log('onLoad');
+													}}></iframe>
+											</Card>
+										</div>
+									</div>
+								)}
+								{activeListTab === LIST_TAB.PAKET2 && (
+									<div className='row g-4'>
+										<div className='col-md-5 d-flex justify-content-between flex-column'>
+											<div className='fw-bold fs-2 mb-3'>
+												Berlangganan untuk
+												<br />
+												membuka banyak fitur
+											</div>
+											<div className='fs-5 mb-5 line-'>
+												2 bulan berlangganan kamu bisa :
+												<ul>
+													<li>mengikuti live session</li>
+													<li>melihat konten premium</li>
+													<li>chat, dll (TBD)</li>
+												</ul>
+											</div>
+											<Button
+												icon='Subscriptions'
+												className='py-3 px-3 me-3'
+												color='info'>
+												Rp 1.500.000 | Berlangganan Sekarang
+											</Button>
+										</div>
+										<div className='col-md-7'>
+											<Card>
+												<iframe
+													style={{ padding: '20px' }}
+													height={260}
+													webkitallowFullscreen
+													mozallowFullscreen
+													allowFullScreen
+													src='https://www.youtube.com/embed/watch?v=tZqIQmdSa1E'
+													onLoad={() => {
+														console.log('onLoad');
+													}}></iframe>
+											</Card>
+										</div>
+									</div>
+								)}
+								{activeListTab === LIST_TAB.PAKET3 && (
+									<div className='row g-4'>
+										<div className='col-md-5 d-flex justify-content-between flex-column'>
+											<div className='fw-bold fs-2 mb-3'>
+												Berlangganan untuk
+												<br />
+												membuka banyak fitur
+											</div>
+											<div className='fs-5 mb-5 line-'>
+												1 bulan berlangganan kamu bisa :
+												<ul>
+													<li>mengikuti live session</li>
+													<li>melihat konten premium</li>
+													<li>chat, dll (TBD)</li>
+												</ul>
+											</div>
+											<Button
+												icon='Subscriptions'
+												className='py-3 px-3 me-3'
+												color='info'>
+												Rp 1.000.000 | Berlangganan Sekarang
+											</Button>
+										</div>
+										<div className='col-md-7'>
+											<Card>
+												<iframe
+													style={{ padding: '20px' }}
+													height={260}
+													webkitallowFullscreen
+													mozallowFullscreen
+													allowFullScreen
+													src='https://www.youtube.com/embed/watch?v=tZqIQmdSa1E'
+													onLoad={() => {
+														console.log('onLoad');
+													}}></iframe>
+											</Card>
+										</div>
+									</div>
+								)}
+							</CardBody>
+						</Card>
+
+						{/* <Card className='shadow-3d-primary'>
+							<CardHeader>
+								<CardActions>
+									<Link to='/edit-profile'>
+										<Button icon='Info' color='info'>
+											Lihat Selengkapnya
+										</Button>
+									</Link>
+								</CardActions>
+							</CardHeader>
+							<CardBody>
+								
+							</CardBody>
+						</Card> */}
 					</div>
 				</div>
 				<div className='display-4 fw-bold py-3'>Rate Card</div>
@@ -722,14 +983,18 @@ const ProfilPage = () => {
 												<th>Ranking</th>
 												<th>Nama</th>
 												<th>Bidang</th>
-												<th>Status</th>
+												<th>Badge</th>
 											</tr>
 										</thead>
 										<tbody>
 											{dataRanking?.map((item, index) => (
-												<tr key={item.id}>
+												<tr
+													key={item.id}
+													className={`${
+														index === 0 ? 'highlight-table' : ''
+													} `}>
 													<th>
-														<span>{index + 1}</span>
+														<span>#{index + 1}</span>
 													</th>
 													<td>
 														<div>
@@ -737,22 +1002,118 @@ const ProfilPage = () => {
 														</div>
 													</td>
 													<td>{item.bidang}</td>
-													<td>{item.status}</td>
+													<td>
+														<div className='d-flex'>
+															<div className='me-2'>
+																<Icon
+																	className='me-2'
+																	icon='HeartFill'
+																	color='danger'
+																/>
+
+																{item.love}
+															</div>{' '}
+															<div className='me-2'>
+																<Icon
+																	className='me-2'
+																	icon='EmojiEmotions'
+																	color='success'
+																/>
+																{item.work}
+															</div>
+															<div>
+																<Icon
+																	className='me-2'
+																	icon='CardMembership'
+																	color='primary'
+																/>
+																{item.certificate}
+															</div>
+														</div>
+													</td>
 												</tr>
 											))}
 										</tbody>
 									</table>
 								</div>
-								{!userTasks.length && (
+								{/* {!userTasks.length && (
 									<Alert color='warning' isLight icon='Report' className='mt-3'>
 										There is no scheduled and assigned task.
 									</Alert>
-								)}
+								)} */}
 							</CardBody>
 						</Card>
 					</div>
 				</div>
-				<OffCanvas
+				<Modal
+					setIsOpen={setEditPanel}
+					isOpen={editPanel}
+					titleId='form'
+					isCentered
+					isScrollable
+					size='lg'>
+					<ModalHeader setIsOpen={setEditPanel}>
+						<OffCanvasTitle id='form'>Edit Rate Card</OffCanvasTitle>
+					</ModalHeader>
+					<ModalBody>
+						<div className='row g-4'>
+							<div className='col-2'>
+								{editItem?.image ? (
+									<img
+										src={editItem.image}
+										alt=''
+										width={128}
+										height={128}
+										className='mx-auto d-block img-fluid mb-3'
+									/>
+								) : (
+									<PlaceholderImage
+										width={128}
+										height={128}
+										className='mx-auto d-block img-fluid mb-3 rounded'
+									/>
+								)}
+							</div>
+							<div className='col-6 d-flex align-items-center'>
+								<Input type='file' autoComplete='photo' />
+							</div>
+							<div className='col-12'>
+								<FormGroup id='namapaket' label='Nama Paket' isFloating>
+									<Input
+										placeholder='Nama Paket'
+										onChange={formik.handleChange}
+										value={formik.values.name}
+									/>
+								</FormGroup>
+							</div>
+
+							<div className='col-12'>
+								<FormGroup id='hargapaket' label='Harga Paket' isFloating>
+									<Input
+										placeholder='Harga Paket'
+										onChange={formik.handleChange}
+										value={formik.values.price}
+									/>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='description' label='Description' isFloating>
+									<Input
+										placeholder='Deskripsi Paket'
+										onChange={formik.handleChange}
+										value={formik.values.desc}
+									/>
+								</FormGroup>
+							</div>
+						</div>
+					</ModalBody>
+					<ModalFooter className='bg-transparent'>
+						<Button color='info' icon='Save' onClick={() => setEditPanel(false)}>
+							Save
+						</Button>
+					</ModalFooter>
+				</Modal>
+				{/* <OffCanvas
 					setOpen={setEditPanel}
 					isOpen={editPanel}
 					tag='form'
@@ -760,132 +1121,179 @@ const ProfilPage = () => {
 					noValidate
 					onSubmit={formik.handleSubmit}>
 					<OffCanvasHeader setOpen={setEditPanel}>
-						<OffCanvasTitle id='edit-panel'>
-							{editItem?.name || 'New Product'}{' '}
-							{editItem?.name ? (
-								<Badge color='primary' isLight>
-									Edit
-								</Badge>
-							) : (
-								<Badge color='success' isLight>
-									New
-								</Badge>
-							)}
-						</OffCanvasTitle>
+						{dataModal === 'paket' ? null : (
+							<OffCanvasTitle id='edit-panel'>
+								{editItem?.name || 'New Product'}{' '}
+								{editItem?.name ? (
+									<Badge color='primary' isLight>
+										Edit
+									</Badge>
+								) : (
+									<Badge color='success' isLight>
+										New
+									</Badge>
+								)}
+							</OffCanvasTitle>
+						)}
 					</OffCanvasHeader>
-					<OffCanvasBody>
-						<Card>
-							<CardHeader>
-								<CardLabel icon='Photo' iconColor='info'>
-									<CardTitle>Product Image</CardTitle>
-								</CardLabel>
-							</CardHeader>
-							<CardBody>
-								<div className='row'>
-									<div className='col-12'>
-										{editItem?.image ? (
-											<img
-												src={editItem.image}
-												alt=''
-												width={128}
-												height={128}
-												className='mx-auto d-block img-fluid mb-3'
-											/>
-										) : (
-											<PlaceholderImage
-												width={128}
-												height={128}
-												className='mx-auto d-block img-fluid mb-3 rounded'
-											/>
-										)}
-									</div>
-									<div className='col-12'>
-										<div className='row g-4'>
-											<div className='col-12'>
-												<Input type='file' autoComplete='photo' />
-											</div>
-											<div className='col-12'>
-												<Button
-													color='dark'
-													isLight
-													icon='Delete'
-													className='w-100'
-													onClick={() => {
-														setEditItem({ ...editItem, image: null });
-													}}>
-													Delete Image
-												</Button>
+					<OffCanvasBody className={`${dataModal === 'paket' ? 'd-flex' : null}`}>
+						{dataModal === 'paket' ? null : (
+							<Card>
+								<CardHeader>
+									<CardLabel icon='Photo' iconColor='info'>
+										<CardTitle>Product Image</CardTitle>
+									</CardLabel>
+								</CardHeader>
+								<CardBody>
+									<div className='row'>
+										<div className='col-12'>
+											{editItem?.image ? (
+												<img
+													src={editItem.image}
+													alt=''
+													width={128}
+													height={128}
+													className='mx-auto d-block img-fluid mb-3'
+												/>
+											) : (
+												<PlaceholderImage
+													width={128}
+													height={128}
+													className='mx-auto d-block img-fluid mb-3 rounded'
+												/>
+											)}
+										</div>
+										<div className='col-12'>
+											<div className='row g-4'>
+												<div className='col-12'>
+													<Input type='file' autoComplete='photo' />
+												</div>
+												<div className='col-12'>
+													<Button
+														color='dark'
+														isLight
+														icon='Delete'
+														className='w-100'
+														onClick={() => {
+															setEditItem({
+																...editItem,
+																image: null,
+															});
+														}}>
+														Delete Image
+													</Button>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</CardBody>
-						</Card>
+								</CardBody>
+							</Card>
+						)}
 
 						<Card>
 							<CardHeader>
-								<CardLabel icon='Description' iconColor='success'>
-									<CardTitle>Product Details</CardTitle>
+								<CardLabel icon='Edit' iconColor='success'>
+									<CardTitle>
+										{dataModal === 'paket' ? 'Edit Paket' : 'Product Details'}
+									</CardTitle>
 								</CardLabel>
 							</CardHeader>
 							<CardBody>
 								<div className='row g-4'>
-									<div className='col-12'>
-										<FormGroup id='name' label='Name' isFloating>
-											<Input
-												placeholder='Name'
-												onChange={formik.handleChange}
-												onBlur={formik.handleBlur}
-												value={formik.values.name}
-												isValid={formik.isValid}
-												isTouched={formik.touched.name}
-												invalidFeedback={formik.errors.name}
-												validFeedback='Looks good!'
-											/>
-										</FormGroup>
-									</div>
-									<div className='col-12'>
-										<FormGroup id='price' label='Price' isFloating>
-											<Input
-												placeholder='Price'
-												onChange={formik.handleChange}
-												onBlur={formik.handleBlur}
-												value={formik.values.price}
-												isValid={formik.isValid}
-												isTouched={formik.touched.price}
-												invalidFeedback={formik.errors.price}
-												validFeedback='Looks good!'
-											/>
-										</FormGroup>
-									</div>
-									<div className='col-12'>
-										<FormGroup id='stock' label='Stock' isFloating>
-											<Input
-												placeholder='Stock'
-												onChange={formik.handleChange}
-												onBlur={formik.handleBlur}
-												value={formik.values.stock}
-												isValid={formik.isValid}
-												isTouched={formik.touched.stock}
-												invalidFeedback={formik.errors.stock}
-												validFeedback='Looks good!'
-											/>
-										</FormGroup>
-									</div>
-									<div className='col-12'>
-										<FormGroup id='category' label='Category' isFloating>
-											<Input
-												placeholder='Category'
-												onChange={formik.handleChange}
-												onBlur={formik.handleBlur}
-												value={formik.values.category}
-												isValid={formik.isValid}
-												isTouched={formik.touched.category}
-												invalidFeedback={formik.errors.category}
-												validFeedback='Looks good!'
-											/>
-										</FormGroup>
-									</div>
+									{dataModal === 'paket' ? (
+										<>
+											<div className='col-12'>
+												<FormGroup id='name' label='Name' isFloating>
+													<Input
+														placeholder='Name'
+														onChange={formik.handleChange}
+														onBlur={formik.handleBlur}
+														value={formik.values.name}
+														isValid={formik.isValid}
+														isTouched={formik.touched.name}
+														invalidFeedback={formik.errors.name}
+														validFeedback='Looks good!'
+													/>
+												</FormGroup>
+											</div>
+											<div className='col-12'>
+												<FormGroup id='price' label='Price' isFloating>
+													<Input
+														placeholder='Price'
+														onChange={formik.handleChange}
+														onBlur={formik.handleBlur}
+														value={formik.values.price}
+														isValid={formik.isValid}
+														isTouched={formik.touched.price}
+														invalidFeedback={formik.errors.price}
+														validFeedback='Looks good!'
+													/>
+												</FormGroup>
+											</div>
+										</>
+									) : (
+										<>
+											<div className='col-12'>
+												<FormGroup id='name' label='Name' isFloating>
+													<Input
+														placeholder='Name'
+														onChange={formik.handleChange}
+														onBlur={formik.handleBlur}
+														value={formik.values.name}
+														isValid={formik.isValid}
+														isTouched={formik.touched.name}
+														invalidFeedback={formik.errors.name}
+														validFeedback='Looks good!'
+													/>
+												</FormGroup>
+											</div>
+											<div className='col-12'>
+												<FormGroup id='price' label='Price' isFloating>
+													<Input
+														placeholder='Price'
+														onChange={formik.handleChange}
+														onBlur={formik.handleBlur}
+														value={formik.values.price}
+														isValid={formik.isValid}
+														isTouched={formik.touched.price}
+														invalidFeedback={formik.errors.price}
+														validFeedback='Looks good!'
+													/>
+												</FormGroup>
+											</div>
+											<div className='col-12'>
+												<FormGroup id='stock' label='Stock' isFloating>
+													<Input
+														placeholder='Stock'
+														onChange={formik.handleChange}
+														onBlur={formik.handleBlur}
+														value={formik.values.stock}
+														isValid={formik.isValid}
+														isTouched={formik.touched.stock}
+														invalidFeedback={formik.errors.stock}
+														validFeedback='Looks good!'
+													/>
+												</FormGroup>
+											</div>
+											<div className='col-12'>
+												<FormGroup
+													id='category'
+													label='Category'
+													isFloating>
+													<Input
+														placeholder='Category'
+														onChange={formik.handleChange}
+														onBlur={formik.handleBlur}
+														value={formik.values.category}
+														isValid={formik.isValid}
+														isTouched={formik.touched.category}
+														invalidFeedback={formik.errors.category}
+														validFeedback='Looks good!'
+													/>
+												</FormGroup>
+											</div>
+										</>
+									)}
 								</div>
 							</CardBody>
 						</Card>
@@ -899,7 +1307,7 @@ const ProfilPage = () => {
 							Save
 						</Button>
 					</div>
-				</OffCanvas>
+				</OffCanvas> */}
 			</Page>
 		</PageWrapper>
 	);

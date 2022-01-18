@@ -12,3 +12,9 @@
 @import 'utilities/index';
 @import 'node_modules/bootstrap/scss/utilities/api';
 @import 'custom/index';
+
+.highlight-table {
+	background-color: #6880fb;
+	color: white;
+    font-weight: 700;
+}

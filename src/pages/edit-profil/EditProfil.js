@@ -9,6 +9,20 @@ import SubHeader, {
 	SubHeaderRight,
 	SubheaderSeparator,
 } from '../../layout/SubHeader/SubHeader';
+import Modal, {
+	ModalBody,
+	ModalFooter,
+	ModalHeader,
+	ModalTitle,
+} from '../../components/bootstrap/Modal';
+import Pic from '../../assets/img/wanna/richie/richie.png';
+import Pic2 from '../../assets/img/wanna/richie/richie2.png';
+import Pic3 from '../../assets/img/wanna/richie/richie3.png';
+import Pic4 from '../../assets/img/wanna/richie/richie4.png';
+import Pic5 from '../../assets/img/wanna/richie/richie5.png';
+import Pic6 from '../../assets/img/wanna/richie/richie6.png';
+import Pic7 from '../../assets/img/wanna/richie/richie7.png';
+import Pic8 from '../../assets/img/wanna/richie/richie8.png';
 import data from '../../common/data/dummyProductData';
 import Button from '../../components/bootstrap/Button';
 import useSelectTable from '../../hooks/useSelectTable';
@@ -41,7 +55,9 @@ import { getLabel, getUnitType, getViews } from '../../components/extras/calenda
 import CommonMyWallet from '../common/CommonMyWallet';
 import Popovers from '../../components/bootstrap/Popovers';
 import showNotification from '../../components/extras/showNotification';
-import { editPage } from '../../menu';
+import { dashboardMenu, editPage } from '../../menu';
+import classNames from 'classnames';
+import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
 
 const EditProfil = () => {
 	const history = useHistory();
@@ -69,10 +85,11 @@ const EditProfil = () => {
 		ACCOUNT_DETAIL: 'Detail Account',
 		SOCIAL_MEDIA: 'Social Media',
 		SKILL: 'Skill & Industry',
+		PORTO: 'Portofolio',
 		MY_WALLET: 'My Balance & Card',
 	};
 	const [activeTab, setActiveTab] = useState(TABS.ACCOUNT_DETAIL);
-
+	const [modal, setModal] = useState(false);
 	//
 	// Events
 	const [events, setEvents] = useState(eventList);
@@ -113,6 +130,15 @@ const EditProfil = () => {
 			]);
 	};
 
+	const formikPorto = useFormik({
+		initialValues: {
+			creators: '',
+			brand: '',
+			client: '',
+			link: '',
+		},
+	});
+
 	const formikTable = useFormik({
 		initialValues: {
 			minPrice: '',
@@ -130,21 +156,47 @@ const EditProfil = () => {
 		},
 	});
 
-	const filteredData = data.filter(
-		(f) =>
-			// Category
-			f.category === formikTable.values.categoryName &&
-			// Price
-			(formikTable.values.minPrice === '' || f.price > formikTable.values.minPrice) &&
-			(formikTable.values.maxPrice === '' || f.price < formikTable.values.maxPrice) &&
-			//	Company
-			((formikTable.values.companyA ? f.store === 'Company A' : false) ||
-				(formikTable.values.companyB ? f.store === 'Company B' : false) ||
-				(formikTable.values.companyC ? f.store === 'Company C' : false) ||
-				(formikTable.values.companyD ? f.store === 'Company D' : false)),
+	const filteredData = data;
+	function handleDetailPage() {
+		history.push(`${dashboardMenu.gallery.subMenu.detailPortofolio.path}`);
+	}
+	const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'dark'];
+	const images = [
+		{ id: 'Pic', img: Pic },
+		{ id: 'Pic2', img: Pic2 },
+		{ id: 'Pic3', img: Pic3 },
+		{ id: 'Pic4', img: Pic4 },
+		{ id: 'Pic5', img: Pic5 },
+		{ id: 'Pic6', img: Pic6 },
+		{ id: 'Pic7', img: Pic7 },
+		{ id: 'Pic8', img: Pic8 },
+	];
+	const _gallery = (
+		<div className='row g-4'>
+			{images.map((item, index) => (
+				<div key={item.id} className='col-xxl-2 col-lg-3 col-md-6'>
+					<button
+						onClick={handleDetailPage}
+						className={classNames(
+							'ratio ratio-1x1',
+							'rounded-2',
+							'border-0',
+							`bg-l25-${colors[index % 7]}`,
+							`bg-l10-${colors[index % 7]}-hover`,
+						)}>
+						<img
+							src={item.img}
+							alt={item.id}
+							width='100%'
+							height='auto'
+							className='object-fit-contain p-4'
+						/>
+					</button>
+				</div>
+			))}
+		</div>
 	);
-
-	const { selectTable, SelectAllCheck } = useSelectTable(filteredData);
+	// const { selectTable, SelectAllCheck } = useSelectTable(filteredData);
 	const handleChange = (e) => {
 		const newData = { ...dataUser };
 		const newDataSosmed = { ...dataSosmed };
@@ -187,6 +239,10 @@ const EditProfil = () => {
 		}
 	};
 
+	const handleAddPorto = () => {
+		setModal(true);
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		showNotification(
@@ -207,7 +263,7 @@ const EditProfil = () => {
 					<SubheaderSeparator />
 					<Avatar srcSet={User1Webp} src={User1Img} size={32} />
 					<span>
-						<strong>Timothy J. Doe</strong>
+						<strong>Anya Geraldine</strong>
 					</span>
 					<span className='text-muted'>Edit User</span>
 				</SubHeaderLeft>
@@ -254,6 +310,16 @@ const EditProfil = () => {
 											{TABS.SKILL}
 										</Button>
 									</div>
+									<div className='col-12'>
+										<Button
+											icon='Picture'
+											color='info'
+											className='w-100 p-3'
+											isLight={TABS.PORTO !== activeTab}
+											onClick={() => setActiveTab(TABS.PORTO)}>
+											{TABS.PORTO}
+										</Button>
+									</div>
 									<div className='col-12 border-bottom' />
 									<div className='col-12'>
 										<Button
@@ -265,74 +331,8 @@ const EditProfil = () => {
 											{TABS.MY_WALLET}
 										</Button>
 									</div>
-
-									{/* <div className='col-12 shadow-3d-container'>
-										<Card className='bg-l10-primary rounded-2 shadow-3d-primary shadow-3d-hover cursor-pointer'>
-											<CardHeader className='bg-transparent'>
-												<CardLabel>
-													<CardTitle>Coupon</CardTitle>
-												</CardLabel>
-											</CardHeader>
-											<CardBody>
-												<div className='d-flex align-items-center pb-3'>
-													<div className='flex-shrink-0'>
-														<Icon
-															icon='ConfirmationNumber'
-															size='4x'
-															color='primary'
-														/>
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-3 mb-0'>
-															{priceFormat(250)}
-														</div>
-														<div className='text-muted'>
-															You can use it within 15 days.
-														</div>
-													</div>
-												</div>
-											</CardBody>
-										</Card>
-										<Card className='bg-l10-warning rounded-2 shadow-3d-warning shadow-3d-hover cursor-pointer'>
-											<CardHeader className='bg-transparent'>
-												<CardLabel>
-													<CardTitle>CardGiftcard</CardTitle>
-												</CardLabel>
-											</CardHeader>
-											<CardBody>
-												<div className='d-flex align-items-center pb-3'>
-													<div className='flex-shrink-0'>
-														<Icon
-															icon='CardGiftcard'
-															size='4x'
-															color='warning'
-														/>
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-3 mb-0'>
-															{priceFormat(100)}
-														</div>
-														<div className='text-muted'>
-															You can use it within 3 days.
-														</div>
-													</div>
-												</div>
-											</CardBody>
-										</Card>
-									</div> */}
 								</div>
 							</CardBody>
-							{/* <CardFooter>
-								<CardFooterLeft className='w-100'>
-									<Button
-										icon='Delete'
-										color='danger'
-										isLight
-										className='w-100 p-3'>
-										Delete User
-									</Button>
-								</CardFooterLeft>
-							</CardFooter> */}
 						</Card>
 					</div>
 					<div className='col-xxl-10 col-xl-9 col-lg-7'>
@@ -342,6 +342,19 @@ const EditProfil = () => {
 									<CardLabel icon='Contacts' iconColor='info'>
 										<CardTitle>Account Details</CardTitle>
 									</CardLabel>
+									<CardActions>
+										<Dropdown>
+											<DropdownToggle>
+												<Button color='info' icon='FilterAlt' isLight>
+													Tipe Akun
+												</Button>
+											</DropdownToggle>
+											<DropdownMenu isAlignmentEnd size='sm'>
+												<DropdownItem>Single</DropdownItem>
+												<DropdownItem>Manager</DropdownItem>
+											</DropdownMenu>
+										</Dropdown>
+									</CardActions>
 								</CardHeader>
 								<CardBody isScrollable>
 									<Card>
@@ -652,95 +665,59 @@ const EditProfil = () => {
 								</CardFooter>
 							</Card>
 						)}
+
+						{TABS.PORTO === activeTab && (
+							<Card stretch tag='form' noValidate onSubmit={handleSubmit}>
+								<CardHeader>
+									<CardLabel icon='StackedBarChart' iconColor='info'>
+										<CardTitle>{TABS.PORTO}</CardTitle>
+									</CardLabel>
+									<CardActions>
+										<Button onClick={handleAddPorto} color='info' icon='Add'>
+											Tambah
+										</Button>
+									</CardActions>
+								</CardHeader>
+								<CardBody className='pb-0' isScrollable>
+									{_gallery}
+								</CardBody>
+								<CardFooter className='d-flex flex-row'>
+									<div>
+										<Button
+											color='info'
+											isLink
+											type='reset'
+											onClick={() => handleReset('skill')}>
+											Reset
+										</Button>
+									</div>
+									<div>
+										<Button type='submit' icon='Save' color='info'>
+											Save
+										</Button>
+									</div>
+								</CardFooter>
+							</Card>
+						)}
+
 						{TABS.MY_WALLET === activeTab && <CommonMyWallet />}
 					</div>
 					<div className='col-12'>
 						<Card stretch>
 							<CardHeader>
 								<CardLabel icon='RateReview' iconColor='info'>
-									<CardTitle>
-										Rate Card
-										<small className='ms-2'>
-											Item:{' '}
-											{selectTable.values.selectedList.length
-												? `${selectTable.values.selectedList.length} / `
-												: null}
-											{filteredData.length}
-										</small>
-									</CardTitle>
+									<CardTitle>Rate Card</CardTitle>
 								</CardLabel>
-								<CardActions>
-									<Dropdown isButtonGroup>
-										<Popovers
-											desc={
-												<DatePicker
-													onChange={(item) => setDate(item)}
-													date={date}
-													color={process.env.REACT_APP_PRIMARY_COLOR}
-												/>
-											}
-											placement='bottom-end'
-											className='mw-100'
-											trigger='click'>
-											<Button color='success' isLight icon='WaterfallChart'>
-												{moment(date).format('MMM Do')}
-											</Button>
-										</Popovers>
-										<DropdownToggle>
-											<Button color='success' isLight />
-										</DropdownToggle>
-										<DropdownMenu isAlignmentEnd>
-											<DropdownItem>
-												<span>Last Hour</span>
-											</DropdownItem>
-											<DropdownItem>
-												<span>Last Day</span>
-											</DropdownItem>
-											<DropdownItem>
-												<span>Last Week</span>
-											</DropdownItem>
-											<DropdownItem>
-												<span>Last Month</span>
-											</DropdownItem>
-										</DropdownMenu>
-									</Dropdown>
-									<Button
-										color='info'
-										icon='CloudDownload'
-										isLight
-										tag='a'
-										to='/somefile.txt'
-										target='_blank'
-										download>
-										Export
-									</Button>
-									<Dropdown className='d-inline'>
-										<DropdownToggle hasIcon={false}>
-											<Button color='light' icon='MoreHoriz' />
-										</DropdownToggle>
-										<DropdownMenu isAlignmentEnd>
-											<DropdownItem>
-												<Button icon='Edit'>Edit</Button>
-											</DropdownItem>
-											<DropdownItem>
-												<Button icon='Delete'>Delete</Button>
-											</DropdownItem>
-										</DropdownMenu>
-									</Dropdown>
-								</CardActions>
 							</CardHeader>
 							<CardBody className='table-responsive' isScrollable>
 								<table className='table table-modern table-hover'>
 									<thead>
 										<tr>
-											<th scope='col'>{SelectAllCheck}</th>
+											{/* <th scope='col'>{SelectAllCheck}</th> */}
 											<th scope='col'>#</th>
-											<th scope='col'>Image</th>
-											<th scope='col'>Name</th>
-											<th scope='col'>Sales</th>
-											<th scope='col'>Stock</th>
-											<th scope='col'>Price</th>
-											<th scope='col'>Store</th>
+											<th scope='col'>Nama Paket</th>
+											<th scope='col'>Harga Paket</th>
+											<th scope='col'>Benefit</th>
 											<th scope='col' className='text-end'>
 												Actions
 											</th>
@@ -753,24 +730,83 @@ const EditProfil = () => {
 												// eslint-disable-next-line react/jsx-props-no-spreading
 												{...i}
 												selectName='selectedList'
-												selectOnChange={selectTable.handleChange}
-												selectChecked={selectTable.values.selectedList.includes(
-													i.id.toString(),
-												)}
+												// selectOnChange={selectTable.handleChange}
+												// selectChecked={selectTable.values.selectedList.includes(
+												// 	i.id.toString(),
+												// )}
 											/>
 										))}
 									</tbody>
 								</table>
 							</CardBody>
-							<CardFooter className='justify-content-center'>
+							{/* <CardFooter className='justify-content-center'>
 								<Button color='dark' className='px-5 py-3'>
 									Load More
 								</Button>
-							</CardFooter>
+							</CardFooter> */}
 						</Card>
 					</div>
 				</div>
 			</Page>
+			<Modal
+				setIsOpen={setModal}
+				isOpen={modal}
+				titleId='upcomingEdit'
+				isCentered
+				isScrollable
+				size='lg'>
+				<ModalHeader setIsOpen={setModal}>
+					<OffCanvasTitle id='upcomingEdit'>Tambahkan Portofolio</OffCanvasTitle>
+				</ModalHeader>
+				<ModalBody>
+					<div className='row g-4'>
+						<div className='col-5'>
+							<Input type='file' autoComplete='photo' />
+						</div>
+						<div className='col-12'>
+							<FormGroup id='namapekarya' label='Nama Pekarya' isFloating>
+								<Input
+									placeholder='Mention Pekarya'
+									onChange={formikPorto.handleChange}
+									value={formikPorto.values.creators}
+								/>
+							</FormGroup>
+						</div>
+						<div className='col-12'>
+							<FormGroup id='namabrand' label='Nama Brand' isFloating>
+								<Input
+									placeholder='Nama Brand'
+									onChange={formikPorto.handleChange}
+									value={formikPorto.values.brand}
+								/>
+							</FormGroup>
+						</div>
+						<div className='col-12'>
+							<FormGroup id='namaklien' label='Nama Klien' isFloating>
+								<Input
+									placeholder='Nama Klien'
+									onChange={formikPorto.handleChange}
+									value={formikPorto.values.client}
+								/>
+							</FormGroup>
+						</div>
+						<div className='col-12'>
+							<FormGroup id='linktoko' label='Link Toko' isFloating>
+								<Input
+									placeholder='Link Toko Anda'
+									onChange={formikPorto.handleChange}
+									value={formikPorto.values.link}
+								/>
+							</FormGroup>
+						</div>
+					</div>
+				</ModalBody>
+				<ModalFooter className='bg-transparent'>
+					<Button icon='Save' color='info' onClick={() => setModal(false)}>
+						Save
+					</Button>
+				</ModalFooter>
+			</Modal>
 		</PageWrapper>
 	);
 };

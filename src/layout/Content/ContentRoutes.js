@@ -8,6 +8,7 @@ const LANDING = {
 	EDITPROFIL: lazy(() => import('../../pages/edit-profil/EditProfil')),
 	PROFIL: lazy(() => import('../../pages/profil/ProfilPage')),
 	PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/PremiumContent')),
+	DETAIL_PORTOFOLIO: lazy(() => import('../../pages/portofolio/DetailPortofolio')),
 	GALLERY_PREMIUM: lazy(() => import('../../pages/gallery-content/GalleryContent')),
 	GALLERY_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/GalleryBootcamp')),
 	GALLERY_UMKM: lazy(() => import('../../pages/gallery-umkm/GalleryUmkm')),
@@ -140,6 +141,11 @@ const ContentRoutes = () => {
 				exact
 				path={dashboardMenu.premiumContent.path}
 				component={LANDING.PREMIUM_CONTENT}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.gallery.subMenu.detailPortofolio.path}
+				component={LANDING.DETAIL_PORTOFOLIO}
 			/>
 			<Route
 				exact

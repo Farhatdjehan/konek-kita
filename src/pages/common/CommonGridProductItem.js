@@ -44,7 +44,6 @@ const CommonGridProductItem = ({
 }) => {
 	const address = useLocation();
 	const addressURL = address.pathname.split('/');
-	console.log(addressURL);
 	const dummyOptions = {
 		colors: [color],
 		chart: {

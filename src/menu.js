@@ -83,6 +83,12 @@ export const dashboardMenu = {
 				path: '/gallery/gallery-bootcamp/detail',
 				hide: true,
 			},
+			detailPortofolio: {
+				id: 'detailPortofolio',
+				text: 'Detail Portofolio',
+				path: '/portofolio/detail',
+				hide: true,
+			},
 		},
 	},
 	worklist: {
@@ -161,6 +167,7 @@ export const dashboardMenu = {
 			},
 		},
 	},
+
 	detailProgram: {
 		id: 'detailProgram',
 		text: 'Detail Program',
