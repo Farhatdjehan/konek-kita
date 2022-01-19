@@ -707,7 +707,10 @@ const ProfilPage = () => {
 											shadow='sm'>
 											<CardHeader className='bg-transparent'>
 												<CardLabel>
-													<CardTitle tag='h4' className='h5'>
+													<CardTitle
+														className='d-flex flex-column'
+														tag='h4'
+														className='h5'>
 														<Icon
 															className='me-2'
 															icon='Chat'
@@ -717,6 +720,8 @@ const ProfilPage = () => {
 														Fitur Chat
 													</CardTitle>
 												</CardLabel>
+
+												<Badge>Soon</Badge>
 											</CardHeader>
 											<CardBody className='pt-0'>
 												<div className='d-flex align-items-center pb-3'>
@@ -727,7 +732,10 @@ const ProfilPage = () => {
 															secara langsung! Yuk mulai chat-nya.
 														</div>
 														<div className='text-end'>
-															<Button icon='Edit' color='info'>
+															<Button
+																icon='Edit'
+																color='info'
+																isDisabled>
 																Mulai Chat
 															</Button>
 														</div>
@@ -982,7 +990,7 @@ const ProfilPage = () => {
 											<tr>
 												<th>Ranking</th>
 												<th>Nama</th>
-												<th>Bidang</th>
+												<th>Role</th>
 												<th>Badge</th>
 											</tr>
 										</thead>
@@ -1088,7 +1096,11 @@ const ProfilPage = () => {
 							</div>
 
 							<div className='col-12'>
-								<FormGroup id='hargapaket' label='Harga Paket' isFloating>
+								<FormGroup
+									id='hargapaket'
+									label='Harga Paket'
+									isFloating
+									formText='Harga paket yang sudah memiliki subscription tidak dapat diubah'>
 									<Input
 										placeholder='Harga Paket'
 										onChange={formik.handleChange}

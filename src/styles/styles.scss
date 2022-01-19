@@ -16,6 +16,10 @@
 .highlight-table {
 	background-color: #6880fb;
 	color: white;
-    font-weight: 700;
-    height: 60px;
+	font-weight: 700;
+	height: 60px;
+}
+.wrapping-alert {
+	display: flex;
+	flex-flow: nowrap;
 }

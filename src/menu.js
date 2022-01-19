@@ -91,6 +91,12 @@ export const dashboardMenu = {
 			},
 		},
 	},
+	mybadge: {
+		id: 'mybadge',
+		text: 'Badge Saya',
+		path: '/my-badge',
+		icon: 'Badge',
+	},
 	worklist: {
 		id: 'worklist',
 		text: 'Work List',

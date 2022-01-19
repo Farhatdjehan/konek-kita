@@ -8,6 +8,7 @@ const LANDING = {
 	EDITPROFIL: lazy(() => import('../../pages/edit-profil/EditProfil')),
 	PROFIL: lazy(() => import('../../pages/profil/ProfilPage')),
 	PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/PremiumContent')),
+	MY_BADGE: lazy(() => import('../../pages/my-badge/MyBadge')),
 	DETAIL_PORTOFOLIO: lazy(() => import('../../pages/portofolio/DetailPortofolio')),
 	GALLERY_PREMIUM: lazy(() => import('../../pages/gallery-content/GalleryContent')),
 	GALLERY_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/GalleryBootcamp')),
@@ -54,6 +55,7 @@ const ContentRoutes = () => {
 				path={dashboardMenu.collaboration.subMenu.reqCollabsList.path}
 				component={LANDING.REQUEST_COLLABS}
 			/>
+
 			<Route
 				exact
 				path={dashboardMenu.collaboration.subMenu.openCollaboration.path}
@@ -64,6 +66,7 @@ const ContentRoutes = () => {
 				path={dashboardMenu.collaboration.subMenu.collabsList.path}
 				component={LANDING.COLLABS_LIST}
 			/>
+			<Route exact path={dashboardMenu.mybadge.path} component={LANDING.MY_BADGE} />
 			<Route
 				exact
 				path={`${dashboardMenu.worklist.subMenu.detailProgram.path}/:id`}
