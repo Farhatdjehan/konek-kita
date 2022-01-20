@@ -100,7 +100,7 @@ const CommonGridProductItem = ({
 							</div>
 						)}
 
-						{addressURL[1] === 'gallery-umkm'
+						{addressURL[1] === 'umkm'
 							? null
 							: price && (
 									<Badge color='success' isLight className='ms-2'>
@@ -108,12 +108,12 @@ const CommonGridProductItem = ({
 									</Badge>
 							  )}
 					</CardTitle>
-					{addressURL[1] === 'gallery-umkm' ? null : (
+					{addressURL[1] === 'umkm' ? null : (
 						<CardSubTitle className='truncate-line-1'>{category}</CardSubTitle>
 					)}
 				</CardLabel>
 				<CardActions>
-					{addressURL[1] === 'gallery-umkm' ? null : (
+					{addressURL[1] === 'umkm' ? null : (
 						<Dropdown>
 							<DropdownToggle hasIcon={false}>
 								<Button icon='MoreHoriz' color='light' shadow='default' />

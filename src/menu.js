@@ -80,6 +80,26 @@ export const dashboardMenu = {
 			},
 		},
 	},
+	umkm: {
+		id: 'umkm',
+		text: 'UMKM',
+		path: '/umkm/',
+		icon: 'CalendarViewMonth',
+		subMenu: {
+			programGallery: {
+				id: 'programGallery',
+				text: 'Gallery Program UMKM',
+				path: '/umkm/gallery-program',
+				icon: 'CalendarViewMonth',
+			},
+			umkmProgram: {
+				id: 'umkmProgram',
+				text: 'Program UMKM',
+				path: '/umkm/program',
+				icon: 'CalendarViewMonth',
+			},
+		},
+	},
 	gallery: {
 		id: 'gallery',
 		text: 'Gallery',
@@ -98,12 +118,7 @@ export const dashboardMenu = {
 				path: '/gallery/gallery-bootcamp',
 				icon: 'SettingsApplications',
 			},
-			galleryUmkm: {
-				id: 'galleryUmkm',
-				text: 'Gallery UMKM Program',
-				path: '/gallery-umkm',
-				icon: 'CalendarViewMonth',
-			},
+
 			detailProgramContent: {
 				id: 'detailProgramContent',
 				text: 'Detail Program Content',

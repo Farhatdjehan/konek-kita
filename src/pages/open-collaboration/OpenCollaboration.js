@@ -16,14 +16,19 @@ import FormGroup from '../../components/bootstrap/forms/FormGroup';
 import Input from '../../components/bootstrap/forms/Input';
 import USERS from '../../common/data/userDummyData';
 import moment from 'moment';
-import { Textarea } from '../../components/icon/bootstrap';
-import Checks from '../../components/bootstrap/forms/Checks';
+import { Check, Textarea } from '../../components/icon/bootstrap';
+import Checks, { ChecksGroup } from '../../components/bootstrap/forms/Checks';
 import Popovers from '../../components/bootstrap/Popovers';
 import Icon from '../../components/icon/Icon';
 import Avatar from '../../components/Avatar';
 
 import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
 import UserImage3 from '../../assets/img/wanna/wanna3.png';
+import Dropdown, {
+	DropdownItem,
+	DropdownMenu,
+	DropdownToggle,
+} from '../../components/bootstrap/Dropdown';
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
@@ -69,6 +74,7 @@ const Item = ({ id, image, title, description, tags, color }) => {
 
 const OpenCollaboration = () => {
 	const [filterableData, setFilterableData] = useState(data);
+	const [collabsType, setCollabsType] = useState('direct');
 	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false);
 	const searchAndFilterData = (searchValue, category) => {
 		let tempData = data;
@@ -114,27 +120,25 @@ const OpenCollaboration = () => {
 		}
 	};
 
-	const formik = useFormik({
-		initialValues: {
-			search: '',
-			category: '',
-		},
-		onSubmit: onFormSubmit,
-		onReset: () => setFilterableData(data),
-	});
+	// const formik = useFormik({
+	// 	initialValues: {
+	// 		search: '',
+	// 		category: '',
+	// 	},
+	// 	onSubmit: onFormSubmit,
+	// 	onReset: () => setFilterableData(data),
+	// });
 	const handleUpcomingEdit = () => {
 		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
 	};
-	const formikAdd = useFormik({
+	const formik = useFormik({
 		initialValues: {
-			customerName: 'Alison Berry',
-			service: 'Exercise Bike',
-			// employee: `${USERS.GRACE.name} ${USERS.GRACE.surname}`,
-			location: 'Maryland',
-			date: moment().add(1, 'days').format('YYYY-MM-DD'),
-			time: '10:30',
-			note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nisi odio. Nam sit amet pharetra enim. Nulla facilisi. Nunc dictum felis id massa mattis pretium. Mauris at blandit orci. Nunc vulputate vulputate turpis vitae cursus. In sit amet turpis tincidunt, interdum ex vitae, sollicitudin massa. Maecenas eget dui molestie, ullamcorper ante vel, tincidunt nisi. Donec vitae pulvinar risus. In ultricies nisl ac massa malesuada, vel tempus neque placerat.',
-			notify: true,
+			mention: '',
+			offer: '',
+			start_date: moment().add(1, 'days').format('YYYY-MM-DD'),
+			end_date: moment().add(7, 'days').format('YYYY-MM-DD'),
+			link_ref: '',
+			desc: '',
 		},
 	});
 	return (
@@ -231,116 +235,374 @@ const OpenCollaboration = () => {
 					isScrollable
 					size='lg'>
 					<ModalHeader setIsOpen={setUpcomingEventsEditOffcanvas}>
-						<OffCanvasTitle id='upcomingEdit'>Edit Appointments</OffCanvasTitle>
+						<OffCanvasTitle id='upcomingEdit' className='me-3'>
+							Open Collaboration
+						</OffCanvasTitle>
+						<Dropdown>
+							<DropdownToggle hasIcon={false}>
+								<Button color='light' shadow='default'>
+									{' '}
+									Collabs : {collabsType}
+								</Button>
+							</DropdownToggle>
+							<DropdownMenu isAlignmentEnd>
+								<DropdownItem>
+									<Button onClick={() => setCollabsType('direct')}>Direct</Button>
+								</DropdownItem>
+								<DropdownItem isDivider />
+								<DropdownItem>
+									<Button onClick={() => setCollabsType('umum')}>Umum</Button>
+								</DropdownItem>
+							</DropdownMenu>
+						</Dropdown>
 					</ModalHeader>
-					<ModalBody>
-						<div className='row g-4'>
-							<div className='col-12'>
-								<FormGroup id='customerName' label='Customer' isFloating>
-									<Input
-										placeholder='Customer'
-										onChange={formikAdd.handleChange}
-										value={formikAdd.values.customerName}
-									/>
-								</FormGroup>
-							</div>
-							<div className='col-12'>
-								<FormGroup id='service' label='Service' isFloating>
-									<Input
-										placeholder='Service'
-										onChange={formikAdd.handleChange}
-										value={formikAdd.values.service}
-									/>
-								</FormGroup>
-							</div>
 
-							<div className='col-12'>
-								<FormGroup id='location' label='Location' isFloating>
-									<Input
-										placeholder='Location'
-										onChange={formikAdd.handleChange}
-										value={formikAdd.values.location}
-									/>
-								</FormGroup>
+					<ModalBody>
+						{collabsType === 'direct' ? (
+							<div className='row g-4'>
+								<div className='col-12'>
+									<FormGroup id='mention' label='Customer'>
+										<Input
+											placeholder='Customer'
+											onChange={formik.handleChange}
+											value={formik.values.mention}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='file' label='Brief Kerja'>
+										<Input
+											type='file'
+											autoComplete='photo'
+											// value={formik.values.file}
+										/>
+									</FormGroup>
+								</div>
+
+								<div className='col-12'>
+									<FormGroup id='link' label='Location'>
+										<Input
+											placeholder='Location'
+											onChange={formik.handleChange}
+											value={formik.values.link}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-6'>
+									<FormGroup id='start_date' label='Date'>
+										<Input
+											placeholder='Date'
+											onChange={formik.handleChange}
+											value={formik.values.start_date}
+											type='date'
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-6'>
+									<FormGroup id='end_date' label='Date'>
+										<Input
+											placeholder='Date'
+											onChange={formik.handleChange}
+											value={formik.values.end_date}
+											type='date'
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<Card isCompact className='mb-0'>
+										<CardHeader>
+											<CardLabel>
+												<CardTitle>Deskripsi</CardTitle>
+											</CardLabel>
+										</CardHeader>
+										<CardBody>
+											<FormGroup id='desc' label='Deskripsi' isFloating>
+												<Textarea
+													rows={8}
+													placeholder='desc'
+													onChange={formik.handleChange}
+													value={formik.values.desc}
+												/>
+											</FormGroup>
+										</CardBody>
+									</Card>
+								</div>
 							</div>
-							<div className='col-6'>
-								<FormGroup id='date' label='Date' isFloating>
-									<Input
-										placeholder='Date'
-										onChange={formikAdd.handleChange}
-										value={formikAdd.values.date}
-										type='date'
-									/>
-								</FormGroup>
+						) : (
+							<div className='row g-4'>
+								<div className='col-12'>
+									<FormGroup id='title' label='Judul'>
+										<Input
+											placeholder='Judul Kolaborasi'
+											// onChange={formik.handleChange}
+											// value={formik.values.mention}
+										/>
+									</FormGroup>
+								</div>
+
+								<div className='col-6'>
+									<FormGroup id='file' label='Brief Kerja'>
+										<Input
+											type='file'
+											autoComplete='photo'
+											// value={formik.values.file}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='link' label='Location'>
+										<Input
+											placeholder='Location'
+											onChange={formik.handleChange}
+											value={formik.values.link}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='tipekonten' label='Negara' className='mb-3'>
+										<Select
+											id='example'
+											onChange={formik.handleChange}
+											list={[
+												{
+													text: 'Photo',
+													value: 1,
+												},
+												{
+													text: 'Live Session',
+													value: 2,
+												},
+												{
+													text: 'Video',
+													value: 3,
+												},
+												{
+													text: 'Sound',
+													value: 3,
+												},
+											]}
+											value={formik.values.tipekonten}></Select>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='tipekonten' label='Negara' className='mb-3'>
+										<Select
+											id='example'
+											onChange={formik.handleChange}
+											list={[
+												{
+													text: 'Photo',
+													value: 1,
+												},
+												{
+													text: 'Live Session',
+													value: 2,
+												},
+												{
+													text: 'Video',
+													value: 3,
+												},
+												{
+													text: 'Sound',
+													value: 3,
+												},
+											]}
+											value={formik.values.tipekonten}></Select>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='tipekonten' label='Provinsi' className='mb-3'>
+										<Select
+											id='example'
+											onChange={formik.handleChange}
+											list={[
+												{
+													text: 'Photo',
+													value: 1,
+												},
+												{
+													text: 'Live Session',
+													value: 2,
+												},
+												{
+													text: 'Video',
+													value: 3,
+												},
+												{
+													text: 'Sound',
+													value: 3,
+												},
+											]}
+											value={formik.values.tipekonten}></Select>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='tipekonten' label='Provinsi' className='mb-3'>
+										<Select
+											id='example'
+											onChange={formik.handleChange}
+											list={[
+												{
+													text: 'Photo',
+													value: 1,
+												},
+												{
+													text: 'Live Session',
+													value: 2,
+												},
+												{
+													text: 'Video',
+													value: 3,
+												},
+												{
+													text: 'Sound',
+													value: 3,
+												},
+											]}
+											value={formik.values.tipekonten}></Select>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='tipekonten' label='Kota' className='mb-3'>
+										<Select
+											id='example'
+											onChange={formik.handleChange}
+											list={[
+												{
+													text: 'Photo',
+													value: 1,
+												},
+												{
+													text: 'Live Session',
+													value: 2,
+												},
+												{
+													text: 'Video',
+													value: 3,
+												},
+												{
+													text: 'Sound',
+													value: 3,
+												},
+											]}
+											value={formik.values.tipekonten}></Select>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup
+										id='tipekonten'
+										label='Skill yang Dibutuhkan'
+										className='mb-3'>
+										<ChecksGroup isInline>
+											<Checks id='checksOne' label='One (inline)' />
+											<Checks id='checksTwo' label='Two (inline)' />
+											<Checks id='checksThree' label='Three' />
+										</ChecksGroup>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup
+										id='tipekonten'
+										label='Media Promosi'
+										className='mb-3'>
+										<ChecksGroup isInline>
+											<Checks id='checksOne' label='One (inline)' />
+											<Checks id='checksTwo' label='Two (inline)' />
+											<Checks id='checksThree' label='Three' />
+										</ChecksGroup>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='tipekonten' label='Ranking' className='mb-3'>
+										<Select
+											id='example'
+											onChange={formik.handleChange}
+											list={[
+												{
+													text: 'Photo',
+													value: 1,
+												},
+												{
+													text: 'Live Session',
+													value: 2,
+												},
+												{
+													text: 'Video',
+													value: 3,
+												},
+												{
+													text: 'Sound',
+													value: 3,
+												},
+											]}
+											value={formik.values.tipekonten}></Select>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='link' label='Location'>
+										<Input
+											placeholder='Location'
+											onChange={formik.handleChange}
+											value={formik.values.link}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-6'>
+									<FormGroup id='start_date' label='Date'>
+										<Input
+											placeholder='Date'
+											onChange={formik.handleChange}
+											value={formik.values.start_date}
+											type='date'
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-6'>
+									<FormGroup id='end_date' label='Date'>
+										<Input
+											placeholder='Date'
+											onChange={formik.handleChange}
+											value={formik.values.end_date}
+											type='date'
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='love' label='Badge Love'>
+										<Input
+											type='number'
+											placeholder='Badge Love'
+											// onChange={formik.handleChange}
+											// value={formik.values.mention}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<Card isCompact className='mb-0'>
+										<CardHeader>
+											<CardLabel>
+												<CardTitle>Deskripsi</CardTitle>
+											</CardLabel>
+										</CardHeader>
+										<CardBody>
+											<FormGroup id='desc' label='Deskripsi' isFloating>
+												<Textarea
+													rows={8}
+													placeholder='desc'
+													onChange={formik.handleChange}
+													value={formik.values.desc}
+												/>
+											</FormGroup>
+										</CardBody>
+									</Card>
+								</div>
 							</div>
-							<div className='col-6'>
-								<FormGroup id='time' label='Time' isFloating>
-									<Input
-										placeholder='Time'
-										onChange={formikAdd.handleChange}
-										value={formikAdd.values.time}
-										type='time'
-									/>
-								</FormGroup>
-							</div>
-							<div className='col-12'>
-								<Card isCompact className='mb-0'>
-									<CardHeader>
-										<CardLabel>
-											<CardTitle>Extras</CardTitle>
-										</CardLabel>
-									</CardHeader>
-									<CardBody>
-										<FormGroup id='note' label='Note' isFloating>
-											<Textarea
-												rows={8}
-												placeholder='note'
-												onChange={formikAdd.handleChange}
-												value={formikAdd.values.note}
-											/>
-										</FormGroup>
-									</CardBody>
-								</Card>
-							</div>
-							<div className='col-12'>
-								<Card isCompact className='mb-0'>
-									<CardHeader>
-										<CardLabel>
-											<CardTitle>Notification</CardTitle>
-										</CardLabel>
-									</CardHeader>
-									<CardBody>
-										<FormGroup>
-											<Checks
-												id='notify'
-												type='switch'
-												label={
-													<>
-														Notify the Customer
-														<Popovers
-															trigger='hover'
-															desc='Check this checkbox if you want your customer to receive an email about the scheduled appointment'>
-															<Icon
-																icon='Help'
-																size='lg'
-																className='ms-1 cursor-help'
-															/>
-														</Popovers>
-													</>
-												}
-												onChange={formikAdd.handleChange}
-												checked={formikAdd.values.notify}
-											/>
-										</FormGroup>
-									</CardBody>
-								</Card>
-							</div>
-						</div>
+						)}
 					</ModalBody>
 					<ModalFooter className='bg-transparent'>
 						<Button
 							color='info'
-							className='w-100'
+							icon='Save'
 							onClick={() => setUpcomingEventsEditOffcanvas(false)}>
 							Save
 						</Button>

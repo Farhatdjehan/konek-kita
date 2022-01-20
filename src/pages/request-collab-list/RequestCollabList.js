@@ -7,7 +7,7 @@ import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
-import data, { CATEGORIES } from './helper/dummyKnowledgeData';
+import data, { CATEGORIES } from './helper/dummyRequestCollabData';
 import { dashboardMenu, menuSidebar } from '../../menu';
 import Button from '../../components/bootstrap/Button';
 import Avatar from '../../components/Avatar';
@@ -34,6 +34,7 @@ const Item = ({ id, image, title, description, user, tags, color }) => {
 						'rounded-2',
 						`bg-l10-${color}`,
 						'mb-3',
+						'position-relative',
 					)}>
 					<img
 						src={image}
@@ -42,6 +43,9 @@ const Item = ({ id, image, title, description, user, tags, color }) => {
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
+					<Badge color='success' className='position-absolute h-auto w-auto'>
+						Cocok
+					</Badge>
 				</div>
 				<CardTitle>{title}</CardTitle>
 				<p className='text-muted truncate-line-2'>{description}</p>
@@ -67,7 +71,16 @@ const Item = ({ id, image, title, description, user, tags, color }) => {
 					{user}
 					<Icon className='ms-2' color='info' icon='Verified' />
 				</span>
+				<div className='mt-2'>
+					<Badge color='danger' className='me-2'>
+						Public Relation
+					</Badge>
+					<Badge color='info'>Entertainer</Badge>
+				</div>
+
 				<div className='mt-4 d-flex justify-content-between'>
+					{/* {CATEGORIES} */}
+
 					<Button icon='Close' color='danger'>
 						Decline
 					</Button>
@@ -94,10 +107,9 @@ const RequestCollabList = () => {
 		return tempData.filter((item) => {
 			return (
 				item.title.toLowerCase().includes(searchValue) ||
-				item.description.toLowerCase().includes(searchValue) ||
-				item.content.toLowerCase().includes(searchValue) ||
-				item.categories.find((categ) => categ.text.toLowerCase().includes(searchValue)) ||
-				item.tags.find((tag) => tag.text.toLowerCase().includes(searchValue))
+				// item.description.toLowerCase().includes(searchValue) ||
+				// item.content.toLowerCase().includes(searchValue) ||
+				item.categories.find((categ) => categ.text.toLowerCase().includes(searchValue))
 			);
 		});
 	};

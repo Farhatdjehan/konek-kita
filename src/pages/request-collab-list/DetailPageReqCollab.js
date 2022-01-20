@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import data from './helper/dummyKnowledgeData';
+import data from './helper/dummyRequestCollabData';
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
@@ -15,12 +15,15 @@ import Badge from '../../components/bootstrap/Badge';
 import USERS from '../../common/data/userDummyData';
 import Icon from '../../components/icon/Icon';
 
+import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
+import UserImage3 from '../../assets/img/wanna/wanna3.png';
+
 const DetailPageReqCollab = () => {
 	const { id } = useParams();
 	const history = useHistory();
 	const itemData = data.filter((item) => item.id.toString() === id.toString());
 	const item = itemData[0];
-
+	console.log(item);
 	return (
 		<PageWrapper title={item.title}>
 			<SubHeader>
@@ -28,6 +31,9 @@ const DetailPageReqCollab = () => {
 					<Button color='info' isLink icon='ArrowBack' onClick={() => history.goBack()}>
 						Back to List
 					</Button>
+					<SubheaderSeparator />
+					<Badge>Public Relation</Badge>
+					<Badge color='success'>Entertainer</Badge>
 				</SubHeaderLeft>
 				<SubHeaderRight>
 					<Button icon='Close' color='danger'>
@@ -49,6 +55,7 @@ const DetailPageReqCollab = () => {
 								'rounded-2',
 								`bg-l10-${item.color}`,
 								'mb-3',
+								'position-relative',
 							)}>
 							<img
 								src={item.image}
@@ -57,6 +64,29 @@ const DetailPageReqCollab = () => {
 								height='auto'
 								className='object-fit-contain p-5'
 							/>
+							<Badge
+								className='position-absolute h-auto w-auto px-5 py-3'
+								color='success'>
+								Cocok
+							</Badge>
+						</div>
+					</div>
+					<div className='col-12'>
+						<div>
+							<h6>Pembuat</h6>
+							<Avatar
+								srcSet={UserImageWebp3}
+								src={UserImage3}
+								size={28}
+								border={2}
+								className='me-2'
+							/>
+							<span>
+								<Link to='#'>
+									{item.user}
+									<Icon className='ms-2' color='info' icon='Verified' />
+								</Link>
+							</span>
 						</div>
 					</div>
 					<div className='col-12'>
@@ -67,10 +97,9 @@ const DetailPageReqCollab = () => {
 						<h6>
 							Brief : <a href='#'>www.download.com</a>
 						</h6>
+						<h6>Date : 12/12/2021 - 18/12/2021</h6>
 					</div>
-					<div className='col-12'>
-						<h3 className='text-muted'>{item.description}</h3>
-					</div>
+
 					<div className='col-12'>{item.content || null}</div>
 				</div>
 			</Page>

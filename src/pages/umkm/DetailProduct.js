@@ -80,7 +80,7 @@ const DetailProduct = () => {
 						</div>
 					</div>
 					<div className='col-12'>
-						<p>
+						<p className='mb-1'>
 							Imbal Badge :{' '}
 							<Badge color='danger' className='me-2'>
 								Love
@@ -89,7 +89,7 @@ const DetailProduct = () => {
 								Work
 							</Badge>
 						</p>
-						<p>
+						<p className='mb-1'>
 							Sosial Media :{' '}
 							<Badge color='info' className='me-2'>
 								Tiktok
@@ -98,9 +98,11 @@ const DetailProduct = () => {
 								Instagram
 							</Badge>
 						</p>
-						<p>Waktu : 12/12/2021</p>
+						<p className='mb-1'>Waktu : 12/12/2021</p>
 					</div>
-					<div className='col-12'>{item.desc}</div>
+					<div className='col-12'>
+						<h4>{item.desc}</h4>
+					</div>
 				</div>
 			</Page>
 		</PageWrapper>

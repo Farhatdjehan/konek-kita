@@ -15,7 +15,7 @@ const dataUmkm = [
 	{
 		id: 1,
 		image: BeveledCone,
-		title: 'Membangun Negeri dengan Langkah Sukses',
+		name: 'Membangun Negeri dengan Langkah Sukses',
 		desc:
 			'Kali ini, Kementrian Pariwisata ingin melaksanakan acara terakbar di tahun 2022 ini!',
 		series: [

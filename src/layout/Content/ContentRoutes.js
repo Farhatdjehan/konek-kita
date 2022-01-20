@@ -14,8 +14,9 @@ const LANDING = {
 	DETAIL_PORTOFOLIO: lazy(() => import('../../pages/portofolio/DetailPortofolio')),
 	GALLERY_PREMIUM: lazy(() => import('../../pages/gallery-content/GalleryContent')),
 	GALLERY_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/GalleryBootcamp')),
-	GALLERY_UMKM: lazy(() => import('../../pages/gallery-umkm/GalleryUmkm')),
-	DETAIL_PRODUCT: lazy(() => import('../../pages/gallery-umkm/DetailProduct')),
+	PROGRAM_GALLERY: lazy(() => import('../../pages/umkm/ProgramGallery')),
+	UMKM_PROGRAM: lazy(() => import('../../pages/umkm/UmkmProgram')),
+	DETAIL_PRODUCT: lazy(() => import('../../pages/umkm/DetailProduct')),
 	OPEN_WORK_LIST: lazy(() => import('../../pages/open-work-list/OpenWorkList')),
 	SEND_BADGE: lazy(() => import('../../pages/send-badge/SendBadgePage')),
 	SEND_BADGE_DETAIL: lazy(() => import('../../pages/send-badge/HistorySendBadge')),
@@ -122,13 +123,18 @@ const ContentRoutes = () => {
 			<Route exact path={editPage.editProfil.path} component={LANDING.EDITPROFIL} />
 			<Route
 				exact
-				path={dashboardMenu.gallery.subMenu.galleryUmkm.path}
-				component={LANDING.GALLERY_UMKM}
+				path={dashboardMenu.umkm.subMenu.programGallery.path}
+				component={LANDING.PROGRAM_GALLERY}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.umkm.subMenu.umkmProgram.path}
+				component={LANDING.PROGRAM_GALLERY}
 			/>
 			<Route
 				exact
 				path={`${dashboardMenu.detailProduct.path}/:id`}
-				component={LANDING.DETAIL_PRODUCT}
+				component={LANDING.UMKM_PROGRAM}
 			/>
 			<Route
 				exact

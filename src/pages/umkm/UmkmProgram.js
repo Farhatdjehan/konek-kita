@@ -105,11 +105,11 @@ const GalleryUmkm = () => {
 	}, [editItem]);
 
 	return (
-		<PageWrapper title={dashboardMenu.gallery.subMenu.galleryUmkm.text}>
+		<PageWrapper title={dashboardMenu.umkm.subMenu.programGallery.text}>
 			<Page>
 				<div className='d-flex justify-content-between'>
-					<div className='display-4 fw-bold pt-3 pb-5'>Gallery Program UMKM</div>
-					<div className='d-flex align-items-center'>
+					<div className='display-4 fw-bold pt-3 pb-5'>Program UMKM</div>
+					{/* <div className='d-flex align-items-center'>
 						<Button
 							color='dark'
 							isLight
@@ -123,7 +123,7 @@ const GalleryUmkm = () => {
 						</Button>
 						<SubheaderSeparator />
 						<span className='text-muted mx-3'>{data.length} items</span>
-					</div>
+					</div> */}
 				</div>
 				<div className='row'>
 					{data.map((item) => (
