@@ -27,12 +27,14 @@ const CommonGridProductItem = ({
 	id,
 	// eslint-disable-next-line react/prop-types
 	name,
+	title,
 	// eslint-disable-next-line react/prop-types
 	category,
 	// eslint-disable-next-line react/prop-types
 	img,
 	// eslint-disable-next-line react/prop-types
 	color,
+	point,
 	// eslint-disable-next-line react/prop-types
 	series,
 	// eslint-disable-next-line react/prop-types
@@ -80,11 +82,22 @@ const CommonGridProductItem = ({
 		<Card>
 			<CardHeader>
 				<CardLabel>
-					<CardTitle className="d-flex">
+					<CardTitle className='d-flex'>
 						{addressURL[1] === 'profil-user' ? (
 							<div>{name}</div>
 						) : (
-							<div className='truncate-line-1 h4 fw-bold mb-3'>{name}</div>
+							<div>
+								<div className='truncate-line-2 h3 fw-bold mb-4'>{name}</div>
+								<div className='d-flex align-items-center'>
+									<Badge color='info' className='me-3'>
+										+{point} Poin
+									</Badge>{' '}
+									<Badge color='success'>
+										<Icon icon='Money' />
+										Rp 2.000.000
+									</Badge>
+								</div>
+							</div>
 						)}
 
 						{addressURL[1] === 'gallery-umkm'
@@ -145,18 +158,6 @@ const CommonGridProductItem = ({
 					height={128}
 					className='mx-auto d-block img-fluid my-4'
 				/>
-				{/* <div className='row align-items-center'>
-					<div className='col'>Monthly sales</div>
-					<div className='col-auto'>
-						<Chart
-							series={series}
-							options={dummyOptions}
-							type={dummyOptions.chart.type}
-							height={dummyOptions.chart.height}
-							width={dummyOptions.chart.width}
-						/>
-					</div>
-				</div> */}
 			</CardBody>
 			<CardFooter className='shadow-3d-container'>
 				<Button

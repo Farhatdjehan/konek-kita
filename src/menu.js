@@ -15,16 +15,30 @@ export const dashboardMenu = {
 		icon: 'Info',
 	},
 	premiumContent: {
-		id: 'editInModal',
+		id: 'premiumContent',
 		text: 'Premium Content ',
-		path: '/edit-pages/in-modal',
+		path: '/premium-content/',
 		icon: 'PictureInPicture',
+		subMenu: {
+			tablePremiumContent: {
+				id: 'editInModal',
+				text: 'Table Premium',
+				path: '/edit-pages/in-modal',
+				icon: 'Table',
+			},
+			premiumContentList: {
+				id: 'premiumContentList',
+				text: 'List Content Premium',
+				path: '/premium-content/list',
+				icon: 'ListAlt',
+			},
+		},
 	},
 	sendBadge: {
 		id: 'sendBadge',
-		text: 'Send Badge ',
+		text: 'Badge ',
 		path: '/send-badge/',
-		icon: 'Send',
+		icon: 'Badge',
 		subMenu: {
 			sendBadgeLove: {
 				id: 'sendBadgeLove',
@@ -37,6 +51,25 @@ export const dashboardMenu = {
 				text: 'History Send Badge',
 				path: '/send-badge/history',
 				icon: 'History',
+			},
+			mybadge: {
+				id: 'mybadge',
+				text: 'Badge Saya',
+				path: '/my-badge',
+				icon: 'Badge',
+			},
+			certificateUpload: {
+				id: 'certificateUpload',
+				text: 'Upload Sertifikat',
+				path: '/upload-certificate',
+				icon: 'Upload',
+			},
+			certificateList: {
+				id: 'certificateList',
+				text: 'Certificate List',
+				path: '/my-badge/certificate-list',
+				icon: 'List',
+				hide: true,
 			},
 			detailCampaign: {
 				id: 'detailCampaign',
@@ -91,12 +124,7 @@ export const dashboardMenu = {
 			},
 		},
 	},
-	mybadge: {
-		id: 'mybadge',
-		text: 'Badge Saya',
-		path: '/my-badge',
-		icon: 'Badge',
-	},
+
 	worklist: {
 		id: 'worklist',
 		text: 'Work List',
@@ -173,42 +201,17 @@ export const dashboardMenu = {
 			},
 		},
 	},
-
-	detailProgram: {
-		id: 'detailProgram',
-		text: 'Detail Program',
-		path: '/request-work/detail',
-		hide: true,
-	},
-	detailProgramContent: {
-		id: 'detailProgramContent',
-		text: 'Detail Program Content',
-		path: '/gallery-content/detail',
-		hide: true,
+	shareSupport: {
+		id: 'shareSupport',
+		text: 'Sebarkan Koneksi',
+		path: '/sebarkan-koneksi',
+		icon: 'Share',
 	},
 	profilId: {
 		id: 'profilId',
 		text: 'Profil User',
 		path: '/profil-user/1',
 		icon: 'Person',
-		hide: true,
-	},
-	detailProgramBootcamp: {
-		id: 'detailProgramBootcamp',
-		text: 'Detail Program Bootcamp',
-		path: '/gallery-bootcamp/detail',
-		hide: true,
-	},
-	detailProgramCollab: {
-		id: 'detailProgramCollab',
-		text: 'Detail Program Collab',
-		path: '/collabs-list/detail',
-		hide: true,
-	},
-	detailProgramOpenCollab: {
-		id: 'detailProgramOpenCollab',
-		text: 'Detail Program Open Collab',
-		path: '/open-collaboration/detail',
 		hide: true,
 	},
 	detailProduct: {

@@ -8,7 +8,9 @@ const LANDING = {
 	EDITPROFIL: lazy(() => import('../../pages/edit-profil/EditProfil')),
 	PROFIL: lazy(() => import('../../pages/profil/ProfilPage')),
 	PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/PremiumContent')),
+	LIST_PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/ListPremiumContent')),
 	MY_BADGE: lazy(() => import('../../pages/my-badge/MyBadge')),
+	MY_CERT: lazy(() => import('../../pages/my-certificate/CertificateList')),
 	DETAIL_PORTOFOLIO: lazy(() => import('../../pages/portofolio/DetailPortofolio')),
 	GALLERY_PREMIUM: lazy(() => import('../../pages/gallery-content/GalleryContent')),
 	GALLERY_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/GalleryBootcamp')),
@@ -33,6 +35,7 @@ const LANDING = {
 	DETAIL_PAGE_OPEN_COLLAB: lazy(() =>
 		import('../../pages/open-collaboration/DetailPageOpenCollab'),
 	),
+	SHARE_CONNECT: lazy(() => import('../../pages/share-connection/ShareKoneksi')),
 };
 
 const AUTH = {
@@ -55,7 +58,6 @@ const ContentRoutes = () => {
 				path={dashboardMenu.collaboration.subMenu.reqCollabsList.path}
 				component={LANDING.REQUEST_COLLABS}
 			/>
-
 			<Route
 				exact
 				path={dashboardMenu.collaboration.subMenu.openCollaboration.path}
@@ -66,7 +68,17 @@ const ContentRoutes = () => {
 				path={dashboardMenu.collaboration.subMenu.collabsList.path}
 				component={LANDING.COLLABS_LIST}
 			/>
-			<Route exact path={dashboardMenu.mybadge.path} component={LANDING.MY_BADGE} />
+			<Route
+				exact
+				path={dashboardMenu.sendBadge.subMenu.mybadge.path}
+				component={LANDING.MY_BADGE}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.sendBadge.subMenu.certificateList.path}
+				component={LANDING.MY_CERT}
+			/>
+
 			<Route
 				exact
 				path={`${dashboardMenu.worklist.subMenu.detailProgram.path}/:id`}
@@ -108,13 +120,11 @@ const ContentRoutes = () => {
 				component={LANDING.DASHBOARD_BOOKING}
 			/>
 			<Route exact path={editPage.editProfil.path} component={LANDING.EDITPROFIL} />
-
 			<Route
 				exact
 				path={dashboardMenu.gallery.subMenu.galleryUmkm.path}
 				component={LANDING.GALLERY_UMKM}
 			/>
-
 			<Route
 				exact
 				path={`${dashboardMenu.detailProduct.path}/:id`}
@@ -142,8 +152,13 @@ const ContentRoutes = () => {
 			/>
 			<Route
 				exact
-				path={dashboardMenu.premiumContent.path}
+				path={dashboardMenu.premiumContent.subMenu.tablePremiumContent.path}
 				component={LANDING.PREMIUM_CONTENT}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.premiumContent.subMenu.premiumContentList.path}
+				component={LANDING.LIST_PREMIUM_CONTENT}
 			/>
 			<Route
 				exact
@@ -155,11 +170,13 @@ const ContentRoutes = () => {
 				path={dashboardMenu.gallery.subMenu.galleryPremium.path}
 				component={LANDING.GALLERY_PREMIUM}
 			/>
+
 			<Route
 				exact
 				path={dashboardMenu.gallery.subMenu.galleryBootcamp.path}
 				component={LANDING.GALLERY_BOOTCAMP}
 			/>
+			<Route exact path={dashboardMenu.shareSupport.path} component={LANDING.SHARE_CONNECT} />
 			{/* Auth */}
 			<Route exact path={menuSidebar.page404.path} component={AUTH.PAGE_404} />
 			<Route exact path={menuSidebar.login.path} component={Login} />

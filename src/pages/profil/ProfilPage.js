@@ -646,14 +646,14 @@ const ProfilPage = () => {
 												<div className='d-flex align-items-center pb-3'>
 													<div className='flex-grow-1'>
 														<div className='fw-bold display-4 mb-3 position-relative'>
-															12
+															1
 															<span className='text-info fs-5 ms-2 fw-bold position-absolute'>
 																<Icon icon='TrendingFlat' />
 															</span>
 														</div>
 														<div className='text-muted'>
 															<span className='text-info fs-5 fw-bold'>
-																+12
+																+1
 															</span>{' '}
 															dari minggu kemarin
 														</div>

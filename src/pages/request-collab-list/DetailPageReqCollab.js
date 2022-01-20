@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import data from './helper/dummyKnowledgeData';
 import SubHeader, {
@@ -13,6 +13,7 @@ import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Badge from '../../components/bootstrap/Badge';
 import USERS from '../../common/data/userDummyData';
+import Icon from '../../components/icon/Icon';
 
 const DetailPageReqCollab = () => {
 	const { id } = useParams();
@@ -27,17 +28,16 @@ const DetailPageReqCollab = () => {
 					<Button color='info' isLink icon='ArrowBack' onClick={() => history.goBack()}>
 						Back to List
 					</Button>
-					<SubheaderSeparator />
-					{!!item.tags &&
-						// eslint-disable-next-line react/prop-types
-						item.tags.map((tag) => (
-							<div key={tag.text} className='col-auto'>
-								<Badge isLight color={tag.color} className='px-3 py-2'>
-									{tag.text}
-								</Badge>
-							</div>
-						))}
 				</SubHeaderLeft>
+				<SubHeaderRight>
+					<Button icon='Close' color='danger'>
+						Decline
+					</Button>
+
+					<Button icon='Check' color='success'>
+						Join
+					</Button>
+				</SubHeaderRight>
 			</SubHeader>
 			<Page>
 				<div className='display-4 fw-bold pt-3 pb-5'>{item.title}</div>
@@ -58,6 +58,15 @@ const DetailPageReqCollab = () => {
 								className='object-fit-contain p-5'
 							/>
 						</div>
+					</div>
+					<div className='col-12'>
+						<h6>
+							Refrensi : <a href='#'>www.example.com</a>
+						</h6>
+						<h6>Tawaran : 3 Post, 2 Story</h6>
+						<h6>
+							Brief : <a href='#'>www.download.com</a>
+						</h6>
 					</div>
 					<div className='col-12'>
 						<h3 className='text-muted'>{item.description}</h3>

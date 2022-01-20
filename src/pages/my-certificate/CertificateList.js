@@ -7,34 +7,24 @@ import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
-import data, { CATEGORIES } from './helper/dummyKnowledgeData';
+import data, { CATEGORIES } from './helper/dummyCertificateList';
 import { dashboardMenu, menuSidebar } from '../../menu';
-import Button from '../../components/bootstrap/Button';
-import Avatar from '../../components/Avatar';
-
-import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
-import UserImage3 from '../../assets/img/wanna/wanna3.png';
 import Icon from '../../components/icon/Icon';
+
 // eslint-disable-next-line react/prop-types
-const Item = ({ id, image, title, description, user, tags, color }) => {
+const Item = ({ id, image, title, author, date, description, tags, color }) => {
 	const history = useHistory();
-	const handleOnClick = useCallback(
-		() =>
-			history.push(
-				`${dashboardMenu.collaboration.subMenu.detailProgramReqCollab.path}/${id}`,
-			),
-		[history, id],
-	);
+	// const handleOnClick = useCallback(
+	// 	() => history.push(`${dashboardMenu.gallery.subMenu.detailProgramContent.path}/${id}`),
+	// 	[history, id],
+	// );
 	return (
-		<Card className='cursor-pointer shadow-3d-primary shadow-3d-hover' onClick={handleOnClick}>
+		<Card
+			className='cursor-pointer shadow-3d-primary shadow-3d-hover'
+			// onClick={handleOnClick}
+		>
 			<CardBody>
-				<div
-					className={classNames(
-						'ratio ratio-1x1',
-						'rounded-2',
-						`bg-l10-${color}`,
-						'mb-3',
-					)}>
+				<div className={classNames('ratio ratio-1x1', 'rounded-2', 'mb-3')}>
 					<img
 						src={image}
 						alt=''
@@ -44,45 +34,22 @@ const Item = ({ id, image, title, description, user, tags, color }) => {
 					/>
 				</div>
 				<CardTitle>{title}</CardTitle>
-				<p className='text-muted truncate-line-2'>{description}</p>
-				{/* <div className='row g-2'>
-					{!!tags &&
-						// eslint-disable-next-line react/prop-types
-						tags.map((tag) => (
-							<div key={tag.text} className='col-auto'>
-								<Badge isLight color={tag.color} className='px-3 py-2'>
-									{tag.text}
-								</Badge>
-							</div>
-						))}
-				</div> */}
-				<Avatar
-					srcSet={UserImageWebp3}
-					src={UserImage3}
-					size={28}
-					border={2}
-					className='me-2'
-				/>
-				<span>
-					{user}
-					<Icon className='ms-2' color='info' icon='Verified' />
-				</span>
-				<div className='mt-4 d-flex justify-content-between'>
-					<Button icon='Close' color='danger'>
-						Decline
-					</Button>
-					<Button icon='Check' color='success'>
-						Join
-					</Button>
-				</div>
+				<p className='text-muted mb-2'>
+					<Icon className='me-2' icon='CalendarFill' />
+					{date}
+				</p>
+
+				<p className='text-muted'>
+					<Icon className='me-2' icon='Person' />
+					{author}
+				</p>
 			</CardBody>
 		</Card>
 	);
 };
 
-const RequestCollabList = () => {
+const CertificateList = () => {
 	const [filterableData, setFilterableData] = useState(data);
-
 	const searchAndFilterData = (searchValue, category) => {
 		let tempData = data;
 
@@ -137,17 +104,17 @@ const RequestCollabList = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.collaboration.subMenu.reqCollabsList.text}>
+		<PageWrapper title={dashboardMenu.gallery.subMenu.galleryPremium.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-8 text-left my-5'>
-						<span className='display-5 fw-bold'>Request Collaboration</span>
+						<span className='display-5 fw-bold'>Certificate List</span>
 					</div>
-					<div className='col-4 mx-auto text-center my-5'>
-						<form
+					{/* <div className='col-4 mx-auto text-center my-5'> */}
+					{/* <form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
-							onSubmit={formik.handleSubmit}>
-							<div className='col-md-12'>
+							onSubmit={formik.handleSubmit}> */}
+					{/* <div className='col-md-12'>
 								<Select
 									id='category'
 									size='lg'
@@ -170,8 +137,8 @@ const RequestCollabList = () => {
 									}}
 									value={formik.values.category}
 								/>
-							</div>
-							{/* <div className='col-md-5'>
+							</div> */}
+					{/* <div className='col-md-5'>
 								<Input
 									id='search'
 									size='lg'
@@ -207,8 +174,8 @@ const RequestCollabList = () => {
 									isDisable={!(formik.values.search || formik.values.category)}
 								/>
 							</div> */}
-						</form>
-					</div>
+					{/* </form> */}
+					{/* </div> */}
 				</div>
 				<div className='row mb-5'>
 					{filterableData.map((item) => (
@@ -223,4 +190,4 @@ const RequestCollabList = () => {
 	);
 };
 
-export default RequestCollabList;
+export default CertificateList;

@@ -15,8 +15,8 @@ const dataUmkm = [
 	{
 		id: 1,
 		image: BeveledCone,
-		name: 'Membangun Negeri dengan Langkah Sukses',
-		category:
+		title: 'Membangun Negeri dengan Langkah Sukses',
+		desc:
 			'Kali ini, Kementrian Pariwisata ingin melaksanakan acara terakbar di tahun 2022 ini!',
 		series: [
 			{
@@ -28,12 +28,13 @@ const dataUmkm = [
 		price: 3200000,
 		store: 'Company A',
 		file: 'Figma',
+		point: 20,
 	},
 	{
 		id: 2,
 		image: CloudBall,
 		name: 'Bantu Promosikan Jeruk Bali di Dunia!',
-		category: 'Post, Video (1 Minggu)',
+		desc: 'Post, Video (1 Minggu)',
 		series: [
 			{
 				data: [12, 24, 33, 12, 48],
@@ -44,12 +45,13 @@ const dataUmkm = [
 		price: 2400000,
 		store: 'Company A',
 		file: 'Figma',
+		point: 10,
 	},
 	{
 		id: 3,
 		image: Quadrilateral,
 		name: 'Yuk! Donasikan Harta Kamu di sini',
-		category: 'Post (1 Minggu)',
+		desc: 'Post (1 Minggu)',
 		series: [
 			{
 				data: [34, 32, 36, 34, 34],
@@ -60,12 +62,13 @@ const dataUmkm = [
 		price: 1200000,
 		store: 'Company D',
 		file: 'XD',
+		point: 40,
 	},
 	{
 		id: 4,
 		image: HardSharpDonut,
 		name: 'Bantu Saudara Kita yang Berada di Jombang',
-		category: '3D Shapes',
+		desc: '3D Shapes',
 		series: [
 			{
 				data: [54, 34, 42, 23, 12],
@@ -76,12 +79,13 @@ const dataUmkm = [
 		price: 16,
 		store: 'Company C',
 		file: 'Sketch',
+		point: 20,
 	},
 	{
 		id: 5,
 		image: BendyRectangle,
 		name: 'Kita Nabung Yuk!',
-		category: '3D Shapes',
+		desc: '3D Shapes',
 		series: [
 			{
 				data: [23, 21, 12, 34, 14],
@@ -92,12 +96,13 @@ const dataUmkm = [
 		price: 16,
 		store: 'Company A',
 		file: 'Figma',
+		point: 10,
 	},
 	{
 		id: 6,
 		image: Infinity,
 		name: 'Kita Bisa Jadi Juara!',
-		category: '3D Shapes',
+		desc: '3D Shapes',
 		series: [
 			{
 				data: [23, 13, 34, 41, 38],
@@ -108,12 +113,13 @@ const dataUmkm = [
 		price: 16,
 		store: 'Company C',
 		file: 'Figma',
+		point: 50,
 	},
 	// {
 	// 	id: 7,
 	// 	image: Octahedron,
 	// 	name: 'Octahedron',
-	// 	category: '3D Shapes',
+	// 	desc: '3D Shapes',
 	// 	series: [
 	// 		{
 	// 			data: [21, 34, 23, 12, 67],
@@ -129,7 +135,7 @@ const dataUmkm = [
 	// 	id: 8,
 	// 	image: Triangle,
 	// 	name: 'Triangle',
-	// 	category: '3D Shapes',
+	// 	desc: '3D Shapes',
 	// 	series: [
 	// 		{
 	// 			data: [18, 32, 26, 15, 34],
@@ -145,7 +151,7 @@ const dataUmkm = [
 	// 	id: 9,
 	// 	image: SquiglyGlobe,
 	// 	name: 'SquiglyGlobe',
-	// 	category: '3D Shapes',
+	// 	desc: '3D Shapes',
 	// 	series: [
 	// 		{
 	// 			data: [18, 32, 26, 15, 34],
@@ -161,7 +167,7 @@ const dataUmkm = [
 	// 	id: 10,
 	// 	image: Dodecagon,
 	// 	name: 'Dodecagon',
-	// 	category: '3D Shapes',
+	// 	desc: '3D Shapes',
 	// 	series: [
 	// 		{
 	// 			data: [18, 32, 26, 15, 34],
@@ -177,7 +183,7 @@ const dataUmkm = [
 	// 	id: 11,
 	// 	image: BeveledCube,
 	// 	name: 'Beveled Cube',
-	// 	category: '3D Shapes',
+	// 	desc: '3D Shapes',
 	// 	series: [
 	// 		{
 	// 			data: [18, 32, 26, 15, 34],
@@ -193,7 +199,7 @@ const dataUmkm = [
 	// 	id: 12,
 	// 	image: Cylinder,
 	// 	name: 'Cylinder',
-	// 	category: '3D Shapes',
+	// 	desc: '3D Shapes',
 	// 	series: [
 	// 		{
 	// 			data: [18, 32, 26, 15, 34],

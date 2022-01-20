@@ -38,7 +38,7 @@ const MyBadge = () => {
 										isLight
 										icon='Report'
 										className='wrapping-alert'>
-										Upload campaign kamu, dan terima kiriman badge work dari
+										Untuk mendapatkan badge tambahan.. upload campaign kamu, dan terima kiriman badge work dari
 										sesama pekarya, buat kolaborasi kamu sendiri ,jadilah
 										partisipan kolaborasi ,upload file sertifikat anda
 									</Alert>
@@ -59,9 +59,6 @@ const MyBadge = () => {
 													Work
 												</CardTitle>
 											</CardLabel>
-											<CardActions>
-												<Button>Kirim</Button>
-											</CardActions>
 										</CardHeader>
 										<CardBody>
 											<div className='d-flex align-items-center pb-3'>
@@ -136,19 +133,23 @@ const MyBadge = () => {
 													Certificate
 												</CardTitle>
 											</CardLabel>
+
+											<CardActions>
+												<Button isDisable >Lihat Detail</Button>
+											</CardActions>
 										</CardHeader>
 										<CardBody>
 											<div className='d-flex align-items-center pb-3'>
 												<div className='flex-grow-1'>
 													<div className='fw-bold display-4 mb-3 position-relative'>
-														12
+														1
 														<span className='text-info fs-5 ms-2 fw-bold position-absolute'>
 															<Icon icon='TrendingFlat' />
 														</span>
 													</div>
 													<div className='text-muted'>
 														<span className='text-info fs-5 fw-bold'>
-															+12
+															+1
 														</span>{' '}
 														dari minggu kemarin
 													</div>

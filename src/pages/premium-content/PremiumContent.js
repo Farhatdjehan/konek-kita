@@ -27,12 +27,14 @@ import Input from '../../components/bootstrap/forms/Input';
 import Textarea from '../../components/bootstrap/forms/Textarea';
 import Checks from '../../components/bootstrap/forms/Checks';
 import Popovers from '../../components/bootstrap/Popovers';
-import data from '../../common/data/dummyEventsData';
+import data from '../../common/data/dummyPremiumContent';
 import USERS from '../../common/data/userDummyData';
 import { dashboardMenu } from '../../menu';
+import Select from '../../components/bootstrap/forms/Select';
+import { Options } from '../../components/bootstrap/Option';
 
 const EditInModalPage = () => {
-	const [date, setDate] = useState(new Date());
+	const [value, setValue] = useState();
 
 	// BEGIN :: Upcoming Events
 	const [upcomingEventsInfoOffcanvas, setUpcomingEventsInfoOffcanvas] = useState(false);
@@ -41,21 +43,19 @@ const EditInModalPage = () => {
 	};
 
 	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false);
-	const handleUpcomingEdit = () => {
+	const handleUpcomingEdit = (value) => {
+		setValue(value);
 		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
 	};
 	// END :: Upcoming Events
 
 	const formik = useFormik({
 		initialValues: {
-			customerName: 'Alison Berry',
-			service: 'Exercise Bike',
-			employee: `${USERS.GRACE.name} ${USERS.GRACE.surname}`,
-			location: 'Maryland',
-			date: moment().add(1, 'days').format('YYYY-MM-DD'),
-			time: '10:30',
-			note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nisi odio. Nam sit amet pharetra enim. Nulla facilisi. Nunc dictum felis id massa mattis pretium. Mauris at blandit orci. Nunc vulputate vulputate turpis vitae cursus. In sit amet turpis tincidunt, interdum ex vitae, sollicitudin massa. Maecenas eget dui molestie, ullamcorper ante vel, tincidunt nisi. Donec vitae pulvinar risus. In ultricies nisl ac massa malesuada, vel tempus neque placerat.',
-			notify: true,
+			judulkonten: '',
+			tag: '',
+			tipekonten: ``,
+			link: '',
+			desc: '',
 		},
 	});
 	return (
@@ -101,13 +101,9 @@ const EditInModalPage = () => {
 								<CardActions>
 									<Button
 										color='info'
-										icon='CloudDownload'
-										isLight
-										tag='a'
-										to='/somefile.txt'
-										target='_blank'
-										download>
-										Export
+										icon='Add'
+										onClick={() => handleUpcomingEdit('add')}>
+										Upload
 									</Button>
 								</CardActions>
 							</CardHeader>
@@ -115,72 +111,49 @@ const EditInModalPage = () => {
 								<table className='table table-modern'>
 									<thead>
 										<tr>
-											<td style={{ width: 60 }} />
-											<th>Assigned to</th>
-											<th>Date / Time</th>
-											<th>Customer</th>
-											<th>Service</th>
-											<th>Duration</th>
-											<th>Payment</th>
-											<td />
+											<th>Judul</th>
+											<th>Deskripsi</th>
+											<th>Tag</th>
+											<th>Tipe</th>
+											<th>Link</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
 										{data.map((item) => (
 											<tr key={item.id}>
 												<td>
-													<Button
-														isLight
-														color={item.status.color}
-														icon='Info'
-														onClick={handleUpcomingDetails}
-													/>
-												</td>
-												<td>
 													<div className='d-flex'>
-														<div className='flex-shrink-0'>
-															<img
-																srcSet={item.assigned.srcSet}
-																src={item.assigned.src}
-																alt={item.assigned.name}
-																width='36'
-																height='36'
-																className={classNames(
-																	`bg-l25-${item.assigned.color}`,
-																	'rounded-circle',
-																)}
-															/>
-														</div>
 														<div className='flex-grow-1 ms-3 d-flex align-items-center'>
-															{item.assigned.name}
+															{item.title}
 														</div>
 													</div>
 												</td>
 												<td>
 													<span className='text-nowrap'>
-														{moment(`${item.date} ${item.time}`).format(
+														{/* {moment(`${item.date} ${item.time}`).format(
 															'MMM Do YYYY, h:mm a',
-														)}
+														)} */}
+														<div>{item.desc}</div>
 													</span>
 												</td>
 												<td>
 													<div>
-														<div>{item.customer.name}</div>
-														<div className='small text-muted'>
-															{item.customer.email}
-														</div>
+														{item.tag &&
+															item.tag?.map((e, i) => {
+																return e.tags_name;
+															})}
 													</div>
 												</td>
-												<td>{item.service.name}</td>
-												<td>{item.duration}</td>
-												<td>{item.payment && priceFormat(item.payment)}</td>
+												<td>{item.type}</td>
+												<td>{item.link}</td>
 												<td>
 													<Button
 														isOutline
 														color='dark'
 														className='border-light text-nowrap'
 														icon='Edit'
-														onClick={handleUpcomingEdit}>
+														onClick={() => handleUpcomingEdit('edit')}>
 														Edit
 													</Button>
 												</td>
@@ -245,113 +218,123 @@ const EditInModalPage = () => {
 							isScrollable
 							size='lg'>
 							<ModalHeader setIsOpen={setUpcomingEventsEditOffcanvas}>
-								<OffCanvasTitle id='upcomingEdit'>Edit Appointments</OffCanvasTitle>
+								<OffCanvasTitle id='upcomingEdit'>Edit Konten</OffCanvasTitle>
 							</ModalHeader>
 							<ModalBody>
 								<div className='row g-4'>
 									<div className='col-12'>
-										<FormGroup id='customerName' label='Customer' isFloating>
+										<FormGroup id='judulkonten' label='Judul Konten' isFloating>
 											<Input
-												placeholder='Customer'
+												placeholder='Judul Konten'
 												onChange={formik.handleChange}
-												value={formik.values.customerName}
+												value={formik.values.judulkonten}
 											/>
 										</FormGroup>
 									</div>
 									<div className='col-12'>
-										<FormGroup id='service' label='Service' isFloating>
+										<FormGroup id='tag' label='Tag' isFloating>
 											<Input
-												placeholder='Service'
+												placeholder='Tag'
 												onChange={formik.handleChange}
-												value={formik.values.service}
+												value={formik.values.tag}
 											/>
 										</FormGroup>
 									</div>
 									<div className='col-12'>
-										<FormGroup id='employee' label='Employee' isFloating>
-											<Input
-												placeholder='Employee'
+										<FormGroup
+											id='tipekonten'
+											label='Tipe Konten'
+											className='mb-3'>
+											<Select
+												id='example'
 												onChange={formik.handleChange}
-												value={formik.values.employee}
-											/>
+												list={[
+													{
+														text: 'Photo',
+														value: 1,
+													},
+													{
+														text: 'Live Session',
+														value: 2,
+													},
+													{
+														text: 'Video',
+														value: 3,
+													},
+													{
+														text: 'Sound',
+														value: 3,
+													},
+												]}
+												value={formik.values.tipekonten}></Select>
 										</FormGroup>
 									</div>
-									<div className='col-12'>
-										<FormGroup id='location' label='Location' isFloating>
-											<Input
-												placeholder='Location'
-												onChange={formik.handleChange}
-												value={formik.values.location}
-											/>
-										</FormGroup>
-									</div>
-									<div className='col-6'>
-										<FormGroup id='date' label='Date' isFloating>
-											<Input
-												placeholder='Date'
-												onChange={formik.handleChange}
-												value={formik.values.date}
-												type='date'
-											/>
-										</FormGroup>
-									</div>
-									<div className='col-6'>
-										<FormGroup id='time' label='Time' isFloating>
-											<Input
-												placeholder='Time'
-												onChange={formik.handleChange}
-												value={formik.values.time}
-												type='time'
-											/>
-										</FormGroup>
-									</div>
-									<div className='col-12'>
-										<Card isCompact className='mb-0'>
-											<CardHeader>
-												<CardLabel>
-													<CardTitle>Extras</CardTitle>
-												</CardLabel>
-											</CardHeader>
-											<CardBody>
-												<FormGroup id='note' label='Note' isFloating>
-													<Textarea
-														rows={8}
-														placeholder='note'
+									{formik.values.tipekonten === '1' ? (
+										<div className='col-6'>
+											<Input type='file' autoComplete='photo' />
+										</div>
+									) : formik.values.tipekonten === '2' ? (
+										<div className='col-12'>
+											<FormGroup id='link' label='Link Zoom' isFloating>
+												<Input
+													placeholder='Link Zoom'
+													onChange={formik.handleChange}
+													value={formik.values.link}
+												/>
+											</FormGroup>
+										</div>
+									) : formik.values.tipekonten === '3' ? (
+										<>
+											<div className='col-5'>
+												<Input type='file' autoComplete='video' />
+											</div>
+											<div className='col-2 d-flex justify-content-center'>
+												atau
+											</div>
+											<div className='col-5'>
+												<FormGroup id='link' label='Link Video' isFloating>
+													<Input
+														placeholder='Link Video'
 														onChange={formik.handleChange}
-														value={formik.values.note}
+														value={formik.values.link}
 													/>
 												</FormGroup>
-											</CardBody>
-										</Card>
-									</div>
+											</div>
+										</>
+									) : formik.values.tipekonten === '4' ? (
+										<>
+											<div className='col-5'>
+												<Input type='file' autoComplete='suara' />
+											</div>
+											<div className='col-2 d-flex justify-content-center'>
+												atau
+											</div>
+											<div className='col-5'>
+												<FormGroup id='link' label='Link Suara' isFloating>
+													<Input
+														placeholder='Link Suara'
+														onChange={formik.handleChange}
+														value={formik.values.link}
+													/>
+												</FormGroup>
+											</div>
+										</>
+									) : null}
+
 									<div className='col-12'>
 										<Card isCompact className='mb-0'>
 											<CardHeader>
 												<CardLabel>
-													<CardTitle>Notification</CardTitle>
+													<CardTitle>Deskripsi</CardTitle>
 												</CardLabel>
 											</CardHeader>
 											<CardBody>
-												<FormGroup>
-													<Checks
-														id='notify'
-														type='switch'
-														label={
-															<>
-																Notify the Customer
-																<Popovers
-																	trigger='hover'
-																	desc='Check this checkbox if you want your customer to receive an email about the scheduled appointment'>
-																	<Icon
-																		icon='Help'
-																		size='lg'
-																		className='ms-1 cursor-help'
-																	/>
-																</Popovers>
-															</>
-														}
+												<FormGroup id='desc' label='Deskripsi' isFloating>
+													<Textarea
+														rows={8}
+														placeholder='desc'
 														onChange={formik.handleChange}
-														checked={formik.values.notify}
+														value={formik.values.desc}
 													/>
 												</FormGroup>
 											</CardBody>
@@ -362,7 +345,7 @@ const EditInModalPage = () => {
 							<ModalFooter className='bg-transparent'>
 								<Button
 									color='info'
-									className='w-100'
+									icon='Save'
 									onClick={() => setUpcomingEventsEditOffcanvas(false)}>
 									Save
 								</Button>

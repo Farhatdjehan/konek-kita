@@ -131,11 +131,12 @@ const GalleryUmkm = () => {
 							<CommonGridProductItem
 								id={item.id}
 								name={item.name}
-								category={item.category}
+								desc={item.desc}
 								img={item.image}
 								color={item.color}
 								series={item.series}
 								price={item.price}
+								point={item.point}
 								editAction={() => {
 									setEditPanel(true);
 									handleEdit(item.id);
