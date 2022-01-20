@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import data from './helper/dummyKnowledgeData';
+import data from './helper/dummyBootcampData';
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,

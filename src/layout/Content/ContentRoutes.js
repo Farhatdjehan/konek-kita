@@ -92,7 +92,7 @@ const ContentRoutes = () => {
 			/>
 			<Route
 				exact
-				path={`${dashboardMenu.gallery.subMenu.detailProgramBootcamp.path}/:id`}
+				path={`${dashboardMenu.bootcamp.subMenu.detailProgramBootcamp.path}/:id`}
 				component={LANDING.DETAIL_PAGE_BOOTCAMP}
 			/>
 			<Route
@@ -179,7 +179,7 @@ const ContentRoutes = () => {
 
 			<Route
 				exact
-				path={dashboardMenu.gallery.subMenu.galleryBootcamp.path}
+				path={dashboardMenu.bootcamp.subMenu.galleryBootcamp.path}
 				component={LANDING.GALLERY_BOOTCAMP}
 			/>
 			<Route exact path={dashboardMenu.shareSupport.path} component={LANDING.SHARE_CONNECT} />

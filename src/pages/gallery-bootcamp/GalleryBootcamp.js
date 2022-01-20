@@ -5,16 +5,18 @@ import { useHistory } from 'react-router-dom';
 import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Select from '../../components/bootstrap/forms/Select';
-import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
+import Card, { CardBody, CardFooter, CardHeader, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
-import data, { CATEGORIES } from './helper/dummyKnowledgeData';
+import data, { CATEGORIES } from './helper/dummyBootcampData';
 import { dashboardMenu, menuSidebar } from '../../menu';
-
+import Button from '../../components/bootstrap/Button';
+import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
+import Icon from '../../components/icon/Icon';
 // eslint-disable-next-line react/prop-types
-const Item = ({ id, image, title, description, tags, color }) => {
+const Item = ({ id, image, title, price, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.gallery.subMenu.detailProgramBootcamp.path}/${id}`),
+		() => history.push(`${dashboardMenu.bootcamp.subMenu.detailProgramBootcamp.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -26,6 +28,7 @@ const Item = ({ id, image, title, description, tags, color }) => {
 						'rounded-2',
 						`bg-l10-${color}`,
 						'mb-3',
+						'position-relative',
 					)}>
 					<img
 						src={image}
@@ -34,9 +37,28 @@ const Item = ({ id, image, title, description, tags, color }) => {
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
+					<Badge color='success' className='position-absolute w-auto h-auto px-3 py-2'>
+						Rp. {price}
+					</Badge>
 				</div>
 				<CardTitle>{title}</CardTitle>
-				<p className='text-muted truncate-line-2'>{description}</p>
+				<p className='text-muted mb-1'>Badge yang di dapat</p>
+				<div className='mb-3'>
+					<div className='d-flex'>
+						<div className='d-flex align-items-center me-2'>
+							<Icon className='me-2' icon='HeartFill' color='danger' />
+							<div className='fw-bold'>+1</div>
+						</div>
+						<div className='d-flex align-items-center me-2'>
+							<Icon className='me-2' icon='EmojiEmotions' color='info' />
+							<div className='fw-bold'>+1</div>
+						</div>
+						<div className='d-flex align-items-center me-2'>
+							<Icon className='me-2' icon='CardMembership' color='success' />
+							<div className='fw-bold'>+1</div>
+						</div>
+					</div>
+				</div>
 				<div className='row g-2'>
 					{!!tags &&
 						// eslint-disable-next-line react/prop-types
@@ -113,8 +135,24 @@ const GalleryBootcamp = () => {
 		<PageWrapper title={dashboardMenu.gallery.subMenu.galleryPremium.text}>
 			<Page>
 				<div className='row'>
+					<Card>
+						<CardBody>
+							<img src={UserImageWebp3} />
+							<div className='h4 fw-bold mt-3'>Benefit List</div>
+							<ul>
+								<li>Benefit 1</li>
+								<li>Benefit 2</li>
+								<li>Benefit 3</li>
+							</ul>
+							<Button className='mt-3' color='info'>
+								Register
+							</Button>
+						</CardBody>
+					</Card>
+				</div>
+				<div className='row'>
 					<div className='col-8 text-left my-5'>
-						<span className='display-5 fw-bold'>Gallery Bootcamp</span>
+						<span className='display-5 fw-bold'>Bootcamp</span>
 					</div>
 					<div className='col-4 mx-auto text-center my-5'>
 						<form

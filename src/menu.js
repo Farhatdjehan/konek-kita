@@ -100,6 +100,26 @@ export const dashboardMenu = {
 			},
 		},
 	},
+	bootcamp: {
+		id: 'bootcamp',
+		text: 'Bootcamp',
+		path: '/bootcamp/',
+		icon: 'PictureInPicture',
+		subMenu: {
+			galleryBootcamp: {
+				id: 'galleryBootcamp',
+				text: 'Gallery Bootcamp',
+				path: '/bootcamp/gallery-bootcamp',
+				icon: 'SettingsApplications',
+			},
+			detailProgramBootcamp: {
+				id: 'detailProgramBootcamp',
+				text: 'Detail Program Bootcamp',
+				path: '/bootcamp/gallery-bootcamp/detail',
+				hide: true,
+			},
+		},
+	},
 	gallery: {
 		id: 'gallery',
 		text: 'Gallery',
@@ -112,12 +132,6 @@ export const dashboardMenu = {
 				path: '/gallery/gallery-content',
 				icon: 'ImportContacts',
 			},
-			galleryBootcamp: {
-				id: 'galleryBootcamp',
-				text: 'Gallery Bootcamp',
-				path: '/gallery/gallery-bootcamp',
-				icon: 'SettingsApplications',
-			},
 
 			detailProgramContent: {
 				id: 'detailProgramContent',
@@ -125,12 +139,7 @@ export const dashboardMenu = {
 				path: '/gallery/gallery-content/detail',
 				hide: true,
 			},
-			detailProgramBootcamp: {
-				id: 'detailProgramBootcamp',
-				text: 'Detail Program Bootcamp',
-				path: '/gallery/gallery-bootcamp/detail',
-				hide: true,
-			},
+
 			detailPortofolio: {
 				id: 'detailPortofolio',
 				text: 'Detail Portofolio',
