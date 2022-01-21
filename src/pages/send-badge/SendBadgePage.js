@@ -62,12 +62,12 @@ const SendBadgePage = () => {
 									<CardTitle>Send Badge Love</CardTitle>
 								</CardLabel>
 								<CardActions>
-									<Link
+									{/* <Link
 										to={`${dashboardMenu.sendBadge.subMenu.sendBadgeDetail.path}`}>
 										<Button color='primary' icon='Eye' isLight>
 											Lihat History
 										</Button>
-									</Link>
+									</Link> */}
 									<Button color='primary' icon='Heart'>
 										12
 									</Button>

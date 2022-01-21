@@ -101,7 +101,7 @@ const EditInModalPage = () => {
 								<CardActions>
 									<Button
 										color='info'
-										icon='Add'
+										icon='Upload'
 										onClick={() => handleUpcomingEdit('add')}>
 										Upload
 									</Button>
@@ -345,9 +345,9 @@ const EditInModalPage = () => {
 							<ModalFooter className='bg-transparent'>
 								<Button
 									color='info'
-									icon='Save'
+									icon='Upload'
 									onClick={() => setUpcomingEventsEditOffcanvas(false)}>
-									Save
+									Upload
 								</Button>
 							</ModalFooter>
 						</Modal>

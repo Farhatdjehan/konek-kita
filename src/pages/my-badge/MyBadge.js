@@ -38,9 +38,13 @@ const MyBadge = () => {
 										isLight
 										icon='Report'
 										className='wrapping-alert'>
-										Untuk mendapatkan badge tambahan.. upload campaign kamu, dan terima kiriman badge work dari
-										sesama pekarya, buat kolaborasi kamu sendiri ,jadilah
-										partisipan kolaborasi ,upload file sertifikat anda
+										<div className='mb-3'>
+											Untuk mendapatkan badge tambahan.. upload campaign kamu,
+											terima kiriman badge work dari sesama pekarya, buat
+											kolaborasi kamu sendiri ,jadilah partisipan kolaborasi ,
+											dan upload file sertifikat anda
+										</div>
+										<Button color='info'>Tentang Badge</Button>
 									</Alert>
 								</div>
 								<div className='col-md-4'>
@@ -135,7 +139,7 @@ const MyBadge = () => {
 											</CardLabel>
 
 											<CardActions>
-												<Button isDisable >Lihat Detail</Button>
+												<Button isDisable>Lihat Detail</Button>
 											</CardActions>
 										</CardHeader>
 										<CardBody>

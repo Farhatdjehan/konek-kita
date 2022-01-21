@@ -97,7 +97,7 @@ const HistorySendBadge = () => {
 						<Card>
 							<CardHeader borderSize={1}>
 								<CardLabel icon='Lock' iconColor='info'>
-									<CardTitle>History Send Badge Love</CardTitle>
+									<CardTitle>History Badge Love</CardTitle>
 								</CardLabel>
 								<CardActions>
 									<Button
@@ -116,10 +116,11 @@ const HistorySendBadge = () => {
 								<table className='table table-modern'>
 									<thead>
 										<tr>
-											<th style={{ width: 60 }}>#</th>
+											<th>Badge</th>
 											<th>Date</th>
+											<th>Penerima / Pengirim</th>
 											<th>Link Kampanye</th>
-											<th>Total Badge Heart</th>
+											<th>Badge Saat Ini</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -133,13 +134,15 @@ const HistorySendBadge = () => {
 														icon='HeartFill'
 														// onClick={handleUpcomingDetails}
 													/>{' '}
-													+{item.send}
+													{item.send}
 												</td>
 												<td>
 													<span className='text-nowrap'>
 														{moment(item.date).format('YYYY-MM-DD')}
 													</span>
 												</td>
+
+												<td>{item.receipt}</td>
 												<td>
 													<Link
 														to={`${dashboardMenu.sendBadge.subMenu.detailCampaign.path}/${item.id}`}>
@@ -148,14 +151,32 @@ const HistorySendBadge = () => {
 													</Link>
 												</td>
 												<td>
-													<Button
-														className='me-2'
-														isLight
-														color='danger'
-														icon='HeartFill'
-														// onClick={handleUpcomingDetails}
-													/>{' '}
-													+{item.total}
+													<div className='d-flex align-items-center'>
+														<Button
+															className='me-2'
+															isLight
+															color='danger'
+															icon='HeartFill'
+															// onClick={handleUpcomingDetails}
+														/>
+														{item.status === 'receipt' ? (
+															<div>
+																{item.total} + {item.send.slice(1)}{' '}
+																={' '}
+																<span>
+																	<b>{item.remain}</b>
+																</span>
+															</div>
+														) : (
+															<div>
+																{item.total} - {item.send.slice(1)}{' '}
+																={' '}
+																<span>
+																	<b>{item.remain}</b>
+																</span>
+															</div>
+														)}
+													</div>
 												</td>
 											</tr>
 										))}

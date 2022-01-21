@@ -138,6 +138,7 @@ const OpenCollaboration = () => {
 			start_date: moment().add(1, 'days').format('YYYY-MM-DD'),
 			end_date: moment().add(7, 'days').format('YYYY-MM-DD'),
 			link_ref: '',
+			skill: '',
 			desc: '',
 		},
 	});
@@ -261,9 +262,9 @@ const OpenCollaboration = () => {
 						{collabsType === 'direct' ? (
 							<div className='row g-4'>
 								<div className='col-12'>
-									<FormGroup id='mention' label='Customer'>
+									<FormGroup id='mention' label='Mention Pekarya'>
 										<Input
-											placeholder='Customer'
+											placeholder='Mention Pekarya'
 											onChange={formik.handleChange}
 											value={formik.values.mention}
 										/>
@@ -280,9 +281,9 @@ const OpenCollaboration = () => {
 								</div>
 
 								<div className='col-12'>
-									<FormGroup id='link' label='Location'>
+									<FormGroup id='link' label='Link Refrensi'>
 										<Input
-											placeholder='Location'
+											placeholder='Link Refrensi'
 											onChange={formik.handleChange}
 											value={formik.values.link}
 										/>
@@ -350,38 +351,12 @@ const OpenCollaboration = () => {
 									</FormGroup>
 								</div>
 								<div className='col-12'>
-									<FormGroup id='link' label='Location'>
+									<FormGroup id='link' label='Link Refrensi'>
 										<Input
-											placeholder='Location'
+											placeholder='Link Refrensi'
 											onChange={formik.handleChange}
 											value={formik.values.link}
 										/>
-									</FormGroup>
-								</div>
-								<div className='col-12'>
-									<FormGroup id='tipekonten' label='Negara' className='mb-3'>
-										<Select
-											id='example'
-											onChange={formik.handleChange}
-											list={[
-												{
-													text: 'Photo',
-													value: 1,
-												},
-												{
-													text: 'Live Session',
-													value: 2,
-												},
-												{
-													text: 'Video',
-													value: 3,
-												},
-												{
-													text: 'Sound',
-													value: 3,
-												},
-											]}
-											value={formik.values.tipekonten}></Select>
 									</FormGroup>
 								</div>
 								<div className='col-12'>
@@ -493,11 +468,11 @@ const OpenCollaboration = () => {
 										id='tipekonten'
 										label='Skill yang Dibutuhkan'
 										className='mb-3'>
-										<ChecksGroup isInline>
-											<Checks id='checksOne' label='One (inline)' />
-											<Checks id='checksTwo' label='Two (inline)' />
-											<Checks id='checksThree' label='Three' />
-										</ChecksGroup>
+										<Input
+											placeholder='Skill'
+											onChange={formik.handleChange}
+											value={formik.values.skill}
+										/>
 									</FormGroup>
 								</div>
 								<div className='col-12'>
@@ -538,17 +513,8 @@ const OpenCollaboration = () => {
 											value={formik.values.tipekonten}></Select>
 									</FormGroup>
 								</div>
-								<div className='col-12'>
-									<FormGroup id='link' label='Location'>
-										<Input
-											placeholder='Location'
-											onChange={formik.handleChange}
-											value={formik.values.link}
-										/>
-									</FormGroup>
-								</div>
 								<div className='col-6'>
-									<FormGroup id='start_date' label='Date'>
+									<FormGroup id='start_date' label='Start Date'>
 										<Input
 											placeholder='Date'
 											onChange={formik.handleChange}
@@ -558,7 +524,7 @@ const OpenCollaboration = () => {
 									</FormGroup>
 								</div>
 								<div className='col-6'>
-									<FormGroup id='end_date' label='Date'>
+									<FormGroup id='end_date' label='End Date'>
 										<Input
 											placeholder='Date'
 											onChange={formik.handleChange}
@@ -604,7 +570,7 @@ const OpenCollaboration = () => {
 							color='info'
 							icon='Save'
 							onClick={() => setUpcomingEventsEditOffcanvas(false)}>
-							Save
+							Submit
 						</Button>
 					</ModalFooter>
 				</Modal>

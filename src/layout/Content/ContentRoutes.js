@@ -134,7 +134,7 @@ const ContentRoutes = () => {
 			<Route
 				exact
 				path={`${dashboardMenu.detailProduct.path}/:id`}
-				component={LANDING.UMKM_PROGRAM}
+				component={LANDING.DETAIL_PRODUCT}
 			/>
 			<Route
 				exact
