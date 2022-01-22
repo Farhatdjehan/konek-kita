@@ -126,34 +126,6 @@ export const dashboardMenu = {
 			},
 		},
 	},
-	gallery: {
-		id: 'gallery',
-		text: 'Gallery',
-		path: '/gallery',
-		icon: 'PictureInPicture',
-		subMenu: {
-			galleryPremium: {
-				id: 'galleryContent',
-				text: 'Gallery Content',
-				path: '/gallery/gallery-content',
-				icon: 'ImportContacts',
-			},
-
-			detailProgramContent: {
-				id: 'detailProgramContent',
-				text: 'Detail Program Content',
-				path: '/gallery/gallery-content/detail',
-				hide: true,
-			},
-
-			detailPortofolio: {
-				id: 'detailPortofolio',
-				text: 'Detail Portofolio',
-				path: '/portofolio/detail',
-				hide: true,
-			},
-		},
-	},
 
 	worklist: {
 		id: 'worklist',
@@ -249,6 +221,12 @@ export const dashboardMenu = {
 		path: '/sebarkan-koneksi',
 		icon: 'Share',
 	},
+	menuNFT : {
+		id: 'menuNFT',
+		text: 'NFT List',
+		path: '/nft',
+		icon: 'Image',
+	},
 	profilId: {
 		id: 'profilId',
 		text: 'Profil User',
@@ -266,11 +244,18 @@ export const dashboardMenu = {
 		id: 'joinKomunitas',
 		text: 'Join Komunitas',
 		path: '/sebarkan-koneksi/join-komunitas',
+		hide: true,
 	},
 	saldo: {
 		id: 'saldo',
 		text: 'Saldo Anda',
 		path: '/saldo',
+		hide: true,
+	},
+	detailPortofolio: {
+		id: 'detailPortofolio',
+		text: 'Detail Portofolio',
+		path: '/portofolio/detail',
 		hide: true,
 	},
 };

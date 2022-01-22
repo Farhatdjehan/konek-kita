@@ -12,7 +12,6 @@ const LANDING = {
 	MY_BADGE: lazy(() => import('../../pages/my-badge/MyBadge')),
 	MY_CERT: lazy(() => import('../../pages/my-certificate/CertificateList')),
 	DETAIL_PORTOFOLIO: lazy(() => import('../../pages/portofolio/DetailPortofolio')),
-	GALLERY_PREMIUM: lazy(() => import('../../pages/gallery-content/GalleryContent')),
 	GALLERY_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/GalleryBootcamp')),
 	PROGRAM_GALLERY: lazy(() => import('../../pages/umkm/ProgramGallery')),
 	UMKM_PROGRAM: lazy(() => import('../../pages/umkm/UmkmProgram')),
@@ -29,7 +28,6 @@ const LANDING = {
 	REQUEST_WORK: lazy(() => import('../../pages/request-work/RequestWork')),
 	REQUEST_COLLABS: lazy(() => import('../../pages/request-collab-list/RequestCollabList')),
 	DETAIL_PAGE: lazy(() => import('../../pages/request-work/DetailPage')),
-	DETAIL_PAGE_CONTENT: lazy(() => import('../../pages/gallery-content/DetailPageContent')),
 	DETAIL_PAGE_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/DetailPageBootcamp')),
 	DETAIL_PAGE_OPEN_WORK: lazy(() => import('../../pages/open-work-list/DetailPageOpenWorker')),
 	DETAIL_PAGE_COLLAB: lazy(() => import('../../pages/collabs-list/DetailPageCollabs')),
@@ -42,6 +40,7 @@ const LANDING = {
 	SHARE_CONNECT: lazy(() => import('../../pages/share-connection/ShareKoneksi')),
 	JOIN_COMMUNITY: lazy(() => import('../../pages/share-connection/JoinCommunity')),
 	MY_SALDO: lazy(() => import('../../pages/saldo/MySaldo')),
+	MY_NFT: lazy(() => import('../../pages/nft/NFTList')),
 };
 
 const AUTH = {
@@ -90,11 +89,11 @@ const ContentRoutes = () => {
 				path={`${dashboardMenu.worklist.subMenu.detailProgram.path}/:id`}
 				component={LANDING.DETAIL_PAGE}
 			/>
-			<Route
+			{/* <Route
 				exact
 				path={`${dashboardMenu.gallery.subMenu.detailProgramContent.path}/:id`}
 				component={LANDING.DETAIL_PAGE_CONTENT}
-			/>
+			/> */}
 			<Route
 				exact
 				path={`${dashboardMenu.bootcamp.subMenu.detailProgramBootcamp.path}/:id`}
@@ -189,15 +188,9 @@ const ContentRoutes = () => {
 			/>
 			<Route
 				exact
-				path={dashboardMenu.gallery.subMenu.detailPortofolio.path}
+				path={dashboardMenu.detailPortofolio.path}
 				component={LANDING.DETAIL_PORTOFOLIO}
 			/>
-			<Route
-				exact
-				path={dashboardMenu.gallery.subMenu.galleryPremium.path}
-				component={LANDING.GALLERY_PREMIUM}
-			/>
-
 			<Route
 				exact
 				path={dashboardMenu.bootcamp.subMenu.galleryBootcamp.path}
@@ -209,6 +202,9 @@ const ContentRoutes = () => {
 				path={dashboardMenu.joinKomunitas.path}
 				component={LANDING.JOIN_COMMUNITY}></Route>
 			<Route exact path={dashboardMenu.saldo.path} component={LANDING.MY_SALDO}></Route>
+
+			<Route exact path={dashboardMenu.menuNFT.path} component={LANDING.MY_NFT}></Route>
+
 			{/* Auth */}
 			<Route exact path={menuSidebar.page404.path} component={AUTH.PAGE_404} />
 			<Route exact path={menuSidebar.login.path} component={Login} />
