@@ -16,8 +16,11 @@ const LANDING = {
 	GALLERY_BOOTCAMP: lazy(() => import('../../pages/gallery-bootcamp/GalleryBootcamp')),
 	PROGRAM_GALLERY: lazy(() => import('../../pages/umkm/ProgramGallery')),
 	UMKM_PROGRAM: lazy(() => import('../../pages/umkm/UmkmProgram')),
+	DELIVERABLE_PROGRAM: lazy(() => import('../../pages/umkm/DeliverableProgram')),
 	DETAIL_PRODUCT: lazy(() => import('../../pages/umkm/DetailProduct')),
 	OPEN_WORK_LIST: lazy(() => import('../../pages/open-work-list/OpenWorkList')),
+	DIRECT_CAMPAIGN: lazy(() => import('../../pages/soon-badge/DirectCampaign')),
+	CATALOGUE_DIRECT_CAMPAIGN: lazy(() => import('../../pages/soon-badge/CatalogueDirectCampaign')),
 	SEND_BADGE: lazy(() => import('../../pages/send-badge/SendBadgePage')),
 	SEND_BADGE_DETAIL: lazy(() => import('../../pages/send-badge/HistorySendBadge')),
 	CAMPAIGN_DETAIL: lazy(() => import('../../pages/send-badge/DetailCampaign')),
@@ -37,6 +40,7 @@ const LANDING = {
 		import('../../pages/open-collaboration/DetailPageOpenCollab'),
 	),
 	SHARE_CONNECT: lazy(() => import('../../pages/share-connection/ShareKoneksi')),
+	JOIN_COMMUNITY: lazy(() => import('../../pages/share-connection/JoinCommunity')),
 };
 
 const AUTH = {
@@ -129,7 +133,12 @@ const ContentRoutes = () => {
 			<Route
 				exact
 				path={dashboardMenu.umkm.subMenu.umkmProgram.path}
-				component={LANDING.PROGRAM_GALLERY}
+				component={LANDING.UMKM_PROGRAM}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.umkm.subMenu.deliverableProgram.path}
+				component={LANDING.DELIVERABLE_PROGRAM}
 			/>
 			<Route
 				exact
@@ -141,6 +150,17 @@ const ContentRoutes = () => {
 				path={dashboardMenu.worklist.subMenu.openWorkList.path}
 				component={LANDING.OPEN_WORK_LIST}
 			/>
+			<Route
+				exact
+				path={dashboardMenu.worklist.subMenu.directCampaign.path}
+				component={LANDING.DIRECT_CAMPAIGN}
+			/>
+			<Route
+				exact
+				path={dashboardMenu.worklist.subMenu.katalogDirectCampaign.path}
+				component={LANDING.CATALOGUE_DIRECT_CAMPAIGN}
+			/>
+			
 			<Route
 				exact
 				path={dashboardMenu.sendBadge.subMenu.sendBadgeLove.path}
@@ -183,6 +203,10 @@ const ContentRoutes = () => {
 				component={LANDING.GALLERY_BOOTCAMP}
 			/>
 			<Route exact path={dashboardMenu.shareSupport.path} component={LANDING.SHARE_CONNECT} />
+			<Route
+				exact
+				path={dashboardMenu.joinKomunitas.path}
+				component={LANDING.JOIN_COMMUNITY}></Route>
 			{/* Auth */}
 			<Route exact path={menuSidebar.page404.path} component={AUTH.PAGE_404} />
 			<Route exact path={menuSidebar.login.path} component={Login} />

@@ -7,12 +7,21 @@ import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
-import data, { CATEGORIES } from './helper/dummyKnowledgeData';
+import data, { CATEGORIES } from './helper/dummyCampaignData';
 import { dashboardMenu, menuSidebar } from '../../menu';
+import { priceFormat } from '../../helpers/helpers';
 import Button from '../../components/bootstrap/Button';
+import Dropdown, {
+	DropdownItem,
+	DropdownMenu,
+	DropdownToggle,
+} from '../../components/bootstrap/Dropdown';
+import Input from '../../components/bootstrap/forms/Input';
+import Checks from '../../components/bootstrap/forms/Checks';
+import Icon from '../../components/icon/Icon';
 
 // eslint-disable-next-line react/prop-types
-const Item = ({ id, image, title, description, tags, color }) => {
+const Item = ({ id, image, budget, title, start_date, end_date, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
 		() => history.push(`${dashboardMenu.worklist.subMenu.detailProgramOpenWorker.path}/${id}`),
@@ -27,6 +36,7 @@ const Item = ({ id, image, title, description, tags, color }) => {
 						'rounded-2',
 						`bg-l10-${color}`,
 						'mb-3',
+						'position-relative',
 					)}>
 					<img
 						src={image}
@@ -35,9 +45,19 @@ const Item = ({ id, image, title, description, tags, color }) => {
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
+					<Badge className='position-absolute h-auto w-auto px-4 py-2' color='success'>
+						Cocok
+					</Badge>
 				</div>
-				<CardTitle>{title}</CardTitle>
-				<p className='text-muted truncate-line-2'>{description}</p>
+				<CardTitle className='mb-3'>{title}</CardTitle>
+				<div className='text-mute mb-1'>
+					<Icon icon='DateRange' size='2x' color='info' className='me-1' />
+					{start_date}-{end_date}
+				</div>
+				<div className='text-mute'>
+					<Icon icon='Money' size='2x' color='success' className='me-1' />
+					{priceFormat(budget)}
+				</div>
 				{/* <div className='row g-2'>
 					{!!tags &&
 						// eslint-disable-next-line react/prop-types
@@ -49,11 +69,8 @@ const Item = ({ id, image, title, description, tags, color }) => {
 							</div>
 						))}
 				</div> */}
-				<div className='mt-4 d-flex justify-content-between'>
-					<Button icon='Close' color='danger'>
-						Ignore
-					</Button>
-					<Button icon='Check' color='success'>
+				<div className='mt-4 d-flex justify-content-end'>
+					<Button icon='Check' color='info'>
 						Join
 					</Button>
 				</div>
@@ -122,14 +139,14 @@ const OpenWorkList = () => {
 		<PageWrapper title={dashboardMenu.worklist.subMenu.openWorkList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-8 text-left my-5'>
-						<span className='display-5 fw-bold'>Open Worker List</span>
+					<div className='col-7 text-left my-5'>
+						<span className='display-5 fw-bold'>Open Campaign List</span>
 					</div>
-					<div className='col-4 mx-auto text-center my-5'>
+					<div className='col-5 mx-auto text-center my-5'>
 						<form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
 							onSubmit={formik.handleSubmit}>
-							<div className='col-md-12'>
+							<div className='col-md-8'>
 								<Select
 									id='category'
 									size='lg'
@@ -153,42 +170,68 @@ const OpenWorkList = () => {
 									value={formik.values.category}
 								/>
 							</div>
-							{/* <div className='col-md-5'>
-								<Input
-									id='search'
-									size='lg'
-									placeholder='Type your question...'
-									className='rounded-1 bg-white'
-									onChange={(e) => {
-										formik.handleChange(e);
-
-										if (e.target.value.length > 2)
-											debounce(
-												() =>
-													onFormSubmit({
-														...formik.values,
-														search: e.target.value,
-													}),
-												1000,
-											)();
-
-										if (e.target.value.length === 0) formik.resetForm();
-									}}
-									value={formik.values.search}
-								/>
+							<div className='col-md-4'>
+								<Dropdown>
+									<DropdownToggle>
+										<Button color='info' icon='FilterAlt' isLight>
+											Filter
+										</Button>
+									</DropdownToggle>
+									<DropdownMenu isAlignmentEnd size='lg'>
+										<DropdownItem className='mb-4'>
+											<Select
+												id='industri'
+												ariaLabel='Industri'
+												placeholder='Filter Industri'
+												list={[
+													{
+														text: 'Industri 1',
+														value: '1',
+													},
+												]}
+											/>
+										</DropdownItem>
+										<DropdownItem className='mb-3'>
+											<Input placeholder='Filter Kota' type='text' />
+										</DropdownItem>
+										<DropdownItem className='mb-3'>
+											<div className='d-flex flex-column'>
+												<div className='w-100'>Range Budget</div>
+												<Input
+													id='example'
+													max={100}
+													min={0}
+													type='range'
+												/>
+											</div>
+										</DropdownItem>
+										<DropdownItem className='mb-4'>
+											<Select
+												id='budget'
+												ariaLabel='Budget'
+												placeholder='Budget Pekarya'
+												list={[
+													{
+														text: 'Budget 1',
+														value: '1',
+													},
+												]}
+											/>
+										</DropdownItem>
+										<DropdownItem>
+											<div>
+												<Checks
+													id='example'
+													label='Cocok untuk anda'
+													name='example'
+													onChange={(e) => console.log(e)}
+													type='switch'
+												/>
+											</div>
+										</DropdownItem>
+									</DropdownMenu>
+								</Dropdown>
 							</div>
-							<div className='col-md-2'>
-								<Button
-									size='lg'
-									icon='Close'
-									color='primary'
-									className='w-100'
-									rounded={1}
-									onClick={formik.resetForm}
-									type='reset'
-									isDisable={!(formik.values.search || formik.values.category)}
-								/>
-							</div> */}
 						</form>
 					</div>
 				</div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Alert from '../../components/bootstrap/Alert';
@@ -18,9 +18,10 @@ import { useFormik } from 'formik';
 
 import { useClipboard } from 'use-clipboard-copy';
 import showNotification from '../../components/extras/showNotification';
-import { Link } from 'react-router-dom';
-import { dashboardMenu } from '../../menu';
-const ShareKoneksi = () => {
+import Modal, { ModalBody, ModalHeader } from '../../components/bootstrap/Modal';
+import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
+const JoinCommunity = () => {
+	const [modal, setModal] = useState(false);
 	const formik = useFormik({
 		initialValues: {
 			linkonekios: 'www.konekios.com/register',
@@ -42,45 +43,21 @@ const ShareKoneksi = () => {
 						<CardHeader borderSize={1} className='bg-transparent'>
 							<CardLabel>
 								<CardTitle tag='h4' className='h4'>
-									<Icon className='me-2' icon='Share' size='3x' color='info' />
-									Sebarkan Koneksi
+									<Icon className='me-2' icon='Add' size='3x' color='info' />
+									Join Komunitas
 								</CardTitle>
 							</CardLabel>
 						</CardHeader>
 						<CardBody>
 							<div className='row'>
-								<div className='col-md-12'>
-									<Card
-										className='bg-l25-success transition-base rounded-2 mb-4'
-										shadow='sm'>
-										<CardHeader className='bg-transparent pb-1'>
-											<CardLabel>
-												<CardTitle tag='h4' className='h4'>
-													Join Komunitas!
-												</CardTitle>
-											</CardLabel>
-										</CardHeader>
-										<CardBody className='pt-1'>
-											<div className='d-flex align-items-center pb-3'>
-												{/* <Icon icon='Info' className='me-2' /> */}
-												<div className='text-muted mb-5'>
-													Temui komunitas yang ada di sekitar mu!
-												</div>
-											</div>
-											<Link to={`${dashboardMenu.joinKomunitas.path}`}>
-												<Button color='success'>Join Now!</Button>
-											</Link>
-										</CardBody>
-									</Card>
-								</div>
 								<div className='col-md-4'>
 									<Card
-										className='bg-l25-success transition-base rounded-2 mb-4'
+										className='bg-l25-info transition-base rounded-2 mb-4'
 										shadow='sm'>
 										<CardHeader className='bg-transparent pb-1'>
 											<CardLabel>
 												<CardTitle tag='h4' className='h4'>
-													Registrasi Konekios
+													Komunitas 1
 												</CardTitle>
 											</CardLabel>
 										</CardHeader>
@@ -88,26 +65,12 @@ const ShareKoneksi = () => {
 											<div className='d-flex align-items-center pb-3'>
 												{/* <Icon icon='Info' className='me-2' /> */}
 												<div className='text-muted mb-5'>
-													Temui komunitas yang ada di sekitar mu!
+													Gabung dengan komunitas 1 sekarang juga!
 												</div>
 											</div>
 											<FormGroup className='d-flex'>
-												<Input
-													type='text'
-													value={formik.values.linkonekios}
-													className='me-3'
-												/>
-												<Button
-													color='info'
-													onClick={() => {
-														clipboard.copy(formik.values.linkonekios);
-														showNotification(
-															'Copy link to clipboard',
-															<div></div>,
-														);
-													}}>
-													{' '}
-													Copy
+												<Button color='info' onClick={() => setModal(true)}>
+													Join
 												</Button>
 											</FormGroup>
 										</CardBody>
@@ -115,12 +78,12 @@ const ShareKoneksi = () => {
 								</div>
 								<div className='col-md-4'>
 									<Card
-										className='bg-l25-success transition-base rounded-2 mb-4'
+										className='bg-l25-info transition-base rounded-2 mb-4'
 										shadow='sm'>
 										<CardHeader className='bg-transparent pb-1'>
 											<CardLabel>
 												<CardTitle tag='h4' className='h4'>
-													Registrasi Konekita
+													Komunitas 2
 												</CardTitle>
 											</CardLabel>
 										</CardHeader>
@@ -128,26 +91,12 @@ const ShareKoneksi = () => {
 											<div className='d-flex align-items-center pb-3'>
 												{/* <Icon icon='Info' className='me-2' /> */}
 												<div className='text-muted mb-5'>
-													Temui komunitas yang ada di sekitar mu!
+													Gabung dengan komunitas 2 sekarang juga!
 												</div>
 											</div>
 											<FormGroup className='d-flex'>
-												<Input
-													type='text'
-													value={formik.values.linkonekita}
-													className='me-3'
-												/>
-												<Button
-													color='info'
-													onClick={() => {
-														clipboard.copy(formik.values.linkonekita);
-														showNotification(
-															'Copy link to clipboard',
-															<div></div>,
-														);
-													}}>
-													{' '}
-													Copy
+												<Button color='info' onClick={() => setModal(true)}>
+													Join
 												</Button>
 											</FormGroup>
 										</CardBody>
@@ -155,12 +104,12 @@ const ShareKoneksi = () => {
 								</div>
 								<div className='col-md-4'>
 									<Card
-										className='bg-l25-success transition-base rounded-2 mb-4'
+										className='bg-l25-info transition-base rounded-2 mb-4'
 										shadow='sm'>
 										<CardHeader className='bg-transparent pb-1'>
 											<CardLabel>
 												<CardTitle tag='h4' className='h4'>
-													Registrasi Konekoin
+													Komunitas 3
 												</CardTitle>
 											</CardLabel>
 										</CardHeader>
@@ -168,26 +117,12 @@ const ShareKoneksi = () => {
 											<div className='d-flex align-items-center pb-3'>
 												{/* <Icon icon='Info' className='me-2' /> */}
 												<div className='text-muted mb-5'>
-													Temui komunitas yang ada di sekitar mu!
+													Gabung dengan komunitas 3 sekarang juga!
 												</div>
 											</div>
 											<FormGroup className='d-flex'>
-												<Input
-													type='text'
-													value={formik.values.linkonekoin}
-													className='me-3'
-												/>
-												<Button
-													color='info'
-													onClick={() => {
-														clipboard.copy(formik.values.linkonekoin);
-														showNotification(
-															'Copy link to clipboard',
-															<div></div>,
-														);
-													}}>
-													{' '}
-													Copy
+												<Button color='info' onClick={() => setModal(true)}>
+													Join
 												</Button>
 											</FormGroup>
 										</CardBody>
@@ -197,9 +132,21 @@ const ShareKoneksi = () => {
 						</CardBody>
 					</Card>
 				</div>
+				<Modal
+					setIsOpen={setModal}
+					isOpen={modal}
+					titleId='form'
+					isCentered
+					isScrollable
+					size='lg'>
+					<ModalHeader setIsOpen={setModal}>
+						<OffCanvasTitle id='form'>Isi data diri</OffCanvasTitle>
+					</ModalHeader>
+					<ModalBody></ModalBody>
+				</Modal>
 			</Page>
 		</PageWrapper>
 	);
 };
 
-export default ShareKoneksi;
+export default JoinCommunity;

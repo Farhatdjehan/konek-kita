@@ -1,7 +1,7 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import data from './helper/dummyKnowledgeData';
+import data from './helper/dummyCampaignData';
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
@@ -13,6 +13,10 @@ import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Badge from '../../components/bootstrap/Badge';
 import USERS from '../../common/data/userDummyData';
+import { priceFormat } from '../../helpers/helpers';
+import Icon from '../../components/icon/Icon';
+import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
+import UserImage3 from '../../assets/img/wanna/wanna3.png';
 
 const DetailPageOpenWorker = () => {
 	const { id } = useParams();
@@ -28,7 +32,7 @@ const DetailPageOpenWorker = () => {
 						Back to List
 					</Button>
 					<SubheaderSeparator />
-					{!!item.tags &&
+					{/* {!!item.tags &&
 						// eslint-disable-next-line react/prop-types
 						item.tags.map((tag) => (
 							<div key={tag.text} className='col-auto'>
@@ -36,8 +40,13 @@ const DetailPageOpenWorker = () => {
 									{tag.text}
 								</Badge>
 							</div>
-						))}
+						))} */}
 				</SubHeaderLeft>
+				<SubHeaderRight>
+					<Button icon='Check' color='info'>
+						Join
+					</Button>
+				</SubHeaderRight>
 			</SubHeader>
 			<Page>
 				<div className='display-4 fw-bold pt-3 pb-5'>{item.title}</div>
@@ -60,7 +69,63 @@ const DetailPageOpenWorker = () => {
 						</div>
 					</div>
 					<div className='col-12'>
-						<h3 className='text-muted'>{item.description}</h3>
+						<div>
+							<h6>
+								<b>Pembuat</b>
+							</h6>
+							<Avatar
+								srcSet={UserImageWebp3}
+								src={UserImage3}
+								size={28}
+								border={2}
+								className='me-2'
+							/>
+							<span>
+								<Link to='#'>
+									{item.user}
+									<Icon className='ms-2' color='info' icon='Verified' />
+								</Link>
+							</span>
+						</div>
+					</div>
+					<div className='col-12'>
+						<div className='text-muted mb-2'>
+							<b>Budget : </b> {priceFormat(item.budget)}
+						</div>
+						<div className='text-muted mb-2 d-flex'>
+							<b>Minimal Badge : </b>
+							<div className='d-flex ms-1'>
+								<div className='me-2'>
+									<Icon icon='HeartFill' color='danger' className='me-1' />4
+								</div>
+								<div className='me-2'>
+									<Icon icon='EmojiEmotions' color='success' className='me-1' />2
+								</div>
+							</div>
+						</div>
+						<div className='text-muted mb-2 d-flex'>
+							<b>Media Promosi : </b>
+							<div className='d-flex ms-1 align-items-center'>
+								<div className='me-2'>
+									<Icon icon='Check' /> Instagram
+								</div>
+								<div className='me-2'>
+									<Icon icon='Check' /> Tiktok
+								</div>
+							</div>
+						</div>
+						<div className='text-muted mb-2 d-flex'>
+							<b>Minimal Ranking : </b>
+							<div className='d-flex ms-1'>40</div>
+						</div>
+						<div className='text-muted mb-2 d-flex'>
+							<b>Negara, Provinsi : </b>
+							<div className='d-flex ms-1'>Indonesia, DKI Jakarta</div>
+						</div>
+						<div className='text-muted mb-2 d-flex'>
+							<b>Kota : </b>
+							<div className='d-flex ms-1'>Jakarta</div>
+						</div>
 					</div>
 					<div className='col-12'>{item.content || null}</div>
 				</div>

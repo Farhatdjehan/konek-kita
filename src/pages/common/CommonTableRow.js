@@ -19,6 +19,7 @@ const CommonTableRow = ({
 	// eslint-disable-next-line react/prop-types
 	name,
 	// eslint-disable-next-line react/prop-types
+	benefit,
 	category,
 	// eslint-disable-next-line react/prop-types
 	series,
@@ -36,6 +37,7 @@ const CommonTableRow = ({
 	selectChecked,
 	// eslint-disable-next-line react/prop-types
 	selectName,
+	handleAdd,
 }) => {
 	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false);
 	const address = useLocation();
@@ -108,8 +110,11 @@ const CommonTableRow = ({
 							</span>
 						</td>
 						<td>
+							<div>{category}</div>
+						</td>
+						<td>
 							<div className='text-muted'>
-								<small>{category}</small>
+								<small>{benefit}</small>
 							</div>
 						</td>
 						<td className='text-end'>

@@ -838,6 +838,14 @@ const ProfilPage = () => {
 												color='info'>
 												Rp 2.000.000 | Berlangganan Sekarang
 											</Button>
+											{/* <Link to='/premium-content/list'>
+												<Button
+													icon='Lock'
+													className='py-3 px-3 me-3'
+													color='success'>
+													Konten Premium
+												</Button>
+											</Link> */}
 										</div>
 										<div className='col-md-7'>
 											<Card>
@@ -877,6 +885,14 @@ const ProfilPage = () => {
 												color='info'>
 												Rp 1.500.000 | Berlangganan Sekarang
 											</Button>
+											{/* <Link to='/premium-content/list'>
+												<Button
+													icon='Lock'
+													className='py-3 px-3 me-3'
+													color='success'>
+													Konten Premium
+												</Button>
+											</Link> */}
 										</div>
 										<div className='col-md-7'>
 											<Card>
@@ -916,6 +932,14 @@ const ProfilPage = () => {
 												color='info'>
 												Rp 1.000.000 | Berlangganan Sekarang
 											</Button>
+											{/* <Link to='/premium-content/list'>
+												<Button
+													icon='Lock'
+													className='py-3 px-3 me-3'
+													color='success'>
+													Konten Premium
+												</Button>
+											</Link> */}
 										</div>
 										<div className='col-md-7'>
 											<Card>

@@ -16,193 +16,55 @@ const data = [
 		id: 1,
 		image: BeveledCone,
 		name: 'Paket Gold',
-		category: 'Post, Video, Story (1 Minggu)',
-		series: [
-			{
-				data: [25, 66, 41, 89, 63],
-			},
-		],
+		benefit: 'Post, Video, Story (1 Minggu)',
 		color: process.env.REACT_APP_SUCCESS_COLOR,
-		stock: 380,
 		price: 3200000,
-		store: 'Company A',
-		file: 'Figma',
+		category: 'umum'
 	},
 	{
 		id: 2,
 		image: CloudBall,
 		name: 'Paket Silver',
-		category: 'Post, Video (1 Minggu)',
-		series: [
-			{
-				data: [12, 24, 33, 12, 48],
-			},
-		],
+		benefit: 'Post, Video (1 Minggu)',
 		color: process.env.REACT_APP_SUCCESS_COLOR,
-		stock: 1245,
 		price: 2400000,
-		store: 'Company A',
-		file: 'Figma',
+		category: 'umum'
 	},
 	{
 		id: 3,
 		image: Quadrilateral,
 		name: 'Paket Bronze',
-		category: 'Post (1 Minggu)',
-		series: [
-			{
-				data: [34, 32, 36, 34, 34],
-			},
-		],
+		benefit: 'Post (1 Minggu)',
 		color: process.env.REACT_APP_WARNING_COLOR,
-		stock: 27,
 		price: 1200000,
-		store: 'Company D',
-		file: 'XD',
+		category: 'umum'
 	},
-	// {
-	// 	id: 4,
-	// 	image: HardSharpDonut,
-	// 	name: 'Bendy Rectangle',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [54, 34, 42, 23, 12],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_DANGER_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company C',
-	// 	file: 'Sketch',
-	// },
-	// {
-	// 	id: 5,
-	// 	image: BendyRectangle,
-	// 	name: 'Bendy Rectangle',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [23, 21, 12, 34, 14],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_DANGER_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company A',
-	// 	file: 'Figma',
-	// },
-	// {
-	// 	id: 6,
-	// 	image: Infinity,
-	// 	name: 'Bendy Rectangle',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [23, 13, 34, 41, 38],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company C',
-	// 	file: 'Figma',
-	// },
-	// {
-	// 	id: 7,
-	// 	image: Octahedron,
-	// 	name: 'Octahedron',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [21, 34, 23, 12, 67],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 	stock: 498,
-	// 	price: 18,
-	// 	store: 'Company B',
-	// 	file: 'Figma',
-	// },
-	// {
-	// 	id: 8,
-	// 	image: Triangle,
-	// 	name: 'Triangle',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [18, 32, 26, 15, 34],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company B',
-	// 	file: 'Figma',
-	// },
-	// {
-	// 	id: 9,
-	// 	image: SquiglyGlobe,
-	// 	name: 'SquiglyGlobe',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [18, 32, 26, 15, 34],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company C',
-	// 	file: 'Figma',
-	// },
-	// {
-	// 	id: 10,
-	// 	image: Dodecagon,
-	// 	name: 'Dodecagon',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [18, 32, 26, 15, 34],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company A',
-	// 	file: 'Figma',
-	// },
-	// {
-	// 	id: 11,
-	// 	image: BeveledCube,
-	// 	name: 'Beveled Cube',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [18, 32, 26, 15, 34],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company A',
-	// 	file: 'Figma',
-	// },
-	// {
-	// 	id: 12,
-	// 	image: Cylinder,
-	// 	name: 'Cylinder',
-	// 	category: '3D Shapes',
-	// 	series: [
-	// 		{
-	// 			data: [18, 32, 26, 15, 34],
-	// 		},
-	// 	],
-	// 	color: process.env.REACT_APP_SUCCESS_COLOR,
-	// 	stock: 219,
-	// 	price: 16,
-	// 	store: 'Company B',
-	// 	file: 'Figma',
-	// },
+	{
+		id: 4,
+		image: BendyRectangle,
+		name: 'Paket UMKM 1',
+		benefit: 'Post, Video, Story (1 Minggu)',
+		color: process.env.REACT_APP_WARNING_COLOR,
+		price: 500000,
+		category: 'umkm'
+	},
+	{
+		id: 5,
+		image: Infinity,
+		name: 'Paket UMKM 2',
+		benefit: 'Post, Video (1 Minggu)',
+		color: process.env.REACT_APP_WARNING_COLOR,
+		price: 400000,
+		category: 'umkm'
+	},
+	{
+		id: 6,
+		image: HardSharpDonut,
+		name: 'Paket UMKM 3',
+		benefit: 'Post (1 Minggu)',
+		color: process.env.REACT_APP_WARNING_COLOR,
+		price: 300000,
+		category: 'umkm'
+	},
 ];
 export default data;

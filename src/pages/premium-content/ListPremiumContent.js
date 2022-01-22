@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { getUserDataWithId } from '../../common/data/userDummyData';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Page from '../../layout/Page/Page';
-import data from '../../common/data/dummyPremiumContent';
+import dataContent from '../../common/data/dummyPremiumContent';
 import PlaceholderImage from '../../components/extras/PlaceholderImage';
 import Input from '../../components/bootstrap/forms/Input';
 import Badge from '../../components/bootstrap/Badge';
@@ -19,6 +19,7 @@ import Pic6 from '../../assets/img/wanna/richie/richie6.png';
 import Pic7 from '../../assets/img/wanna/richie/richie7.png';
 import Pic8 from '../../assets/img/wanna/richie/richie8.png';
 import Button from '../../components/bootstrap/Button';
+import ChatList from '../chat/ChatList';
 import Card, {
 	CardActions,
 	CardBody,
@@ -116,68 +117,12 @@ const ListPremiumContent = () => {
 	function handleDetailPage() {
 		history.push(`${dashboardMenu.gallery.subMenu.detailPortofolio.path}`);
 	}
-	const [dayHours] = useState({
-		series: [
-			{
-				data: [8, 12, 15, 20, 15, 22, 9],
-			},
-		],
-		options: {
-			colors: [process.env.REACT_APP_DANGER_COLOR],
-			chart: {
-				type: 'radar',
-				width: 200,
-				height: 200,
-				sparkline: {
-					enabled: true,
-				},
-			},
-			xaxis: {
-				categories: [
-					'Monday',
-					'Tuesday',
-					'Wednesday',
-					'Thursday',
-					'Friday',
-					'Saturday',
-					'Sunday',
-				],
-				convertedCatToNumeric: false,
-			},
-			tooltip: {
-				theme: 'dark',
-				fixed: {
-					enabled: false,
-				},
-				x: {
-					show: true,
-				},
-				y: {
-					title: {
-						// eslint-disable-next-line no-unused-vars
-						formatter(seriesName) {
-							return 'Hours';
-						},
-					},
-				},
-			},
-			stroke: {
-				curve: 'smooth',
-				width: 2,
-			},
-			plotOptions: {
-				radar: {
-					polygons: {
-						strokeColors: `${COLORS.DANGER.code}50`,
-						strokeWidth: 1,
-						connectorColors: `${COLORS.DANGER.code}50`,
-					},
-				},
-			},
-		},
-	});
 	const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'dark'];
 	const userTasks = dummyEventsData.filter((f) => f.assigned.username === data.username);
+	const filterFoto = dataContent.filter((f) => f.type === 'Foto');
+	const filterVideo = dataContent.filter((f) => f.type === 'Video');
+
+	const filterSuara = dataContent.filter((f) => f.type === 'Suara');
 	const images = [
 		{ id: 'Pic', img: Pic },
 		{ id: 'Pic2', img: Pic2 },
@@ -318,35 +263,151 @@ const ListPremiumContent = () => {
 										</div>
 									</div>
 								)}
-								{activeListTab === LIST_TAB.LIVECHAT && (
-									<div className='row g-4'></div>
-								)}
+								{activeListTab === LIST_TAB.LIVECHAT && <ChatList />}
 								{activeListTab === LIST_TAB.FOTO && (
 									<div className='row g-4'>
-										{data.length > 0
-											? data.map((item, index) => {
+										{filterFoto.length > 0
+											? filterFoto.map((item, index) => {
 													return (
-														<div className='col-md-4'>
+														<div key={index} className='col-md-4'>
 															<Card
 																className='cursor-pointer shadow-3d-primary shadow-3d-hover'
 																// onClick={handleOnClick}
 															>
 																<CardBody>
-																	{/* <div
-														className={classNames(
-															'ratio ratio-1x1',
-															'rounded-2',
-															// `bg-l10-${color}`,
-															'mb-3',
-														)}>
-														<img
-															src={item.image}
-															alt=''
-															width='100%'
-															height='auto'
-															className='object-fit-contain p-3'
-														/>
-													</div> */}
+																	<div
+																		className={classNames(
+																			'ratio ratio-1x1',
+																			'rounded-2',
+																			// `bg-l10-${color}`,
+																			'mb-3',
+																		)}>
+																		<img
+																			src={item.image}
+																			alt=''
+																			width='100%'
+																			height='auto'
+																			className='object-fit-contain p-3'
+																		/>
+																	</div>
+																	<CardTitle>
+																		{item.title}
+																	</CardTitle>
+																	<p className='text-muted truncate-line-2'>
+																		{item.desc}
+																	</p>
+																	<div className='row g-2'>
+																		{item.tags &&
+																			// eslint-disable-next-line react/prop-types
+																			item.tags.map(
+																				(e, i) => (
+																					<div
+																						key={i}
+																						className='col-auto'>
+																						<Badge
+																							isLight
+																							className='px-3 py-2'>
+																							{
+																								e.tags_name
+																							}
+																						</Badge>
+																					</div>
+																				),
+																			)}
+																	</div>
+																</CardBody>
+															</Card>
+														</div>
+													);
+											  })
+											: null}
+									</div>
+								)}
+								{activeListTab === LIST_TAB.VIDEO && (
+									<div className='row g-4'>
+										{filterVideo.length > 0
+											? filterVideo.map((item, index) => {
+													return (
+														<div key={index} className='col-md-4'>
+															<Card
+																className='cursor-pointer shadow-3d-primary shadow-3d-hover'
+																// onClick={handleOnClick}
+															>
+																<CardBody>
+																	<div
+																		className={classNames(
+																			'ratio ratio-1x1',
+																			'rounded-2',
+																			// `bg-l10-${color}`,
+																			'mb-3',
+																		)}>
+																		<img
+																			src={item.image}
+																			alt=''
+																			width='100%'
+																			height='auto'
+																			className='object-fit-contain p-3'
+																		/>
+																	</div>
+																	<CardTitle>
+																		{item.title}
+																	</CardTitle>
+																	<p className='text-muted truncate-line-2'>
+																		{item.desc}
+																	</p>
+																	<div className='row g-2'>
+																		{item.tags &&
+																			// eslint-disable-next-line react/prop-types
+																			item.tags.map(
+																				(e, i) => (
+																					<div
+																						key={i}
+																						className='col-auto'>
+																						<Badge
+																							isLight
+																							className='px-3 py-2'>
+																							{
+																								e.tags_name
+																							}
+																						</Badge>
+																					</div>
+																				),
+																			)}
+																	</div>
+																</CardBody>
+															</Card>
+														</div>
+													);
+											  })
+											: null}
+									</div>
+								)}
+								{activeListTab === LIST_TAB.SUARA && (
+									<div className='row g-4'>
+										{filterSuara.length > 0
+											? filterSuara.map((item, index) => {
+													return (
+														<div key={index} className='col-md-4'>
+															<Card
+																className='cursor-pointer shadow-3d-primary shadow-3d-hover'
+																// onClick={handleOnClick}
+															>
+																<CardBody>
+																	<div
+																		className={classNames(
+																			'ratio ratio-1x1',
+																			'rounded-2',
+																			// `bg-l10-${color}`,
+																			'mb-3',
+																		)}>
+																		<img
+																			src={item.image}
+																			alt=''
+																			width='100%'
+																			height='auto'
+																			className='object-fit-contain p-3'
+																		/>
+																	</div>
 																	<CardTitle>
 																		{item.title}
 																	</CardTitle>

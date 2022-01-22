@@ -98,6 +98,12 @@ export const dashboardMenu = {
 				path: '/umkm/program',
 				icon: 'CalendarViewMonth',
 			},
+			deliverableProgram: {
+				id: 'deliverableProgram',
+				text: 'Deliverable Program',
+				path: '/umkm/deliverable-program',
+				icon: 'SendAndArchive',
+			},
 		},
 	},
 	bootcamp: {
@@ -151,34 +157,46 @@ export const dashboardMenu = {
 
 	worklist: {
 		id: 'worklist',
-		text: 'Work List',
-		path: '/work',
+		text: 'Campaign List',
+		path: '/campaign',
 		icon: 'AutoStories',
 		subMenu: {
 			openWorkList: {
 				id: 'openWorkList',
-				text: 'Open Work List',
-				path: '/work/open-work',
+				text: 'Open Campaign List',
+				path: '/campaign/open-campaign',
 				icon: 'AutoStories',
 			},
 			detailProgramOpenWorker: {
 				id: 'detailProgramOpenWork',
-				text: 'Detail Program Open Work',
-				path: '/work/open-work/detail',
+				text: 'Detail Program Open Campaign',
+				path: '/campaign/open-campaign/detail',
 				hide: true,
 			},
 			reqWorkList: {
 				id: 'reqWorkList',
-				text: 'Request Work List',
-				path: '/work/request-work',
+				text: 'Request Campaign List',
+				path: '/campaign/request-campaign',
 				icon: 'WorkOutline',
 			},
 			detailProgram: {
 				id: 'detailProgram',
 				text: 'Detail Program',
-				path: '/work/request-work/detail',
+				path: '/campaign/request-campaign/detail',
 				hide: true,
 			},
+			directCampaign: {
+				id: 'directCampaign',
+				text: 'Direct Campaign',
+				path: '/campaign/direct',
+				icon: 'Campaign'
+			},
+			katalogDirectCampaign: {
+				id: 'katalogDirectCampaign',
+				text: 'Katalog Direct Campaign',
+				path: '/campaign/katalog-direct',
+				icon: 'Campaign'
+			}
 		},
 	},
 	collaboration: {
@@ -242,6 +260,12 @@ export const dashboardMenu = {
 		id: 'detailProduct',
 		text: 'detailProduct',
 		path: '/gallery-umkm/detail',
+		hide: true,
+	},
+	joinKomunitas: {
+		id: 'joinKomunitas',
+		text: 'Join Komunitas',
+		path: '/sebarkan-koneksi/join-komunitas',
 		hide: true,
 	},
 };

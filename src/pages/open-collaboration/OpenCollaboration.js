@@ -16,7 +16,7 @@ import FormGroup from '../../components/bootstrap/forms/FormGroup';
 import Input from '../../components/bootstrap/forms/Input';
 import USERS from '../../common/data/userDummyData';
 import moment from 'moment';
-import { Check, Textarea } from '../../components/icon/bootstrap';
+import Textarea from '../../components/bootstrap/forms/Textarea';
 import Checks, { ChecksGroup } from '../../components/bootstrap/forms/Checks';
 import Popovers from '../../components/bootstrap/Popovers';
 import Icon from '../../components/icon/Icon';
@@ -138,6 +138,8 @@ const OpenCollaboration = () => {
 			start_date: moment().add(1, 'days').format('YYYY-MM-DD'),
 			end_date: moment().add(7, 'days').format('YYYY-MM-DD'),
 			link_ref: '',
+			total_money: '',
+			provided_money: '',
 			skill: '',
 			desc: '',
 		},
@@ -289,8 +291,28 @@ const OpenCollaboration = () => {
 										/>
 									</FormGroup>
 								</div>
+								<div className='col-12'>
+									<FormGroup id='provided_money' label='Dana Project'>
+										<Input
+											type='number'
+											placeholder='Nominal Uang'
+											onChange={formik.handleChange}
+											value={formik.values.provided_money}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='total_money' label='Ajuan Dana Project '>
+										<Input
+											type='number'
+											placeholder='Nominal Uang'
+											onChange={formik.handleChange}
+											value={formik.values.total_money}
+										/>
+									</FormGroup>
+								</div>
 								<div className='col-6'>
-									<FormGroup id='start_date' label='Date'>
+									<FormGroup id='start_date' label='Start Date'>
 										<Input
 											placeholder='Date'
 											onChange={formik.handleChange}
@@ -300,7 +322,7 @@ const OpenCollaboration = () => {
 									</FormGroup>
 								</div>
 								<div className='col-6'>
-									<FormGroup id='end_date' label='Date'>
+									<FormGroup id='end_date' label='End Date'>
 										<Input
 											placeholder='Date'
 											onChange={formik.handleChange}
@@ -310,23 +332,14 @@ const OpenCollaboration = () => {
 									</FormGroup>
 								</div>
 								<div className='col-12'>
-									<Card isCompact className='mb-0'>
-										<CardHeader>
-											<CardLabel>
-												<CardTitle>Deskripsi</CardTitle>
-											</CardLabel>
-										</CardHeader>
-										<CardBody>
-											<FormGroup id='desc' label='Deskripsi' isFloating>
-												<Textarea
-													rows={8}
-													placeholder='desc'
-													onChange={formik.handleChange}
-													value={formik.values.desc}
-												/>
-											</FormGroup>
-										</CardBody>
-									</Card>
+									<FormGroup id='desc' label='Deskripsi'>
+										<Textarea
+											rows={6}
+											placeholder='Deskripsi Kolaborasi'
+											onChange={formik.handleChange}
+											value={formik.values.desc}
+										/>
+									</FormGroup>
 								</div>
 							</div>
 						) : (
@@ -356,6 +369,26 @@ const OpenCollaboration = () => {
 											placeholder='Link Refrensi'
 											onChange={formik.handleChange}
 											value={formik.values.link}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='provided_money' label='Dana Project'>
+										<Input
+											type='number'
+											placeholder='Nominal Uang'
+											onChange={formik.handleChange}
+											value={formik.values.provided_money}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-12'>
+									<FormGroup id='total_money' label='Ajuan Dana Project '>
+										<Input
+											type='number'
+											placeholder='Nominal Uang'
+											onChange={formik.handleChange}
+											value={formik.values.total_money}
 										/>
 									</FormGroup>
 								</div>

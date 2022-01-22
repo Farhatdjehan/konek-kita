@@ -15,6 +15,14 @@ import Avatar from '../../components/Avatar';
 import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
 import UserImage3 from '../../assets/img/wanna/wanna3.png';
 import Icon from '../../components/icon/Icon';
+import Dropdown, {
+	DropdownItem,
+	DropdownMenu,
+	DropdownToggle,
+} from '../../components/bootstrap/Dropdown';
+import Checks from '../../components/bootstrap/forms/Checks';
+import Input from '../../components/bootstrap/forms/Input';
+import FormGroup from '../../components/bootstrap/forms/FormGroup';
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, user, tags, color }) => {
 	const history = useHistory();
@@ -152,14 +160,14 @@ const RequestCollabList = () => {
 		<PageWrapper title={dashboardMenu.collaboration.subMenu.reqCollabsList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-8 text-left my-5'>
+					<div className='col-7 text-left my-5'>
 						<span className='display-5 fw-bold'>Request Collaboration</span>
 					</div>
-					<div className='col-4 mx-auto text-center my-5'>
+					<div className='col-5 mx-auto text-center my-5'>
 						<form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
 							onSubmit={formik.handleSubmit}>
-							<div className='col-md-12'>
+							<div className='col-md-8'>
 								<Select
 									id='category'
 									size='lg'
@@ -182,6 +190,44 @@ const RequestCollabList = () => {
 									}}
 									value={formik.values.category}
 								/>
+							</div>
+							<div className='col-md-4'>
+								<Dropdown>
+									<DropdownToggle>
+										<Button color='info' icon='FilterAlt' isLight>
+											Filter
+										</Button>
+									</DropdownToggle>
+									<DropdownMenu isAlignmentEnd size='lg'>
+										<DropdownItem className='mb-4'>
+											<Select
+												id='industri'
+												ariaLabel='Industri'
+												placeholder='Filter Industri'
+												list={[
+													{
+														text: 'Industri 1',
+														value: '1',
+													},
+												]}
+											/>
+										</DropdownItem>
+										<DropdownItem className='mb-3'>
+											<Input placeholder='Filter Kota' type='text' />
+										</DropdownItem>
+										<DropdownItem>
+											<div>
+												<Checks
+													id='example'
+													label='Cocok untuk anda'
+													name='example'
+													onChange={(e) => console.log(e)}
+													type='switch'
+												/>
+											</div>
+										</DropdownItem>
+									</DropdownMenu>
+								</Dropdown>
 							</div>
 							{/* <div className='col-md-5'>
 								<Input

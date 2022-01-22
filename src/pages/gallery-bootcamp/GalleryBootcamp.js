@@ -12,6 +12,8 @@ import { dashboardMenu, menuSidebar } from '../../menu';
 import Button from '../../components/bootstrap/Button';
 import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
 import Icon from '../../components/icon/Icon';
+import Modal, { ModalBody, ModalHeader } from '../../components/bootstrap/Modal';
+import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, price, description, tags, color }) => {
 	const history = useHistory();
@@ -76,6 +78,7 @@ const Item = ({ id, image, title, price, description, tags, color }) => {
 };
 
 const GalleryBootcamp = () => {
+	const [modal, setModal] = useState(false);
 	const [filterableData, setFilterableData] = useState(data);
 
 	const searchAndFilterData = (searchValue, category) => {
@@ -144,7 +147,7 @@ const GalleryBootcamp = () => {
 								<li>Benefit 2</li>
 								<li>Benefit 3</li>
 							</ul>
-							<Button className='mt-3' color='info'>
+							<Button onClick={() => setModal(true)} className='mt-3' color='info'>
 								Register
 							</Button>
 						</CardBody>
@@ -229,6 +232,18 @@ const GalleryBootcamp = () => {
 						</div>
 					))}
 				</div>
+				<Modal
+					setIsOpen={setModal}
+					isOpen={modal}
+					titleId='form'
+					isCentered
+					isScrollable
+					size='lg'>
+					<ModalHeader setIsOpen={setModal}>
+						<OffCanvasTitle id='form'>Register</OffCanvasTitle>
+					</ModalHeader>
+					<ModalBody></ModalBody>
+				</Modal>
 			</Page>
 		</PageWrapper>
 	);

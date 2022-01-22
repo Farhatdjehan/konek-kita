@@ -1,13 +1,9 @@
-import moment from 'moment';
-import USERS from './userDummyData';
-import EVENT_STATUS from './enumEventStatus';
-import SERVICES from './serviceDummyData';
 import Pic from '../../assets/img/wanna/richie/richie.png';
 import Pic2 from '../../assets/img/wanna/richie/richie2.png';
 import Pic3 from '../../assets/img/wanna/richie/richie3.png';
 import Pic4 from '../../assets/img/wanna/richie/richie4.png';
 
-const data = [
+const dataContent = [
 	{
 		id: 1,
 		title: 'Lagi Sedih Nih, Huhuhu :(',
@@ -44,6 +40,24 @@ const data = [
 		image: Pic4,
 		link: 'www.premium-content.com',
 	},
+	{
+		id: 5,
+		title: 'Kangen kalian :(',
+		tags: [{ tags_name: 'Anya G.' }],
+		desc: 'Lorem ipsum doler sit amet',
+		type: 'Suara',
+		image: Pic4,
+		link: 'www.premium-content.com',
+	},
+	{
+		id: 6,
+		title: 'Voice Note Akuu',
+		tags: [{ tags_name: 'Anya G.' }],
+		desc: 'Lorem ipsum doler sit amet',
+		type: 'Suara',
+		image: Pic4,
+		link: 'www.premium-content.com',
+	},
 ];
 
-export default data;
+export default dataContent;

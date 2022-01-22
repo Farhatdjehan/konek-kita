@@ -58,9 +58,11 @@ import showNotification from '../../components/extras/showNotification';
 import { dashboardMenu, editPage } from '../../menu';
 import classNames from 'classnames';
 import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
+import Select from '../../components/bootstrap/forms/Select';
 
 const EditProfil = () => {
 	const history = useHistory();
+	const [modalType, setModalType] = useState();
 	const [dataUser, setDataUser] = useState({
 		first_name: '',
 		last_name: '',
@@ -136,23 +138,6 @@ const EditProfil = () => {
 			brand: '',
 			client: '',
 			link: '',
-		},
-	});
-
-	const formikTable = useFormik({
-		initialValues: {
-			minPrice: '',
-			maxPrice: '',
-			categoryName: '3D Shapes',
-			companyA: true,
-			companyB: true,
-			companyC: true,
-			companyD: true,
-		},
-		// eslint-disable-next-line no-unused-vars
-		onSubmit: (values) => {
-			setFilterMenu(false);
-			// alert(JSON.stringify(values, null, 2));
 		},
 	});
 
@@ -239,9 +224,20 @@ const EditProfil = () => {
 		}
 	};
 
-	const handleAddPorto = () => {
+	const handleAdd = (value) => {
+		setModalType(value);
 		setModal(true);
 	};
+
+	const formik = useFormik({
+		initialValues: {
+			name: '',
+			price: '',
+			desc: '',
+			categoryrate: '',
+		},
+		// onSubmit: onFormSubmit,
+	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -673,7 +669,10 @@ const EditProfil = () => {
 										<CardTitle>{TABS.PORTO}</CardTitle>
 									</CardLabel>
 									<CardActions>
-										<Button onClick={handleAddPorto} color='info' icon='Add'>
+										<Button
+											onClick={() => handleAdd('porto')}
+											color='info'
+											icon='Add'>
 											Tambah
 										</Button>
 									</CardActions>
@@ -708,6 +707,14 @@ const EditProfil = () => {
 								<CardLabel icon='RateReview' iconColor='info'>
 									<CardTitle>Rate Card</CardTitle>
 								</CardLabel>
+								<CardActions>
+									<Button
+										color='info'
+										onClick={() => handleAdd('rate')}
+										icon='Add'>
+										Add Rate Card
+									</Button>
+								</CardActions>
 							</CardHeader>
 							<CardBody className='table-responsive' isScrollable>
 								<table className='table table-modern table-hover'>
@@ -717,6 +724,9 @@ const EditProfil = () => {
 											<th scope='col'>#</th>
 											<th scope='col'>Nama Paket</th>
 											<th scope='col'>Harga Paket</th>
+
+											<th scope='col'>Kategori</th>
+
 											<th scope='col'>Benefit</th>
 											<th scope='col' className='text-end'>
 												Actions
@@ -756,50 +766,106 @@ const EditProfil = () => {
 				isScrollable
 				size='lg'>
 				<ModalHeader setIsOpen={setModal}>
-					<OffCanvasTitle id='upcomingEdit'>Tambahkan Portofolio</OffCanvasTitle>
+					<OffCanvasTitle id='upcomingEdit'>
+						{modalType === 'rate' ? 'Tambahkan Rate Card' : 'Tambahkan Portofolio'}
+					</OffCanvasTitle>
 				</ModalHeader>
 				<ModalBody>
-					<div className='row g-4'>
-						<div className='col-5'>
-							<Input type='file' autoComplete='photo' />
+					{modalType === 'rate' ? (
+						<div className='row g-4'>
+							<div className='col-6'>
+								<Input type='file' autoComplete='photo' />
+							</div>
+							<div className='col-12'>
+								<FormGroup id='name' label='Nama Paket' isFloating>
+									<Input
+										placeholder='Nama Paket'
+										onChange={formik.handleChange}
+										value={formik.values.name}
+									/>
+								</FormGroup>
+							</div>
+
+							<div className='col-12'>
+								<FormGroup id='price' label='Harga Paket' isFloating>
+									<Input
+										placeholder='Harga Paket'
+										onChange={formik.handleChange}
+										value={formik.values.price}
+									/>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='categoryrate' label='Kategori Rate Card' isFloating>
+									<Select
+										id='example'
+										onChange={formik.handleChange}
+										list={[
+											{
+												text: 'UMKM',
+												value: 1,
+											},
+											{
+												text: 'Umum',
+												value: 2,
+											},
+										]}
+										value={formik.values.categoryrate}></Select>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='desc' label='Description' isFloating>
+									<Input
+										placeholder='Deskripsi Paket'
+										onChange={formik.handleChange}
+										value={formik.values.desc}
+									/>
+								</FormGroup>
+							</div>
 						</div>
-						<div className='col-12'>
-							<FormGroup id='namapekarya' label='Nama Pekarya' isFloating>
-								<Input
-									placeholder='Mention Pekarya'
-									onChange={formikPorto.handleChange}
-									value={formikPorto.values.creators}
-								/>
-							</FormGroup>
+					) : (
+						<div className='row g-4'>
+							<div className='col-5'>
+								<Input type='file' autoComplete='photo' />
+							</div>
+							<div className='col-12'>
+								<FormGroup id='namapekarya' label='Nama Pekarya' isFloating>
+									<Input
+										placeholder='Mention Pekarya'
+										onChange={formikPorto.handleChange}
+										value={formikPorto.values.creators}
+									/>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='namabrand' label='Nama Brand' isFloating>
+									<Input
+										placeholder='Nama Brand'
+										onChange={formikPorto.handleChange}
+										value={formikPorto.values.brand}
+									/>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='namaklien' label='Nama Klien' isFloating>
+									<Input
+										placeholder='Nama Klien'
+										onChange={formikPorto.handleChange}
+										value={formikPorto.values.client}
+									/>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='linktoko' label='Link Toko' isFloating>
+									<Input
+										placeholder='Link Toko Anda'
+										onChange={formikPorto.handleChange}
+										value={formikPorto.values.link}
+									/>
+								</FormGroup>
+							</div>
 						</div>
-						<div className='col-12'>
-							<FormGroup id='namabrand' label='Nama Brand' isFloating>
-								<Input
-									placeholder='Nama Brand'
-									onChange={formikPorto.handleChange}
-									value={formikPorto.values.brand}
-								/>
-							</FormGroup>
-						</div>
-						<div className='col-12'>
-							<FormGroup id='namaklien' label='Nama Klien' isFloating>
-								<Input
-									placeholder='Nama Klien'
-									onChange={formikPorto.handleChange}
-									value={formikPorto.values.client}
-								/>
-							</FormGroup>
-						</div>
-						<div className='col-12'>
-							<FormGroup id='linktoko' label='Link Toko' isFloating>
-								<Input
-									placeholder='Link Toko Anda'
-									onChange={formikPorto.handleChange}
-									value={formikPorto.values.link}
-								/>
-							</FormGroup>
-						</div>
-					</div>
+					)}
 				</ModalBody>
 				<ModalFooter className='bg-transparent'>
 					<Button icon='Save' color='info' onClick={() => setModal(false)}>
