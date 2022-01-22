@@ -14,6 +14,8 @@ import HandWebp from '../../assets/img/hand.webp';
 import Button from '../../components/bootstrap/Button';
 import Tooltips from '../../components/bootstrap/Tooltips';
 import useDeviceScreen from '../../hooks/useDeviceScreen';
+import { Link } from 'react-router-dom';
+import Icon from '../../components/icon/Icon';
 
 const Aside = () => {
 	const { asideStatus, setAsideStatus } = useContext(ThemeContext);
@@ -134,27 +136,24 @@ const Aside = () => {
 					)}
 				</div>
 				<div className='aside-foot'>
-					{/* <nav aria-label='aside-bottom-menu'>
+					<nav aria-label='aside-bottom-menu'>
 						<div className='navigation'>
-							<div
-								role='presentation'
-								className='navigation-item cursor-pointer'
-								onClick={() => setDoc(!doc)}>
+							<Link to='/saldo'>
 								<span className='navigation-link navigation-link-pill'>
 									<span className='navigation-link-info'>
 										<Icon
-											icon={doc ? 'ToggleOn' : 'ToggleOff'}
-											color={doc ? 'success' : null}
+											icon='Money'
+											color='success'
 											className='navigation-icon'
 										/>
 										<span className='navigation-text'>
-											{t('Documentation')}
+											Saldo : Rp. 200.000
 										</span>
 									</span>
 								</span>
-							</div>
+							</Link>
 						</div>
-					</nav> */}
+					</nav>
 					<User />
 				</div>
 			</motion.aside>

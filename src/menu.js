@@ -189,14 +189,14 @@ export const dashboardMenu = {
 				id: 'directCampaign',
 				text: 'Direct Campaign',
 				path: '/campaign/direct',
-				icon: 'Campaign'
+				icon: 'Campaign',
 			},
 			katalogDirectCampaign: {
 				id: 'katalogDirectCampaign',
 				text: 'Katalog Direct Campaign',
 				path: '/campaign/katalog-direct',
-				icon: 'Campaign'
-			}
+				icon: 'Campaign',
+			},
 		},
 	},
 	collaboration: {
@@ -266,6 +266,11 @@ export const dashboardMenu = {
 		id: 'joinKomunitas',
 		text: 'Join Komunitas',
 		path: '/sebarkan-koneksi/join-komunitas',
+	},
+	saldo: {
+		id: 'saldo',
+		text: 'Saldo Anda',
+		path: '/saldo',
 		hide: true,
 	},
 };

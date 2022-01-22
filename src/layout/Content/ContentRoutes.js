@@ -41,6 +41,7 @@ const LANDING = {
 	),
 	SHARE_CONNECT: lazy(() => import('../../pages/share-connection/ShareKoneksi')),
 	JOIN_COMMUNITY: lazy(() => import('../../pages/share-connection/JoinCommunity')),
+	MY_SALDO: lazy(() => import('../../pages/saldo/MySaldo')),
 };
 
 const AUTH = {
@@ -160,7 +161,7 @@ const ContentRoutes = () => {
 				path={dashboardMenu.worklist.subMenu.katalogDirectCampaign.path}
 				component={LANDING.CATALOGUE_DIRECT_CAMPAIGN}
 			/>
-			
+
 			<Route
 				exact
 				path={dashboardMenu.sendBadge.subMenu.sendBadgeLove.path}
@@ -207,6 +208,7 @@ const ContentRoutes = () => {
 				exact
 				path={dashboardMenu.joinKomunitas.path}
 				component={LANDING.JOIN_COMMUNITY}></Route>
+			<Route exact path={dashboardMenu.saldo.path} component={LANDING.MY_SALDO}></Route>
 			{/* Auth */}
 			<Route exact path={menuSidebar.page404.path} component={AUTH.PAGE_404} />
 			<Route exact path={menuSidebar.login.path} component={Login} />
