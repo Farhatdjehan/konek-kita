@@ -9,6 +9,7 @@ const LANDING = {
 	PROFIL: lazy(() => import('../../pages/profil/ProfilPage')),
 	PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/PremiumContent')),
 	LIST_PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/ListPremiumContent')),
+	DETAIL_PREMIUM_CONTENT: lazy(() => import('../../pages/premium-content/DetailContentPremium')),
 	MY_BADGE: lazy(() => import('../../pages/my-badge/MyBadge')),
 	MY_CERT: lazy(() => import('../../pages/my-certificate/CertificateList')),
 	DETAIL_PORTOFOLIO: lazy(() => import('../../pages/portofolio/DetailPortofolio')),
@@ -185,6 +186,11 @@ const ContentRoutes = () => {
 				exact
 				path={dashboardMenu.premiumContent.subMenu.premiumContentList.path}
 				component={LANDING.LIST_PREMIUM_CONTENT}
+			/>
+			<Route
+				exact
+				path={`${dashboardMenu.premiumContent.subMenu.detailPremiumContent.path}:/id`}
+				component={LANDING.DETAIL_PREMIUM_CONTENT}
 			/>
 			<Route
 				exact

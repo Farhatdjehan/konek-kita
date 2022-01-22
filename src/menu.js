@@ -32,6 +32,13 @@ export const dashboardMenu = {
 				path: '/premium-content/list',
 				icon: 'ListAlt',
 			},
+			detailPremiumContent: {
+				id: 'detailPremiumContent',
+				text: 'Detail Content Premium',
+				path: '/premium-content/detail',
+				icon: 'Details',
+				hide: true,
+			},
 		},
 	},
 	sendBadge: {
@@ -221,7 +228,7 @@ export const dashboardMenu = {
 		path: '/sebarkan-koneksi',
 		icon: 'Share',
 	},
-	menuNFT : {
+	menuNFT: {
 		id: 'menuNFT',
 		text: 'NFT List',
 		path: '/nft',

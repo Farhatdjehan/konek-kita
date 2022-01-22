@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import data from './helper/dummyRequestCollabData';
+import data from './helper/dummyPremiumContentData';
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
@@ -18,12 +18,12 @@ import Icon from '../../components/icon/Icon';
 import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
 import UserImage3 from '../../assets/img/wanna/wanna3.png';
 
-const DetailPageReqCollab = () => {
+const DetailContentPremium = () => {
 	const { id } = useParams();
 	const history = useHistory();
 	const itemData = data.filter((item) => item.id.toString() === id.toString());
 	const item = itemData[0];
-	console.log(item);
+    
 	return (
 		<PageWrapper title={item.title}>
 			<SubHeader>
@@ -31,20 +31,7 @@ const DetailPageReqCollab = () => {
 					<Button color='info' isLink icon='ArrowBack' onClick={() => history.goBack()}>
 						Back to List
 					</Button>
-					<SubheaderSeparator />
-					<Button icon='AttachFile' tag='a' isLight color='success'>
-						Brief Kerja 1
-					</Button>
 				</SubHeaderLeft>
-				<SubHeaderRight>
-					<Button icon='Close' color='danger'>
-						Decline
-					</Button>
-
-					<Button icon='Check' color='success'>
-						Join
-					</Button>
-				</SubHeaderRight>
 			</SubHeader>
 			<Page>
 				<div className='display-4 fw-bold pt-3 pb-5'>{item.title}</div>
@@ -56,7 +43,6 @@ const DetailPageReqCollab = () => {
 								'rounded-2',
 								`bg-l10-${item.color}`,
 								'mb-3',
-								'position-relative',
 							)}>
 							<img
 								src={item.image}
@@ -65,11 +51,6 @@ const DetailPageReqCollab = () => {
 								height='auto'
 								className='object-fit-contain p-5'
 							/>
-							<Badge
-								className='position-absolute h-auto w-auto px-5 py-3'
-								color='success'>
-								Cocok
-							</Badge>
 						</div>
 					</div>
 
@@ -92,22 +73,11 @@ const DetailPageReqCollab = () => {
 						</div>
 					</div>
 
-					<div className='col-12'>
-						<h6>
-							Refrensi : <a href='#'>www.example.com</a>
-						</h6>
-						<h6>Tawaran : 3 Post, 2 Story</h6>
-						<h6>Date : 12/12/2021 - 18/12/2021</h6>
-						<h6>
-							Tag : <Badge className='me-2'>Public Relation</Badge>
-							<Badge color='success'>Entertainer</Badge>
-						</h6>
-					</div>
-					<div className='col-12'>{item.content || null}</div>
+					<div className='col-12'>{item.content}</div>
 				</div>
 			</Page>
 		</PageWrapper>
 	);
 };
 
-export default DetailPageReqCollab;
+export default DetailContentPremium;
