@@ -132,47 +132,49 @@ const DetailPortofolio = () => {
 					<OffCanvasTitle id='upcomingEdit'>Edit Portofolio</OffCanvasTitle>
 				</ModalHeader>
 				<ModalBody>
-					<div className='row g-4'>
-						<div className='col-5'>
-							<Input type='file' autoComplete='photo' />
+					<form>
+						<div className='row g-4'>
+							<div className='col-5'>
+								<Input type='file' autoComplete='photo' />
+							</div>
+							<div className='col-12'>
+								<FormGroup id='namapekarya' label='Nama Pekarya' isFloating>
+									<Input
+										placeholder='Mention Pekarya'
+										onChange={formikPorto.handleChange}
+										value={formikPorto.values.creators}
+									/>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='namabrand' label='Nama Brand' isFloating>
+									<Input
+										placeholder='Nama Brand'
+										onChange={formikPorto.handleChange}
+										value={formikPorto.values.brand}
+									/>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='namaklien' label='Nama Klien' isFloating>
+									<Input
+										placeholder='Nama Klien'
+										onChange={formikPorto.handleChange}
+										value={formikPorto.values.client}
+									/>
+								</FormGroup>
+							</div>
+							<div className='col-12'>
+								<FormGroup id='linktoko' label='Link Toko' isFloating>
+									<Input
+										placeholder='Link Toko Anda'
+										onChange={formikPorto.handleChange}
+										value={formikPorto.values.link}
+									/>
+								</FormGroup>
+							</div>
 						</div>
-						<div className='col-12'>
-							<FormGroup id='namapekarya' label='Nama Pekarya' isFloating>
-								<Input
-									placeholder='Mention Pekarya'
-									onChange={formikPorto.handleChange}
-									value={formikPorto.values.creators}
-								/>
-							</FormGroup>
-						</div>
-						<div className='col-12'>
-							<FormGroup id='namabrand' label='Nama Brand' isFloating>
-								<Input
-									placeholder='Nama Brand'
-									onChange={formikPorto.handleChange}
-									value={formikPorto.values.brand}
-								/>
-							</FormGroup>
-						</div>
-						<div className='col-12'>
-							<FormGroup id='namaklien' label='Nama Klien' isFloating>
-								<Input
-									placeholder='Nama Klien'
-									onChange={formikPorto.handleChange}
-									value={formikPorto.values.client}
-								/>
-							</FormGroup>
-						</div>
-						<div className='col-12'>
-							<FormGroup id='linktoko' label='Link Toko' isFloating>
-								<Input
-									placeholder='Link Toko Anda'
-									onChange={formikPorto.handleChange}
-									value={formikPorto.values.link}
-								/>
-							</FormGroup>
-						</div>
-					</div>
+					</form>
 				</ModalBody>
 				<ModalFooter className='bg-transparent'>
 					<Button icon='Save' color='info' onClick={() => setModal(false)}>

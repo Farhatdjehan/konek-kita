@@ -64,76 +64,74 @@ const DeliverableProgram = () => {
 							<CardBody isScrollable>
 								<div className='row g-4 mb-3'>
 									<div className='col-lg-5'>
-										<FormGroup id='link_program' label='Link Program'>
-											<Input
-												placeholder='Link'
-												autoComplete='additional-name'
-												onChange={formik.handleChange}
-												onBlur={formik.handleBlur}
-												value={formik.values.link_program}
-												isValid={formik.isValid}
-												isTouched={formik.touched.link_program}
-												invalidFeedback={formik.errors.link_program}
-												validFeedback='Looks good!'
-											/>
-										</FormGroup>
+										<div className='mb-3'>
+											<FormGroup id='link_program' label='Link Program'>
+												<Input
+													placeholder='Link'
+													autoComplete='additional-name'
+													onChange={formik.handleChange}
+													onBlur={formik.handleBlur}
+													value={formik.values.link_program}
+													isValid={formik.isValid}
+													isTouched={formik.touched.link_program}
+													invalidFeedback={formik.errors.link_program}
+													validFeedback='Looks good!'
+												/>
+											</FormGroup>
+										</div>
+										<div className='mb-3'>
+											<FormGroup id='link_socmed' label='Link Sosial Media'>
+												<Input
+													placeholder='Link Endorse'
+													autoComplete='additional-name'
+													onChange={formik.handleChange}
+													onBlur={formik.handleBlur}
+													value={formik.values.link_socmed}
+													isValid={formik.isValid}
+													isTouched={formik.touched.link_socmed}
+													invalidFeedback={formik.errors.link_socmed}
+													validFeedback='Looks good!'
+												/>
+											</FormGroup>
+										</div>
+										<div className='mb-3'>
+											<FormGroup id='insight' label='Upload Insight'>
+												<Input type='file' autoComplete='photo' />
+											</FormGroup>
+										</div>
+										<div className='mb-3'>
+											<FormGroup id='username' label='Penikmat Karya'>
+												<Input
+													placeholder='Username'
+													autoComplete='username'
+													onChange={formik.handleChange}
+													onBlur={formik.handleBlur}
+													value={formik.values.username}
+													isValid={formik.isValid}
+													isTouched={formik.touched.username}
+													invalidFeedback={formik.errors.username}
+													validFeedback='Looks good!'
+												/>
+											</FormGroup>
+										</div>
+										<div className='mb-3'>
+											<FormGroup id='pesan' label='Pesan'>
+												<Textarea
+													placeholder='Pesan'
+													rows={6}
+													autoComplete='family-name'
+													onChange={formik.handleChange}
+													onBlur={formik.handleBlur}
+													value={formik.values.comment}
+													isValid={formik.isValid}
+													isTouched={formik.touched.comment}
+													invalidFeedback={formik.errors.comment}
+													validFeedback='Looks good!'
+												/>
+											</FormGroup>
+										</div>
 									</div>
 								</div>
-								<div className='row g-4 mb-3'>
-									<div className='col-lg-5'>
-										<FormGroup id='link_socmed' label='Link Sosial Media'>
-											<Input
-												placeholder='Link Endorse'
-												autoComplete='additional-name'
-												onChange={formik.handleChange}
-												onBlur={formik.handleBlur}
-												value={formik.values.link_socmed}
-												isValid={formik.isValid}
-												isTouched={formik.touched.link_socmed}
-												invalidFeedback={formik.errors.link_socmed}
-												validFeedback='Looks good!'
-											/>
-										</FormGroup>
-									</div>
-								</div>
-								<div className='row g-4 mb-3'>
-									<div className='col-lg-5'>
-										<FormGroup id='insight' label='Upload Insight'>
-											<Input type='file' autoComplete='photo' />
-										</FormGroup>
-									</div>
-								</div>
-								<div className='row g-4 mb-5'>
-									<div className='col-lg-5'>
-										<FormGroup id='username' label='Penikmat Karya'>
-											<Input
-												placeholder='Username'
-												autoComplete='username'
-												onChange={formik.handleChange}
-												onBlur={formik.handleBlur}
-												value={formik.values.username}
-												isValid={formik.isValid}
-												isTouched={formik.touched.username}
-												invalidFeedback={formik.errors.username}
-												validFeedback='Looks good!'
-											/>
-										</FormGroup>
-									</div>
-								</div>
-								<FormGroup id='pesan' label='Pesan'>
-									<Textarea
-										placeholder='Pesan'
-										rows={6}
-										autoComplete='family-name'
-										onChange={formik.handleChange}
-										onBlur={formik.handleBlur}
-										value={formik.values.comment}
-										isValid={formik.isValid}
-										isTouched={formik.touched.comment}
-										invalidFeedback={formik.errors.comment}
-										validFeedback='Looks good!'
-									/>
-								</FormGroup>
 								<div className='row  mb-5'>
 									<div className='col-lg-5 d-flex justify-content-between'>
 										<Button

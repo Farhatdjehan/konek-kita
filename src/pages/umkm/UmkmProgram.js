@@ -22,6 +22,8 @@ import PlaceholderImage from '../../components/extras/PlaceholderImage';
 import FormGroup from '../../components/bootstrap/forms/FormGroup';
 import { dashboardMenu, menuSidebar } from '../../menu';
 import Breadcrumb from '../../components/bootstrap/Breadcrumb';
+import Icon from '../../components/icon/Icon';
+import { Link, useLocation } from 'react-router-dom';
 
 const validate = (values) => {
 	const errors = {};
@@ -59,7 +61,8 @@ const GalleryUmkm = () => {
 	const [data, setData] = useState(tableData);
 	const [editItem, setEditItem] = useState(null);
 	const [editPanel, setEditPanel] = useState(false);
-
+	const address = useLocation();
+	const addressURL = address.pathname.split('/');
 	function handleRemove(id) {
 		const newData = data.filter((item) => item.id !== id);
 		setData(newData);
@@ -107,44 +110,99 @@ const GalleryUmkm = () => {
 	return (
 		<PageWrapper title={dashboardMenu.umkm.subMenu.programGallery.text}>
 			<Page>
-				<div className='d-flex justify-content-between'>
-					<div className='display-4 fw-bold pt-3 pb-5'>Program UMKM</div>
-					{/* <div className='d-flex align-items-center'>
-						<Button
-							color='dark'
-							isLight
-							className='mx-3'
-							icon='Add'
-							onClick={() => {
-								setEditItem(null);
-								setEditPanel(true);
-							}}>
-							Add New
-						</Button>
-						<SubheaderSeparator />
-						<span className='text-muted mx-3'>{data.length} items</span>
-					</div> */}
+				<div>
+					<div className='display-4 fw-bold pt-3 pb-4'>History Programku </div>
+					<div className='text-muted h4 mb-5'>
+						Terima kasih sudah berpartisipasi dalam membantu UMKM di Indonesia!
+					</div>
 				</div>
 				<div className='row'>
-					{data.map((item) => (
-						<div key={item.id} className='col-xxl-3 col-xl-4 col-md-6'>
-							<CommonGridProductItem
-								id={item.id}
-								name={item.name}
-								desc={item.desc}
-								img={item.image}
-								color={item.color}
-								series={item.series}
-								price={item.price}
-								point={item.point}
-								editAction={() => {
-									setEditPanel(true);
-									handleEdit(item.id);
-								}}
-								deleteAction={() => handleRemove(item.id)}
-							/>
-						</div>
-					))}
+					<div className='col-md-4'>
+						<Card>
+							<CardBody>
+								<div className='d-flex justify-content-between pt-4 pb-3  border-bottom'>
+									<div className='fw-600 h5'>Program yang kamu ikuti</div>
+									<div className='h5'>
+										<b>12</b>
+									</div>
+								</div>
+								<div className='d-flex justify-content-between pt-4 pb-3 '>
+									<div className='fw-600 h5'>Work badge didapatkan</div>
+									<div className='h5'>
+										<b>
+											<Icon icon='EmojiEmotions' /> 321
+										</b>
+									</div>
+								</div>
+							</CardBody>
+						</Card>
+					</div>
+					<div className='col-md-8'>
+						{addressURL[1] === 'umkm' && addressURL[2] === 'program' ? (
+							<Card >
+								<CardBody>
+									{data.map((item) => (
+										<div className='my-5 border-bottom'>
+											<div className='text-muted mb-2'>12 Januari 2022</div>
+											<div className='d-flex justify-content-between align-items-center mb-3'>
+												<div className='d-flex align-items-center '>
+													<div className='me-3'>
+														<img
+															src={item.image}
+															alt=''
+															width={62}
+															height={62}
+															className='mx-auto d-block img-fluid my-2'
+														/>
+													</div>
+													<div>
+														<div className='fw-bold h5'>
+															{item.name}
+														</div>
+														<Link to='#' className='h5'>
+															<Icon
+																icon='HouseSiding'
+																size='2x'
+																className='me-2'
+															/>
+															konekios.com/tokodok
+														</Link>
+													</div>
+												</div>
+												<div className='fw-bold'>
+													<Icon
+														icon='EmojiEmotions'
+														color='success'
+														size='2x'
+														className='me-2'
+													/>
+													+10
+												</div>
+											</div>
+										</div>
+									))}
+								</CardBody>
+							</Card>
+						) : (
+							data.map((item) => (
+								<CommonGridProductItem
+									id={item.id}
+									name={item.name}
+									desc={item.desc}
+									img={item.image}
+									color={item.color}
+									series={item.series}
+									price={item.price}
+									point={item.point}
+									editAction={() => {
+										setEditPanel(true);
+										handleEdit(item.id);
+									}}
+									deleteAction={() => handleRemove(item.id)}
+								/>
+							))
+						)}
+					</div>
 				</div>
 			</Page>
 

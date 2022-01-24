@@ -14,6 +14,7 @@ import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
 import Icon from '../../components/icon/Icon';
 import Modal, { ModalBody, ModalHeader } from '../../components/bootstrap/Modal';
 import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
+import { priceFormat } from '../../helpers/helpers';
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, price, description, tags, color }) => {
 	const history = useHistory();
@@ -40,7 +41,7 @@ const Item = ({ id, image, title, price, description, tags, color }) => {
 						className='object-fit-contain p-3'
 					/>
 					<Badge color='success' className='position-absolute w-auto h-auto px-3 py-2'>
-						Rp. {price}
+						{priceFormat(price)}
 					</Badge>
 				</div>
 				<CardTitle>{title}</CardTitle>
@@ -135,7 +136,7 @@ const GalleryBootcamp = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.gallery.subMenu.galleryPremium.text}>
+		<PageWrapper title={dashboardMenu.bootcamp.subMenu.galleryBootcamp.text}>
 			<Page>
 				<div className='row'>
 					<Card>

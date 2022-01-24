@@ -20,7 +20,7 @@ import { priceFormat } from '../../helpers/helpers';
 import showNotification from '../../components/extras/showNotification';
 import Icon from '../../components/icon/Icon';
 import { dashboardMenu, menuSidebar } from '../../menu';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const CommonGridProductItem = ({
 	// eslint-disable-next-line react/prop-types
@@ -46,38 +46,7 @@ const CommonGridProductItem = ({
 }) => {
 	const address = useLocation();
 	const addressURL = address.pathname.split('/');
-	const dummyOptions = {
-		colors: [color],
-		chart: {
-			type: 'line',
-			width: 100,
-			height: 35,
-			sparkline: {
-				enabled: true,
-			},
-		},
-		tooltip: {
-			theme: 'dark',
-			fixed: {
-				enabled: false,
-			},
-			x: {
-				show: false,
-			},
-			y: {
-				title: {
-					// eslint-disable-next-line no-unused-vars
-					formatter(seriesName) {
-						return '';
-					},
-				},
-			},
-		},
-		stroke: {
-			curve: 'smooth',
-			width: 2,
-		},
-	};
+
 	return (
 		<Card>
 			<CardHeader>
@@ -125,20 +94,20 @@ const CommonGridProductItem = ({
 									</Button>
 								</DropdownItem>
 								{/* <DropdownItem>
-									<Button
-										icon='FileCopy'
-										onClick={() => {
-											showNotification(
-												<span className='d-flex align-items-center'>
-													<Icon icon='Info' size='lg' className='me-1' />
-													<span>{name} duplicated.</span>
-												</span>,
-												`A copy of the ${name} product was created.`,
-											);
-										}}>
-										Duplicate
-									</Button>
-								</DropdownItem> */}
+								<Button
+									icon='FileCopy'
+									onClick={() => {
+										showNotification(
+											<span className='d-flex align-items-center'>
+												<Icon icon='Info' size='lg' className='me-1' />
+												<span>{name} duplicated.</span>
+											</span>,
+											`A copy of the ${name} product was created.`,
+										);
+									}}>
+									Duplicate
+								</Button>
+							</DropdownItem> */}
 								<DropdownItem isDivider />
 								<DropdownItem>
 									<Button icon='Delete' onClick={() => deleteAction()}>

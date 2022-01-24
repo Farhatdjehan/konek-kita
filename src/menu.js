@@ -36,9 +36,14 @@ export const dashboardMenu = {
 				id: 'detailPremiumContent',
 				text: 'Detail Content Premium',
 				path: '/premium-content/detail',
-				icon: 'Details',
 				hide: true,
 			},
+			liveSessionContent: {
+				id: 'liveSessionContent',
+				text: 'Live Session Content',
+				path: '/live-session/detail',
+				hide: true,
+			}
 		},
 	},
 	sendBadge: {

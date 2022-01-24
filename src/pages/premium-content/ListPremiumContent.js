@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import classNames from 'classnames';
-import { getUserDataWithId } from '../../common/data/userDummyData';
+import USERS, { getUserDataWithId } from '../../common/data/userDummyData';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Page from '../../layout/Page/Page';
 import dataContent from '../../common/data/dummyPremiumContent';
@@ -14,10 +14,17 @@ import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
+	CardSubTitle,
 	CardTitle,
 } from '../../components/bootstrap/Card';
 import Icon from '../../components/icon/Icon';
 import { dashboardMenu } from '../../menu';
+import CHATS from '../../common/data/chatDummyData';
+import Chat, { ChatGroup } from '../../components/Chat';
+import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
+import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
+import FormGroup from '../../components/bootstrap/forms/FormGroup';
+import Input from '../../components/bootstrap/forms/Input';
 
 const Item = ({ id, title, desc, user, image, tags, color, categories, content }) => {
 	const history = useHistory();
@@ -64,6 +71,13 @@ const Item = ({ id, title, desc, user, image, tags, color, categories, content }
 
 const ListPremiumContent = () => {
 	// BEGIN :: List Tab
+	const TABS = {
+		CHLOE: USERS.CHLOE,
+	};
+	const [activeTab, setActiveTab] = useState(TABS.CHLOE);
+	function getMessages() {
+		return CHATS.CHLOE_VS_JOHN;
+	}
 	const LIST_TAB = {
 		LIVESESSION: 'Live Session',
 		LIVECHAT: 'Live Chat',
@@ -81,6 +95,7 @@ const ListPremiumContent = () => {
 	};
 	// END :: List Tab
 	const [editItem, setEditItem] = useState(null);
+	const [modal, setModal] = useState(false);
 	const data = getUserDataWithId(1);
 	const history = useHistory();
 	const filterData = dataContent.filter((f) => f.type === activeListTab);
@@ -149,32 +164,67 @@ const ListPremiumContent = () => {
 							<CardBody className='table-responsive'>
 								{activeListTab === LIST_TAB.LIVESESSION && (
 									<div className='row g-4'>
+										<div className='col-md-8'>
+											<img
+												src='/static/media/scene1.edf253f4.png'
+												alt='Tes'
+												width='100%'
+												height='auto'
+												className='object-fit-contain p-5'
+											/>
+											<div>
+												<Card>
+													<CardHeader>
+														<CardLabel iconColor='success'>
+															<CardTitle tag='h4' className='h4'>
+																<Icon
+																	icon='Schedule'
+																	size='2x'
+																	className='me-2'
+																	color='success'
+																/>
+																Jadwal Live Session
+															</CardTitle>
+														</CardLabel>
+														<CardActions>
+															<Button
+																onClick={() => setModal(true)}
+																icon='Add'
+																color='success'>
+																Tambah Jadwal
+															</Button>
+														</CardActions>
+													</CardHeader>
+													<CardBody>
+														<ul className='list-group'>
+															<li className='list-group-item border-start-0 border-end-0 border-1 rounded-0'>
+																<div className='d-flex justify-content-between my-3'>
+																	<div>
+																		<div className='mb-3'>
+																			12 Jan 2021
+																		</div>
+																		<div className='h5 fw-700 '>
+																			Live Ngobrol Sama Akuuuu
+																		</div>
+																	</div>
+																	<div>16.00-18.00</div>
+																</div>
+															</li>
+														</ul>
+													</CardBody>
+												</Card>
+											</div>
+										</div>
 										<div className='col-md-4'>
-											<Card>
-												<CardHeader>
-													<CardLabel iconColor='success'>
-														<CardTitle tag='h4' className='h5'>
-															<Icon
-																icon='VideoCall'
-																size='2x'
-																className='me-2'
-																color='danger'
-															/>
-															Live Session #2
-														</CardTitle>
-													</CardLabel>
-												</CardHeader>
-												<CardBody>
-													<div className='d-flex justify-content-between align-items-center'>
-														<div>
-															<Icon icon='Info' /> 12/12/2022
-														</div>
-														<Button color='info'>
-															Join Live Session
-														</Button>
-													</div>
-												</CardBody>
-											</Card>
+											<Chat>
+												{getMessages(activeTab).map((msg) => (
+													<ChatGroup
+														messages={msg.messages}
+														user={msg.user}
+														isReply={msg.isReply}
+													/>
+												))}
+											</Chat>
 										</div>
 									</div>
 								)}
@@ -269,6 +319,62 @@ const ListPremiumContent = () => {
 					</div>
 				</div>
 			</Page>
+			<Modal
+				setIsOpen={setModal}
+				isOpen={modal}
+				titleId='form'
+				isCentered
+				isScrollable
+				size='lg'>
+				<ModalHeader setIsOpen={setModal}>
+					<OffCanvasTitle id='form'>Tambahkan Live Session</OffCanvasTitle>
+				</ModalHeader>
+				<ModalBody>
+					<div className='row g-4'>
+						<form>
+							<div className='row g-4'>
+								<div className='col-12'>
+									<FormGroup
+										id='livesession_name'
+										label='Nama Live Session'
+										isFloating>
+										<Input
+											placeholder='Judul Live Session'
+											// onChange={formik.handleChange}
+											// value={formik.values.name}
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-6'>
+									<FormGroup id='start_date' label='Start Date'>
+										<Input
+											placeholder='Date'
+											// onChange={formik.handleChange}
+											// value={formik.values.start_date}
+											type='date'
+										/>
+									</FormGroup>
+								</div>
+								<div className='col-6'>
+									<FormGroup id='end_date' label='End Date'>
+										<Input
+											placeholder='Date'
+											// onChange={formik.handleChange}
+											// value={formik.values.end_date}
+											type='date'
+										/>
+									</FormGroup>
+								</div>
+							</div>
+						</form>
+					</div>
+				</ModalBody>
+				<ModalFooter className='bg-transparent'>
+					<Button color='info' icon='Save' onClick={() => setModal(false)}>
+						Simpan
+					</Button>
+				</ModalFooter>
+			</Modal>
 		</PageWrapper>
 	);
 };
