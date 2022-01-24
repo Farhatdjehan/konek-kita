@@ -30,15 +30,13 @@ const Item = ({ id, image, budget, title, start_date, end_date, description, tag
 	return (
 		<Card className='cursor-pointer shadow-3d-primary shadow-3d-hover' onClick={handleOnClick}>
 			<CardBody>
-				<Badge className='px-4 py-2 mb-3' color='success'>
-					Cocok
-				</Badge>
 				<div
 					className={classNames(
 						'ratio ratio-1x1',
 						'rounded-2',
 						`bg-l10-${color}`,
 						'mb-3',
+						'position-relative',
 					)}>
 					<img
 						src={image}
@@ -47,6 +45,9 @@ const Item = ({ id, image, budget, title, start_date, end_date, description, tag
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
+					<Badge id="suit" className='ml-2 position-absolute h-auto w-auto px-4 py-2 mb-3' color='success'>
+						Cocok
+					</Badge>
 				</div>
 				<CardTitle className='mb-3'>{title}</CardTitle>
 				<div className='text-mute mb-1'>

@@ -216,15 +216,22 @@ const ListPremiumContent = () => {
 											</div>
 										</div>
 										<div className='col-md-4'>
-											<Chat>
-												{getMessages(activeTab).map((msg) => (
-													<ChatGroup
-														messages={msg.messages}
-														user={msg.user}
-														isReply={msg.isReply}
-													/>
-												))}
-											</Chat>
+											<Card>
+												<CardHeader>
+													<CardTitle>Live Chat</CardTitle>
+												</CardHeader>
+												<CardBody>
+													<Chat>
+														{getMessages(activeTab).map((msg) => (
+															<ChatGroup
+																messages={msg.messages}
+																user={msg.user}
+																isReply={msg.isReply}
+															/>
+														))}
+													</Chat>
+												</CardBody>
+											</Card>
 										</div>
 									</div>
 								)}

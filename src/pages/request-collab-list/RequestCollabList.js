@@ -51,7 +51,7 @@ const Item = ({ id, image, title, description, user, tags, color }) => {
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
-					<Badge color='success' className='position-absolute h-auto w-auto'>
+					<Badge id="suit" color='success' className='position-absolute h-auto w-auto'>
 						Cocok
 					</Badge>
 				</div>

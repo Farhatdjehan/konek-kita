@@ -40,7 +40,7 @@ const Item = ({ id, image, title, price, description, tags, color }) => {
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
-					<Badge color='success' className='position-absolute w-auto h-auto px-3 py-2'>
+					<Badge id="suit" color='success' className='position-absolute w-auto h-auto px-3 py-2'>
 						{priceFormat(price)}
 					</Badge>
 				</div>
