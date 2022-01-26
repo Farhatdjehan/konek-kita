@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import classNames from 'classnames';
 import USERS, { getUserDataWithId } from '../../common/data/userDummyData';
+import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Page from '../../layout/Page/Page';
 import dataContent from '../../common/data/dummyPremiumContent';
@@ -17,6 +18,7 @@ import Card, {
 	CardSubTitle,
 	CardTitle,
 } from '../../components/bootstrap/Card';
+import eventList from '../../common/data/events';
 import Icon from '../../components/icon/Icon';
 import { dashboardMenu } from '../../menu';
 import CHATS from '../../common/data/chatDummyData';
@@ -25,7 +27,19 @@ import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/boo
 import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
 import FormGroup from '../../components/bootstrap/forms/FormGroup';
 import Input from '../../components/bootstrap/forms/Input';
+import {
+	CalendarTodayButton,
+	CalendarViewModeButtons,
+	getLabel,
+	getUnitType,
+	getViews,
+} from '../../components/extras/calendarHelper';
+import moment from 'moment';
 
+const localizer = momentLocalizer(moment);
+const now = new Date();
+
+const myEventsList = [{ start: new Date(), end: new Date(), title: 'special event' }];
 const Item = ({ id, title, desc, user, image, tags, color, categories, content }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
@@ -94,8 +108,17 @@ const ListPremiumContent = () => {
 		return 'light';
 	};
 	// END :: List Tab
+	// Selected Event
+	const [eventItem, setEventItem] = useState(null);
+
+	// Events
+	const [events, setEvents] = useState(eventList);
+
 	const [editItem, setEditItem] = useState(null);
+	const [viewMode, setViewMode] = useState(Views.MONTH);
+	const [date, setDate] = useState(new Date());
 	const [modal, setModal] = useState(false);
+	const [eventAdding, setEventAdding] = useState(false);
 	const data = getUserDataWithId(1);
 	const history = useHistory();
 	const filterData = dataContent.filter((f) => f.type === activeListTab);
@@ -107,7 +130,19 @@ const ListPremiumContent = () => {
 		() => history.push(`${dashboardMenu.premiumContent.subMenu.detailPremiumContent.path}/1`),
 		[history],
 	);
+	// Change view mode
+	const handleViewMode = (e) => {
+		setDate(moment(e)._d);
+		setViewMode(Views.DAY);
+	};
+	// View modes; Month, Week, Work Week, Day and Agenda
+	const views = getViews();
 
+	// New Event
+	const handleSelect = ({ start, end }) => {
+		setEventAdding(true);
+		setEventItem({ start, end });
+	};
 	const formik = useFormik({
 		initialValues: {
 			name: '',
@@ -116,6 +151,11 @@ const ListPremiumContent = () => {
 		},
 		// onSubmit: onFormSubmit,
 	});
+
+	// Calendar Unit Type
+	const unitType = getUnitType(viewMode);
+	// Calendar Date Label
+	const calendarDateLabel = getLabel(date, viewMode);
 
 	useEffect(() => {
 		if (editItem) {
@@ -136,6 +176,22 @@ const ListPremiumContent = () => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [editItem]);
+
+	// eslint-disable-next-line no-unused-vars
+	const eventStyleGetter = (event, start, end, isSelected) => {
+		const isActiveEvent = start <= now && end >= now;
+		const isPastEvent = end < now;
+		const color = isActiveEvent ? 'success' : event.color;
+
+		return {
+			className: classNames({
+				[`bg-l10-${color} text-${color}`]: color,
+				'border border-success': isActiveEvent,
+				'opacity-50': isPastEvent,
+			}),
+		};
+	};
+
 	return (
 		<PageWrapper title='Konten Premium'>
 			<Page>
@@ -165,54 +221,63 @@ const ListPremiumContent = () => {
 								{activeListTab === LIST_TAB.LIVESESSION && (
 									<div className='row g-4'>
 										<div className='col-md-8'>
-											<img
-												src='/static/media/scene1.edf253f4.png'
-												alt='Tes'
-												width='100%'
-												height='auto'
-												className='object-fit-contain p-5'
-											/>
-											<div>
-												<Card>
-													<CardHeader>
-														<CardLabel iconColor='success'>
-															<CardTitle tag='h4' className='h4'>
-																<Icon
-																	icon='Schedule'
-																	size='2x'
-																	className='me-2'
-																	color='success'
-																/>
-																Jadwal Live Session
-															</CardTitle>
-														</CardLabel>
-														<CardActions>
-															<Button
-																onClick={() => setModal(true)}
-																icon='Add'
-																color='success'>
-																Tambah Jadwal
-															</Button>
-														</CardActions>
-													</CardHeader>
-													<CardBody>
-														<ul className='list-group'>
-															<li className='list-group-item border-start-0 border-end-0 border-1 rounded-0'>
-																<div className='d-flex justify-content-between my-3'>
-																	<div>
-																		<div className='mb-3'>
-																			12 Jan 2021
-																		</div>
-																		<div className='h5 fw-700 '>
-																			Live Ngobrol Sama Akuuuu
-																		</div>
-																	</div>
-																	<div>16.00-18.00</div>
+											<Card stretch style={{ minHeight: 400 }}>
+												<CardHeader>
+													<CardActions>
+														<CalendarTodayButton
+														// unitType={unitType}
+														// date={date}
+														// setDate={setDate}
+														// viewMode={viewMode}
+														/>
+													</CardActions>
+													<CardActions>
+														<CalendarViewModeButtons
+														// setViewMode={setViewMode}
+														// viewMode={viewMode}
+														/>
+													</CardActions>
+												</CardHeader>
+												<CardBody>
+													<Calendar
+														localizer={localizer}
+														events={myEventsList}
+														startAccessor='start'
+														endAccessor='end'
+													/>
+												</CardBody>
+											</Card>
+											<div className='mt-5'>
+												<div className='h4 fw-bold mb-3'>
+													List Live Session
+												</div>
+												<div className='mb-5'>
+													<Card>
+														<CardHeader>
+															<CardLabel iconColor='success'>
+																<CardTitle tag='h4' className='h5'>
+																	<Icon
+																		icon='VideoCall'
+																		size='2x'
+																		className='me-2'
+																		color='danger'
+																	/>
+																	Live Session #2
+																</CardTitle>
+															</CardLabel>
+														</CardHeader>
+														<CardBody>
+															<div className='d-flex justify-content-between align-items-center'>
+																<div>
+																	<Icon icon='Info' /> 12/12/2022
 																</div>
-															</li>
-														</ul>
-													</CardBody>
-												</Card>
+																<Button color='info'>
+																	Join Live Session
+																</Button>
+															</div>
+														</CardBody>
+													</Card>
+												</div>
 											</div>
 										</div>
 										<div className='col-md-4'>
