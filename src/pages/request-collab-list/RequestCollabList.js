@@ -160,14 +160,14 @@ const RequestCollabList = () => {
 		<PageWrapper title={dashboardMenu.collaboration.subMenu.reqCollabsList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-7 text-left my-5'>
-						<span className='display-5 fw-bold'>Request Collaboration</span>
+					<div className='col-12 col-7 text-left my-5'>
+						<span className='display-5 fw-bold'>{dashboardMenu.collaboration.subMenu.reqCollabsList.text}</span>
 					</div>
-					<div className='col-5 mx-auto text-center my-5'>
+					<div className='col-12 col-md-5 mx-auto text-center my-4 my-md-5'>
 						<form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
 							onSubmit={formik.handleSubmit}>
-							<div className='col-md-8'>
+							<div className='col-6 col-md-8'>
 								<Select
 									id='category'
 									size='lg'
@@ -191,7 +191,7 @@ const RequestCollabList = () => {
 									value={formik.values.category}
 								/>
 							</div>
-							<div className='col-md-4'>
+							<div className='col-6 col-md-4'>
 								<Dropdown>
 									<DropdownToggle>
 										<Button color='info' icon='FilterAlt' isLight>

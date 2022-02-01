@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Select from '../../components/bootstrap/forms/Select';
-import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
+import Card, { CardBody, CardFooter, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
 import { dashboardMenu, menuSidebar } from '../../menu';
@@ -14,6 +14,7 @@ import Avatar from '../../components/Avatar';
 
 import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
 import UserImage3 from '../../assets/img/wanna/wanna3.png';
+import Button from '../../components/bootstrap/Button';
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, tags, user, color }) => {
 	const history = useHistory();
@@ -49,17 +50,9 @@ const Item = ({ id, image, title, description, tags, user, color }) => {
 					className='me-3'
 				/>
 				<span>{user}</span>
-				{/* <div className='row g-2'>
-					{!!tags &&
-						// eslint-disable-next-line react/prop-types
-						tags.map((tag) => (
-							<div key={tag.text} className='col-auto'>
-								<Badge isLight color={tag.color} className='px-3 py-2'>
-									{tag.text}
-								</Badge>
-							</div>
-						))}
-				</div> */}
+				<div className='text-end mt-3'>
+					<Button color='info'>Join Now!</Button>
+				</div>
 			</CardBody>
 		</Card>
 	);
@@ -125,10 +118,12 @@ const CollabsList = () => {
 		<PageWrapper title={dashboardMenu.collaboration.subMenu.collabsList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-8 text-left my-5'>
-						<span className='display-5 fw-bold'>Collaboration List</span>
+					<div className='col-12 col-md-8 text-left my-5'>
+						<span className='display-5 fw-bold'>
+							{dashboardMenu.collaboration.subMenu.collabsList.text}
+						</span>
 					</div>
-					<div className='col-4 mx-auto text-center my-5'>
+					<div className='col-12 col-md-4 mx-auto text-center my-5'>
 						<form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
 							onSubmit={formik.handleSubmit}>

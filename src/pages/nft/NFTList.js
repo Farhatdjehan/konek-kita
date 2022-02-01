@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import Page from '../../layout/Page/Page';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Select from '../../components/bootstrap/forms/Select';
+import EthLogo from '../../assets/img/eth.png';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data from './helper/dummyNFT';
@@ -50,7 +51,10 @@ const Item = ({
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
-					<Badge id="suit" color='success' className='position-absolute w-auto h-auto px-3 py-2'>
+					<Badge
+						id='suit'
+						color='success'
+						className='position-absolute w-auto h-auto px-3 py-2'>
 						Smart Contract
 					</Badge>
 				</div>
@@ -62,9 +66,14 @@ const Item = ({
 				</div>
 				<div>
 					<div>Price</div>
-					<div className='h4 fw-bold'>
-						{current_price}
-						<span className='ms-1 text-muted h6'>{last_price}</span>
+					<div className='d-flex'>
+						<div className='me-2'>
+							<img style={{ width: '20px' }} src={EthLogo} />
+						</div>
+						<div className='h4 fw-bold'>
+							{current_price}
+							<span className='ms-1 text-muted h6'>{last_price}</span>
+						</div>
 					</div>
 				</div>
 				<div className='row g-2'>

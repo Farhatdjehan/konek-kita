@@ -40,7 +40,10 @@ const Item = ({ id, image, title, price, description, tags, color }) => {
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
-					<Badge id="suit" color='success' className='position-absolute w-auto h-auto px-3 py-2'>
+					<Badge
+						id='suit'
+						color='success'
+						className='position-absolute w-auto h-auto px-3 py-2'>
 						{priceFormat(price)}
 					</Badge>
 				</div>
@@ -155,10 +158,10 @@ const GalleryBootcamp = () => {
 					</Card>
 				</div>
 				<div className='row'>
-					<div className='col-8 text-left my-5'>
+					<div className='col-12 text-left my-5'>
 						<span className='display-5 fw-bold'>Bootcamp</span>
 					</div>
-					<div className='col-4 mx-auto text-center my-5'>
+					{/* <div className='col-4 mx-auto text-center my-5'>
 						<form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
 							onSubmit={formik.handleSubmit}>
@@ -186,7 +189,7 @@ const GalleryBootcamp = () => {
 									value={formik.values.category}
 								/>
 							</div>
-							{/* <div className='col-md-5'>
+							<div className='col-md-5'>
 								<Input
 									id='search'
 									size='lg'
@@ -221,9 +224,9 @@ const GalleryBootcamp = () => {
 									type='reset'
 									isDisable={!(formik.values.search || formik.values.category)}
 								/>
-							</div> */}
+							</div> 
 						</form>
-					</div>
+					</div> */}
 				</div>
 				<div className='row mb-5'>
 					{filterableData.map((item) => (

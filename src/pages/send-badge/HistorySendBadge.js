@@ -100,16 +100,11 @@ const HistorySendBadge = () => {
 									<CardTitle>History Badge Love</CardTitle>
 								</CardLabel>
 								<CardActions>
-									<Button
-										color='info'
-										icon='CloudDownload'
-										isLight
-										tag='a'
-										to='/somefile.txt'
-										target='_blank'
-										download>
-										Export
-									</Button>
+									<Link to='/my-badge'>
+										<Button color='info' icon='Badge' isLight>
+											Badge Saya
+										</Button>
+									</Link>
 								</CardActions>
 							</CardHeader>
 							<CardBody className='table-responsive'>

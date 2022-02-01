@@ -43,7 +43,7 @@ export const dashboardMenu = {
 				text: 'Live Session Content',
 				path: '/live-session/detail',
 				hide: true,
-			}
+			},
 		},
 	},
 	sendBadge: {
@@ -147,7 +147,7 @@ export const dashboardMenu = {
 		subMenu: {
 			openWorkList: {
 				id: 'openWorkList',
-				text: 'Open Campaign List',
+				text: 'Katalog Campaign',
 				path: '/campaign/open-campaign',
 				icon: 'AutoStories',
 			},
@@ -159,8 +159,8 @@ export const dashboardMenu = {
 			},
 			reqWorkList: {
 				id: 'reqWorkList',
-				text: 'Request Campaign List',
-				path: '/campaign/request-campaign',
+				text: 'Incoming Work',
+				path: '/campaign/incoming-campaign',
 				icon: 'WorkOutline',
 			},
 			detailProgram: {
@@ -174,12 +174,14 @@ export const dashboardMenu = {
 				text: 'Direct Campaign',
 				path: '/campaign/direct',
 				icon: 'Campaign',
+				hide: true,
 			},
 			katalogDirectCampaign: {
 				id: 'katalogDirectCampaign',
 				text: 'Katalog Direct Campaign',
 				path: '/campaign/katalog-direct',
 				icon: 'Campaign',
+				hide: true,
 			},
 		},
 	},
@@ -191,8 +193,8 @@ export const dashboardMenu = {
 		subMenu: {
 			reqCollabsList: {
 				id: 'reqCollabsList',
-				text: 'Request Collab List',
-				path: '/collaboration/request-collabs',
+				text: 'Incoming Collaboration',
+				path: '/collaboration/incoming-collabs',
 				icon: 'ListAlt',
 			},
 			detailProgramReqCollab: {
@@ -203,8 +205,8 @@ export const dashboardMenu = {
 			},
 			openCollaboration: {
 				id: 'openCollaboration',
-				text: 'Open Collaboration',
-				path: '/collaboration/open-collaboration',
+				text: 'My Collaboration',
+				path: '/collaboration/my-collaboration',
 				icon: 'GroupAdd',
 			},
 			detailProgramOpenCollab: {
@@ -215,7 +217,7 @@ export const dashboardMenu = {
 			},
 			collabsList: {
 				id: 'openCollabsList',
-				text: 'Collaboration List',
+				text: 'Katalog Collaboration',
 				path: '/collaboration/collabs-list',
 				icon: 'AutoStories',
 			},

@@ -148,13 +148,13 @@ const OpenCollaboration = () => {
 		<PageWrapper title={dashboardMenu.collaboration.subMenu.openCollaboration.text}>
 			<Page>
 				<div className='row align-items-center'>
-					<div className='col-8 text-left my-5'>
-						<div className='display-5 fw-bold mb-3'>Open Collaboration</div>
+					<div className='col-12 col-md-8 text-left my-5'>
+						<div className='display-5 fw-bold mb-3'>{dashboardMenu.collaboration.subMenu.openCollaboration.text}</div>
 						<Button onClick={handleUpcomingEdit} color='info' icon='Add' isLight>
 							Open Collabs
 						</Button>
 					</div>
-					<div className='col-4 mx-auto text-center my-5'>
+					<div className='col-12 col-md-4 mx-auto text-center my-5'>
 						<form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
 							onSubmit={formik.handleSubmit}>

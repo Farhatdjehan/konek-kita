@@ -17,7 +17,7 @@ import Dropdown, {
 	DropdownToggle,
 } from '../../components/bootstrap/Dropdown';
 import Input from '../../components/bootstrap/forms/Input';
-import Checks from '../../components/bootstrap/forms/Checks';
+import Checks, { ChecksGroup } from '../../components/bootstrap/forms/Checks';
 import Icon from '../../components/icon/Icon';
 
 // eslint-disable-next-line react/prop-types
@@ -45,7 +45,10 @@ const Item = ({ id, image, budget, title, start_date, end_date, description, tag
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
-					<Badge id="suit" className='ml-2 position-absolute h-auto w-auto px-4 py-2 mb-3' color='success'>
+					<Badge
+						id='suit'
+						className='ml-2 position-absolute h-auto w-auto px-4 py-2 mb-3'
+						color='success'>
 						Cocok
 					</Badge>
 				</div>
@@ -81,6 +84,7 @@ const Item = ({ id, image, budget, title, start_date, end_date, description, tag
 
 const OpenWorkList = () => {
 	const [filterableData, setFilterableData] = useState(data);
+	const [check, setCheck] = useState([false, false, false, false]);
 
 	const searchAndFilterData = (searchValue, category) => {
 		let tempData = data;
@@ -134,19 +138,23 @@ const OpenWorkList = () => {
 		onSubmit: onFormSubmit,
 		onReset: () => setFilterableData(data),
 	});
-
+	const handleCheck = () => {
+		// setCheck(id);
+	};
 	return (
 		<PageWrapper title={dashboardMenu.worklist.subMenu.openWorkList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-7 text-left my-5'>
-						<span className='display-5 fw-bold'>Open Campaign List</span>
+					<div className='col-12 col-md-7 text-left my-5'>
+						<span className='display-5 fw-bold'>
+							{dashboardMenu.worklist.subMenu.openWorkList.text}
+						</span>
 					</div>
-					<div className='col-5 mx-auto text-center my-5'>
+					<div className='col-12 col-md-5 mx-auto text-center my-5'>
 						<form
 							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
 							onSubmit={formik.handleSubmit}>
-							<div className='col-md-8'>
+							<div className='col-6 col-md-8'>
 								<Select
 									id='category'
 									size='lg'
@@ -170,7 +178,7 @@ const OpenWorkList = () => {
 									value={formik.values.category}
 								/>
 							</div>
-							<div className='col-md-4'>
+							<div className='col-6 col-md-4'>
 								<Dropdown>
 									<DropdownToggle>
 										<Button color='info' icon='FilterAlt' isLight>
@@ -204,6 +212,78 @@ const OpenWorkList = () => {
 													type='range'
 												/>
 											</div>
+										</DropdownItem>
+										<DropdownItem className='mb-3' style={{ flexWrap: 'wrap' }}>
+											<ChecksGroup>
+												<div className='me-3'>
+													<Checks
+														id='tiktok'
+														label='Tiktok'
+														name='tiktok'
+														onChange={() =>
+															setCheck([
+																!check[0],
+																check[1],
+																check[2],
+																check[3],
+															])
+														}
+														type='checkbox'
+														checked={check[0]}
+													/>
+												</div>
+												<div className='me-3'>
+													<Checks
+														id='facebook'
+														label='Facebook'
+														name='facebook'
+														onChange={() =>
+															setCheck([
+																check[0],
+																!check[1],
+																check[2],
+																check[3],
+															])
+														}
+														type='checkbox'
+														checked={check[1]}
+													/>
+												</div>
+												<div className='me-3'>
+													<Checks
+														id='twitter'
+														label='Twitter'
+														name='twitter'
+														onChange={() =>
+															setCheck([
+																check[0],
+																check[1],
+																!check[2],
+																check[3],
+															])
+														}
+														type='checkbox'
+														checked={check[2]}
+													/>
+												</div>
+												<div className='me-3'>
+													<Checks
+														id='instagram'
+														label='Instagram'
+														name='instagram'
+														onChange={() =>
+															setCheck([
+																check[0],
+																check[1],
+																check[2],
+																!check[3],
+															])
+														}
+														type='checkbox'
+														checked={check[3]}
+													/>
+												</div>
+											</ChecksGroup>
 										</DropdownItem>
 										<DropdownItem className='mb-4'>
 											<Select
