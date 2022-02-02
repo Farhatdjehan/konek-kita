@@ -789,7 +789,7 @@ const ProfilPage = () => {
 							<CardHeader>
 								<CardLabel icon='Lock' iconColor='success'>
 									<CardTitle tag='h4' className='h5'>
-										Konten Premium
+										Berlangganan Konten Premium
 									</CardTitle>
 								</CardLabel>
 								<CardActions className='d-flex'>

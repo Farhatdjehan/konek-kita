@@ -54,11 +54,7 @@ const MySaldo = () => {
 		<PageWrapper title='Konten Premium'>
 			<SubHeader>
 				<SubHeaderLeft></SubHeaderLeft>
-				<SubHeaderRight>
-					<Button onClick={() => setModal(true)} icon='AttachMoney' color='info'>
-						Withdraw
-					</Button>
-				</SubHeaderRight>
+				<SubHeaderRight></SubHeaderRight>
 			</SubHeader>
 			<Page>
 				<div className='row'>
@@ -157,6 +153,48 @@ const MySaldo = () => {
 												</Card>
 											);
 										})}
+									</div>
+									<div className='col-md-4'>
+										<Card
+											className='bg-l25-success bg-l10-success-hover transition-base rounded-2 mb-0'
+											stretch
+											shadow='sm'>
+											<CardHeader className='bg-transparent'>
+												<CardLabel>
+													<CardTitle tag='h4' className='h5'>
+														Balance
+													</CardTitle>
+												</CardLabel>
+												<CardActions>
+													<Button
+														onClick={() => setModal(true)}
+														icon='AttachMoney'
+														color='success'>
+														Withdraw
+													</Button>
+												</CardActions>
+											</CardHeader>
+											<CardBody className='pt-0 d-flex flex-column justify-content-end'>
+												<div className='d-flex justify-content-end'>
+													<Icon
+														icon='AccountBalance'
+														size='8x'
+														color='success'
+													/>
+												</div>
+
+												<div className='d-flex align-items-end pb-3'>
+													<div className='flex-grow-1 ms-3 mt-4'>
+														<div className='fw-bold fs-3 mb-0 text-end'>
+															Rp. 400.000,-
+														</div>
+														<div className='text-muted text-end'>
+															Compared to (~19H 30M last week)
+														</div>
+													</div>
+												</div>
+											</CardBody>
+										</Card>
 									</div>
 								</div>
 							</CardBody>

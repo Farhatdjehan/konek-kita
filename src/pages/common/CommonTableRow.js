@@ -5,7 +5,7 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Chart from '../../components/extras/Chart';
 import Badge from '../../components/bootstrap/Badge';
 import Button from '../../components/bootstrap/Button';
-import { personalMenu, menuSidebar } from '../../menu';
+import { personalMenu, menuSidebar, generalMenu } from '../../menu';
 import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
 import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
 import FormGroup from '../../components/bootstrap/forms/FormGroup';
@@ -92,13 +92,13 @@ const CommonTableRow = ({
 				{addressUrl[1] === 'edit-profile' ? (
 					<>
 						<td>
-							<Link to={`${personalMenu.detailProduct.path}/${id}`}>
+							<Link to={`${generalMenu.detailProduct.path}/${id}`}>
 								<img src={image} alt={name} width={54} height={54} />
 							</Link>
 						</td>
 						<td>
 							<div>
-								<Link to={`${personalMenu.detailProduct.path}/${id}`}>{name}</Link>
+								<Link to={`${generalMenu.detailProduct.path}/${id}`}>{name}</Link>
 							</div>
 						</td>
 						<td>
