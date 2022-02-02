@@ -120,15 +120,15 @@ export const generalMenu = {
 		subMenu: {
 			programGallery: {
 				id: 'programGallery',
-				text: 'Gallery Program UMKM',
+				text: 'Katalog Program UMKM',
 				path: '/umkm/gallery-program',
 				icon: 'CalendarViewMonth',
 			},
 			umkmProgram: {
 				id: 'umkmProgram',
-				text: 'Program UMKM',
+				text: 'History Programku',
 				path: '/umkm/program',
-				icon: 'CalendarViewMonth',
+				icon: 'History',
 			},
 			deliverableProgram: {
 				id: 'deliverableProgram',
@@ -144,10 +144,16 @@ export const generalMenu = {
 		path: '/bootcamp/',
 		icon: 'PictureInPicture',
 		subMenu: {
+			registTeacher: {
+				id: 'registTeacher',
+				text: 'Regist as Teacher',
+				path: '/bootcamp/regist-as-teacher',
+				icon: 'AppRegistration',
+			},
 			galleryBootcamp: {
 				id: 'galleryBootcamp',
-				text: 'Gallery Bootcamp',
-				path: '/bootcamp/gallery-bootcamp',
+				text: 'Katalog Bootcamp',
+				path: '/bootcamp/katalog-bootcamp',
 				icon: 'SettingsApplications',
 			},
 			detailProgramBootcamp: {
@@ -179,7 +185,7 @@ export const generalMenu = {
 			},
 			reqWorkList: {
 				id: 'reqWorkList',
-				text: 'Incoming Work',
+				text: 'Incoming Campaign',
 				path: '/campaign/incoming-campaign',
 				icon: 'WorkOutline',
 			},
@@ -217,6 +223,12 @@ export const generalMenu = {
 				path: '/collaboration/incoming-collabs',
 				icon: 'ListAlt',
 			},
+			collabsList: {
+				id: 'openCollabsList',
+				text: 'Katalog Collaboration',
+				path: '/collaboration/collabs-list',
+				icon: 'AutoStories',
+			},
 			detailProgramReqCollab: {
 				id: 'detailProgramReqCollab',
 				text: 'Detail Program Request Collab',
@@ -234,12 +246,6 @@ export const generalMenu = {
 				text: 'Detail Program Open Collab',
 				path: '/collaboration/open-collaboration/detail',
 				hide: true,
-			},
-			collabsList: {
-				id: 'openCollabsList',
-				text: 'Katalog Collaboration',
-				path: '/collaboration/collabs-list',
-				icon: 'AutoStories',
 			},
 			detailProgramCollab: {
 				id: 'detailProgramCollab',

@@ -92,10 +92,7 @@ const CommonPercentageOfLoadChart = () => {
 					</CardSubTitle>
 				</CardLabel>
 				<CardActions>
-					<Button
-						color='primary'
-						tag='a'
-						to={menuSidebar.appointment.subMenu.employeeList.path}>
+					<Button color='primary' tag='a' to='#'>
 						View Employees
 					</Button>
 				</CardActions>

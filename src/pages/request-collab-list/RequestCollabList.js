@@ -28,9 +28,7 @@ const Item = ({ id, image, title, description, user, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
 		() =>
-			history.push(
-				`${generalMenu.collaboration.subMenu.detailProgramReqCollab.path}/${id}`,
-			),
+			history.push(`${generalMenu.collaboration.subMenu.detailProgramReqCollab.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -51,7 +49,7 @@ const Item = ({ id, image, title, description, user, tags, color }) => {
 						height='auto'
 						className='object-fit-contain p-3'
 					/>
-					<Badge id="suit" color='success' className='position-absolute h-auto w-auto'>
+					<Badge id='suit' color='success' className='position-absolute h-auto w-auto'>
 						Cocok
 					</Badge>
 				</div>
@@ -160,14 +158,14 @@ const RequestCollabList = () => {
 		<PageWrapper title={generalMenu.collaboration.subMenu.reqCollabsList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-12 col-7 text-left my-5'>
-						<span className='display-5 fw-bold'>{generalMenu.collaboration.subMenu.reqCollabsList.text}</span>
+					<div className='col-12 col-md-9 text-left my-5'>
+						<span className='display-5 fw-bold'>
+							{generalMenu.collaboration.subMenu.reqCollabsList.text}
+						</span>
 					</div>
-					<div className='col-12 col-md-5 mx-auto text-center my-4 my-md-5'>
-						<form
-							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
-							onSubmit={formik.handleSubmit}>
-							<div className='col-6 col-md-8'>
+					<div className='col-12 col-md-3 mx-auto text-end my-4 my-md-5'>
+						<form className='row pb-4 px-3 mx-0 ' onSubmit={formik.handleSubmit}>
+							{/* <div className='col-6 col-md-8'>
 								<Select
 									id='category'
 									size='lg'
@@ -190,8 +188,8 @@ const RequestCollabList = () => {
 									}}
 									value={formik.values.category}
 								/>
-							</div>
-							<div className='col-6 col-md-4'>
+							</div> */}
+							<div className='col-12 col-md-12'>
 								<Dropdown>
 									<DropdownToggle>
 										<Button color='info' icon='FilterAlt' isLight>

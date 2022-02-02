@@ -129,10 +129,7 @@ const ListPremiumContent = () => {
 							))}
 					</div>
 					<div className='mt-3 w-100 text-end'>
-						<Button
-							onClick={() => handleModal(type)}
-							color='info'
-							icon='Edit'>
+						<Button onClick={() => handleModal(type)} color='info' icon='Edit'>
 							Edit
 						</Button>
 					</div>
@@ -266,8 +263,8 @@ const ListPremiumContent = () => {
 																	handleModal('Live Session')
 																}
 																color='info'
-																icon='Upload'>
-																Upload Jadwal
+																icon='Add'>
+																Tambah Jadwal
 															</Button>
 														</div>
 													</div>

@@ -235,7 +235,7 @@ const DashboardPage = () => {
 	const [toggleCalendar, setToggleCalendar] = useState(true);
 
 	return (
-		<PageWrapper title={menuSidebar.appointment.subMenu.dashboard.text}>
+		<PageWrapper title='Overview'>
 			<SubHeader>
 				<SubHeaderLeft>
 					<Icon icon='Info' className='me-2' size='2x' />

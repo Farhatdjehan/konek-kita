@@ -15,6 +15,12 @@ import Avatar from '../../components/Avatar';
 import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
 import UserImage3 from '../../assets/img/wanna/wanna3.png';
 import Button from '../../components/bootstrap/Button';
+import Checks, { ChecksGroup } from '../../components/bootstrap/forms/Checks';
+import Dropdown, {
+	DropdownItem,
+	DropdownMenu,
+	DropdownToggle,
+} from '../../components/bootstrap/Dropdown';
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, tags, user, color }) => {
 	const history = useHistory();
@@ -61,6 +67,7 @@ const Item = ({ id, image, title, description, tags, user, color }) => {
 const CollabsList = () => {
 	const [filterableData, setFilterableData] = useState(data);
 
+	const [check, setCheck] = useState([false, false, false, false]);
 	const searchAndFilterData = (searchValue, category) => {
 		let tempData = data;
 
@@ -118,16 +125,14 @@ const CollabsList = () => {
 		<PageWrapper title={generalMenu.collaboration.subMenu.collabsList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-12 col-md-8 text-left my-5'>
+					<div className='col-12 col-md-9 text-left my-5'>
 						<span className='display-5 fw-bold'>
 							{generalMenu.collaboration.subMenu.collabsList.text}
 						</span>
 					</div>
-					<div className='col-12 col-md-4 mx-auto text-center my-5'>
-						<form
-							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
-							onSubmit={formik.handleSubmit}>
-							<div className='col-md-12'>
+					<div className='col-12 col-md-3 text-end my-5'>
+						<form className='row px-3 mx-0 ' onSubmit={formik.handleSubmit}>
+							{/* <div className='col-6 col-md-8'>
 								<Select
 									id='category'
 									size='lg'
@@ -150,43 +155,92 @@ const CollabsList = () => {
 									}}
 									value={formik.values.category}
 								/>
-							</div>
-							{/* <div className='col-md-5'>
-								<Input
-									id='search'
-									size='lg'
-									placeholder='Type your question...'
-									className='rounded-1 bg-white'
-									onChange={(e) => {
-										formik.handleChange(e);
-
-										if (e.target.value.length > 2)
-											debounce(
-												() =>
-													onFormSubmit({
-														...formik.values,
-														search: e.target.value,
-													}),
-												1000,
-											)();
-
-										if (e.target.value.length === 0) formik.resetForm();
-									}}
-									value={formik.values.search}
-								/>
-							</div>
-							<div className='col-md-2'>
-								<Button
-									size='lg'
-									icon='Close'
-									color='primary'
-									className='w-100'
-									rounded={1}
-									onClick={formik.resetForm}
-									type='reset'
-									isDisable={!(formik.values.search || formik.values.category)}
-								/>
 							</div> */}
+							<div className='col-12 col-md-12'>
+								<Dropdown>
+									<DropdownToggle>
+										<Button color='info' icon='FilterAlt' isLight>
+											Filter
+										</Button>
+									</DropdownToggle>
+									<DropdownMenu isAlignmentEnd size='lg'>
+										<DropdownItem>
+											<div style={{ flexWrap: 'wrap' }}>
+												<ChecksGroup>
+													<div className='me-3'>
+														<Checks
+															id='tiktok'
+															label='Tiktok'
+															name='tiktok'
+															onChange={() =>
+																setCheck([
+																	!check[0],
+																	check[1],
+																	check[2],
+																	check[3],
+																])
+															}
+															type='checkbox'
+															checked={check[0]}
+														/>
+													</div>
+													<div className='me-3'>
+														<Checks
+															id='facebook'
+															label='Facebook'
+															name='facebook'
+															onChange={() =>
+																setCheck([
+																	check[0],
+																	!check[1],
+																	check[2],
+																	check[3],
+																])
+															}
+															type='checkbox'
+															checked={check[1]}
+														/>
+													</div>
+													<div className='me-3'>
+														<Checks
+															id='twitter'
+															label='Twitter'
+															name='twitter'
+															onChange={() =>
+																setCheck([
+																	check[0],
+																	check[1],
+																	!check[2],
+																	check[3],
+																])
+															}
+															type='checkbox'
+															checked={check[2]}
+														/>
+													</div>
+													<div className='me-3'>
+														<Checks
+															id='instagram'
+															label='Instagram'
+															name='instagram'
+															onChange={() =>
+																setCheck([
+																	check[0],
+																	check[1],
+																	check[2],
+																	!check[3],
+																])
+															}
+															type='checkbox'
+															checked={check[3]}
+														/>
+													</div>
+												</ChecksGroup>
+											</div>
+										</DropdownItem>
+									</DropdownMenu>
+								</Dropdown>
+							</div>
 						</form>
 					</div>
 				</div>

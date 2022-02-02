@@ -104,10 +104,7 @@ const CommonApprovedAppointmentChart = () => {
 					</CardSubTitle>
 				</CardLabel>
 				<CardActions>
-					<Button
-						color='success'
-						tag='a'
-						to={menuSidebar.appointment.subMenu.appointmentList.path}>
+					<Button color='success' tag='a' to='#'>
 						View Appointments
 					</Button>
 				</CardActions>

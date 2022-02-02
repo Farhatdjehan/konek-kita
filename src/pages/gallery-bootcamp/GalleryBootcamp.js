@@ -142,24 +142,8 @@ const GalleryBootcamp = () => {
 		<PageWrapper title={generalMenu.bootcamp.subMenu.galleryBootcamp.text}>
 			<Page>
 				<div className='row'>
-					<Card>
-						<CardBody>
-							<img src={UserImageWebp3} />
-							<div className='h4 fw-bold mt-3'>Benefit List</div>
-							<ul>
-								<li>Benefit 1</li>
-								<li>Benefit 2</li>
-								<li>Benefit 3</li>
-							</ul>
-							<Button onClick={() => setModal(true)} className='mt-3' color='info'>
-								Register
-							</Button>
-						</CardBody>
-					</Card>
-				</div>
-				<div className='row'>
 					<div className='col-12 text-left my-5'>
-						<span className='display-5 fw-bold'>Bootcamp</span>
+						<span className='display-5 fw-bold'>{generalMenu.bootcamp.subMenu.galleryBootcamp.text}</span>
 					</div>
 					{/* <div className='col-4 mx-auto text-center my-5'>
 						<form

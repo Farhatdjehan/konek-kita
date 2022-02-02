@@ -51,7 +51,7 @@ const DeliverableProgram = () => {
 		},
 	});
 	return (
-		<PageWrapper title={generalMenu.sendBadge.text}>
+		<PageWrapper title="Deliverable Program">
 			<Page container='fluid'>
 				<div className='row'>
 					<div className='col-12'>

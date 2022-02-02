@@ -39,6 +39,7 @@ const LANDING = {
 		import('../../pages/open-collaboration/DetailPageOpenCollab'),
 	),
 	SHARE_CONNECT: lazy(() => import('../../pages/share-connection/ShareKoneksi')),
+	REGIST_TEACHER: lazy(() => import('../../pages/gallery-bootcamp/RegistTeacher')),
 	JOIN_COMMUNITY: lazy(() => import('../../pages/share-connection/JoinCommunity')),
 	MY_SALDO: lazy(() => import('../../pages/saldo/MySaldo')),
 	MY_NFT: lazy(() => import('../../pages/nft/NFTList')),
@@ -134,6 +135,12 @@ const ContentRoutes = () => {
 				path={`${generalMenu.bootcamp.subMenu.detailProgramBootcamp.path}/:id`}
 				component={LANDING.DETAIL_PAGE_BOOTCAMP}
 			/>
+			<Route
+				exact
+				path={generalMenu.bootcamp.subMenu.registTeacher.path}
+				component={LANDING.REGIST_TEACHER}
+			/>
+
 			<Route
 				exact
 				path={`${generalMenu.worklist.subMenu.detailProgramOpenWorker.path}/:id`}

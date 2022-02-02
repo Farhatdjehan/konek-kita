@@ -145,16 +145,14 @@ const OpenWorkList = () => {
 		<PageWrapper title={generalMenu.worklist.subMenu.openWorkList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-12 col-md-7 text-left my-5'>
+					<div className='col-12 col-md-9 text-left my-5'>
 						<span className='display-5 fw-bold'>
 							{generalMenu.worklist.subMenu.openWorkList.text}
 						</span>
 					</div>
-					<div className='col-12 col-md-5 mx-auto text-center my-5'>
-						<form
-							className='row bg-l10-primary pb-4 px-3 mx-0 g-4 rounded-3'
-							onSubmit={formik.handleSubmit}>
-							<div className='col-6 col-md-8'>
+					<div className='col-12 col-md-3 text-end my-5'>
+						<form className='row pb-4 px-3 mx-0 ' onSubmit={formik.handleSubmit}>
+							{/* <div className='col-6 col-md-8'>
 								<Select
 									id='category'
 									size='lg'
@@ -177,8 +175,8 @@ const OpenWorkList = () => {
 									}}
 									value={formik.values.category}
 								/>
-							</div>
-							<div className='col-6 col-md-4'>
+							</div> */}
+							<div className='col-12 col-md-12'>
 								<Dropdown>
 									<DropdownToggle>
 										<Button color='info' icon='FilterAlt' isLight>
@@ -213,77 +211,79 @@ const OpenWorkList = () => {
 												/>
 											</div>
 										</DropdownItem>
-										<DropdownItem className='mb-3' style={{ flexWrap: 'wrap' }}>
-											<ChecksGroup>
-												<div className='me-3'>
-													<Checks
-														id='tiktok'
-														label='Tiktok'
-														name='tiktok'
-														onChange={() =>
-															setCheck([
-																!check[0],
-																check[1],
-																check[2],
-																check[3],
-															])
-														}
-														type='checkbox'
-														checked={check[0]}
-													/>
-												</div>
-												<div className='me-3'>
-													<Checks
-														id='facebook'
-														label='Facebook'
-														name='facebook'
-														onChange={() =>
-															setCheck([
-																check[0],
-																!check[1],
-																check[2],
-																check[3],
-															])
-														}
-														type='checkbox'
-														checked={check[1]}
-													/>
-												</div>
-												<div className='me-3'>
-													<Checks
-														id='twitter'
-														label='Twitter'
-														name='twitter'
-														onChange={() =>
-															setCheck([
-																check[0],
-																check[1],
-																!check[2],
-																check[3],
-															])
-														}
-														type='checkbox'
-														checked={check[2]}
-													/>
-												</div>
-												<div className='me-3'>
-													<Checks
-														id='instagram'
-														label='Instagram'
-														name='instagram'
-														onChange={() =>
-															setCheck([
-																check[0],
-																check[1],
-																check[2],
-																!check[3],
-															])
-														}
-														type='checkbox'
-														checked={check[3]}
-													/>
-												</div>
-											</ChecksGroup>
+										<DropdownItem className='mb-3'>
+											<div style={{ flexWrap: 'wrap' }}>
+												<ChecksGroup>
+													<div className='me-3'>
+														<Checks
+															id='tiktok'
+															label='Tiktok'
+															name='tiktok'
+															onChange={() =>
+																setCheck([
+																	!check[0],
+																	check[1],
+																	check[2],
+																	check[3],
+																])
+															}
+															type='checkbox'
+															checked={check[0]}
+														/>
+													</div>
+													<div className='me-3'>
+														<Checks
+															id='facebook'
+															label='Facebook'
+															name='facebook'
+															onChange={() =>
+																setCheck([
+																	check[0],
+																	!check[1],
+																	check[2],
+																	check[3],
+																])
+															}
+															type='checkbox'
+															checked={check[1]}
+														/>
+													</div>
+													<div className='me-3'>
+														<Checks
+															id='twitter'
+															label='Twitter'
+															name='twitter'
+															onChange={() =>
+																setCheck([
+																	check[0],
+																	check[1],
+																	!check[2],
+																	check[3],
+																])
+															}
+															type='checkbox'
+															checked={check[2]}
+														/>
+													</div>
+													<div className='me-3'>
+														<Checks
+															id='instagram'
+															label='Instagram'
+															name='instagram'
+															onChange={() =>
+																setCheck([
+																	check[0],
+																	check[1],
+																	check[2],
+																	!check[3],
+																])
+															}
+															type='checkbox'
+															checked={check[3]}
+														/>
+													</div>
+												</ChecksGroup>
+											</div>
 										</DropdownItem>
 										<DropdownItem className='mb-4'>
 											<Select
