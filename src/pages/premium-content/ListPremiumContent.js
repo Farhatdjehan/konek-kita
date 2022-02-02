@@ -20,7 +20,7 @@ import Card, {
 } from '../../components/bootstrap/Card';
 import eventList from '../../common/data/events';
 import Icon from '../../components/icon/Icon';
-import { dashboardMenu } from '../../menu';
+import { personalMenu } from '../../menu';
 import CHATS from '../../common/data/chatDummyData';
 import Chat, { ChatGroup } from '../../components/Chat';
 import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
@@ -35,53 +35,13 @@ import {
 	getViews,
 } from '../../components/extras/calendarHelper';
 import moment from 'moment';
+import Textarea from '../../components/bootstrap/forms/Textarea';
+import Select from '../../components/bootstrap/forms/Select';
 
 const localizer = momentLocalizer(moment);
 const now = new Date();
 
 const myEventsList = [{ start: new Date(), end: new Date(), title: 'special event' }];
-const Item = ({ id, title, desc, user, image, tags, color, categories, content }) => {
-	const history = useHistory();
-	const handleOnClick = useCallback(
-		() =>
-			history.push(`${dashboardMenu.premiumContent.subMenu.detailPremiumContent.path}/${id}`),
-		[history, id],
-	);
-	return (
-		<Card className='cursor-pointer shadow-3d-primary shadow-3d-hover' onClick={handleOnClick}>
-			<CardBody>
-				<div
-					className={classNames(
-						'ratio ratio-1x1',
-						'rounded-2',
-						// `bg-l10-${color}`,
-						'mb-3',
-					)}>
-					<img
-						src={image}
-						alt=''
-						width='100%'
-						height='auto'
-						className='object-fit-contain p-3'
-					/>
-				</div>
-				<CardTitle>{title}</CardTitle>
-				<p className='text-muted truncate-line-2'>{desc}</p>
-				<div className='row g-2'>
-					{tags &&
-						// eslint-disable-next-line react/prop-types
-						tags.map((e, i) => (
-							<div key={i} className='col-auto'>
-								<Badge isLight className='px-3 py-2'>
-									{e.tags_name}
-								</Badge>
-							</div>
-						))}
-				</div>
-			</CardBody>
-		</Card>
-	);
-};
 
 const ListPremiumContent = () => {
 	// BEGIN :: List Tab
@@ -94,11 +54,13 @@ const ListPremiumContent = () => {
 	}
 	const LIST_TAB = {
 		LIVESESSION: 'Live Session',
-		// LIVECHAT: 'Live Chat',
+		LIVECHAT: 'Live Chat',
 		FOTO: 'Foto',
 		VIDEO: 'Video',
 		SUARA: 'Suara',
 	};
+
+	const [upcomingEventsInfoOffcanvas, setUpcomingEventsInfoOffcanvas] = useState(false);
 	const [activeListTab, setActiveListTab] = useState(LIST_TAB.LIVESESSION);
 	const handleActiveListTab = (tabName) => {
 		setActiveListTab(tabName);
@@ -116,8 +78,10 @@ const ListPremiumContent = () => {
 
 	const [editItem, setEditItem] = useState(null);
 	const [viewMode, setViewMode] = useState(Views.MONTH);
+	const [dataDetail, setDataDetail] = useState();
 	const [date, setDate] = useState(new Date());
 	const [modal, setModal] = useState(false);
+	const [value, setValue] = useState();
 	const [eventAdding, setEventAdding] = useState(false);
 	const data = getUserDataWithId(1);
 	const history = useHistory();
@@ -126,8 +90,59 @@ const ListPremiumContent = () => {
 
 	const filterSuara = dataContent.filter((f) => f.type === 'Suara');
 
+	const Item = ({ id, title, desc, user, image, type, tags, color, categories, content }) => {
+		const history = useHistory();
+		const handleOnClick = useCallback(
+			() => history.push(`${personalMenu.detailPremiumContent.path}/${id}`),
+			[history, id],
+		);
+		return (
+			<Card className='cursor-pointer shadow-3d-primary shadow-3d-hover'>
+				<CardBody>
+					<div
+						className={classNames(
+							'ratio ratio-1x1',
+							'rounded-2',
+							// `bg-l10-${color}`,
+							'mb-3',
+						)}>
+						<img
+							onClick={handleOnClick}
+							src={image}
+							alt=''
+							width='100%'
+							height='auto'
+							className='object-fit-contain p-3'
+						/>
+					</div>
+					<CardTitle>{title}</CardTitle>
+					<p className='text-muted truncate-line-2'>{desc}</p>
+					<div className='row g-2'>
+						{tags &&
+							// eslint-disable-next-line react/prop-types
+							tags.map((e, i) => (
+								<div key={i} className='col-auto'>
+									<Badge isLight className='px-3 py-2'>
+										{e.tags_name}
+									</Badge>
+								</div>
+							))}
+					</div>
+					<div className='mt-3 w-100 text-end'>
+						<Button
+							onClick={() => handleModal(type)}
+							color='info'
+							icon='Edit'>
+							Edit
+						</Button>
+					</div>
+				</CardBody>
+			</Card>
+		);
+	};
+
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.premiumContent.subMenu.detailPremiumContent.path}/1`),
+		() => history.push(`${personalMenu.premiumContent.subMenu.detailPremiumContent.path}/1`),
 		[history],
 	);
 	// Change view mode
@@ -150,6 +165,15 @@ const ListPremiumContent = () => {
 			desc: '',
 		},
 		// onSubmit: onFormSubmit,
+	});
+	const formikAdd = useFormik({
+		initialValues: {
+			judulkonten: '',
+			tag: '',
+			tipekonten: ``,
+			link: '',
+			desc: '',
+		},
 	});
 
 	// Calendar Unit Type
@@ -192,6 +216,15 @@ const ListPremiumContent = () => {
 		};
 	};
 
+	const handleModal = (type) => {
+		setValue(type);
+		console.log(value);
+		// if (value === !undefined) {
+		// setDataDetail(value);
+		// }
+		setUpcomingEventsInfoOffcanvas(!upcomingEventsInfoOffcanvas);
+	};
+
 	return (
 		<PageWrapper title='Konten Premium'>
 			<Page>
@@ -219,77 +252,104 @@ const ListPremiumContent = () => {
 							</CardHeader>
 							<CardBody className='table-responsive'>
 								{activeListTab === LIST_TAB.LIVESESSION && (
-									<div className='row g-4'>
-										<div className='col-md-8'>
-											<Card>
-												<CardHeader>
-													<CardActions>
-														<CalendarTodayButton
-															unitType={unitType}
-															date={date}
-															setDate={setDate}
-															viewMode={viewMode}
-														/>
-													</CardActions>
-													<CardActions>
-														<CalendarViewModeButtons
-															setViewMode={setViewMode}
-															viewMode={viewMode}
-														/>
-													</CardActions>
-												</CardHeader>
-												<CardBody>
-													<Calendar
-														style={{ height: 450 }}
-														toolbar={false}
-														localizer={localizer}
-														events={myEventsList}
-														views={views}
-														view={viewMode}
-														startAccessor='start'
-														endAccessor='end'
-														onView={handleViewMode}
-														eventPropGetter={eventStyleGetter}
-													/>
-													<div className='mt-5'>
+									<div>
+										<div className='row g-4'>
+											<div className='col-md-12'>
+												<div className='mt-5'>
+													<div className='d-flex align-items-center w-100 justify-content-between'>
 														<div className='h4 fw-bold mb-3'>
 															List Live Session
 														</div>
-														<div className='mb-3'>
-															<Card>
-																<CardHeader>
-																	<CardLabel iconColor='success'>
-																		<CardTitle
-																			tag='h4'
-																			className='h5'>
-																			<Icon
-																				icon='VideoCall'
-																				size='2x'
-																				className='me-2'
-																				color='danger'
-																			/>
-																			Live Session #2
-																		</CardTitle>
-																	</CardLabel>
-																</CardHeader>
-																<CardBody>
-																	<div className='d-flex justify-content-between align-items-center'>
-																		<div>
-																			<Icon icon='Info' />{' '}
-																			12/12/2022
-																		</div>
-																		<Button color='info'>
+														<div className='mb-3 text-end'>
+															<Button
+																onClick={() =>
+																	handleModal('Live Session')
+																}
+																color='info'
+																icon='Upload'>
+																Upload Jadwal
+															</Button>
+														</div>
+													</div>
+													<div className='mb-3'>
+														<Card>
+															<CardHeader>
+																<CardLabel iconColor='success'>
+																	<CardTitle
+																		tag='h4'
+																		className='h5'>
+																		<Icon
+																			icon='VideoCall'
+																			size='2x'
+																			className='me-2'
+																			color='danger'
+																		/>
+																		Live Session #2
+																	</CardTitle>
+																</CardLabel>
+															</CardHeader>
+															<CardBody>
+																<div className='d-flex justify-content-between align-items-center'>
+																	<div>
+																		<Icon icon='Info' />{' '}
+																		12/12/2022
+																	</div>
+																	<div>
+																		<Button
+																			onClick={() =>
+																				handleModal(
+																					'Live Session',
+																				)
+																			}
+																			className='me-3'
+																			color='success'>
+																			Edit Jadwal
+																		</Button>
+																		<Button
+																			color='info'
+																			isLight>
 																			Join Live Session
 																		</Button>
 																	</div>
-																</CardBody>
-															</Card>
-														</div>
+																</div>
+															</CardBody>
+														</Card>
 													</div>
-												</CardBody>
-											</Card>
-										</div>
-										<div className='col-md-4'>
+												</div>
+												<Card>
+													<CardHeader>
+														<CardActions>
+															<CalendarTodayButton
+																unitType={unitType}
+																date={date}
+																setDate={setDate}
+																viewMode={viewMode}
+															/>
+														</CardActions>
+														<CardActions>
+															<CalendarViewModeButtons
+																setViewMode={setViewMode}
+																viewMode={viewMode}
+															/>
+														</CardActions>
+													</CardHeader>
+													<CardBody>
+														<Calendar
+															style={{ height: 450 }}
+															toolbar={false}
+															localizer={localizer}
+															events={myEventsList}
+															views={views}
+															view={viewMode}
+															startAccessor='start'
+															endAccessor='end'
+															onView={handleViewMode}
+															eventPropGetter={eventStyleGetter}
+														/>
+													</CardBody>
+												</Card>
+											</div>
+											{/* <div className='col-md-4'>
 											<Card>
 												<CardHeader>
 													<CardTitle>Live Chat</CardTitle>
@@ -306,93 +366,124 @@ const ListPremiumContent = () => {
 													</Chat>
 												</CardBody>
 											</Card>
+										</div> */}
 										</div>
 									</div>
 								)}
-								{/* {activeListTab === LIST_TAB.LIVECHAT && <ChatList />} */}
+								{activeListTab === LIST_TAB.LIVECHAT && <ChatList />}
 								{activeListTab === LIST_TAB.FOTO && (
-									<div className='row g-4'>
-										{filterData.length > 0
-											? filterData.map((item, index) => (
-													<div
-														key={index}
-														className='col-xl-3 col-lg-4 col-md-6'>
-														<Item {...item} />
-													</div>
-											  ))
-											: null}
+									<div>
+										<div className='mb-3 text-end'>
+											<Button
+												onClick={() => handleModal('photo')}
+												color='info'
+												icon='Upload'>
+												Upload Foto
+											</Button>
+										</div>
+										<div className='row g-4'>
+											{filterData.length > 0
+												? filterData.map((item, index) => (
+														<div
+															key={index}
+															className='col-xl-3 col-lg-4 col-md-6'>
+															<Item {...item} />
+														</div>
+												  ))
+												: null}
+										</div>
 									</div>
 								)}
 								{activeListTab === LIST_TAB.VIDEO && (
-									<div className='row g-4'>
-										{filterData.length > 0
-											? filterData.map((item, index) => (
-													<div
-														key={index}
-														className='col-xl-3 col-lg-4 col-md-6'>
-														<Item {...item} />
-													</div>
-											  ))
-											: null}
+									<div>
+										<div className='mb-3 text-end'>
+											<Button
+												onClick={() => handleModal('Video')}
+												color='info'
+												icon='Upload'>
+												Upload Video
+											</Button>
+										</div>
+										<div className='row g-4'>
+											{filterData.length > 0
+												? filterData.map((item, index) => (
+														<div
+															key={index}
+															className='col-xl-3 col-lg-4 col-md-6'>
+															<Item {...item} />
+														</div>
+												  ))
+												: null}
+										</div>
 									</div>
 								)}
 								{activeListTab === LIST_TAB.SUARA && (
-									<div className='row g-4'>
-										{filterSuara.length > 0
-											? filterSuara.map((item, index) => {
-													return (
-														<div key={index} className='col-md-4'>
-															<Card
-																className='cursor-pointer shadow-3d-primary shadow-3d-hover'
-																// onClick={handleOnClick}
-															>
-																<CardBody>
-																	<div
-																		className={classNames(
-																			'ratio ratio-1x1',
-																			'rounded-2',
-																			// `bg-l10-${color}`,
-																			'mb-3',
-																		)}>
-																		<img
-																			src={item.image}
-																			alt=''
-																			width='100%'
-																			height='auto'
-																			className='object-fit-contain p-3'
-																		/>
-																	</div>
-																	<CardTitle>
-																		{item.title}
-																	</CardTitle>
-																	<p className='text-muted truncate-line-2'>
-																		{item.desc}
-																	</p>
-																	<div className='row g-2'>
-																		{item.tags &&
-																			// eslint-disable-next-line react/prop-types
-																			item.tags.map(
-																				(e, i) => (
-																					<div
-																						key={i}
-																						className='col-auto'>
-																						<Badge
-																							isLight
-																							className='px-3 py-2'>
-																							{
-																								e.tags_name
-																							}
-																						</Badge>
-																					</div>
-																				),
-																			)}
-																	</div>
-																</CardBody>
-															</Card>
-														</div>
-													);
-											  })
-											: null}
+									<div>
+										<div className='mb-3 text-end'>
+											<Button
+												onClick={() => handleModal('Suara')}
+												color='info'
+												icon='Upload'>
+												Upload Suara
+											</Button>
+										</div>
+										<div className='row g-4'>
+											{filterSuara.length > 0
+												? filterSuara.map((item, index) => {
+														return (
+															<div key={index} className='col-md-4'>
+																<Card
+																	className='cursor-pointer shadow-3d-primary shadow-3d-hover'
+																	// onClick={handleOnClick}
+																>
+																	<CardBody>
+																		<div
+																			className={classNames(
+																				'ratio ratio-1x1',
+																				'rounded-2',
+																				// `bg-l10-${color}`,
+																				'mb-3',
+																			)}>
+																			<img
+																				src={item.image}
+																				alt=''
+																				width='100%'
+																				height='auto'
+																				className='object-fit-contain p-3'
+																			/>
+																		</div>
+																		<CardTitle>
+																			{item.title}
+																		</CardTitle>
+																		<p className='text-muted truncate-line-2'>
+																			{item.desc}
+																		</p>
+																		<div className='row g-2'>
+																			{item.tags &&
+																				// eslint-disable-next-line react/prop-types
+																				item.tags.map(
+																					(e, i) => (
+																						<div
+																							key={i}
+																							className='col-auto'>
+																							<Badge
+																								isLight
+																								className='px-3 py-2'>
+																								{
+																									e.tags_name
+																								}
+																							</Badge>
+																						</div>
+																					),
+																				)}
+																		</div>
+																	</CardBody>
+																</Card>
+															</div>
+														);
+												  })
+												: null}
+										</div>
 									</div>
 								)}
 							</CardBody>
@@ -400,6 +491,123 @@ const ListPremiumContent = () => {
 					</div>
 				</div>
 			</Page>
+			<Modal
+				setIsOpen={setUpcomingEventsInfoOffcanvas}
+				isOpen={upcomingEventsInfoOffcanvas}
+				titleId='upcomingEdit'
+				isCentered
+				isScrollable
+				size='lg'>
+				<ModalHeader setIsOpen={setUpcomingEventsInfoOffcanvas}>
+					<OffCanvasTitle id='upcomingEdit'>Edit Konten</OffCanvasTitle>
+				</ModalHeader>
+				<ModalBody>
+					<div className='row g-4'>
+						<div className='col-12'>
+							<FormGroup id='judulkonten' label='Judul Konten'>
+								<Input
+									placeholder='Judul Konten'
+									onChange={formikAdd.handleChange}
+									value={formikAdd.values.title}
+								/>
+							</FormGroup>
+						</div>
+						<div className='col-12'>
+							<FormGroup id='tag' label='Tag'>
+								<Input
+									placeholder='Tag'
+									onChange={formikAdd.handleChange}
+									value={formikAdd.values.tag}
+								/>
+							</FormGroup>
+						</div>
+						{value === 'photo' ? (
+							<div className='col-6'>
+								<FormGroup id='tag' label='Upload Foto'>
+									<Input type='file' autoComplete='photo' />
+								</FormGroup>
+							</div>
+						) : value === 'Live Session' ? (
+							<div className='col-12'>
+								<FormGroup id='link' label='Link Zoom'>
+									<Input
+										placeholder='Link Zoom'
+										onChange={formikAdd.handleChange}
+										value={formikAdd.values.link}
+									/>
+								</FormGroup>
+							</div>
+						) : value === 'Video' ? (
+							<>
+								<div className='col-5'>
+									<FormGroup id='link' label='Upload Video'>
+										<Input type='file' autoComplete='Video' />
+									</FormGroup>
+								</div>
+								<div className='col-2 d-flex justify-content-center align-items-center'>
+									atau
+								</div>
+								<div className='col-5'>
+									<FormGroup id='link' label='Link Video'>
+										<Input
+											placeholder='Link Video'
+											onChange={formikAdd.handleChange}
+											value={formikAdd.values.link}
+										/>
+									</FormGroup>
+								</div>
+							</>
+						) : value === 'Suara' ? (
+							<>
+								<div className='col-5'>
+									<FormGroup id='link' label='Upload Suara'>
+										<Input type='file' autoComplete='suara' />
+									</FormGroup>
+								</div>
+								<div className='col-2 d-flex justify-content-center align-items-center'>
+									atau
+								</div>
+								<div className='col-5'>
+									<FormGroup id='link' label='Link Suara'>
+										<Input
+											placeholder='Link Suara'
+											onChange={formikAdd.handleChange}
+											value={formikAdd.values.link}
+										/>
+									</FormGroup>
+								</div>
+							</>
+						) : null}
+
+						<div className='col-12'>
+							<Card isCompact className='mb-3'>
+								<CardHeader>
+									<CardLabel>
+										<CardTitle>Deskripsi</CardTitle>
+									</CardLabel>
+								</CardHeader>
+								<CardBody>
+									<FormGroup id='desc'>
+										<Textarea
+											rows={8}
+											onChange={formikAdd.handleChange}
+											value={formikAdd.values.desc}
+										/>
+									</FormGroup>
+								</CardBody>
+							</Card>
+						</div>
+					</div>
+				</ModalBody>
+				<ModalFooter className='bg-transparent'>
+					<Button
+						color='info'
+						icon='Upload'
+						onClick={() => setUpcomingEventsInfoOffcanvas(false)}>
+						Upload
+					</Button>
+				</ModalFooter>
+			</Modal>
 			<Modal
 				setIsOpen={setModal}
 				isOpen={modal}

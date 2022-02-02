@@ -29,13 +29,13 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Popovers from '../../components/bootstrap/Popovers';
 import data from '../../common/data/dummyPremiumContent';
 import USERS from '../../common/data/userDummyData';
-import { dashboardMenu } from '../../menu';
+import { personalMenu } from '../../menu';
 import Select from '../../components/bootstrap/forms/Select';
 import { Options } from '../../components/bootstrap/Option';
 
 const EditInModalPage = () => {
-	const [value, setValue] = useState();
-
+	const [value, setValue] = useState('add');
+	const [dataDetail, setDataDetail] = useState();
 	// BEGIN :: Upcoming Events
 	const [upcomingEventsInfoOffcanvas, setUpcomingEventsInfoOffcanvas] = useState(false);
 	const handleUpcomingDetails = () => {
@@ -43,15 +43,18 @@ const EditInModalPage = () => {
 	};
 
 	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false);
-	const handleUpcomingEdit = (value) => {
-		setValue(value);
+	const handleUpcomingEdit = (type) => {
+		setValue(type);
+		// if (value === !undefined) {
+		setDataDetail(value);
+		// }
 		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
 	};
 	// END :: Upcoming Events
 
 	const formik = useFormik({
 		initialValues: {
-			judulkonten: '',
+			judulkonten: value === 'add' ? 'tes' : 'dua',
 			tag: '',
 			tipekonten: ``,
 			link: '',
@@ -59,7 +62,7 @@ const EditInModalPage = () => {
 		},
 	});
 	return (
-		<PageWrapper title={dashboardMenu.premiumContent.text}>
+		<PageWrapper title={personalMenu.premiumContent.text}>
 			{/* <SubHeader>
 				<SubHeaderLeft>
 					<Icon icon='Info' className='me-2' size='2x' />
@@ -227,7 +230,7 @@ const EditInModalPage = () => {
 											<Input
 												placeholder='Judul Konten'
 												onChange={formik.handleChange}
-												value={formik.values.judulkonten}
+												value={formik.values.title}
 											/>
 										</FormGroup>
 									</div>

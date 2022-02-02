@@ -55,7 +55,7 @@ import { getLabel, getUnitType, getViews } from '../../components/extras/calenda
 import CommonMyWallet from '../common/CommonMyWallet';
 import Popovers from '../../components/bootstrap/Popovers';
 import showNotification from '../../components/extras/showNotification';
-import { dashboardMenu, editPage } from '../../menu';
+import { personalMenu, editPage } from '../../menu';
 import classNames from 'classnames';
 import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
 import Select from '../../components/bootstrap/forms/Select';
@@ -143,7 +143,7 @@ const EditProfil = () => {
 
 	const filteredData = data;
 	function handleDetailPage() {
-		history.push(`${dashboardMenu.gallery.subMenu.detailPortofolio.path}`);
+		history.push(`${personalMenu.gallery.subMenu.detailPortofolio.path}`);
 	}
 	const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'dark'];
 	const images = [

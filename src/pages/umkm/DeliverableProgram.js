@@ -28,7 +28,7 @@ import Textarea from '../../components/bootstrap/forms/Textarea';
 import Checks from '../../components/bootstrap/forms/Checks';
 import Popovers from '../../components/bootstrap/Popovers';
 import USERS from '../../common/data/userDummyData';
-import { dashboardMenu } from '../../menu';
+import { generalMenu } from '../../menu';
 import { Link } from 'react-router-dom';
 
 const DeliverableProgram = () => {
@@ -51,7 +51,7 @@ const DeliverableProgram = () => {
 		},
 	});
 	return (
-		<PageWrapper title={dashboardMenu.sendBadge.text}>
+		<PageWrapper title={generalMenu.sendBadge.text}>
 			<Page container='fluid'>
 				<div className='row'>
 					<div className='col-12'>

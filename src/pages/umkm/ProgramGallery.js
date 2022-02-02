@@ -20,7 +20,7 @@ import Badge from '../../components/bootstrap/Badge';
 import Input from '../../components/bootstrap/forms/Input';
 import PlaceholderImage from '../../components/extras/PlaceholderImage';
 import FormGroup from '../../components/bootstrap/forms/FormGroup';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { generalMenu, menuSidebar } from '../../menu';
 import Breadcrumb from '../../components/bootstrap/Breadcrumb';
 
 const validate = (values) => {
@@ -105,11 +105,11 @@ const ProgramGallery = () => {
 	}, [editItem]);
 
 	return (
-		<PageWrapper title={dashboardMenu.umkm.subMenu.programGallery.text}>
+		<PageWrapper title={generalMenu.umkm.subMenu.programGallery.text}>
 			<Page>
 				<div className='d-flex justify-content-between'>
 					<div className='display-4 fw-bold pt-3 pb-5'>
-						{dashboardMenu.umkm.subMenu.programGallery.text}
+						{generalMenu.umkm.subMenu.programGallery.text}
 					</div>
 				</div>
 				<div className='row'>

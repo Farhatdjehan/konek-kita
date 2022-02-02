@@ -4,13 +4,13 @@ import Page from '../../layout/Page/Page';
 import Humans from '../../assets/img/hand.png';
 import HumansWebp from '../../assets/img/hand.webp';
 import Button from '../../components/bootstrap/Button';
-import { dashboardMenu } from '../../menu';
+import { generalMenu } from '../../menu';
 import { useHistory } from 'react-router-dom';
 
 const CatalogueDirectCampaign = () => {
 	const history = useHistory();
 	return (
-		<PageWrapper title={dashboardMenu.worklist.subMenu.directCampaign.text}>
+		<PageWrapper title={generalMenu.worklist.subMenu.directCampaign.text}>
 			<Page>
 				<div className='row d-flex align-items-center h-100'>
 					<div className='col-12 d-flex flex-column justify-content-center align-items-center'>

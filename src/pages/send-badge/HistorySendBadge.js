@@ -29,7 +29,7 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Popovers from '../../components/bootstrap/Popovers';
 import data from './helper/dummyHistory';
 import USERS from '../../common/data/userDummyData';
-import { dashboardMenu } from '../../menu';
+import { personalMenu } from '../../menu';
 import { Link } from 'react-router-dom';
 
 const HistorySendBadge = () => {
@@ -60,7 +60,7 @@ const HistorySendBadge = () => {
 		},
 	});
 	return (
-		<PageWrapper title={dashboardMenu.premiumContent.text}>
+		<PageWrapper title={personalMenu.premiumContent.text}>
 			{/* <SubHeader>
 				<SubHeaderLeft>
 					<Icon icon='Info' className='me-2' size='2x' />
@@ -134,7 +134,7 @@ const HistorySendBadge = () => {
 												<td>{item.receipt}</td>
 												<td>
 													<Link
-														to={`${dashboardMenu.sendBadge.subMenu.detailCampaign.path}/${item.id}`}>
+														to={`${personalMenu.sendBadge.subMenu.detailCampaign.path}/${item.id}`}>
 														<Icon icon='Link' className='me-2' />
 														{item.link}
 													</Link>

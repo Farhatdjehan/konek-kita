@@ -8,7 +8,7 @@ import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardFooter, CardHeader, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyBootcampData';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { generalMenu, menuSidebar } from '../../menu';
 import Button from '../../components/bootstrap/Button';
 import UserImageWebp3 from '../../assets/img/wanna/wanna3.webp';
 import Icon from '../../components/icon/Icon';
@@ -19,7 +19,7 @@ import { priceFormat } from '../../helpers/helpers';
 const Item = ({ id, image, title, price, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.bootcamp.subMenu.detailProgramBootcamp.path}/${id}`),
+		() => history.push(`${generalMenu.bootcamp.subMenu.detailProgramBootcamp.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -139,7 +139,7 @@ const GalleryBootcamp = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.bootcamp.subMenu.galleryBootcamp.text}>
+		<PageWrapper title={generalMenu.bootcamp.subMenu.galleryBootcamp.text}>
 			<Page>
 				<div className='row'>
 					<Card>

@@ -19,7 +19,7 @@ import Badge from '../../components/bootstrap/Badge';
 import { priceFormat } from '../../helpers/helpers';
 import showNotification from '../../components/extras/showNotification';
 import Icon from '../../components/icon/Icon';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { generalMenu } from '../../menu';
 import { NavLink, useLocation } from 'react-router-dom';
 
 const CommonGridProductItem = ({
@@ -134,7 +134,7 @@ const CommonGridProductItem = ({
 					className='w-100 shadow-3d-dark mb-4 shadow-3d-up-hover'
 					size='lg'
 					tag='a'
-					to={`${dashboardMenu.detailProduct.path}/${id}`}>
+					to={`${generalMenu.detailProduct.path}/${id}`}>
 					Lihat Selengkapnya
 				</Button>
 			</CardFooter>

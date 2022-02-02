@@ -20,7 +20,7 @@ import Badge from '../../components/bootstrap/Badge';
 import Input from '../../components/bootstrap/forms/Input';
 import PlaceholderImage from '../../components/extras/PlaceholderImage';
 import FormGroup from '../../components/bootstrap/forms/FormGroup';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { generalMenu, menuSidebar } from '../../menu';
 import Breadcrumb from '../../components/bootstrap/Breadcrumb';
 import Icon from '../../components/icon/Icon';
 import { Link, useLocation } from 'react-router-dom';
@@ -108,7 +108,7 @@ const GalleryUmkm = () => {
 	}, [editItem]);
 
 	return (
-		<PageWrapper title={dashboardMenu.umkm.subMenu.programGallery.text}>
+		<PageWrapper title={generalMenu.umkm.subMenu.programGallery.text}>
 			<Page>
 				<div>
 					<div className='display-4 fw-bold pt-3 pb-4'>History Programku </div>

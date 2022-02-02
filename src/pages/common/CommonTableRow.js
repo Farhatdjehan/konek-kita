@@ -5,7 +5,7 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Chart from '../../components/extras/Chart';
 import Badge from '../../components/bootstrap/Badge';
 import Button from '../../components/bootstrap/Button';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { personalMenu, menuSidebar } from '../../menu';
 import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
 import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
 import FormGroup from '../../components/bootstrap/forms/FormGroup';
@@ -92,13 +92,13 @@ const CommonTableRow = ({
 				{addressUrl[1] === 'edit-profile' ? (
 					<>
 						<td>
-							<Link to={`${dashboardMenu.detailProduct.path}/${id}`}>
+							<Link to={`${personalMenu.detailProduct.path}/${id}`}>
 								<img src={image} alt={name} width={54} height={54} />
 							</Link>
 						</td>
 						<td>
 							<div>
-								<Link to={`${dashboardMenu.detailProduct.path}/${id}`}>{name}</Link>
+								<Link to={`${personalMenu.detailProduct.path}/${id}`}>{name}</Link>
 							</div>
 						</td>
 						<td>
@@ -140,13 +140,13 @@ const CommonTableRow = ({
 						</th>
 						<th scope='row'>{id}</th>
 						<td>
-							<Link to={`${dashboardMenu.detailProduct.path}/${id}`}>
+							<Link to={`${personalMenu.detailProduct.path}/${id}`}>
 								<img src={image} alt={name} width={54} height={54} />
 							</Link>
 						</td>
 						<td>
 							<div>
-								<Link to={`${dashboardMenu.detailProduct.path}/${id}`}>{name}</Link>
+								<Link to={`${personalMenu.detailProduct.path}/${id}`}>{name}</Link>
 								<div className='text-muted'>
 									<small>{category}</small>
 								</div>
@@ -189,7 +189,7 @@ const CommonTableRow = ({
 								isLight
 								icon='Edit'
 								tag='a'
-								to={`${dashboardMenu.detailProduct.path}/${id}`}
+								to={`${personalMenu.detailProduct.path}/${id}`}
 							/>
 						</td>
 					</>

@@ -52,13 +52,6 @@ const MyBadge = () => {
 									Badge Saya
 								</CardTitle>
 							</CardLabel>
-							<CardActions>
-								<Link to='/send-badge/history'>
-									<Button color='info' icon='Badge' isLight>
-										Badge Saya
-									</Button>
-								</Link>
-							</CardActions>
 						</CardHeader>
 						<CardBody>
 							<div className='row'>
@@ -77,7 +70,7 @@ const MyBadge = () => {
 										<Button color='info'>Tentang Badge</Button>
 									</Alert>
 								</div>
-								<div className='col-md-4'>
+								<div className='col-12 col-md-4'>
 									<Card
 										className='bg-l25-success bg-l10-success-hover transition-base rounded-2 mb-4'
 										shadow='sm'>
@@ -93,6 +86,13 @@ const MyBadge = () => {
 													Work
 												</CardTitle>
 											</CardLabel>
+											<CardActions>
+												<Link to='/send-badge/history'>
+													<Button color='success' icon='Badge'>
+														History Badge
+													</Button>
+												</Link>
+											</CardActions>
 										</CardHeader>
 										<CardBody>
 											<div className='d-flex align-items-center pb-3'>
@@ -114,7 +114,7 @@ const MyBadge = () => {
 										</CardBody>
 									</Card>
 								</div>
-								<div className='col-md-4'>
+								<div className='col-12 col-md-4'>
 									<Card
 										className='bg-l25-danger bg-l10-danger-hover transition-base rounded-2 mb-4'
 										shadow='sm'>
@@ -130,6 +130,13 @@ const MyBadge = () => {
 													Love
 												</CardTitle>
 											</CardLabel>
+											<CardActions>
+												<Link to='/send-badge/history'>
+													<Button color='danger' icon='Badge'>
+														History Badge
+													</Button>
+												</Link>
+											</CardActions>
 										</CardHeader>
 										<CardBody>
 											<div className='d-flex align-items-center pb-3'>
@@ -151,7 +158,7 @@ const MyBadge = () => {
 										</CardBody>
 									</Card>
 								</div>
-								<div className='col-md-4'>
+								<div className='col-12 col-md-4'>
 									<Card
 										className='bg-l25-primary bg-l10-primary-hover transition-base rounded-2 mb-4'
 										shadow='sm'>

@@ -8,7 +8,7 @@ import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyRequestCollabData';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { generalMenu, menuSidebar } from '../../menu';
 import Button from '../../components/bootstrap/Button';
 import Avatar from '../../components/Avatar';
 
@@ -29,7 +29,7 @@ const Item = ({ id, image, title, description, user, tags, color }) => {
 	const handleOnClick = useCallback(
 		() =>
 			history.push(
-				`${dashboardMenu.collaboration.subMenu.detailProgramReqCollab.path}/${id}`,
+				`${generalMenu.collaboration.subMenu.detailProgramReqCollab.path}/${id}`,
 			),
 		[history, id],
 	);
@@ -157,11 +157,11 @@ const RequestCollabList = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.collaboration.subMenu.reqCollabsList.text}>
+		<PageWrapper title={generalMenu.collaboration.subMenu.reqCollabsList.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-12 col-7 text-left my-5'>
-						<span className='display-5 fw-bold'>{dashboardMenu.collaboration.subMenu.reqCollabsList.text}</span>
+						<span className='display-5 fw-bold'>{generalMenu.collaboration.subMenu.reqCollabsList.text}</span>
 					</div>
 					<div className='col-12 col-md-5 mx-auto text-center my-4 my-md-5'>
 						<form

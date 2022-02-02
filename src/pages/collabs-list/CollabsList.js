@@ -8,7 +8,7 @@ import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardFooter, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { generalMenu, menuSidebar } from '../../menu';
 import User from '../../layout/User/User';
 import Avatar from '../../components/Avatar';
 
@@ -19,7 +19,7 @@ import Button from '../../components/bootstrap/Button';
 const Item = ({ id, image, title, description, tags, user, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.collaboration.subMenu.detailProgramCollab.path}/${id}`),
+		() => history.push(`${generalMenu.collaboration.subMenu.detailProgramCollab.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -115,12 +115,12 @@ const CollabsList = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.collaboration.subMenu.collabsList.text}>
+		<PageWrapper title={generalMenu.collaboration.subMenu.collabsList.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-12 col-md-8 text-left my-5'>
 						<span className='display-5 fw-bold'>
-							{dashboardMenu.collaboration.subMenu.collabsList.text}
+							{generalMenu.collaboration.subMenu.collabsList.text}
 						</span>
 					</div>
 					<div className='col-12 col-md-4 mx-auto text-center my-5'>

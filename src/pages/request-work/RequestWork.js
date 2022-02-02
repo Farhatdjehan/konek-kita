@@ -13,14 +13,14 @@ import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
-import { dashboardMenu, demoPages } from '../../menu';
+import { generalMenu, demoPages } from '../../menu';
 import Icon from '../../components/icon/Icon';
 
 // eslint-disable-next-line react/prop-types
 const Item = ({ id, image, title, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.worklist.subMenu.detailProgram.path}/${id}`),
+		() => history.push(`${generalMenu.worklist.subMenu.detailProgram.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -124,7 +124,7 @@ const RequestWork = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.worklist.subMenu.reqWorkList.text}>
+		<PageWrapper title={generalMenu.worklist.subMenu.reqWorkList.text}>
 			<Page>
 				<div className='row d-flex align-items-center h-100'>
 					<div className='col-12 d-flex flex-column justify-content-center align-items-center'>
@@ -160,7 +160,7 @@ const RequestWork = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-		// <PageWrapper title={dashboardMenu.worklist.subMenu.reqWorkList.text}>
+		// <PageWrapper title={generalMenu.worklist.subMenu.reqWorkList.text}>
 		// 	<Page>
 		// 		<div className='row'>
 		// 			<div className='col-12 text-left my-3'>

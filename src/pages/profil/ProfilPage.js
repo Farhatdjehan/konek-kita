@@ -51,7 +51,7 @@ import Alert from '../../components/bootstrap/Alert';
 import COLORS from '../../common/data/enumColors';
 import tableData from '../../common/data/dummyProductData';
 import CommonGridProductItem from '../common/CommonGridProductItem';
-import { dashboardMenu } from '../../menu';
+import { personalMenu } from '../../menu';
 import dataRanking from '../../common/data/dummyRankingData';
 
 const validate = (values) => {
@@ -116,13 +116,13 @@ const ProfilPage = () => {
 		setDataProduct(newData);
 	}
 	function handleEdit(value) {
-		// history.push(`${dashboardMenu.detailProduct.path}/${id}`);
+		// history.push(`${personalMenu.detailProduct.path}/${id}`);
 		const newData = dataProduct.filter((item) => item.id === id);
 		setEditItem(newData[0]);
 		setDataModal(value);
 	}
 	function handleDetailPage() {
-		history.push(`${dashboardMenu.gallery.subMenu.detailPortofolio.path}`);
+		history.push(`${personalMenu.gallery.subMenu.detailPortofolio.path}`);
 	}
 	const [dayHours] = useState({
 		series: [

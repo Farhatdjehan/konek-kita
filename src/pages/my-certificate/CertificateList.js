@@ -8,7 +8,7 @@ import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyCertificateList';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { personalMenu, menuSidebar } from '../../menu';
 import Icon from '../../components/icon/Icon';
 import Button from '../../components/bootstrap/Button';
 
@@ -16,7 +16,7 @@ import Button from '../../components/bootstrap/Button';
 const Item = ({ id, image, title, author, date, description, tags, color }) => {
 	const history = useHistory();
 	// const handleOnClick = useCallback(
-	// 	() => history.push(`${dashboardMenu.gallery.subMenu.detailProgramContent.path}/${id}`),
+	// 	() => history.push(`${personalMenu.gallery.subMenu.detailProgramContent.path}/${id}`),
 	// 	[history, id],
 	// );
 	return (
@@ -105,12 +105,12 @@ const CertificateList = () => {
 	});
 
 	return (
-		<PageWrapper title={dashboardMenu.sendBadge.subMenu.certificateUpload.text}>
+		<PageWrapper title={personalMenu.sendBadge.subMenu.certificateUpload.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-10 text-left my-3 my-md-5'>
 						<span className='display-5 fw-bold'>
-							{dashboardMenu.sendBadge.subMenu.certificateUpload.text}
+							{personalMenu.sendBadge.subMenu.certificateUpload.text}
 						</span>
 					</div>
 					<div className='col-auto text-end my-3 my-md-5'>

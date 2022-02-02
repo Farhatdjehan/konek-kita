@@ -7,90 +7,110 @@ export const editPage = {
 	},
 };
 
-export const dashboardMenu = {
+export const personalMenu = {
+	personal: {
+		id: 'personal',
+		text: 'Personal',
+	},
 	dashboardBooking: {
 		id: 'overview',
 		text: 'Overview',
 		path: '/',
 		icon: 'Info',
 	},
-	premiumContent: {
-		id: 'premiumContent',
-		text: 'Premium Content ',
-		path: '/premium-content/',
-		icon: 'PictureInPicture',
-		subMenu: {
-			tablePremiumContent: {
-				id: 'editInModal',
-				text: 'Table Premium',
-				path: '/premium-content/add',
-				icon: 'Table',
-			},
-			premiumContentList: {
-				id: 'premiumContentList',
-				text: 'List Content Premium',
-				path: '/premium-content/list',
-				icon: 'ListAlt',
-			},
-			detailPremiumContent: {
-				id: 'detailPremiumContent',
-				text: 'Detail Content Premium',
-				path: '/premium-content/detail',
-				hide: true,
-			},
-			liveSessionContent: {
-				id: 'liveSessionContent',
-				text: 'Live Session Content',
-				path: '/live-session/detail',
-				hide: true,
-			},
-		},
+	premiumContentList: {
+		id: 'premiumContentList',
+		text: 'List Content Premium',
+		path: '/premium-content/list',
+		icon: 'ListAlt',
 	},
-	sendBadge: {
-		id: 'sendBadge',
-		text: 'Badge ',
-		path: '/send-badge/',
+	// premiumContent: {
+	// 	id: 'premiumContent',
+	// 	text: 'Premium Content ',
+	// 	path: '/premium-content/',
+	// 	icon: 'PictureInPicture',
+	// 	subMenu: {
+	// 		tablePremiumContent: {
+	// 			id: 'editInModal',
+	// 			text: 'Table Premium',
+	// 			path: '/premium-content/add',
+	// 			icon: 'Table',
+	// 		},
+	// 		liveSessionContent: {
+	// 			id: 'liveSessionContent',
+	// 			text: 'Live Session Content',
+	// 			path: '/live-session/detail',
+	// 			hide: true,
+	// 		},
+	// 	},
+	// },
+	myBadge: {
+		id: 'myBadge',
+		text: 'Badge Saya',
+		path: '/my-badge/',
 		icon: 'Badge',
-		subMenu: {
-			sendBadgeLove: {
-				id: 'sendBadgeLove',
-				text: 'Send Badge Love',
-				path: '/send-badge/',
-				icon: 'Send',
-			},
-			sendBadgeDetail: {
-				id: 'sendBadgeDetail',
-				text: 'History Send Badge',
-				path: '/send-badge/history',
-				icon: 'History',
-			},
-			mybadge: {
-				id: 'mybadge',
-				text: 'Badge Saya',
-				path: '/my-badge',
-				icon: 'Badge',
-			},
-			certificateUpload: {
-				id: 'certificateUpload',
-				text: 'Upload Sertifikat',
-				path: '/upload-certificate',
-				icon: 'Upload',
-			},
-			certificateList: {
-				id: 'certificateList',
-				text: 'Certificate List',
-				path: '/my-badge/certificate-list',
-				icon: 'List',
-				hide: true,
-			},
-			detailCampaign: {
-				id: 'detailCampaign',
-				text: 'Detail Campaign',
-				path: '/detail-campaign',
-				icon: 'History',
-				hide: true,
-			},
-		},
+		// subMenu: {
+		// 	mybadge: {
+		// 		id: 'mybadge',
+		// 		text: 'Badge Saya',
+		// 		path: '/my-badge',
+		// 		icon: 'Badge',
+		// 	},
+		// 	certificateList: {
+		// 		id: 'certificateList',
+		// 		text: 'Certificate List',
+		// 		path: '/my-badge/certificate-list',
+		// 		icon: 'List',
+		// 		hide: true,
+		// 	},
+		// 	detailCampaign: {
+		// 		id: 'detailCampaign',
+		// 		text: 'Detail Campaign',
+		// 		path: '/detail-campaign',
+		// 		icon: 'History',
+		// 		hide: true,
+		// 	},
+		// 	sendBadgeLove: {
+		// 		id: 'sendBadgeLove',
+		// 		text: 'Send Badge Love',
+		// 		path: '/send-badge/',
+		// 		icon: 'Send',
+		// 		hide: true,
+		// 	},
+		// 	certificateUpload: {
+		// 		id: 'certificateUpload',
+		// 		text: 'Upload Sertifikat',
+		// 		path: '/upload-certificate',
+		// 		icon: 'Upload',
+		// 		hide: true,
+		// 	},
+		// 	sendBadgeDetail: {
+		// 		id: 'sendBadgeDetail',
+		// 		text: 'History Send Badge',
+		// 		path: '/send-badge/history',
+		// 		icon: 'History',
+		// 		hide: true,
+		// 	},
+		// },
+	},
+	shareSupport: {
+		id: 'shareSupport',
+		text: 'Sebarkan Koneksi',
+		path: '/sebarkan-koneksi',
+		icon: 'Share',
+	},
+
+	detailPremiumContent: {
+		id: 'detailPremiumContent',
+		text: 'Detail Content Premium',
+		path: '/premium-content/detail',
+		hide: true,
+	},
+};
+export const generalMenu = {
+	general: {
+		id: 'general',
+		text: 'General',
 	},
 	umkm: {
 		id: 'umkm',
@@ -229,12 +249,6 @@ export const dashboardMenu = {
 			},
 		},
 	},
-	shareSupport: {
-		id: 'shareSupport',
-		text: 'Sebarkan Koneksi',
-		path: '/sebarkan-koneksi',
-		icon: 'Share',
-	},
 	menuNFT: {
 		id: 'menuNFT',
 		text: 'NFT List',
@@ -312,62 +326,62 @@ export const menuSidebar = {
 		icon: 'Extension',
 	},
 
-	sales: {
-		id: 'sales',
-		text: 'Sales',
-		path: '/sales',
-		icon: 'Store',
-		subMenu: {
-			dashboard: dashboardMenu.dashboard,
-			salesList: {
-				id: 'products',
-				text: 'Sales List',
-				path: '/sales/sales-list',
-				icon: 'FactCheck',
-			},
-			// productsGrid: {
-			// 	id: 'productsGrid',
-			// 	text: 'Products Grid',
-			// 	path: '/sales/grid',
-			// 	icon: 'CalendarViewMonth',
-			// },
-		},
-	},
-	appointment: {
-		id: 'appointment',
-		text: 'Appointment',
-		path: '/appointment',
-		icon: 'Today',
-		subMenu: {
-			dashboard: dashboardMenu.dashboardBooking,
-			calendar: {
-				id: 'calendar',
-				text: 'Calendar',
-				path: '/appointment/calendar',
-				icon: 'EditCalendar',
-				notification: true,
-			},
-			employeeList: {
-				id: 'employeeList',
-				text: 'Employee List',
-				path: '/appointment/employee-list',
-				icon: 'PersonSearch',
-			},
-			employeeID: {
-				id: 'employeeID',
-				text: 'employeeID',
-				path: '/appointment/employee',
-				hide: true,
-			},
+	// sales: {
+	// 	id: 'sales',
+	// 	text: 'Sales',
+	// 	path: '/sales',
+	// 	icon: 'Store',
+	// 	subMenu: {
+	// 		dashboard: dashboardMenu.dashboard,
+	// 		salesList: {
+	// 			id: 'products',
+	// 			text: 'Sales List',
+	// 			path: '/sales/sales-list',
+	// 			icon: 'FactCheck',
+	// 		},
+	// 		// productsGrid: {
+	// 		// 	id: 'productsGrid',
+	// 		// 	text: 'Products Grid',
+	// 		// 	path: '/sales/grid',
+	// 		// 	icon: 'CalendarViewMonth',
+	// 		// },
+	// 	},
+	// },
+	// appointment: {
+	// 	id: 'appointment',
+	// 	text: 'Appointment',
+	// 	path: '/appointment',
+	// 	icon: 'Today',
+	// 	subMenu: {
+	// 		dashboard: dashboardMenu.dashboardBooking,
+	// 		calendar: {
+	// 			id: 'calendar',
+	// 			text: 'Calendar',
+	// 			path: '/appointment/calendar',
+	// 			icon: 'EditCalendar',
+	// 			notification: true,
+	// 		},
+	// 		employeeList: {
+	// 			id: 'employeeList',
+	// 			text: 'Employee List',
+	// 			path: '/appointment/employee-list',
+	// 			icon: 'PersonSearch',
+	// 		},
+	// 		employeeID: {
+	// 			id: 'employeeID',
+	// 			text: 'employeeID',
+	// 			path: '/appointment/employee',
+	// 			hide: true,
+	// 		},
 
-			appointmentList: {
-				id: 'appointmentList',
-				text: 'Appointment List',
-				path: '/appointment/appointment-list',
-				icon: 'Event',
-			},
-		},
-	},
+	// 		appointmentList: {
+	// 			id: 'appointmentList',
+	// 			text: 'Appointment List',
+	// 			path: '/appointment/appointment-list',
+	// 			icon: 'Event',
+	// 		},
+	// 	},
+	// },
 	chat: {
 		id: 'chat',
 		text: 'Chat',

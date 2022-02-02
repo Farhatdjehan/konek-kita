@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Brand from '../Brand/Brand';
-import Navigation from '../Navigation/Navigation';
+import Navigation, { NavigationLine } from '../Navigation/Navigation';
 import User from '../User/User';
-import { dashboardMenu } from '../../menu';
+import { generalMenu, personalMenu } from '../../menu';
 import ThemeContext from '../../contexts/themeContext';
 import Card, { CardBody } from '../../components/bootstrap/Card';
 
@@ -95,7 +95,9 @@ const Aside = () => {
 					<Brand asideStatus={asideStatus} setAsideStatus={setAsideStatus} />
 				</div>
 				<div className='aside-body'>
-					<Navigation menu={dashboardMenu} id='aside-dashboard' />
+					<Navigation menu={personalMenu} id='aside-dashboard' />
+					<NavigationLine />
+					<Navigation menu={generalMenu} id='aside-dashboard' />
 					{/* {!doc && (
 						<>
 							<NavigationLine />
@@ -146,9 +148,7 @@ const Aside = () => {
 											color='success'
 											className='navigation-icon'
 										/>
-										<span className='navigation-text'>
-											Saldo : Rp. 200.000
-										</span>
+										<span className='navigation-text'>Saldo : Rp. 200.000</span>
 									</span>
 								</span>
 							</Link>

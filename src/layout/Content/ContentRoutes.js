@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { dashboardMenu, editPage, menuSidebar } from '../../menu';
+import { generalMenu, editPage, menuSidebar, personalMenu } from '../../menu';
 import Login from '../../pages/presentation/auth/Login';
 
 const LANDING = {
@@ -52,164 +52,162 @@ const ContentRoutes = () => {
 	const location = useLocation();
 	return (
 		<Switch location={location}>
-			{/* Landing */}
-			<Route exact path={dashboardMenu.profilId.path} component={LANDING.PROFIL} />
+			{/* Personal */}
+			<Route exact path={personalMenu.myBadge.path} component={LANDING.MY_BADGE} />
+			{/* <Route
+				exact
+				path={personalMenu.myBadge.subMenu.certificateList.path}
+				component={LANDING.MY_CERT}
+			/> */}
 			<Route
 				exact
-				path={dashboardMenu.worklist.subMenu.reqWorkList.path}
+				path={personalMenu.dashboardBooking.path}
+				component={LANDING.DASHBOARD_BOOKING}
+			/>
+			{/* <Route
+				exact
+				path={personalMenu.myBadge.subMenu.sendBadgeLove.path}
+				component={LANDING.SEND_BADGE}
+			/> */}
+			{/* <Route
+				exact
+				path={personalMenu.myBadge.subMenu.sendBadgeDetail.path}
+				component={LANDING.SEND_BADGE_DETAIL}
+			/> */}
+			{/* <Route
+				exact
+				path={`${personalMenu.myBadge.subMenu.detailCampaign.path}/:id`}
+				component={LANDING.CAMPAIGN_DETAIL}
+			/> */}
+			{/* <Route
+				exact
+				path={personalMenu.premiumContent.subMenu.tablePremiumContent.path}
+				component={LANDING.PREMIUM_CONTENT}
+			/> */}
+			<Route
+				exact
+				path={personalMenu.premiumContentList.path}
+				component={LANDING.LIST_PREMIUM_CONTENT}
+			/>
+			<Route
+				exact
+				path={`${personalMenu.detailPremiumContent.path}:/id`}
+				component={LANDING.DETAIL_PREMIUM_CONTENT}
+			/>
+			<Route exact path={personalMenu.shareSupport.path} component={LANDING.SHARE_CONNECT} />
+
+			{/* General */}
+			<Route exact path={generalMenu.profilId.path} component={LANDING.PROFIL} />
+			<Route
+				exact
+				path={generalMenu.worklist.subMenu.reqWorkList.path}
 				component={LANDING.REQUEST_WORK}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.collaboration.subMenu.reqCollabsList.path}
+				path={generalMenu.collaboration.subMenu.reqCollabsList.path}
 				component={LANDING.REQUEST_COLLABS}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.collaboration.subMenu.openCollaboration.path}
+				path={generalMenu.collaboration.subMenu.openCollaboration.path}
 				component={LANDING.OPEN_COLLABS}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.collaboration.subMenu.collabsList.path}
+				path={generalMenu.collaboration.subMenu.collabsList.path}
 				component={LANDING.COLLABS_LIST}
-			/>
-			<Route
-				exact
-				path={dashboardMenu.sendBadge.subMenu.mybadge.path}
-				component={LANDING.MY_BADGE}
-			/>
-			<Route
-				exact
-				path={dashboardMenu.sendBadge.subMenu.certificateList.path}
-				component={LANDING.MY_CERT}
 			/>
 
 			<Route
 				exact
-				path={`${dashboardMenu.worklist.subMenu.detailProgram.path}/:id`}
+				path={`${generalMenu.worklist.subMenu.detailProgram.path}/:id`}
 				component={LANDING.DETAIL_PAGE}
 			/>
 			{/* <Route
 				exact
-				path={`${dashboardMenu.gallery.subMenu.detailProgramContent.path}/:id`}
+				path={`${generalMenu.gallery.subMenu.detailProgramContent.path}/:id`}
 				component={LANDING.DETAIL_PAGE_CONTENT}
 			/> */}
 			<Route
 				exact
-				path={`${dashboardMenu.bootcamp.subMenu.detailProgramBootcamp.path}/:id`}
+				path={`${generalMenu.bootcamp.subMenu.detailProgramBootcamp.path}/:id`}
 				component={LANDING.DETAIL_PAGE_BOOTCAMP}
 			/>
 			<Route
 				exact
-				path={`${dashboardMenu.worklist.subMenu.detailProgramOpenWorker.path}/:id`}
+				path={`${generalMenu.worklist.subMenu.detailProgramOpenWorker.path}/:id`}
 				component={LANDING.DETAIL_PAGE_OPEN_WORK}
 			/>
 			<Route
 				exact
-				path={`${dashboardMenu.collaboration.subMenu.detailProgramCollab.path}/:id`}
+				path={`${generalMenu.collaboration.subMenu.detailProgramCollab.path}/:id`}
 				component={LANDING.DETAIL_PAGE_COLLAB}
 			/>
 			<Route
 				exact
-				path={`${dashboardMenu.collaboration.subMenu.detailProgramReqCollab.path}/:id`}
+				path={`${generalMenu.collaboration.subMenu.detailProgramReqCollab.path}/:id`}
 				component={LANDING.DETAIL_PAGE_REQ_COLLAB}
 			/>
 			<Route
 				exact
-				path={`${dashboardMenu.collaboration.subMenu.detailProgramOpenCollab.path}/:id`}
+				path={`${generalMenu.collaboration.subMenu.detailProgramOpenCollab.path}/:id`}
 				component={LANDING.DETAIL_PAGE_OPEN_COLLAB}
-			/>
-			<Route
-				exact
-				path={dashboardMenu.dashboardBooking.path}
-				component={LANDING.DASHBOARD_BOOKING}
 			/>
 			<Route exact path={editPage.editProfil.path} component={LANDING.EDITPROFIL} />
 			<Route
 				exact
-				path={dashboardMenu.umkm.subMenu.programGallery.path}
+				path={generalMenu.umkm.subMenu.programGallery.path}
 				component={LANDING.PROGRAM_GALLERY}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.umkm.subMenu.umkmProgram.path}
+				path={generalMenu.umkm.subMenu.umkmProgram.path}
 				component={LANDING.UMKM_PROGRAM}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.umkm.subMenu.deliverableProgram.path}
+				path={generalMenu.umkm.subMenu.deliverableProgram.path}
 				component={LANDING.DELIVERABLE_PROGRAM}
 			/>
 			<Route
 				exact
-				path={`${dashboardMenu.detailProduct.path}/:id`}
+				path={`${generalMenu.detailProduct.path}/:id`}
 				component={LANDING.DETAIL_PRODUCT}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.worklist.subMenu.openWorkList.path}
+				path={generalMenu.worklist.subMenu.openWorkList.path}
 				component={LANDING.OPEN_WORK_LIST}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.worklist.subMenu.directCampaign.path}
+				path={generalMenu.worklist.subMenu.directCampaign.path}
 				component={LANDING.DIRECT_CAMPAIGN}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.worklist.subMenu.katalogDirectCampaign.path}
+				path={generalMenu.worklist.subMenu.katalogDirectCampaign.path}
 				component={LANDING.CATALOGUE_DIRECT_CAMPAIGN}
 			/>
 
 			<Route
 				exact
-				path={dashboardMenu.sendBadge.subMenu.sendBadgeLove.path}
-				component={LANDING.SEND_BADGE}
-			/>
-			<Route
-				exact
-				path={dashboardMenu.sendBadge.subMenu.sendBadgeDetail.path}
-				component={LANDING.SEND_BADGE_DETAIL}
-			/>
-			<Route
-				exact
-				path={`${dashboardMenu.sendBadge.subMenu.detailCampaign.path}/:id`}
-				component={LANDING.CAMPAIGN_DETAIL}
-			/>
-			<Route
-				exact
-				path={dashboardMenu.premiumContent.subMenu.tablePremiumContent.path}
-				component={LANDING.PREMIUM_CONTENT}
-			/>
-			<Route
-				exact
-				path={dashboardMenu.premiumContent.subMenu.premiumContentList.path}
-				component={LANDING.LIST_PREMIUM_CONTENT}
-			/>
-			<Route
-				exact
-				path={`${dashboardMenu.premiumContent.subMenu.detailPremiumContent.path}:/id`}
-				component={LANDING.DETAIL_PREMIUM_CONTENT}
-			/>
-			<Route
-				exact
-				path={dashboardMenu.detailPortofolio.path}
+				path={generalMenu.detailPortofolio.path}
 				component={LANDING.DETAIL_PORTOFOLIO}
 			/>
 			<Route
 				exact
-				path={dashboardMenu.bootcamp.subMenu.galleryBootcamp.path}
+				path={generalMenu.bootcamp.subMenu.galleryBootcamp.path}
 				component={LANDING.GALLERY_BOOTCAMP}
 			/>
-			<Route exact path={dashboardMenu.shareSupport.path} component={LANDING.SHARE_CONNECT} />
 			<Route
 				exact
-				path={dashboardMenu.joinKomunitas.path}
+				path={generalMenu.joinKomunitas.path}
 				component={LANDING.JOIN_COMMUNITY}></Route>
-			<Route exact path={dashboardMenu.saldo.path} component={LANDING.MY_SALDO}></Route>
+			<Route exact path={generalMenu.saldo.path} component={LANDING.MY_SALDO}></Route>
 
-			<Route exact path={dashboardMenu.menuNFT.path} component={LANDING.MY_NFT}></Route>
+			<Route exact path={generalMenu.menuNFT.path} component={LANDING.MY_NFT}></Route>
 
 			{/* Auth */}
 			<Route exact path={menuSidebar.page404.path} component={AUTH.PAGE_404} />

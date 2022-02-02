@@ -14,10 +14,10 @@ import Cylinder from '../../assets/img/abstract/cylinder.png';
 const dataUmkm = [
 	{
 		id: 1,
+		type: 'general',
 		image: BeveledCone,
 		name: 'Membangun Negeri dengan Langkah Sukses',
-		desc:
-			'Kali ini, Kementrian Pariwisata ingin melaksanakan acara terakbar di tahun 2022 ini!',
+		desc: 'Kali ini, Kementrian Pariwisata ingin melaksanakan acara terakbar di tahun 2022 ini!',
 		series: [
 			{
 				data: [25, 66, 41, 89, 63],
@@ -32,6 +32,7 @@ const dataUmkm = [
 	},
 	{
 		id: 2,
+		type: 'general',
 		image: CloudBall,
 		name: 'Bantu Promosikan Jeruk Bali di Dunia!',
 		desc: 'Post, Video (1 Minggu)',
@@ -49,6 +50,7 @@ const dataUmkm = [
 	},
 	{
 		id: 3,
+		type: 'general',
 		image: Quadrilateral,
 		name: 'Yuk! Donasikan Harta Kamu di sini',
 		desc: 'Post (1 Minggu)',
@@ -66,6 +68,7 @@ const dataUmkm = [
 	},
 	{
 		id: 4,
+		type: 'general',
 		image: HardSharpDonut,
 		name: 'Bantu Saudara Kita yang Berada di Jombang',
 		desc: '3D Shapes',
@@ -83,6 +86,7 @@ const dataUmkm = [
 	},
 	{
 		id: 5,
+		type: 'general',
 		image: BendyRectangle,
 		name: 'Kita Nabung Yuk!',
 		desc: '3D Shapes',
@@ -100,6 +104,7 @@ const dataUmkm = [
 	},
 	{
 		id: 6,
+		type: 'general',
 		image: Infinity,
 		name: 'Kita Bisa Jadi Juara!',
 		desc: '3D Shapes',

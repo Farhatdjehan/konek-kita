@@ -29,7 +29,7 @@ import Checks from '../../components/bootstrap/forms/Checks';
 import Popovers from '../../components/bootstrap/Popovers';
 import data from './helper/dummyHistory';
 import USERS from '../../common/data/userDummyData';
-import { dashboardMenu } from '../../menu';
+import { personalMenu } from '../../menu';
 import { Link } from 'react-router-dom';
 
 const SendBadgePage = () => {
@@ -52,7 +52,7 @@ const SendBadgePage = () => {
 		},
 	});
 	return (
-		<PageWrapper title={dashboardMenu.sendBadge.text}>
+		<PageWrapper title={personalMenu.sendBadge.text}>
 			<Page container='fluid'>
 				<div className='row'>
 					<div className='col-12'>
@@ -63,7 +63,7 @@ const SendBadgePage = () => {
 								</CardLabel>
 								<CardActions>
 									{/* <Link
-										to={`${dashboardMenu.sendBadge.subMenu.sendBadgeDetail.path}`}>
+										to={`${personalMenu.sendBadge.subMenu.sendBadgeDetail.path}`}>
 										<Button color='primary' icon='Eye' isLight>
 											Lihat History
 										</Button>

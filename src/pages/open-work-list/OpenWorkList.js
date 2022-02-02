@@ -8,7 +8,7 @@ import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyCampaignData';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { generalMenu, menuSidebar } from '../../menu';
 import { priceFormat } from '../../helpers/helpers';
 import Button from '../../components/bootstrap/Button';
 import Dropdown, {
@@ -24,7 +24,7 @@ import Icon from '../../components/icon/Icon';
 const Item = ({ id, image, budget, title, start_date, end_date, description, tags, color }) => {
 	const history = useHistory();
 	const handleOnClick = useCallback(
-		() => history.push(`${dashboardMenu.worklist.subMenu.detailProgramOpenWorker.path}/${id}`),
+		() => history.push(`${generalMenu.worklist.subMenu.detailProgramOpenWorker.path}/${id}`),
 		[history, id],
 	);
 	return (
@@ -142,12 +142,12 @@ const OpenWorkList = () => {
 		// setCheck(id);
 	};
 	return (
-		<PageWrapper title={dashboardMenu.worklist.subMenu.openWorkList.text}>
+		<PageWrapper title={generalMenu.worklist.subMenu.openWorkList.text}>
 			<Page>
 				<div className='row'>
 					<div className='col-12 col-md-7 text-left my-5'>
 						<span className='display-5 fw-bold'>
-							{dashboardMenu.worklist.subMenu.openWorkList.text}
+							{generalMenu.worklist.subMenu.openWorkList.text}
 						</span>
 					</div>
 					<div className='col-12 col-md-5 mx-auto text-center my-5'>

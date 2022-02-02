@@ -19,7 +19,7 @@ import { useFormik } from 'formik';
 import { useClipboard } from 'use-clipboard-copy';
 import showNotification from '../../components/extras/showNotification';
 import { Link } from 'react-router-dom';
-import { dashboardMenu } from '../../menu';
+import { personalMenu } from '../../menu';
 const ShareKoneksi = () => {
 	const formik = useFormik({
 		initialValues: {
@@ -67,7 +67,7 @@ const ShareKoneksi = () => {
 													Temui komunitas yang ada di sekitar mu!
 												</div>
 											</div>
-											<Link to={`${dashboardMenu.joinKomunitas.path}`}>
+											<Link to={`${personalMenu.joinKomunitas.path}`}>
 												<Button color='success'>Join Now!</Button>
 											</Link>
 										</CardBody>

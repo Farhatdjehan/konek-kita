@@ -8,7 +8,7 @@ import Select from '../../components/bootstrap/forms/Select';
 import Card, { CardBody, CardTitle, CardHeader, CardLabel } from '../../components/bootstrap/Card';
 import Badge from '../../components/bootstrap/Badge';
 import data, { CATEGORIES } from './helper/dummyKnowledgeData';
-import { dashboardMenu, menuSidebar } from '../../menu';
+import { generalMenu, menuSidebar } from '../../menu';
 import Button from '../../components/bootstrap/Button';
 import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
 import { OffCanvasTitle } from '../../components/bootstrap/OffCanvas';
@@ -35,7 +35,7 @@ const Item = ({ id, image, title, description, tags, color }) => {
 	const handleOnClick = useCallback(
 		() =>
 			history.push(
-				`${dashboardMenu.collaboration.subMenu.detailProgramOpenCollab.path}/${id}`,
+				`${generalMenu.collaboration.subMenu.detailProgramOpenCollab.path}/${id}`,
 			),
 		[history, id],
 	);
@@ -145,11 +145,11 @@ const OpenCollaboration = () => {
 		},
 	});
 	return (
-		<PageWrapper title={dashboardMenu.collaboration.subMenu.openCollaboration.text}>
+		<PageWrapper title={generalMenu.collaboration.subMenu.openCollaboration.text}>
 			<Page>
 				<div className='row align-items-center'>
 					<div className='col-12 col-md-8 text-left my-5'>
-						<div className='display-5 fw-bold mb-3'>{dashboardMenu.collaboration.subMenu.openCollaboration.text}</div>
+						<div className='display-5 fw-bold mb-3'>{generalMenu.collaboration.subMenu.openCollaboration.text}</div>
 						<Button onClick={handleUpcomingEdit} color='info' icon='Add' isLight>
 							Open Collabs
 						</Button>
