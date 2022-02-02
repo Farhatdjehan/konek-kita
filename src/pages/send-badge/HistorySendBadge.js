@@ -99,13 +99,7 @@ const HistorySendBadge = () => {
 								<CardLabel icon='Lock' iconColor='info'>
 									<CardTitle>History Badge Love</CardTitle>
 								</CardLabel>
-								<CardActions>
-									<Link to='/my-badge'>
-										<Button color='info' icon='Badge' isLight>
-											Badge Saya
-										</Button>
-									</Link>
-								</CardActions>
+								
 							</CardHeader>
 							<CardBody className='table-responsive'>
 								<table className='table table-modern'>

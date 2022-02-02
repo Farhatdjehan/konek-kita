@@ -94,7 +94,7 @@ const ListPremiumContent = () => {
 	}
 	const LIST_TAB = {
 		LIVESESSION: 'Live Session',
-		LIVECHAT: 'Live Chat',
+		// LIVECHAT: 'Live Chat',
 		FOTO: 'Foto',
 		VIDEO: 'Video',
 		SUARA: 'Suara',
@@ -221,64 +221,73 @@ const ListPremiumContent = () => {
 								{activeListTab === LIST_TAB.LIVESESSION && (
 									<div className='row g-4'>
 										<div className='col-md-8'>
-											<Card stretch style={{ minHeight: 400 }}>
+											<Card>
 												<CardHeader>
 													<CardActions>
 														<CalendarTodayButton
-														// unitType={unitType}
-														// date={date}
-														// setDate={setDate}
-														// viewMode={viewMode}
+															unitType={unitType}
+															date={date}
+															setDate={setDate}
+															viewMode={viewMode}
 														/>
 													</CardActions>
 													<CardActions>
 														<CalendarViewModeButtons
-														// setViewMode={setViewMode}
-														// viewMode={viewMode}
+															setViewMode={setViewMode}
+															viewMode={viewMode}
 														/>
 													</CardActions>
 												</CardHeader>
 												<CardBody>
 													<Calendar
+														style={{ height: 450 }}
+														toolbar={false}
 														localizer={localizer}
 														events={myEventsList}
+														views={views}
+														view={viewMode}
 														startAccessor='start'
 														endAccessor='end'
+														onView={handleViewMode}
+														eventPropGetter={eventStyleGetter}
 													/>
+													<div className='mt-5'>
+														<div className='h4 fw-bold mb-3'>
+															List Live Session
+														</div>
+														<div className='mb-3'>
+															<Card>
+																<CardHeader>
+																	<CardLabel iconColor='success'>
+																		<CardTitle
+																			tag='h4'
+																			className='h5'>
+																			<Icon
+																				icon='VideoCall'
+																				size='2x'
+																				className='me-2'
+																				color='danger'
+																			/>
+																			Live Session #2
+																		</CardTitle>
+																	</CardLabel>
+																</CardHeader>
+																<CardBody>
+																	<div className='d-flex justify-content-between align-items-center'>
+																		<div>
+																			<Icon icon='Info' />{' '}
+																			12/12/2022
+																		</div>
+																		<Button color='info'>
+																			Join Live Session
+																		</Button>
+																	</div>
+																</CardBody>
+															</Card>
+														</div>
+													</div>
 												</CardBody>
 											</Card>
-											<div className='mt-5'>
-												<div className='h4 fw-bold mb-3'>
-													List Live Session
-												</div>
-												<div className='mb-5'>
-													<Card>
-														<CardHeader>
-															<CardLabel iconColor='success'>
-																<CardTitle tag='h4' className='h5'>
-																	<Icon
-																		icon='VideoCall'
-																		size='2x'
-																		className='me-2'
-																		color='danger'
-																	/>
-																	Live Session #2
-																</CardTitle>
-															</CardLabel>
-														</CardHeader>
-														<CardBody>
-															<div className='d-flex justify-content-between align-items-center'>
-																<div>
-																	<Icon icon='Info' /> 12/12/2022
-																</div>
-																<Button color='info'>
-																	Join Live Session
-																</Button>
-															</div>
-														</CardBody>
-													</Card>
-												</div>
-											</div>
 										</div>
 										<div className='col-md-4'>
 											<Card>
@@ -300,7 +309,7 @@ const ListPremiumContent = () => {
 										</div>
 									</div>
 								)}
-								{activeListTab === LIST_TAB.LIVECHAT && <ChatList />}
+								{/* {activeListTab === LIST_TAB.LIVECHAT && <ChatList />} */}
 								{activeListTab === LIST_TAB.FOTO && (
 									<div className='row g-4'>
 										{filterData.length > 0

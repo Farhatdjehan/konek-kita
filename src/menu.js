@@ -23,7 +23,7 @@ export const dashboardMenu = {
 			tablePremiumContent: {
 				id: 'editInModal',
 				text: 'Table Premium',
-				path: '/edit-pages/in-modal',
+				path: '/premium-content/add',
 				icon: 'Table',
 			},
 			premiumContentList: {
