@@ -89,10 +89,10 @@ const NFTList = () => {
 		<PageWrapper title='NFT | Jual Beli NFT-mu disini!!'>
 			<Page>
 				<div className='row'>
-					<div className='col-6 col-md-8 text-left my-5'>
+					<div className='col-12 col-md-8 text-left my-3 my-md-5'>
 						<span className='display-5 fw-bold'>Beli NFT</span>
 					</div>
-					<div className='col-6 col-md-4 my-5 d-flex justify-content-end'>
+					<div className='col-12 col-md-4 my-3 my-md-5 d-flex justify-content-end'>
 						<div className='d-flex'>
 							<div className='me-2'>
 								<form className=' text-end rounded-3 '>

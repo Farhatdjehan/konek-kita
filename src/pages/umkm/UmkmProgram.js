@@ -112,7 +112,7 @@ const GalleryUmkm = () => {
 			<Page>
 				<div>
 					<div className='display-4 fw-bold pt-3 pb-4'>History Programku </div>
-					<div className='text-muted h4 mb-5'>
+					<div className='text-muted h5 mb-5'>
 						Terima kasih sudah berpartisipasi dalam membantu UMKM di Indonesia!
 					</div>
 				</div>
@@ -139,14 +139,14 @@ const GalleryUmkm = () => {
 					</div>
 					<div className='col-md-8'>
 						{addressURL[1] === 'umkm' && addressURL[2] === 'program' ? (
-							<Card >
+							<Card>
 								<CardBody>
 									{data.map((item) => (
-										<div className='my-5 border-bottom'>
+										<div className='my-4 border-bottom'>
 											<div className='text-muted mb-2'>12 Januari 2022</div>
 											<div className='d-flex justify-content-between align-items-center mb-3'>
-												<div className='d-flex align-items-center '>
-													<div className='me-3'>
+												<div>
+													<div className='me-3' style={{ float: 'left' }}>
 														<img
 															src={item.image}
 															alt=''
@@ -156,13 +156,12 @@ const GalleryUmkm = () => {
 														/>
 													</div>
 													<div>
-														<div className='fw-bold h5'>
+														<div className='fw-bold h5 truncate-line-2'>
 															{item.name}
 														</div>
-														<Link to='#' className='h5'>
+														<Link to='#' className='h6 truncate-line-1'>
 															<Icon
 																icon='HouseSiding'
-																size='2x'
 																className='me-2'
 															/>
 															konekios.com/tokodok

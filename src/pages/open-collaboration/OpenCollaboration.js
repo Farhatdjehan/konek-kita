@@ -147,7 +147,7 @@ const OpenCollaboration = () => {
 		<PageWrapper title={generalMenu.collaboration.subMenu.openCollaboration.text}>
 			<Page>
 				<div className='row align-items-center'>
-					<div className='col-12 col-md-9 text-left my-5'>
+					<div className='col-12 col-md-9 text-left my-3 my-md-5'>
 						<div className='display-5 fw-bold mb-3'>
 							{generalMenu.collaboration.subMenu.openCollaboration.text}
 						</div>
@@ -155,8 +155,8 @@ const OpenCollaboration = () => {
 							Open Collabs
 						</Button>
 					</div>
-					<div className='col-12 col-md-3 text-end my-5'>
-						<form className='row px-3 mx-0 ' onSubmit={formik.handleSubmit}>
+					<div className='col-12 col-md-3 text-end my-3 my-md-5'>
+						<form className='row pb-3 mx-0 ' onSubmit={formik.handleSubmit}>
 							{/* <div className='col-6 col-md-8'>
 								<Select
 									id='category'

@@ -286,28 +286,26 @@ const ListPremiumContent = () => {
 																</CardLabel>
 															</CardHeader>
 															<CardBody>
-																<div className='d-flex justify-content-between align-items-center'>
+																<div className='mb-3'>
 																	<div>
 																		<Icon icon='Info' />{' '}
 																		12/12/2022
 																	</div>
-																	<div>
-																		<Button
-																			onClick={() =>
-																				handleModal(
-																					'Live Session',
-																				)
-																			}
-																			className='me-3'
-																			color='success'>
-																			Edit Jadwal
-																		</Button>
-																		<Button
-																			color='info'
-																			isLight>
-																			Join Live Session
-																		</Button>
-																	</div>
+																</div>
+																<div className='text-end'>
+																	<Button
+																		onClick={() =>
+																			handleModal(
+																				'Live Session',
+																			)
+																		}
+																		className='me-3'
+																		color='success'>
+																		Edit Jadwal
+																	</Button>
+																	<Button color='info' isLight>
+																		Join Live Session
+																	</Button>
 																</div>
 															</CardBody>
 														</Card>
@@ -518,7 +516,7 @@ const ListPremiumContent = () => {
 								/>
 							</FormGroup>
 						</div>
-						{value === 'photo' ? (
+						{value === 'Foto' ? (
 							<div className='col-6'>
 								<FormGroup id='tag' label='Upload Foto'>
 									<Input type='file' autoComplete='photo' />

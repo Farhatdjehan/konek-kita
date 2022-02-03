@@ -158,37 +158,13 @@ const RequestCollabList = () => {
 		<PageWrapper title={generalMenu.collaboration.subMenu.reqCollabsList.text}>
 			<Page>
 				<div className='row'>
-					<div className='col-12 col-md-9 text-left my-5'>
+					<div className='col-12 col-md-9 text-left my-3 my-md-5'>
 						<span className='display-5 fw-bold'>
 							{generalMenu.collaboration.subMenu.reqCollabsList.text}
 						</span>
 					</div>
-					<div className='col-12 col-md-3 mx-auto text-end my-4 my-md-5'>
-						<form className='row pb-4 px-3 mx-0 ' onSubmit={formik.handleSubmit}>
-							{/* <div className='col-6 col-md-8'>
-								<Select
-									id='category'
-									size='lg'
-									ariaLabel='Category'
-									placeholder='All Category'
-									list={Object.keys(CATEGORIES).map((c) => CATEGORIES[c])}
-									className='rounded-1 bg-white'
-									onChange={(e) => {
-										formik.handleChange(e);
-
-										if (e.target.value)
-											debounce(
-												() =>
-													onFormSubmit({
-														...formik.values,
-														category: e.target.value,
-													}),
-												1000,
-											)();
-									}}
-									value={formik.values.category}
-								/>
-							</div> */}
+					<div className='col-12 col-md-3 mx-auto text-end my-3 my-md-5'>
+						<form className='row pb-3 mx-0 ' onSubmit={formik.handleSubmit}>
 							<div className='col-12 col-md-12'>
 								<Dropdown>
 									<DropdownToggle>
