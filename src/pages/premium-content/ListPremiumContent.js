@@ -86,9 +86,6 @@ const ListPremiumContent = () => {
 	const data = getUserDataWithId(1);
 	const history = useHistory();
 	const filterData = dataContent.filter((f) => f.type === activeListTab);
-	const filterVideo = dataContent.filter((f) => f.type === 'Video');
-
-	const filterSuara = dataContent.filter((f) => f.type === 'Suara');
 
 	const Item = ({ id, title, desc, user, image, type, tags, color, categories, content }) => {
 		const history = useHistory();
@@ -129,7 +126,7 @@ const ListPremiumContent = () => {
 							))}
 					</div>
 					<div className='mt-3 w-100 text-end'>
-						<Button onClick={() => handleModal(type)} color='info' icon='Edit'>
+						<Button onClick={() => handleModal(type, id)} color='info' icon='Edit'>
 							Edit
 						</Button>
 					</div>
@@ -172,31 +169,35 @@ const ListPremiumContent = () => {
 			desc: '',
 		},
 	});
+	useEffect(() => {
+		if (editItem) {
+			console.log(editItem);
+			formikAdd.setValues({
+				judulkonten: editItem.title,
+				tag: editItem.tags?.map((item) => {
+					item?.tags_name;
+				}),
+				tipekonten: editItem.type,
+				link: editItem.link,
+				desc: editItem.desc,
+			});
+		}
+		return () => {
+			formikAdd.setValues({
+				judulkonten: '',
+				tag: '',
+				tipekonten: ``,
+				link: '',
+				desc: '',
+			});
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [editItem]);
 
 	// Calendar Unit Type
 	const unitType = getUnitType(viewMode);
 	// Calendar Date Label
 	const calendarDateLabel = getLabel(date, viewMode);
-
-	useEffect(() => {
-		if (editItem) {
-			formik.setValues({
-				name: editItem.name,
-				price: editItem.price,
-				stock: editItem.stock,
-				category: editItem.category,
-			});
-		}
-		return () => {
-			formik.setValues({
-				name: '',
-				price: '',
-				stock: '',
-				category: '',
-			});
-		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [editItem]);
 
 	// eslint-disable-next-line no-unused-vars
 	const eventStyleGetter = (event, start, end, isSelected) => {
@@ -213,12 +214,10 @@ const ListPremiumContent = () => {
 		};
 	};
 
-	const handleModal = (type) => {
+	const handleModal = (type, id) => {
+		const newData = dataContent.filter((item) => item.id === id);
+		setEditItem(newData[0]);
 		setValue(type);
-		console.log(value);
-		// if (value === !undefined) {
-		// setDataDetail(value);
-		// }
 		setUpcomingEventsInfoOffcanvas(!upcomingEventsInfoOffcanvas);
 	};
 
@@ -296,7 +295,7 @@ const ListPremiumContent = () => {
 																	<Button
 																		onClick={() =>
 																			handleModal(
-																				'Live Session',
+																				'Live Session', 
 																			)
 																		}
 																		className='me-3'
@@ -423,60 +422,14 @@ const ListPremiumContent = () => {
 											</Button>
 										</div>
 										<div className='row g-4'>
-											{filterSuara.length > 0
-												? filterSuara.map((item, index) => {
-														return (
-															<div key={index} className='col-md-4'>
-																<Card
-																	className='cursor-pointer shadow-3d-primary shadow-3d-hover'
-																	// onClick={handleOnClick}
-																>
-																	<CardBody>
-																		<div
-																			className={classNames(
-																				'ratio ratio-1x1',
-																				'rounded-2',
-																				// `bg-l10-${color}`,
-																				'mb-3',
-																			)}>
-																			<img
-																				src={item.image}
-																				alt=''
-																				width='100%'
-																				height='auto'
-																				className='object-fit-contain p-3'
-																			/>
-																		</div>
-																		<CardTitle>
-																			{item.title}
-																		</CardTitle>
-																		<p className='text-muted truncate-line-2'>
-																			{item.desc}
-																		</p>
-																		<div className='row g-2'>
-																			{item.tags &&
-																				// eslint-disable-next-line react/prop-types
-																				item.tags.map(
-																					(e, i) => (
-																						<div
-																							key={i}
-																							className='col-auto'>
-																							<Badge
-																								isLight
-																								className='px-3 py-2'>
-																								{
-																									e.tags_name
-																								}
-																							</Badge>
-																						</div>
-																					),
-																				)}
-																		</div>
-																	</CardBody>
-																</Card>
-															</div>
-														);
-												  })
+											{filterData.length > 0
+												? filterData.map((item, index) => (
+														<div
+															key={index}
+															className='col-xl-3 col-lg-4 col-md-6'>
+															<Item {...item} />
+														</div>
+												  ))
 												: null}
 										</div>
 									</div>
@@ -503,7 +456,7 @@ const ListPremiumContent = () => {
 								<Input
 									placeholder='Judul Konten'
 									onChange={formikAdd.handleChange}
-									value={formikAdd.values.title}
+									value={formikAdd.values.judulkonten}
 								/>
 							</FormGroup>
 						</div>

@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import moment from 'moment';
 import { useFormik } from 'formik';
-import classNames from 'classnames';
-import { Calendar as DatePicker } from 'react-date-range';
 import PageWrapper from '../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../layout/SubHeader/SubHeader';
 import Icon from '../../components/icon/Icon';
 import Button from '../../components/bootstrap/Button';
 import Page from '../../layout/Page/Page';
@@ -15,30 +11,18 @@ import Card, {
 	CardLabel,
 	CardTitle,
 } from '../../components/bootstrap/Card';
-import { priceFormat } from '../../helpers/helpers';
-import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../components/bootstrap/Modal';
-import OffCanvas, {
-	OffCanvasBody,
-	OffCanvasHeader,
-	OffCanvasTitle,
-} from '../../components/bootstrap/OffCanvas';
 import FormGroup from '../../components/bootstrap/forms/FormGroup';
 import Input from '../../components/bootstrap/forms/Input';
 import Textarea from '../../components/bootstrap/forms/Textarea';
-import Checks from '../../components/bootstrap/forms/Checks';
-import Popovers from '../../components/bootstrap/Popovers';
-import data from './helper/dummyHistory';
-import USERS from '../../common/data/userDummyData';
 import { personalMenu } from '../../menu';
-import { Link } from 'react-router-dom';
 
 const SendBadgePage = () => {
 	const formik = useFormik({
 		initialValues: {
-			name: 'Karin Novilda',
-			userName: 'awkarin',
+			name: '',
+			userName: '',
 			comment: '',
-			linkBrief: 'www.campaign.com',
+			linkBrief: '',
 		},
 		// validate,
 		onSubmit: () => {

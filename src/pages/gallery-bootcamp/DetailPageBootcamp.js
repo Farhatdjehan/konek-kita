@@ -31,7 +31,7 @@ const DetailPageBootcamp = () => {
 					<Button color='info' isLink icon='ArrowBack' onClick={() => history.goBack()}>
 						Back to List
 					</Button>
-					<SubheaderSeparator />
+
 					{/* {!!item.tags &&
 						// eslint-disable-next-line react/prop-types
 						item.tags.map((tag) => (
@@ -45,7 +45,7 @@ const DetailPageBootcamp = () => {
 			</SubHeader>
 			<Page>
 				<div className='row g-4 mt-2'>
-					<div className='col-8 '>
+					<div className='col-12 col-md-8 '>
 						<div
 							className={classNames(
 								'ratio ratio-21x9',
@@ -70,7 +70,7 @@ const DetailPageBootcamp = () => {
 						<div className='mb-4'>{item.content}</div>
 					</div>
 
-					<div className='col-4'>
+					<div className='col-12 col-md-4'>
 						<h3 className='text-muted'>
 							<Card>
 								<CardBody>

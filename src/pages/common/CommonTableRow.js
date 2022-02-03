@@ -211,7 +211,7 @@ const CommonTableRow = ({
 							<Input type='file' autoComplete='photo' />
 						</div>
 						<div className='col-12'>
-							<FormGroup id='namapaket' label='Nama Paket' isFloating>
+							<FormGroup id='namapaket' label='Nama Paket'>
 								<Input
 									placeholder='Nama Paket'
 									onChange={formik.handleChange}
@@ -221,7 +221,7 @@ const CommonTableRow = ({
 						</div>
 
 						<div className='col-12'>
-							<FormGroup id='hargapaket' label='Harga Paket' isFloating>
+							<FormGroup id='hargapaket' label='Harga Paket'>
 								<Input
 									placeholder='Harga Paket'
 									onChange={formik.handleChange}
@@ -230,7 +230,7 @@ const CommonTableRow = ({
 							</FormGroup>
 						</div>
 						<div className='col-12'>
-							<FormGroup id='description' label='Description' isFloating>
+							<FormGroup id='description' label='Description'>
 								<Input
 									placeholder='Deskripsi Paket'
 									onChange={formik.handleChange}

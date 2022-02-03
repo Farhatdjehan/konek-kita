@@ -27,16 +27,15 @@ const DetailPageReqCollab = () => {
 	return (
 		<PageWrapper title={item.title}>
 			<SubHeader>
-				<SubHeaderLeft>
+				<SubHeaderLeft className='d-flex flex-row justify-content-between'>
 					<Button color='info' isLink icon='ArrowBack' onClick={() => history.goBack()}>
 						Back to List
 					</Button>
-					<SubheaderSeparator />
 					<Button icon='AttachFile' tag='a' isLight color='success'>
 						Brief Kerja 1
 					</Button>
 				</SubHeaderLeft>
-				<SubHeaderRight>
+				<SubHeaderRight className='d-flex justify-content-end'>
 					<Button icon='Close' color='danger'>
 						Decline
 					</Button>

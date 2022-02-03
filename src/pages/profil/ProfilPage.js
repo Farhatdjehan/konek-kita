@@ -1110,7 +1110,7 @@ const ProfilPage = () => {
 								<Input type='file' autoComplete='photo' />
 							</div>
 							<div className='col-12'>
-								<FormGroup id='namapaket' label='Nama Paket' isFloating>
+								<FormGroup id='namapaket' label='Nama Paket'>
 									<Input
 										placeholder='Nama Paket'
 										onChange={formik.handleChange}
@@ -1133,7 +1133,7 @@ const ProfilPage = () => {
 								</FormGroup>
 							</div>
 							<div className='col-12'>
-								<FormGroup id='description' label='Description' isFloating>
+								<FormGroup id='description' label='Description'>
 									<Input
 										placeholder='Deskripsi Paket'
 										onChange={formik.handleChange}
@@ -1149,201 +1149,6 @@ const ProfilPage = () => {
 						</Button>
 					</ModalFooter>
 				</Modal>
-				{/* <OffCanvas
-					setOpen={setEditPanel}
-					isOpen={editPanel}
-					tag='form'
-					isModalStyle
-					noValidate
-					onSubmit={formik.handleSubmit}>
-					<OffCanvasHeader setOpen={setEditPanel}>
-						{dataModal === 'paket' ? null : (
-							<OffCanvasTitle id='edit-panel'>
-								{editItem?.name || 'New Product'}{' '}
-								{editItem?.name ? (
-									<Badge color='primary' isLight>
-										Edit
-									</Badge>
-								) : (
-									<Badge color='success' isLight>
-										New
-									</Badge>
-								)}
-							</OffCanvasTitle>
-						)}
-					</OffCanvasHeader>
-					<OffCanvasBody className={`${dataModal === 'paket' ? 'd-flex' : null}`}>
-						{dataModal === 'paket' ? null : (
-							<Card>
-								<CardHeader>
-									<CardLabel icon='Photo' iconColor='info'>
-										<CardTitle>Product Image</CardTitle>
-									</CardLabel>
-								</CardHeader>
-								<CardBody>
-									<div className='row'>
-										<div className='col-12'>
-											{editItem?.image ? (
-												<img
-													src={editItem.image}
-													alt=''
-													width={128}
-													height={128}
-													className='mx-auto d-block img-fluid mb-3'
-												/>
-											) : (
-												<PlaceholderImage
-													width={128}
-													height={128}
-													className='mx-auto d-block img-fluid mb-3 rounded'
-												/>
-											)}
-										</div>
-										<div className='col-12'>
-											<div className='row g-4'>
-												<div className='col-12'>
-													<Input type='file' autoComplete='photo' />
-												</div>
-												<div className='col-12'>
-													<Button
-														color='dark'
-														isLight
-														icon='Delete'
-														className='w-100'
-														onClick={() => {
-															setEditItem({
-																...editItem,
-																image: null,
-															});
-														}}>
-														Delete Image
-													</Button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</CardBody>
-							</Card>
-						)}
-
-						<Card>
-							<CardHeader>
-								<CardLabel icon='Edit' iconColor='success'>
-									<CardTitle>
-										{dataModal === 'paket' ? 'Edit Paket' : 'Product Details'}
-									</CardTitle>
-								</CardLabel>
-							</CardHeader>
-							<CardBody>
-								<div className='row g-4'>
-									{dataModal === 'paket' ? (
-										<>
-											<div className='col-12'>
-												<FormGroup id='name' label='Name' isFloating>
-													<Input
-														placeholder='Name'
-														onChange={formik.handleChange}
-														onBlur={formik.handleBlur}
-														value={formik.values.name}
-														isValid={formik.isValid}
-														isTouched={formik.touched.name}
-														invalidFeedback={formik.errors.name}
-														validFeedback='Looks good!'
-													/>
-												</FormGroup>
-											</div>
-											<div className='col-12'>
-												<FormGroup id='price' label='Price' isFloating>
-													<Input
-														placeholder='Price'
-														onChange={formik.handleChange}
-														onBlur={formik.handleBlur}
-														value={formik.values.price}
-														isValid={formik.isValid}
-														isTouched={formik.touched.price}
-														invalidFeedback={formik.errors.price}
-														validFeedback='Looks good!'
-													/>
-												</FormGroup>
-											</div>
-										</>
-									) : (
-										<>
-											<div className='col-12'>
-												<FormGroup id='name' label='Name' isFloating>
-													<Input
-														placeholder='Name'
-														onChange={formik.handleChange}
-														onBlur={formik.handleBlur}
-														value={formik.values.name}
-														isValid={formik.isValid}
-														isTouched={formik.touched.name}
-														invalidFeedback={formik.errors.name}
-														validFeedback='Looks good!'
-													/>
-												</FormGroup>
-											</div>
-											<div className='col-12'>
-												<FormGroup id='price' label='Price' isFloating>
-													<Input
-														placeholder='Price'
-														onChange={formik.handleChange}
-														onBlur={formik.handleBlur}
-														value={formik.values.price}
-														isValid={formik.isValid}
-														isTouched={formik.touched.price}
-														invalidFeedback={formik.errors.price}
-														validFeedback='Looks good!'
-													/>
-												</FormGroup>
-											</div>
-											<div className='col-12'>
-												<FormGroup id='stock' label='Stock' isFloating>
-													<Input
-														placeholder='Stock'
-														onChange={formik.handleChange}
-														onBlur={formik.handleBlur}
-														value={formik.values.stock}
-														isValid={formik.isValid}
-														isTouched={formik.touched.stock}
-														invalidFeedback={formik.errors.stock}
-														validFeedback='Looks good!'
-													/>
-												</FormGroup>
-											</div>
-											<div className='col-12'>
-												<FormGroup
-													id='category'
-													label='Category'
-													isFloating>
-													<Input
-														placeholder='Category'
-														onChange={formik.handleChange}
-														onBlur={formik.handleBlur}
-														value={formik.values.category}
-														isValid={formik.isValid}
-														isTouched={formik.touched.category}
-														invalidFeedback={formik.errors.category}
-														validFeedback='Looks good!'
-													/>
-												</FormGroup>
-											</div>
-										</>
-									)}
-								</div>
-							</CardBody>
-						</Card>
-					</OffCanvasBody>
-					<div className='p-3'>
-						<Button
-							color='info'
-							icon='Save'
-							type='submit'
-							isDisable={!formik.isValid && !!formik.submitCount}>
-							Save
-						</Button>
-					</div>
-				</OffCanvas> */}
 			</Page>
 		</PageWrapper>
 	);
